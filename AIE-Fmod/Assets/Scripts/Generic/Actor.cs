@@ -20,6 +20,8 @@ public class Actor : MonoBehaviour
 
     public void Start()
     {
+        m_rb = GetComponent<Rigidbody>();
+
         //FMOD: Create insance of footsteps event.
         m_footstepSurfaceEvent = FMODUnity.RuntimeManager.CreateInstance(m_footstepSurfaceName);
         //FMOD: Get a reference to the surface paramater and store it in a ParamaterInstance.
@@ -27,7 +29,6 @@ public class Actor : MonoBehaviour
         //Fmod: EventInstance.start() Safeguard. Used in Update().
         m_IsWalking = false;
 
-        m_rb = GetComponent<Rigidbody>();
         m_playerCamera = Camera.main;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -52,27 +53,29 @@ public class Actor : MonoBehaviour
             {
                 //Fmod: When actor is walking, start EventInstance. Calling EventInstance.start() will play the EventInstance from the beginning, so be sure to safeguard the call.
                 m_footstepSurfaceEvent.start();
+                //Fmod: Need to attach instance to gameobject, so the sound can follow the player. Need to call this again everytime you start the EventInstance.
+                FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_footstepSurfaceEvent, transform, m_rb);
                 m_IsWalking = true;
             }
             if (Input.GetKey(KeyCode.A))
             {
-                m_rb.position += -transform.right * m_movementSpeed * Time.deltaTime;
+                transform.position += -transform.right * m_movementSpeed * Time.deltaTime;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                m_rb.position += transform.right * m_movementSpeed * Time.deltaTime;
+                transform.position += transform.right * m_movementSpeed * Time.deltaTime;
             }
             if (Input.GetKey(KeyCode.W))
             {
-                m_rb.position += transform.forward * m_movementSpeed * Time.deltaTime;
+                transform.position += transform.forward * m_movementSpeed * Time.deltaTime;
             }
             if (Input.GetKey(KeyCode.S))
             {
-                m_rb.position += -transform.forward * m_movementSpeed * Time.deltaTime;
+                transform.position += -transform.forward * m_movementSpeed * Time.deltaTime;
             }
         }
         //Fmod: Have to set EventInstance position to current position every frame, otherwise the sound will come from where the actor started.
-        m_footstepSurfaceEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject.transform, m_rb));
+        //m_footstepSurfaceEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject.transform, m_rb));
         if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
             if (Cursor.lockState != CursorLockMode.Locked)
