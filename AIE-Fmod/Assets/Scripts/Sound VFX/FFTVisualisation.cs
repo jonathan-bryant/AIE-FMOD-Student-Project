@@ -9,8 +9,11 @@ public class FFTVisualisation : MonoBehaviour
 	FMOD.Studio.EventInstance instance;
 	FMOD.DSP dsp_fft;
 
+	Material material;
+
 	void Start ()
 	{
+		material = GetComponent<Material>();
 		instance = FMODUnity.RuntimeManager.CreateInstance(musicString);
 		FMODUnity.RuntimeManager.LowlevelSystem.createDSPByType(FMOD.DSP_TYPE.FFT, out dsp_fft);
 	}
@@ -33,13 +36,10 @@ public class FFTVisualisation : MonoBehaviour
 			float[][] spectrum = fftData.spectrum;
 
 			if (fftData.numchannels > 0)
-			{
-				Vector3 pos = Vector3.zero;
-				pos.x = WIDTH * -0.5f;
-
-				int l = fftData.length;
-				
+			{	
 			}
+
+			//material.shader
 		}
 	}
 }
