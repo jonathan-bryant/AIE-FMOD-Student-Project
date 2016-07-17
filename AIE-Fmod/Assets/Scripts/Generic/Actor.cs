@@ -6,6 +6,7 @@ public class Actor : MonoBehaviour
 
 
     public float m_movementSpeed;
+    public float m_currentSpeed;
     public float m_LookSensitivity;
     Camera m_playerCamera;
     bool m_IsWalking;
@@ -21,6 +22,7 @@ public class Actor : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         m_cc = GetComponent<CharacterController>();
         m_moveDirection = Vector3.zero;
+        m_currentSpeed = m_movementSpeed;
     }
 
     public void Update()
@@ -52,7 +54,7 @@ public class Actor : MonoBehaviour
             {
                 m_moveDirection += -transform.forward;
             }
-            m_moveDirection *= m_movementSpeed;
+            m_moveDirection *= m_currentSpeed;
         }
         m_moveDirection.y -= 9.8f;
         m_cc.Move(m_moveDirection * Time.deltaTime);
