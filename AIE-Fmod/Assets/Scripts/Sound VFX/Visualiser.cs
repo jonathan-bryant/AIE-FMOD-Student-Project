@@ -42,8 +42,6 @@ class Visualiser : MonoBehaviour
 		FMOD.DSP_PARAMETER_FFT fftData = (FMOD.DSP_PARAMETER_FFT)Marshal.PtrToStructure(unmanagedData, typeof(FMOD.DSP_PARAMETER_FFT));
 		var spectrum = fftData.spectrum;
 
-		Debug.Log(fftData.length);
-
 		if (fftData.numchannels > 0)
 		{
 			var pos = Vector3.zero;
