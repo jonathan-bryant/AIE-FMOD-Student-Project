@@ -71,9 +71,36 @@ public class Actor : MonoBehaviour
                 Cursor.visible = true;
             }
         }
+        Use();
     }
 
     public void FixedUpdate()
     {
+    }
+
+    void OnTriggerStay(Collider a_col)
+    {
+        if (a_col.gameObject.tag == "Door")
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                a_col.gameObject.GetComponent<Door>().Use();
+            }
+        }
+    }
+
+    void Use()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            RaycastHit ray;
+            if (Physics.Raycast(transform.position, transform.forward, out ray, 8.0f))
+            {
+                if (ray.collider.gameObject.tag == "Door")
+                {
+                    ray.collider.gameObject.GetComponent<Door>().Use();
+                }
+            }
+        }
     }
 }
