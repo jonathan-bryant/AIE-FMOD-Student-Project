@@ -10,12 +10,15 @@ public class FFTVisualisation : MonoBehaviour
 	FMOD.DSP dsp_fft;
 
 	Material material;
+	public RenderTexture texture;
 
 	void Start ()
 	{
 		material = GetComponent<Material>();
 		instance = FMODUnity.RuntimeManager.CreateInstance(musicString);
 		FMODUnity.RuntimeManager.LowlevelSystem.createDSPByType(FMOD.DSP_TYPE.FFT, out dsp_fft);
+		
+		instance.start();
 	}
 
 	const float WIDTH = 10.0f;
@@ -35,11 +38,10 @@ public class FFTVisualisation : MonoBehaviour
 			FMOD.DSP_PARAMETER_FFT fftData = (FMOD.DSP_PARAMETER_FFT)Marshal.PtrToStructure(unmanagedData, typeof(FMOD.DSP_PARAMETER_FFT));
 			float[][] spectrum = fftData.spectrum;
 
-			if (fftData.numchannels > 0)
-			{	
-			}
-
-			//material.shader
+			texture = new RenderTexture((int)length, 1, 0);
+			texture.name = "Render Texture";
+			
+			//material.setFloat
 		}
 	}
 }
