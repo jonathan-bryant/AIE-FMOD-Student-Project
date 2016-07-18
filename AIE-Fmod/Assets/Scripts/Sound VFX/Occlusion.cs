@@ -20,6 +20,7 @@ public class Occlusion : MonoBehaviour
 		geomVerts = new FMOD.VECTOR[6][];
 		FMODUnity.RuntimeManager.LowlevelSystem.createGeometry(numPolygons, numVerts, out geometry);
 
+		// Geometry polygons have to be on the same plane, or things will break
 		for (int i = 0; i < 6; ++i)
 		{
 			FMOD.VECTOR[] temp = new FMOD.VECTOR[4];
@@ -42,5 +43,9 @@ public class Occlusion : MonoBehaviour
 	{
 		FMOD.VECTOR tempPos = FMODUnity.RuntimeUtils.ToFMODVector(transform.position);
 		geometry.setPosition(ref tempPos);
+
+		FMOD.VECTOR pos;
+		geometry.getPosition(out pos);
+		Debug.Log(pos.x);
 	}
 }

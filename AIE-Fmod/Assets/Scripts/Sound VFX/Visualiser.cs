@@ -26,7 +26,7 @@ class Visualiser : MonoBehaviour
 
 		FMOD.ChannelGroup channelGroup;
 		FMODUnity.RuntimeManager.LowlevelSystem.getMasterChannelGroup(out channelGroup);
-		channelGroup.addDSP(FMOD.CHANNELCONTROL_DSP_INDEX.HEAD, fft);
+		channelGroup.addDSP(FMOD.CHANNELCONTROL_DSP_INDEX.TAIL, fft);
 
 		musicInstance.start();
 	}
