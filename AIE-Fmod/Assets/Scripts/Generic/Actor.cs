@@ -84,13 +84,6 @@ public class Actor : MonoBehaviour
 
     void OnTriggerStay(Collider a_col)
     {
-        if (a_col.gameObject.tag == "Door")
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                a_col.gameObject.GetComponent<Door>().Use();
-            }
-        }
     }
 
     void Use()
@@ -98,11 +91,15 @@ public class Actor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             RaycastHit ray;
-            if (Physics.Raycast(transform.position, transform.forward, out ray, 8.0f))
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out ray, 8.0f))
             {
                 if (ray.collider.gameObject.tag == "Door")
                 {
                     ray.collider.gameObject.GetComponent<Door>().Use();
+                }
+                if (ray.collider.gameObject.tag == "PanButton")
+                {
+                    ray.collider.gameObject.GetComponent<PanButton>().Use();
                 }
             }
         }

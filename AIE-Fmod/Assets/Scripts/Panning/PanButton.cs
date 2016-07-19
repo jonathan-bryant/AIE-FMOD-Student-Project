@@ -6,7 +6,7 @@ public class PanButton : MonoBehaviour
     public FMODUnity.StudioEventEmitter m_bgMusic;
 
     bool m_enablePan;
-    public bool PanEnabled { get { return m_enablePan; } }    
+    public bool PanEnabled { get { return m_enablePan; }}    
     float m_panElapsed;
 
     void Start()
@@ -27,14 +27,8 @@ public class PanButton : MonoBehaviour
             m_bgMusic.SetParameter("Panning", m_panElapsed);
         }
     }
-    void OnTriggerStay(Collider a_col)
+    public void Use()
     {
-        if (a_col.gameObject.tag == "Player")
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                m_enablePan = !m_enablePan;
-            }
-        }
+        m_enablePan = !m_enablePan;
     }
 }
