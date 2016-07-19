@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(CharacterController))]
 public class Actor : MonoBehaviour
 {
     public float m_movementSpeed;
