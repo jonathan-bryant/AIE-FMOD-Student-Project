@@ -4,12 +4,14 @@ using System.Collections;
 public class Door : MonoBehaviour
 {
     bool m_doorOpen;
-    // Use this for initialization
+    public bool DoorOpen { get { return m_doorOpen; } }
+
     void Start()
     {
+        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
 

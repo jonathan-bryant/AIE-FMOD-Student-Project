@@ -12,7 +12,7 @@ Notice that the samples on the RPM layer use Autopitch, which uses the fundament
 Recordings by David Nichols of Track Time Audio. Engine is a 1985 Mercedes-Benz 190E-16V.</value>
         </property>
         <property name="outputFormat">
-            <value>0</value>
+            <value>2</value>
         </property>
         <relationship name="mixer">
             <destination>{403a3d67-a131-4cc6-b4b5-b05b057f8023}</destination>
@@ -141,7 +141,7 @@ Recordings by David Nichols of Track Time Audio. Engine is a 1985 Mercedes-Benz 
     </object>
     <object class="EventMixerMaster" id="{8a846517-7e63-401c-b7d0-436564e94192}">
         <property name="volume">
-            <value>-0.5</value>
+            <value>-80</value>
         </property>
         <relationship name="effectChain">
             <destination>{0575ff31-40ca-44be-b0e4-998e40245e8a}</destination>
@@ -664,7 +664,9 @@ Recordings by David Nichols of Track Time Audio. Engine is a 1985 Mercedes-Benz 
     </object>
     <object class="MixerBusEffectChain" id="{0575ff31-40ca-44be-b0e4-998e40245e8a}">
         <relationship name="effects">
+            <destination>{b34ca206-3022-4313-9eb5-035e4dff0714}</destination>
             <destination>{42cab93d-da01-41b9-be0e-79d9a25bd2f2}</destination>
+            <destination>{1a8cf967-6526-4f8e-9504-8c107ffee55f}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{038eac33-220e-451d-b5ac-863adc37e2c1}">
@@ -1129,7 +1131,17 @@ Recordings by David Nichols of Track Time Audio. Engine is a 1985 Mercedes-Benz 
             <value>-0.479999989</value>
         </property>
     </object>
+    <object class="PluginEffect" id="{b34ca206-3022-4313-9eb5-035e4dff0714}">
+        <relationship name="plugin">
+            <destination>{653047b5-2b4b-44c9-9122-832210e9ee12}</destination>
+        </relationship>
+    </object>
     <object class="MixerBusFader" id="{42cab93d-da01-41b9-be0e-79d9a25bd2f2}"/>
+    <object class="SpatialiserEffect" id="{1a8cf967-6526-4f8e-9504-8c107ffee55f}">
+        <property name="maximumDistance">
+            <value>5.80000019</value>
+        </property>
+    </object>
     <object class="AutomationPoint" id="{1de2bf06-2ae8-4e69-96cc-6085dd591a99}">
         <property name="position">
             <value>4600</value>
@@ -1603,6 +1615,18 @@ Recordings by David Nichols of Track Time Audio. Engine is a 1985 Mercedes-Benz 
             <destination>{683fccc7-ad39-4cbb-9a4b-b9b7465a959a}</destination>
         </relationship>
     </object>
+    <object class="Plugin" id="{653047b5-2b4b-44c9-9122-832210e9ee12}">
+        <property name="identifier">
+            <value>FMOD Transceiver</value>
+        </property>
+        <relationship name="pluginParameters">
+            <destination>{9abe6601-c5b4-482a-b33a-e2d6910992fb}</destination>
+            <destination>{5ca17f72-634e-4ab4-b648-84b95f3b4f7c}</destination>
+            <destination>{692da1b0-ac49-4dd2-aae3-5e41712d23fe}</destination>
+            <destination>{b21a80dc-5420-495e-9744-5b3cc65879ec}</destination>
+            <destination>{56986fba-560a-45a9-81c7-29518fda8ea2}</destination>
+        </relationship>
+    </object>
     <object class="Plugin" id="{683fccc7-ad39-4cbb-9a4b-b9b7465a959a}">
         <property name="identifier">
             <value>FMOD Distortion</value>
@@ -1610,6 +1634,62 @@ Recordings by David Nichols of Track Time Audio. Engine is a 1985 Mercedes-Benz 
         <relationship name="pluginParameters">
             <destination>{5b870b71-2d6d-4375-8545-a9ed51744725}</destination>
         </relationship>
+    </object>
+    <object class="BoolPluginParameter" id="{9abe6601-c5b4-482a-b33a-e2d6910992fb}">
+        <property name="name">
+            <value>Transmit mode</value>
+        </property>
+        <property name="value">
+            <value>true</value>
+        </property>
+    </object>
+    <object class="FloatPluginParameter" id="{5ca17f72-634e-4ab4-b648-84b95f3b4f7c}">
+        <property name="name">
+            <value>Level</value>
+        </property>
+        <property name="curve">
+            <value>LinearPiecewiseCurveStrategy{(-42.000000,-80.000000)(-39.000000,-60.000000)(-36.000000,-50.000000)(-32.000000,-40.000000)(-27.000000,-30.000000)(-20.000000,-20.000000)(-10.000000,-10.000000)(0.000000,0.000000)(10.000000,10.000000)}</value>
+        </property>
+        <property name="value">
+            <value>0</value>
+        </property>
+    </object>
+    <object class="IntPluginParameter" id="{692da1b0-ac49-4dd2-aae3-5e41712d23fe}">
+        <property name="name">
+            <value>Channel</value>
+        </property>
+        <property name="minimumValue">
+            <value>0</value>
+        </property>
+        <property name="maximumValue">
+            <value>31</value>
+        </property>
+        <property name="value">
+            <value>0</value>
+        </property>
+    </object>
+    <object class="IntPluginParameter" id="{b21a80dc-5420-495e-9744-5b3cc65879ec}">
+        <property name="name">
+            <value>Speaker Mode</value>
+        </property>
+        <property name="minimumValue">
+            <value>-1</value>
+        </property>
+        <property name="maximumValue">
+            <value>2</value>
+        </property>
+        <property name="value">
+            <value>-1</value>
+        </property>
+    </object>
+    <object class="DataPluginParameter" id="{56986fba-560a-45a9-81c7-29518fda8ea2}">
+        <property name="name">
+            <value>Overall Gain</value>
+        </property>
+        <property name="dataType">
+            <value>-1</value>
+        </property>
+        <property name="value"/>
     </object>
     <object class="FloatPluginParameter" id="{5b870b71-2d6d-4375-8545-a9ed51744725}">
         <property name="name">

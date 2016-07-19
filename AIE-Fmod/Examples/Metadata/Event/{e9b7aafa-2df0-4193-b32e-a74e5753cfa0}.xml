@@ -143,14 +143,14 @@ Weapon sounds courtesy of Frank Bry at The Recordist.</value>
         </relationship>
     </object>
     <object class="LoopRegion" id="{07817edf-1446-4734-b864-5d967e48ffb1}">
+        <property name="triggerProbabilityEnabled">
+            <value>true</value>
+        </property>
         <property name="position">
             <value>0</value>
         </property>
         <property name="length">
             <value>0.078034000000000006</value>
-        </property>
-        <property name="triggerProbabilityEnabled">
-            <value>true</value>
         </property>
         <relationship name="timeline">
             <destination>{fd348e80-4a9b-4d16-980b-261d33724ab7}</destination>
@@ -161,9 +161,9 @@ Weapon sounds courtesy of Frank Bry at The Recordist.</value>
     </object>
     <object class="MixerBusEffectChain" id="{cb1ca835-58e2-431a-a325-58a86b12ea48}">
         <relationship name="effects">
+            <destination>{8a195af1-9bce-418e-ba9d-ab6ab6185ca6}</destination>
             <destination>{aaba4a35-b1d9-49a8-99a0-c630051bbdab}</destination>
             <destination>{ec753e97-768a-499f-9b28-339cfc99a411}</destination>
-            <destination>{06ed3317-7179-4e11-b1fc-8e061d396798}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{bff9bf59-023a-4ca4-8dff-44d7d1e9e3a0}"/>
@@ -241,18 +241,90 @@ Weapon sounds courtesy of Frank Bry at The Recordist.</value>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{eda7e555-d35d-48a8-8f10-91f44299067a}"/>
-    <object class="MixerBusFader" id="{aaba4a35-b1d9-49a8-99a0-c630051bbdab}"/>
-    <object class="SpatialiserEffect" id="{ec753e97-768a-499f-9b28-339cfc99a411}"/>
-    <object class="MixerSend" id="{06ed3317-7179-4e11-b1fc-8e061d396798}">
-        <property name="level">
-            <value>-35</value>
-        </property>
-        <property name="inputFormat">
-            <value>2</value>
-        </property>
-        <relationship name="mixerReturn">
-            <destination>{524ae5a9-928c-4391-9635-34b41d4602af}</destination>
+    <object class="PluginEffect" id="{8a195af1-9bce-418e-ba9d-ab6ab6185ca6}">
+        <relationship name="plugin">
+            <destination>{56ab3b2f-0897-48d8-98f3-4b5135582fd5}</destination>
         </relationship>
     </object>
+    <object class="MixerBusFader" id="{aaba4a35-b1d9-49a8-99a0-c630051bbdab}"/>
+    <object class="SpatialiserEffect" id="{ec753e97-768a-499f-9b28-339cfc99a411}">
+        <property name="maximumDistance">
+            <value>15</value>
+        </property>
+        <property name="extentMode">
+            <value>1</value>
+        </property>
+        <property name="soundSize">
+            <value>15</value>
+        </property>
+    </object>
     <object class="MixerBusFader" id="{8d9bed40-adf7-4bad-92fe-a3643f9a3d42}"/>
+    <object class="Plugin" id="{56ab3b2f-0897-48d8-98f3-4b5135582fd5}">
+        <property name="identifier">
+            <value>FMOD Transceiver</value>
+        </property>
+        <relationship name="pluginParameters">
+            <destination>{31751d21-86a8-4662-a240-b50e0f87ff06}</destination>
+            <destination>{364332d1-cf44-46c8-bdcf-e7d2a97b24be}</destination>
+            <destination>{5d504a05-4801-498c-be7a-5647fe4d760c}</destination>
+            <destination>{51393b06-8e20-4c92-b07f-565a4487710f}</destination>
+            <destination>{e87c450e-5e63-4dfc-b78f-516502aef441}</destination>
+        </relationship>
+    </object>
+    <object class="BoolPluginParameter" id="{31751d21-86a8-4662-a240-b50e0f87ff06}">
+        <property name="name">
+            <value>Transmit mode</value>
+        </property>
+        <property name="value">
+            <value>true</value>
+        </property>
+    </object>
+    <object class="FloatPluginParameter" id="{364332d1-cf44-46c8-bdcf-e7d2a97b24be}">
+        <property name="name">
+            <value>Level</value>
+        </property>
+        <property name="curve">
+            <value>LinearPiecewiseCurveStrategy{(-42.000000,-80.000000)(-39.000000,-60.000000)(-36.000000,-50.000000)(-32.000000,-40.000000)(-27.000000,-30.000000)(-20.000000,-20.000000)(-10.000000,-10.000000)(0.000000,0.000000)(10.000000,10.000000)}</value>
+        </property>
+        <property name="value">
+            <value>0</value>
+        </property>
+    </object>
+    <object class="IntPluginParameter" id="{5d504a05-4801-498c-be7a-5647fe4d760c}">
+        <property name="name">
+            <value>Channel</value>
+        </property>
+        <property name="minimumValue">
+            <value>0</value>
+        </property>
+        <property name="maximumValue">
+            <value>31</value>
+        </property>
+        <property name="value">
+            <value>0</value>
+        </property>
+    </object>
+    <object class="IntPluginParameter" id="{51393b06-8e20-4c92-b07f-565a4487710f}">
+        <property name="name">
+            <value>Speaker Mode</value>
+        </property>
+        <property name="minimumValue">
+            <value>-1</value>
+        </property>
+        <property name="maximumValue">
+            <value>2</value>
+        </property>
+        <property name="value">
+            <value>-1</value>
+        </property>
+    </object>
+    <object class="DataPluginParameter" id="{e87c450e-5e63-4dfc-b78f-516502aef441}">
+        <property name="name">
+            <value>Overall Gain</value>
+        </property>
+        <property name="dataType">
+            <value>-1</value>
+        </property>
+        <property name="value"/>
+    </object>
 </objects>
