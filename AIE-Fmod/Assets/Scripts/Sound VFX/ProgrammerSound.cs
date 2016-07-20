@@ -24,7 +24,7 @@ public class ProgrammerSound : MonoBehaviour
 	private FMOD.RESULT result;
 
 	LineRenderer lineRenderer;
-	const int WindowSize = 1024;
+	const int WindowSize = 1026;
 	const float WIDTH = 10.0f;
 	const float HEIGHT = 0.1f;
 
@@ -32,7 +32,6 @@ public class ProgrammerSound : MonoBehaviour
 
 	void Start () 
 	{
-		FMODUnity.RuntimeManager.LowlevelSystem.init(512, FMOD.INITFLAGS.PROFILE_ENABLE | FMOD.INITFLAGS.PROFILE_METER_ALL, (IntPtr)0);
 		result = FMODUnity.RuntimeManager.LowlevelSystem.createChannelGroup("Music Group", out m_channelGroup);
 		result = FMODUnity.RuntimeManager.LowlevelSystem.createSound(m_soundPath, FMOD.MODE.CREATESTREAM | FMOD.MODE._3D, out m_sound);
 
@@ -64,7 +63,6 @@ public class ProgrammerSound : MonoBehaviour
 		{
 			var pos = Vector3.zero;
 			pos.z = 5.0f;
-			pos.y = 2.5f;
 			pos.x = WIDTH * -0.5f;
 
 			for (int i = 0; i < WindowSize; ++i)
@@ -72,7 +70,7 @@ public class ProgrammerSound : MonoBehaviour
 				pos.x += (WIDTH / WindowSize);
 
 				float level = lin2dB(spectrum[0][i]);
-				pos.y = spectrum[0][i] * 20 + 2.5f;
+				pos.y = (level + 80) * HEIGHT;
 
 				lineRenderer.SetPosition(i, pos);
 			}
