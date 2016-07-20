@@ -82,6 +82,9 @@ public class ProgrammerSound : MonoBehaviour
 	public bool PlaySound()
 	{
 		result = FMODUnity.RuntimeManager.LowlevelSystem.playSound(m_sound, m_channelGroup, false, out m_channel);
+        FMOD.VECTOR vec = FMODUnity.RuntimeUtils.ToFMODVector(new Vector3(0.0f, 0.0f, 0.0f));
+        FMOD.VECTOR pos = FMODUnity.RuntimeUtils.ToFMODVector(transform.position);
+        m_channel.set3DAttributes(ref pos, ref vec, ref vec);
 
 		if (result != FMOD.RESULT.OK)
 			return false;
