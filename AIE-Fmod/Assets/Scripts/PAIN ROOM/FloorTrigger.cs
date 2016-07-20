@@ -19,8 +19,10 @@ public class FloorTrigger : MonoBehaviour
 		{
 			if (falseFloor.transform.position.y > -2.5f)
 			{
-				falseFloor.transform.position -= new Vector3( 0, 0.2f, 0);
+				falseFloor.transform.position -= new Vector3(0, 0.2f, 0);
 			}
+			else
+				Destroy(gameObject);
 		}
 	}
 
@@ -29,6 +31,7 @@ public class FloorTrigger : MonoBehaviour
 		if (col.gameObject.CompareTag("Player"))
 		{
 			triggered = true;
+			
 		}
 	}
 }

@@ -41,7 +41,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 6
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_LightmapsMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -115,6 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14da509607ece6448ea603f6bb83f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  directOcclusion: 0.571
+  reverbOcclusion: 0
 --- !u!23 &18476680
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -125,7 +127,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 30f47137c13e3074494d69c1e639264a, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -167,7 +169,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 18476678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.41, y: 2.08, z: -2.06}
+  m_LocalPosition: {x: -2.992, y: 2.08, z: -2.06}
   m_LocalScale: {x: 2.6787732, y: 4.0581107, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -215,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicString: 
+  m_levelString: 4c6576656c
   m_levelValue: 0
 --- !u!23 &106309069
 MeshRenderer:
@@ -408,8 +411,8 @@ GameObject:
   - 33: {fileID: 626812614}
   - 136: {fileID: 626812613}
   - 23: {fileID: 626812612}
+  - 143: {fileID: 626812617}
   - 114: {fileID: 626812616}
-  - 54: {fileID: 626812617}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -484,24 +487,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 626812611}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef5fcbdebadaaa947b8f1736a555782d, type: 3}
+  m_Script: {fileID: 11500000, guid: 649ff0661b5a7c94f90046b2452c8ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &626812617
-Rigidbody:
+  m_movementSpeed: 10
+  m_currentSpeed: 0
+  m_LookSensitivity: 2
+--- !u!143 &626812617
+CharacterController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 626812611}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &675338431
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,6 +598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicString: 
+  m_levelString: 4c6576656c
   m_levelValue: 0
 --- !u!1 &717908413
 GameObject:
@@ -675,8 +684,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 776158361}
-  - 114: {fileID: 776158362}
-  - 114: {fileID: 776158363}
   - 114: {fileID: 776158364}
   m_Layer: 0
   m_Name: Sound
@@ -704,29 +711,6 @@ Transform:
   - {fileID: 1496878784}
   m_Father: {fileID: 0}
   m_RootOrder: 4
---- !u!114 &776158362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 776158360}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d7cf60461554e74cb254a380bb4f3d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_musicRef: 
---- !u!114 &776158363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 776158360}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed6e2de045288b846b45a62b21696c96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &776158364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1046,7 +1030,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1078158455}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalPosition: {x: 0, y: 0.75, z: 0.105}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 626812615}
@@ -1300,6 +1284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicString: 
+  m_levelString: 4c6576656c
   m_levelValue: 0
 --- !u!1 &1468937595
 GameObject:
@@ -1389,6 +1374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicString: 
+  m_levelString: 4c6576656c
   m_levelValue: 0
 --- !u!1 &1496878783
 GameObject:
@@ -1433,6 +1419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicString: 
+  m_levelString: 4c6576656c
   m_levelValue: 0
 --- !u!23 &1496878786
 MeshRenderer:
@@ -1822,6 +1809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicString: 
+  m_levelString: 4c6576656c
   m_levelValue: 0
 --- !u!23 &2135621881
 MeshRenderer:
