@@ -4,7 +4,6 @@ using System.Collections;
 public class Surfaces : MonoBehaviour
 {
     Actor m_actor;
-    CharacterController m_cc;
     bool m_oldIsWalking;
     Collider m_lastCollider;
 
@@ -30,7 +29,6 @@ public class Surfaces : MonoBehaviour
     {
         m_oldIsWalking = false;
         m_actor = GetComponent<Actor>();
-        m_cc = GetComponent<CharacterController>();
 
         //---------------------------------Fmod-------------------------------
         //Create insance of footsteps event.
