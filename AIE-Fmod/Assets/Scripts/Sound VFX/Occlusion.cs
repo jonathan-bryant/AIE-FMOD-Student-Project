@@ -1,5 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System;
+
+[Serializable]
+public class Geometry
+{
+
+}
 
 public class Occlusion : MonoBehaviour
 {
@@ -9,7 +15,7 @@ public class Occlusion : MonoBehaviour
 	public float reverbOcclusion = 0.0f;
 
 	FMOD.Geometry geometry;
-	int numPolygons = 6;
+	int numPolygons;
 	int numVerts;
 	FMOD.VECTOR[][] geomVerts;
 	int[] polygons = new int[6];
@@ -23,16 +29,19 @@ public class Occlusion : MonoBehaviour
 	{
 		mesh = new Mesh();
 		mesh = GetComponent<MeshFilter>().mesh;
-		numVerts = mesh.vertexCount;
 		mat = GetComponent<Renderer>().material;
-		
-		geomVerts = new FMOD.VECTOR[6][];
+
+        numPolygons = mesh.triangles.Length / 6;
+        Debug.Log(numPolygons);
+		numVerts = mesh.vertexCount;
+        
+		geomVerts = new FMOD.VECTOR[numPolygons][];
 		result = FMODUnity.RuntimeManager.LowlevelSystem.createGeometry(numPolygons, numVerts, out geometry);
 
 		Vector3 scale = transform.localScale;
 		
 		// Geometry polygons have to be on the same plane, or things will break
-		for (int i = 0; i < 6; ++i)
+		for (int i = 0; i < numPolygons; ++i)
 		{
 			FMOD.VECTOR[] temp = new FMOD.VECTOR[4];
 
@@ -58,21 +67,12 @@ public class Occlusion : MonoBehaviour
 		FMOD.VECTOR pos;
 		result = geometry.getPosition(out pos);
 
-		for (int i = 0; i < 6; i++)
-		{
-			geometry.setPolygonAttributes(i, directOcclusion, reverbOcclusion, true);
-			Color color = mat.color;
-			color.a = directOcclusion;
-			mat.color = color;
-		}
-	}
-
-	Vector3 MultiplyByScale(Vector3 a_vec, Vector3 a_scale)
-	{
-		Vector3 result = a_vec;
-		result.x *= a_scale.x;
-		result.y *= a_scale.y;
-		result.z *= a_scale.z;
-		return result;
-	}
+        for (int i = 0; i < numPolygons; i++)
+        {
+            geometry.setPolygonAttributes(i, directOcclusion, reverbOcclusion, true);
+            Color color = mat.color;
+            color.a = directOcclusion;
+            mat.color = color;
+        }
+    }
 }
