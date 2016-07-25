@@ -64,14 +64,15 @@ public class Actor : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
-            m_disableMovement = !m_disableMovement;
             if (Cursor.lockState != CursorLockMode.Locked)
             {
+                m_disableMovement = true;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
             else
             {
+                m_disableMovement = false;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
