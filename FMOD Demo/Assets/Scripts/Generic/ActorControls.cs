@@ -106,11 +106,11 @@ public class ActorControls : MonoBehaviour
             RaycastHit ray;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out ray, 4.0f))
             {
-                ActionObject newObj = ray.collider.gameObject.GetComponentInParent<ActionObject>();
+                GameObject newObj = ray.collider.gameObject;
                 if (newObj.name.Contains("Cart"))
                 {
                     //if the object processed last call is equal to this calls object. Unuse it 
-                    if (m_actionObject == newObj)
+                    if (m_actionObject.gameObject == newObj)
                     {
                         m_actionObject.Use(false);
                         m_actionObject = null;
@@ -119,17 +119,19 @@ public class ActorControls : MonoBehaviour
                     }
                     else
                     {
-                        m_actionObject = newObj;
-                        m_actionObject.Use(true);
+                        m_actionObject = newObj.GetComponent<ActionObject>();
+                        if(m_actionObject)
+                            m_actionObject.Use(true);
                         m_riding = true;
                         m_gun.SetActive(true);
                     }
                     return;
                 }              
-                if(newObj.name.Contains("Door"))
+                if(newObj.transform.parent.gameObject.name.Contains("Door"))
                 {
-                    m_actionObject = newObj;
-                    m_actionObject.Use(true);
+                    m_actionObject = newObj.GetComponentInParent<ActionObject>();
+                    if (m_actionObject)
+                        m_actionObject.Use(true);
                     return;
                 }      
             }
