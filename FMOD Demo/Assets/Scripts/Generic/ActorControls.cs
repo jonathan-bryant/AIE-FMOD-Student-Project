@@ -13,7 +13,7 @@ public class ActorControls : MonoBehaviour
     bool m_disableMovement;
     Vector3 m_moveDirection;
     bool m_riding;
-    GameObject m_actionObject;
+    ActionObject m_actionObject;
     public GameObject m_gun;
 
     void Start()
@@ -105,24 +105,32 @@ public class ActorControls : MonoBehaviour
             RaycastHit ray;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out ray, 4.0f))
             {
+                ActionObject newObj = ray.collider.gameObject.GetComponentInParent<ActionObject>();
                 if (ray.collider.gameObject.name.Contains("Cart"))
                 {
-                    if (m_actionObject == ray.collider.gameObject)
+                    //if the object processed last call is equal to this calls object. Unuse it 
+                    if (m_actionObject == newObj)
                     {
+                        m_actionObject.Use(false);
                         m_actionObject = null;
                         m_riding = false;
                         m_gun.SetActive(false);
                     }
                     else
                     {
-                        m_actionObject = ray.collider.gameObject;
+                        m_actionObject = newObj;
+                        m_actionObject.Use(true);
                         m_riding = true;
                         m_gun.SetActive(true);
                     }
                     return;
                 }                    
             }
-            m_actionObject = null;
+            if (m_actionObject)
+            {
+                m_actionObject.Use(false);
+                m_actionObject = null;
+            }
             m_riding = false;
             m_gun.SetActive(false);
         }
