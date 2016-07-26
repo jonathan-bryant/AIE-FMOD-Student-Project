@@ -81,13 +81,12 @@ public class SpringBack : BaseTarget
     }
     public override void Hit(Target Target)
     {
-        if (!m_dead && !m_preparing)
-        {
-            m_scoreBoard.AddScore(m_points);
-            m_elapsed = 0.0f;
-            m_preparing = true;
-            m_dead = true;
-        }
+        if (!m_active || m_dead || m_preparing)
+            return;
+        m_scoreBoard.AddScore(m_points);
+        m_elapsed = 0.0f;
+        m_preparing = true;
+        m_dead = true;
     }
     public override void Reset()
     {

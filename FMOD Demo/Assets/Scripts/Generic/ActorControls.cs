@@ -110,24 +110,26 @@ public class ActorControls : MonoBehaviour
                 if (newObj.name.Contains("Cart"))
                 {
                     //if the object processed last call is equal to this calls object. Unuse it 
-                    if (m_actionObject.gameObject == newObj)
+                    if (!m_actionObject || m_actionObject.gameObject != newObj.transform.parent.gameObject)
+                    {
+                        m_actionObject = newObj.GetComponentInParent<ActionObject>();
+                        if (m_actionObject)
+                        {
+                            m_actionObject.Use(true);
+                            m_riding = true;
+                            m_gun.SetActive(true);
+                        }
+                    }
+                    else
                     {
                         m_actionObject.Use(false);
                         m_actionObject = null;
                         m_riding = false;
                         m_gun.SetActive(false);
                     }
-                    else
-                    {
-                        m_actionObject = newObj.GetComponent<ActionObject>();
-                        if(m_actionObject)
-                            m_actionObject.Use(true);
-                        m_riding = true;
-                        m_gun.SetActive(true);
-                    }
                     return;
                 }              
-                if(newObj.transform.parent.gameObject.name.Contains("Door"))
+                if(newObj.name.Contains("Door"))
                 {
                     m_actionObject = newObj.GetComponentInParent<ActionObject>();
                     if (m_actionObject)

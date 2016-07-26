@@ -33,7 +33,9 @@ public class Door : ActionObject
                 m_openingDoor = false;
                 m_doorOpen = true;
                 if (m_sceneName != null && m_sceneName != "")
+                {
                     SceneManager.LoadScene(m_sceneName);
+                }
             }
         }
         else if (m_closingDoor)

@@ -52,6 +52,8 @@ public class LinearTargetEmitter : BaseTarget
     }
     public override void Hit(Target a_target)
     {
+        if (!m_active)
+            return;
         m_scoreBoard.AddScore(m_points);
         Destroy(a_target.gameObject);
         m_targets.Remove(a_target);
