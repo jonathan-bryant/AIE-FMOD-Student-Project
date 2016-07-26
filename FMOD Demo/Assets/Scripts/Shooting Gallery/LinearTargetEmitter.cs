@@ -21,6 +21,8 @@ public class LinearTargetEmitter : BaseTarget
 	
 	void Update ()
     {
+        if (!m_active)
+            return;
         MoveTargets();
 
         m_elapsed += Time.deltaTime;
@@ -50,7 +52,16 @@ public class LinearTargetEmitter : BaseTarget
     }
     public override void Hit(Target a_target)
     {
+        m_scoreBoard.AddScore(m_points);
         Destroy(a_target.gameObject);
         m_targets.Remove(a_target);
+    }
+    public override void Reset()
+    {
+        for (int i = 0; i < m_targets.Count; ++i)
+        {
+            Destroy(m_targets[i].gameObject);
+        }
+        m_targets.Clear();
     }
 }
