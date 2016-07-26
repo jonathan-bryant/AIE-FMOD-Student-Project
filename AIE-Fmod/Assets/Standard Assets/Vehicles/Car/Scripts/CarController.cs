@@ -40,7 +40,7 @@ namespace UnityStandardAssets.Vehicles.Car
         private Quaternion[] m_WheelMeshLocalRotations;
         private Vector3 m_Prevpos, m_Pos;
         private float m_SteerAngle;
-        private int m_GearNum;
+        public int m_GearNum;
         private float m_GearFactor;
         private float m_OldRotation;
         private float m_CurrentTorque;
