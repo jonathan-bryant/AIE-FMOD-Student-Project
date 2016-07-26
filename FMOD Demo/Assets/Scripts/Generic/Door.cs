@@ -21,16 +21,16 @@ public class Door : ActionObject
     {
         if (!m_doorOpen)
         {
-            transform.position += transform.right * 2.0f;
-            transform.position += transform.forward * 2.0f;
+            transform.position += transform.right * ((transform.localScale.z * 0.5f) + (transform.localScale.x * 0.5f));
+            transform.position += transform.forward * ((transform.localScale.z * 0.5f) + (transform.localScale.x * 0.5f));
             transform.Rotate(new Vector3(0.0f, 1.0f, 0.0f), 90.0f);
             m_doorOpen = true;
         }
         else
         {
             transform.Rotate(new Vector3(0.0f, 1.0f, 0.0f), -90.0f);
-            transform.position -= transform.right * 2.0f;
-            transform.position -= transform.forward * 2.0f;
+            transform.position -= transform.right * ((transform.localScale.z * 0.5f) + (transform.localScale.x * 0.5f));
+            transform.position -= transform.forward * ((transform.localScale.z * 0.5f) + (transform.localScale.x * 0.5f));
             m_doorOpen = false;
         }
     }
