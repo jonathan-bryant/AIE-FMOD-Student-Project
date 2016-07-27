@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class ScoreBoard : MonoBehaviour {
 
+    public SG_MainSpeaker m_mainSpeaker;
     public int m_winScore;
     int m_score;
     public Text[] m_scores;
@@ -18,14 +19,8 @@ public class ScoreBoard : MonoBehaviour {
     {
         if (m_cart.CurrentRound == m_cart.m_Rounds)
         {
-            if (m_score >= m_winScore)
-            {
-                //YOU WIN
-            }
-            else
-            {
-                //YOU LOSE
-            }
+            m_mainSpeaker.SetGameResult(m_score >= m_winScore ? 1 : -1);
+            m_mainSpeaker.IsActive(false);
         }
     }
     public void AddScore(int a_points)
