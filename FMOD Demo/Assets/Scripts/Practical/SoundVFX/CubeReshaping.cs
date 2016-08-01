@@ -14,18 +14,22 @@ public class CubeReshaping : MonoBehaviour
 
     // Private Vars
     Material m_material;
+    float pos;
 
     void Start ()
     {
-        Shader.SetGlobalFloat("Height Adjustment", transform.position.x);
 
     }
 	
-	void Update () 
-	{
-        //m_material = GetComponent<Renderer>().material;
-        //m_material.SetFloat("Height Adjustment", transform.position.x);
+	void Update ()
+    {
+        m_material = GetComponent<Renderer>().material;
+        m_material.SetFloat("Height Adjustment", transform.position.x);
 
+        float height = Mathf.Sin(-Time.time + transform.position.x * transform.position.z) * 10 + 15;
+        //pos = Mathf.Lerp(pos, height, 0.8f);
+        m_material.SetFloat("_worldX", height);
+        pos = height;
     }
 
 	#region Private Functions
