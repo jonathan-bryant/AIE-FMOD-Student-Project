@@ -12,6 +12,7 @@ public class ActorControls : MonoBehaviour
     CharacterController m_cc;
     bool m_disableMovement;
     Vector3 m_moveDirection;
+    public float CurrentVelocity { get { return m_moveDirection.magnitude; } }
     bool m_riding;
     ActionObject m_actionObject;
     GameObject m_selectedObject;
@@ -146,13 +147,16 @@ public class ActorControls : MonoBehaviour
                     }
                     return;
                 }
-                if (newObj.name.Contains("Door"))
+                m_actionObject = newObj.GetComponentInParent<ActionObject>();
+                if (m_actionObject)
+                    m_actionObject.Use(true);
+                else
                 {
-                    m_actionObject = newObj.GetComponentInParent<ActionObject>();
+                    m_actionObject = newObj.GetComponent<ActionObject>();
                     if (m_actionObject)
                         m_actionObject.Use(true);
-                    return;
                 }
+                return;
             }
         }
         else

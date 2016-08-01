@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TargetEmitterTarget : MonoBehaviour {
+public class Transeiver : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

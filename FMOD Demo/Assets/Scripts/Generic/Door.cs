@@ -9,6 +9,14 @@ public class Door : ActionObject
     public float m_originalAngle;
     public float m_duration;
     float m_elapsed;
+    float m_doorTransceiverElapsed;
+    public float DoorElapsed
+    {
+        get
+        {
+            return m_doorTransceiverElapsed  / m_duration;
+        }
+    }
     bool m_doorOpen;
     public bool DoorOpen { get { return m_doorOpen; } }
     bool m_openingDoor, m_closingDoor;
@@ -26,6 +34,7 @@ public class Door : ActionObject
         if (m_openingDoor)
         {
             m_elapsed += Time.deltaTime;
+            m_doorTransceiverElapsed += Time.deltaTime;
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, m_originalAngle + (m_angle * (m_elapsed / m_duration)), transform.eulerAngles.z);
             if (m_elapsed >= m_duration)
             {
@@ -36,17 +45,20 @@ public class Door : ActionObject
                 {
                     SceneManager.LoadScene(m_sceneName);
                 }
+                m_doorTransceiverElapsed = m_duration;
             }
         }
         else if (m_closingDoor)
         {
             m_elapsed += Time.deltaTime;
+            m_doorTransceiverElapsed -= Time.deltaTime;
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, (m_originalAngle + m_angle) - (m_angle * (m_elapsed / m_duration)), transform.eulerAngles.z);
             if (m_elapsed >= m_duration)
             {
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, m_originalAngle, transform.eulerAngles.z);
                 m_closingDoor = false;
                 m_doorOpen = false;
+                m_doorTransceiverElapsed = 0.0f;
             }
         }
     }

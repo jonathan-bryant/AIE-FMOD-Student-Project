@@ -43,7 +43,7 @@
 	ENDCG
 
 		SubShader{
-		Tags{ "Queue" = "Transparent" }
+		Tags{  "Queue" = "Transparent" }
 
 		// note that a vertex shader is specified here but its using the one above
 		Pass{
@@ -89,7 +89,7 @@
 	}
 
 		SubShader{
-		Tags{ "Queue" = "Transparent" }
+		Tags{  "Queue" = "Transparent" }
 
 		Pass{
 		Name "OUTLINE"

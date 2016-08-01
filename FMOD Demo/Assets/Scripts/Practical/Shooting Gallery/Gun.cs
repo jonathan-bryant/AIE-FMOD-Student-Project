@@ -22,6 +22,7 @@ public class Gun : MonoBehaviour {
         m_elapsed = Mathf.Min(m_elapsed + Time.deltaTime, m_fireRate);
         if(Input.GetMouseButton(0) && m_elapsed >= m_fireRate)
         {
+            //TODO: Adding shooting gun sound.
             GameObject obj = Instantiate(m_bullet) as GameObject;
             obj.transform.position = m_gunHole.position;
             obj.GetComponent<Rigidbody>().AddForce(transform.forward * m_power);
