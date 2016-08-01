@@ -54,6 +54,7 @@ public class PauseMenu : MonoBehaviour
         //if (SceneManager.GetSceneAt(a_value.value - 1) != SceneManager.GetActiveScene())
         {
             SceneManager.LoadScene(a_value.value);
+            Debug.Log("new scene");
             DeactivateMenu();
         }
     }
