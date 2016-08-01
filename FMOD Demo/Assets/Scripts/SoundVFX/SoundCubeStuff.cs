@@ -6,24 +6,32 @@ Date:			#CREATIONDATE#
 ==================================================================*/
 
 using UnityEngine;
-
+using System.Collections.Generic;
 
 public class SoundCubeStuff : MonoBehaviour 
 {
     // Public Vars
 
     // Private Vars
-    Material material;
+    [SerializeField]    GameObject m_cubePrefab;
+    GameObject[][] m_cubes;
+
 
 	void Start () 
 	{
-        Vector3 uvPos = (transform.position - transform.parent.parent.position);
-        material = GetComponent<Renderer>().material;
-        uvPos.x = 1.0f / (Mathf.Abs(uvPos.x)) * -1.0f;
-        material.SetFloat("UVx", uvPos.x);
-        uvPos.z = 1.0f / (Mathf.Abs(uvPos.z)) * -1.0f;
-        material.SetFloat("UVy", uvPos.z);
-	}
+        m_cubes = new GameObject[10][];
+
+        for (int i = 0; i < 10; i++)
+        {
+            m_cubes[i] = new GameObject[10];
+            for (int j = 0; j < 10; j++)
+            {
+                Vector3 pos = transform.position + new Vector3(15 - (i * 4), 0, 15 - (j * 4));
+                m_cubes[i][j] = Instantiate(m_cubePrefab, pos, Quaternion.identity) as GameObject;
+                m_cubes[i][j].transform.SetParent(transform);
+            }
+        }
+    }
 	
 	void Update () 
 	{

@@ -8,6 +8,7 @@
 		_Metallic ("Metallic", Range(0,1)) = 0.0
 		_UVx ("UVx", float) = 0
 		_UVy ("UVy", float) = 0
+		_Amount ("Height Adjustment", Float) = 1.0
 	}
 	SubShader 
 	{
@@ -34,17 +35,15 @@
 		fixed4 _Color;
 		float _UVx;
 		float _UVy;
+		float _Amount;
 
 		void vert (inout appdata_full v)
 		{
-			float4 worldpos = mul(_Object2World, v.vertex);
-			float time = _Time * 20.0;
-			float value = sin(time + worldpos.x * 3) * 0.2;
 			if (v.vertex.y < 0)
 			{
-				v.vertex.xyz = float3(v.vertex.x, v.vertex.y + value, v.vertex.z);
+				v.vertex.y -= _Amount;
 			}
-			v.color.rgb = -v.vertex.yyy;
+			//v.color.rgb = -v.vertex.yyy;
 		}
 
 		void surf (Input IN, inout SurfaceOutputStandard o) 
