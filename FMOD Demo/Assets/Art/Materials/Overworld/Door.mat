@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Door
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: e8b9cb27d33530f468b40dfeaaad3846, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -93,16 +93,20 @@ Material:
         second: 0.5
       data:
         first:
+          name: _Glossiness
+        second: 0
+      data:
+        first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
           name: _Parallax
         second: 0.02
       data:
         first:
           name: _ZWrite
         second: 1
-      data:
-        first:
-          name: _Glossiness
-        second: 0
       data:
         first:
           name: _BumpScale
@@ -125,7 +129,11 @@ Material:
         second: 0
       data:
         first:
-          name: _Metallic
+          name: _Outline
+        second: 0.0024
+      data:
+        first:
+          name: _OutlineEnabled
         second: 0
     m_Colors:
       data:
@@ -136,3 +144,7 @@ Material:
         first:
           name: _Color
         second: {r: 0.39705884, g: 0.13965516, b: 0, a: 1}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 0.18317476, g: 0.8897059, b: 0.39269778, a: 1}
