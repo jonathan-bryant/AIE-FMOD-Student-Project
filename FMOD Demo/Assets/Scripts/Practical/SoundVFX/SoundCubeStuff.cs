@@ -5,6 +5,7 @@ Company:		FMOD
 Date:			01/08/2016
 ==================================================================*/
 
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -17,6 +18,7 @@ public class SoundCubeStuff : MonoBehaviour
     // Private Vars
     [SerializeField]    GameObject m_cubePrefab;        // Prefab to use for visualisation.
     GameObject[][] m_cubes;                             // Array (grid) of prefabs.
+    float[] m_soundFFTData;
 
 
 	void Start () 
@@ -37,7 +39,15 @@ public class SoundCubeStuff : MonoBehaviour
 	
 	void Update () 
 	{
+        m_soundFFTData = m_soundRef.m_fftArray;
 
+        for (int i = 1; i < 15; i++)
+        {
+            for (int j = 0; j < 15; j++)
+            {
+                m_cubes[i][j].GetComponent<CubeReshaping>().m_material.SetFloat("_Amount", m_soundFFTData[i * j]);
+            }
+        }
     }
 
 	#region Private Functions

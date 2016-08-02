@@ -41,7 +41,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 6
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_LightmapsMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -186,7 +186,7 @@ Light:
   serializedVersion: 6
   m_Type: 2
   m_Color: {r: 0.78676474, g: 0.78676474, b: 0.78676474, a: 1}
-  m_Intensity: 1.25
+  m_Intensity: 0.61
   m_Range: 134.9942
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f158f3f94a7e77040b336539a46df236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_soundPath: event:/Basic Rooms/Scatter Music
+  m_fftArray: []
 --- !u!1 &902930636
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,6 +618,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2329048, guid: 070920baf97f4944eac73724206b1ecd, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a69f99497286fe746a18b7f19b48e7b0, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 070920baf97f4944eac73724206b1ecd, type: 2}
   m_IsPrefabParent: 0

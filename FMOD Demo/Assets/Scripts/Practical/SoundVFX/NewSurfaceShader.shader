@@ -6,7 +6,7 @@
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_Glossiness ("Smoothness", Range(0,1)) = 0.5
 		_Metallic ("Metallic", Range(0,1)) = 0.0
-		_Amount ("Height Adjustment", Float) = 1.0
+		_Amount ("Height Adjustment", Float) = 0.0
 		_worldX ("World X pos", Float) = 0.0
 	}
 	SubShader 
@@ -39,7 +39,7 @@
 		{
 			if (v.vertex.y < 0)
 			{
-				v.vertex.y -= (_Amount * _worldX);
+				v.vertex.y -= (_Amount * 200);
 			}
 			//v.color.rgb = -v.vertex.yyy;
 		}
