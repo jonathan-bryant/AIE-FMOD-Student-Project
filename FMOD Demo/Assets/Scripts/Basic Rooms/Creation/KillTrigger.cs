@@ -8,7 +8,7 @@ Date:			02/08/2016
 using UnityEngine;
 
 
-public class KillTrigger : MonoBehaviour
+public class KillTrigger : HighlightableObject
 {
     // Public Vars
 
@@ -20,13 +20,13 @@ public class KillTrigger : MonoBehaviour
         m_triggerScript = GetComponentInParent<CreationTriggers>();
     }
 
-    void OnTriggerEnter(Collider col)
-    {
-        if (col.CompareTag("Player"))
-        {
-            m_triggerScript.Kill();
-        }
-    }
+	void OnTriggerEnter(Collider col)
+	{
+		if (col.CompareTag("Player"))
+		{
+			m_triggerScript.Kill();
+		}
+	}
 
     #region Private Functions
 

@@ -8,7 +8,7 @@ Date:			02/08/2016
 using UnityEngine;
 
 
-public class PlayTrigger : MonoBehaviour 
+public class PlayTrigger : HighlightableObject 
 {
     // Public Vars
 
