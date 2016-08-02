@@ -130,7 +130,8 @@ public class ActorControls : MonoBehaviour
                     //if the object processed last call is equal to this calls object. Unuse it 
                     if (!m_actionObject || m_actionObject.gameObject != newObj.transform.parent.gameObject)
                     {
-                        m_actionObject = newObj.GetComponentInParent<ActionObject>();
+                        m_actionObject = newObj.GetComponent<ActionObject>();
+                        
                         if (m_actionObject)
                         {
                             m_actionObject.Use(true);
