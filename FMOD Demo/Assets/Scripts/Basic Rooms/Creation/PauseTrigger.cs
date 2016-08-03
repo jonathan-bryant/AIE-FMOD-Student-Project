@@ -8,7 +8,7 @@ Date:			02/08/2016
 using UnityEngine;
 
 
-public class PauseTrigger : HighlightableObject
+public class PauseTrigger : ActionObject
 {
     // Public Vars
 
