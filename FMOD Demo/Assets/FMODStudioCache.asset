@@ -15,6 +15,8 @@ MonoBehaviour:
   - {fileID: 11448520}
   - {fileID: 11426432}
   - {fileID: 11455808}
+  - {fileID: 11448578}
+  - {fileID: 11420380}
   EditorEvents:
   - {fileID: 11408542}
   - {fileID: 11433800}
@@ -24,9 +26,12 @@ MonoBehaviour:
   - {fileID: 11440900}
   - {fileID: 11491638}
   - {fileID: 11442628}
+  - {fileID: 11448170}
+  - {fileID: 11432294}
+  - {fileID: 11464982}
   MasterBankRef: {fileID: 11455808}
   StringsBankRef: {fileID: 11448520}
-  stringsBankWriteTime: 636056507524646639
+  stringsBankWriteTime: 636058258698130461
   cacheVersion: 2
 --- !u!114 &11407610
 MonoBehaviour:
@@ -127,6 +132,54 @@ MonoBehaviour:
   Min: 0
   Max: 5
   Default: 0
+--- !u!114 &11420380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: FMOD\Build\Desktop\RC Car.bank
+  lastModified: 636058258698190465
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 232096
+  Exists: 1
+--- !u!114 &11423630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Load
+  Min: -1
+  Max: 1
+  Default: -1
+--- !u!114 &11425688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Intensity
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &11426432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +213,29 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &11432294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/RC Car/Basic Engine
+  guid: 9e9c9f6bfb097a488a51b9d2c6494cd6
+  Banks:
+  - {fileID: 11420380}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 11423630}
+  - {fileID: 11480602}
+  MinDistance: 1
+  MaxDistance: 20
 --- !u!114 &11433800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,12 +272,12 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Scatter Music
   guid: 766fd9f11dbbfb4eae8eff9f6e4cfb38
   Banks:
-  - {fileID: 11455808}
+  - {fileID: 11448578}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 11414042}
+  - {fileID: 11486106}
   MinDistance: 1
   MaxDistance: 30
 --- !u!114 &11440908
@@ -233,7 +309,7 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Speaker Transceiver
   guid: f58eb589a317434b87f62987f0cdb0d7
   Banks:
-  - {fileID: 11455808}
+  - {fileID: 11448578}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -270,6 +346,28 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &11448170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Basic Rooms/Situation_Oriental
+  guid: e8905473ee897a49a43266891228345d
+  Banks:
+  - {fileID: 11448578}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 11425688}
+  MinDistance: 0
+  MaxDistance: 0
 --- !u!114 &11448520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,11 +380,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636056507524646639
+  lastModified: 636058258698130461
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 1236
+    Value: 1466
   Exists: 1
 --- !u!114 &11448548
 MonoBehaviour:
@@ -302,13 +400,31 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Transmit Transceiver
   guid: 2059fca8f9a1994da43063a91d5d938b
   Banks:
-  - {fileID: 11455808}
+  - {fileID: 11448578}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
+--- !u!114 &11448578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: FMOD\Build\Desktop\Basic Rooms.bank
+  lastModified: 636058258698090459
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 4595360
+  Exists: 1
 --- !u!114 &11449990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +434,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
+  m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Name: Round
   Min: 0
@@ -336,11 +452,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Master Bank.bank
-  lastModified: 636056507524636638
+  lastModified: 636058258698110460
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 2243840
+    Value: 9528
   Exists: 1
 --- !u!114 &11463736
 MonoBehaviour:
@@ -363,6 +479,29 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 5
+--- !u!114 &11464982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/RC Car/Car Engine
+  guid: f999777e733ec84c9a7a85adc6f7ecf7
+  Banks:
+  - {fileID: 11420380}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 11467138}
+  - {fileID: 11473890}
+  MinDistance: 1
+  MaxDistance: 20
 --- !u!114 &11466546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +517,21 @@ MonoBehaviour:
   Min: 0
   Max: 3
   Default: 0
+--- !u!114 &11467138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Load
+  Min: -1
+  Max: 1
+  Default: -1
 --- !u!114 &11467942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,12 +561,12 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Footsteps
   guid: 1eebb8aa5ec56146bf0bd007ce4f9012
   Banks:
-  - {fileID: 11455808}
+  - {fileID: 11448578}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 11407610}
+  - {fileID: 11497908}
   MinDistance: 1
   MaxDistance: 20
 --- !u!114 &11473218
@@ -430,6 +584,66 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &11473890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  Name: RPM
+  Min: 0
+  Max: 10000
+  Default: 0
+--- !u!114 &11474322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Enabled
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &11480602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: RPM
+  Min: 0
+  Max: 2000
+  Default: 0
+--- !u!114 &11486106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Panning
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &11491638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,12 +658,12 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Door Transceiver
   guid: 8feb7d8e20637d489ad1c5ad75e0a1a8
   Banks:
-  - {fileID: 11455808}
+  - {fileID: 11448578}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 11428264}
+  - {fileID: 11474322}
   MinDistance: 1
   MaxDistance: 20
 --- !u!114 &11494358
@@ -466,4 +680,19 @@ MonoBehaviour:
   Name: Panning
   Min: 0
   Max: 1
+  Default: 0
+--- !u!114 &11497908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Surface
+  Min: 0
+  Max: 3
   Default: 0

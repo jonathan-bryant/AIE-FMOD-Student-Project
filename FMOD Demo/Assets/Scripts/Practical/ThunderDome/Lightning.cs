@@ -6,6 +6,8 @@ public class Lightning : MonoBehaviour
 {
     public Material m_material;
 
+    public Vector3 m_positionDeviation;
+
     public Vector3 m_direction;
     public float m_randDirectionAngle;
 
@@ -39,20 +41,33 @@ public class Lightning : MonoBehaviour
 
     public Vector2 m_duration, m_interval;
     [Range(0.0f, 100.0f)]
-    public float m_randMinFadeoutPercent, m_rnadMaxFadeoutPercent;
+    public float m_randMinFadeoutPercent, m_randMaxFadeoutPercent;
 
-    float m_durationElapsed, m_interalElapsed;
+    float m_durationElapsed, m_intervalElapsed, m_fadeOut;
+    Vector3 m_originalPosition;
 
     LightningMainBranch m_mainBranch;
 
     void Start()
     {
+        m_originalPosition = transform.position;
         m_durationElapsed = Random.Range(m_duration.x, m_duration.y);
+        m_fadeOut = m_durationElapsed * (Random.Range(m_randMinFadeoutPercent, m_randMaxFadeoutPercent) * 0.01f);
+        m_intervalElapsed = Random.Range(m_interval.x, m_interval.y);
+        Vector4 col = m_material.GetVector("_TintColor");
+        col.w = 1.0f;
+        m_material.SetVector("_TintColor", col);
+
         GenerateLightning();
     }
 
     void GenerateLightning()
     {
+        Vector3 newPosition = m_originalPosition;
+        newPosition.x += Random.Range(-m_positionDeviation.x, m_positionDeviation.x);
+        newPosition.y += Random.Range(-m_positionDeviation.y, m_positionDeviation.y);
+        newPosition.z += Random.Range(-m_positionDeviation.z, m_positionDeviation.z);
+        transform.position = newPosition;
         if (m_mainBranch)
         {
             m_mainBranch.Destroy();
@@ -72,8 +87,30 @@ public class Lightning : MonoBehaviour
         m_durationElapsed -= Time.deltaTime;
         if (m_durationElapsed <= 0.0f)
         {
-            m_durationElapsed = Random.Range(m_duration.x, m_duration.y);
-            GenerateLightning();
+            Vector4 col = m_material.GetVector("_TintColor");
+            col.w = 0.0f;
+            m_material.SetVector("_TintColor", col);
+            m_intervalElapsed -= Time.deltaTime;
+            if (m_intervalElapsed <= 0.0f)
+            {
+                GenerateLightning();
+                m_durationElapsed = Random.Range(m_duration.x, m_duration.y);
+                m_fadeOut = m_durationElapsed * (Random.Range(m_randMinFadeoutPercent, m_randMaxFadeoutPercent) * 0.01f);
+                m_intervalElapsed = Random.Range(m_interval.x, m_interval.y);
+                col = m_material.GetVector("_TintColor");
+                col.w = 1.0f;
+                m_material.SetVector("_TintColor", col);
+
+            }
+        }
+        else
+        {
+            if (m_durationElapsed <= m_fadeOut)
+            {
+                Vector4 col = m_material.GetVector("_TintColor");
+                col.w = Mathf.Clamp((m_durationElapsed / m_fadeOut), 0.0f, 1.0f);
+                m_material.SetVector("_TintColor", col);
+            }
         }
     }
 }
