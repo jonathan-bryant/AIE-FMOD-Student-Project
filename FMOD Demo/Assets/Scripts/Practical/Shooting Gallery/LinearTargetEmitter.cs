@@ -30,6 +30,7 @@ public class LinearTargetEmitter : BaseTarget
         {
             m_elapsed = 0.0f;
             Target obj = Instantiate(m_target);
+            obj.transform.parent = transform;
             obj.transform.position = transform.position;
             obj.transform.rotation = transform.rotation;
             obj.transform.Rotate(new Vector3(0.0f, 0.0f, 1.0f), 90.0f);

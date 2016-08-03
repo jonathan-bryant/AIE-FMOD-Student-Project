@@ -7,13 +7,15 @@ Date:			03/08/2016
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class SceneTrigger : MonoBehaviour 
 {
     // Public Vars
+    public string m_sceneToLoad;
 
     // Private Vars
-      public string m_sceneToLoad;
+    private static AsyncOperation m_async;
     int m_sceneIndex;
 
 	void Start () 
@@ -34,10 +36,17 @@ public class SceneTrigger : MonoBehaviour
 
     void OnTriggerEnter()
     {
-        if (!SceneManager.GetSceneByName(m_sceneToLoad).isLoaded)
+        Scene temp = SceneManager.GetSceneByName(m_sceneToLoad);
+        if (!temp.isLoaded)
         {
-            SceneManager.LoadSceneAsync(m_sceneToLoad, LoadSceneMode.Additive);
+            StartCoroutine(LoadScene(m_sceneToLoad));
         }
+    }
+
+    IEnumerator LoadScene(string a_sceneName)
+    {
+        yield return new WaitForSeconds(0.1f);
+        SceneManager.LoadSceneAsync(m_sceneToLoad, LoadSceneMode.Additive);
     }
 
 	#endregion
