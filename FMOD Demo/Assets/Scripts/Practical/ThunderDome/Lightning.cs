@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Lightning : MonoBehaviour
 {
+    public WeatherController m_weatherController;
     public Material m_material;
 
     public Vector3 m_positionDeviation;
@@ -48,8 +49,11 @@ public class Lightning : MonoBehaviour
 
     LightningMainBranch m_mainBranch;
 
+    LightningSound m_thunder;
+
     void Start()
     {
+        m_thunder = GetComponent<LightningSound>();
         m_originalPosition = transform.position;
         m_durationElapsed = Random.Range(m_duration.x, m_duration.y);
         m_fadeOut = m_durationElapsed * (Random.Range(m_randMinFadeoutPercent, m_randMaxFadeoutPercent) * 0.01f);
@@ -57,8 +61,6 @@ public class Lightning : MonoBehaviour
         Vector4 col = m_material.GetVector("_TintColor");
         col.w = 1.0f;
         m_material.SetVector("_TintColor", col);
-
-        GenerateLightning();
     }
 
     void GenerateLightning()
@@ -90,16 +92,22 @@ public class Lightning : MonoBehaviour
             Vector4 col = m_material.GetVector("_TintColor");
             col.w = 0.0f;
             m_material.SetVector("_TintColor", col);
-            m_intervalElapsed -= Time.deltaTime;
+            if (m_weatherController.Rain >= 0.75f && m_intervalElapsed > 0.0f)
+            {
+                m_intervalElapsed -= Time.deltaTime;
+            }
             if (m_intervalElapsed <= 0.0f)
             {
-                GenerateLightning();
-                m_durationElapsed = Random.Range(m_duration.x, m_duration.y);
-                m_fadeOut = m_durationElapsed * (Random.Range(m_randMinFadeoutPercent, m_randMaxFadeoutPercent) * 0.01f);
-                m_intervalElapsed = Random.Range(m_interval.x, m_interval.y);
-                col = m_material.GetVector("_TintColor");
-                col.w = 1.0f;
-                m_material.SetVector("_TintColor", col);
+                if (m_weatherController.Rain >= 0.75f)
+                {
+                    GenerateLightning();
+                    m_durationElapsed = Random.Range(m_duration.x, m_duration.y);
+                    m_fadeOut = m_durationElapsed * (Random.Range(m_randMinFadeoutPercent, m_randMaxFadeoutPercent) * 0.01f);
+                    m_intervalElapsed = Random.Range(m_interval.x, m_interval.y);
+                    col = m_material.GetVector("_TintColor");
+                    col.w = 1.0f;
+                    m_material.SetVector("_TintColor", col);
+                }
 
             }
         }
@@ -112,5 +120,10 @@ public class Lightning : MonoBehaviour
                 m_material.SetVector("_TintColor", col);
             }
         }
+    }
+
+    public void PlayThunder(int a_thunder)
+    {
+        m_thunder.Play(a_thunder);
     }
 }

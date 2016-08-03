@@ -14,7 +14,8 @@ public class LightningMainBranch : LightningBranch
         lastDirection = Quaternion.AngleAxis(Random.Range(0.0f, m_lightning.m_randDirectionAngle), new Vector3(1.0f, 0.0f, 0.0f)) * lastDirection;
         lastDirection = Quaternion.AngleAxis(Random.Range(0.0f, m_lightning.m_randDirectionAngle), new Vector3(0.0f, 0.0f, 1.0f)) * lastDirection;
         float lastWidth = Random.Range(m_lightning.m_randMainWidth.x, m_lightning.m_randMainWidth.x);
-
+        float totalLength = 0.0f;
+        float totalWidth = 0.0f;
         for (int i = 0; i < m_numOfZags; ++i)
         {
             GameObject zagObj = new GameObject();
@@ -36,6 +37,7 @@ public class LightningMainBranch : LightningBranch
             float length = Random.Range(m_lightning.m_randMainLength.x, m_lightning.m_randMainLength.y);
             zag.m_endPoint = lastPoint + lastDirection * length;
             lastPoint = zag.m_endPoint;
+            totalLength += length;
             //direction
             zag.m_direction = lastDirection;
             //Width
@@ -48,12 +50,22 @@ public class LightningMainBranch : LightningBranch
             else
                 zag.m_width.y = lastWidth * Random.Range(m_lightning.m_randMinMainWidthDegradation, m_lightning.m_randMaxMainWidthDegradation) * 0.01f;
             lastWidth = zag.m_width.y;
+
+            totalWidth += lastWidth;
             //Main Zag
             zag.m_isMainZag = true;
             //Branch Number
             zag.m_branchNum = m_branchNum;
             m_zags.Add(zag);
         }
+
+        float zags = (float)m_numOfZags / (int)m_lightning.m_randNumOfMainZags.y;
+        float w = (totalWidth / m_numOfZags) / m_lightning.m_randMainWidth.y;
+        float l = (totalLength / m_numOfZags) / m_lightning.m_randMainLength.y;
+
+        int result = (int)(6.0f * ((zags + w + l) / 3.0f));
+
+        m_lightning.PlayThunder(result);
     }
     void Update()
     {
