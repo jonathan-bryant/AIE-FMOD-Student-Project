@@ -41,7 +41,7 @@ public class CreationTriggers : MonoBehaviour
         if (m_playState != FMOD.Studio.PLAYBACK_STATE.PLAYING)
         {
             m_instensity = 0.0f;
-            m_soundInstance.setParameterValue("intensity", m_instensity);
+            m_soundIntensity.setValue(m_instensity);
             m_soundInstance.start();
         }
         else if (m_isPaused)
@@ -62,7 +62,7 @@ public class CreationTriggers : MonoBehaviour
     public void Stop()
     {
         m_instensity = 0.8f;
-        m_soundInstance.setParameterValue("Intensity", m_instensity);        
+        m_soundIntensity.setValue(m_instensity);
     }
 
     public void Kill()
