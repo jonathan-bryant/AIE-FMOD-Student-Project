@@ -33,7 +33,7 @@ public class Target : MonoBehaviour {
 
     void Start () {
         float rngSize = Random.Range(m_minRadius, m_maxRadius);
-        transform.localScale = new Vector3(rngSize, transform.localScale.y, rngSize);
+        transform.localScale = new Vector3(rngSize, rngSize, rngSize);
         //---------------------------------Fmod-------------------------------
         //Calling this function will create an EventInstance. The return value
         //is the created instance.

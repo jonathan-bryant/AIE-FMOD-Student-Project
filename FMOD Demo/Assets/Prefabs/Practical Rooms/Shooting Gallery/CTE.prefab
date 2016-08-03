@@ -9,9 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 451200}
   - 33: {fileID: 3311722}
-  - 136: {fileID: 13605824}
   - 23: {fileID: 2347668}
   - 114: {fileID: 11428634}
+  - 135: {fileID: 13540052}
   m_Layer: 0
   m_Name: CTE
   m_TagString: Untagged
@@ -26,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174952}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 0.1, z: 2}
+  m_LocalPosition: {x: 44.21322, y: 0.9691868, z: -3.545646}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,7 +42,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 261ff23141e184e4fb8838126a474e19, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -64,7 +64,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174952}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: d7a5b21778d3dd44b8ffe2f100e249b2, type: 3}
 --- !u!114 &11428634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -76,13 +76,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57f3918cd193b941853e04721450076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_minRadius: 1
-  m_maxRadius: 1
+  m_minRadius: 0.1
+  m_maxRadius: 0.3
   m_Parent: {fileID: 0}
   m_hitSoundPath: event:/Shooting Gallery/TargetHit
   m_material: 0
---- !u!136 &13605824
-CapsuleCollider:
+--- !u!135 &13540052
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -90,10 +90,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Radius: 0.86
+  m_Center: {x: 0, y: -0.014678298, z: 0.037124783}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

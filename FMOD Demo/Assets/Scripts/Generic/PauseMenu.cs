@@ -17,17 +17,10 @@ public class PauseMenu : MonoBehaviour
     // Private Vars
     [SerializeField]    Canvas m_pauseMenu;
     [SerializeField]    GameObject m_player;
-
-    ActorControls m_playerControls;
-    CharacterController m_playerController;
-
-    bool m_active = false;
-
+    
 	void Start () 
 	{
         m_pauseMenu.enabled = false;
-        m_playerControls = m_player.GetComponent<ActorControls>();
-        m_playerController = m_player.GetComponent<CharacterController>();
 
         DontDestroyOnLoad(this);
 	}
