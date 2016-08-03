@@ -18,6 +18,7 @@ public class CircleTargetEmitter : BaseTarget
         for (int i = 0; i < m_numOfTargets; ++i)
         {
             Target t = Instantiate(m_target);
+            t.transform.parent = transform;
             t.transform.position = transform.position + (transform.up * m_distanceFromCenter);
             float angle = Mathf.Rad2Deg * Mathf.PI * 2.0f * (i / (float)m_numOfTargets);
             t.transform.RotateAround(transform.position, transform.right, angle);
@@ -59,6 +60,7 @@ public class CircleTargetEmitter : BaseTarget
         for (int i = 0; i < m_numOfTargets; ++i)
         {
             Target t = Instantiate(m_target);
+            t.transform.parent = transform;
             t.transform.position = transform.position + (transform.up * m_distanceFromCenter);
             float angle = Mathf.Rad2Deg * Mathf.PI * 2.0f * (i / (float)m_numOfTargets);
             t.transform.RotateAround(transform.position, transform.right, angle);
