@@ -39,15 +39,15 @@
 		{
 			if (v.vertex.y < 0)
 			{
-				v.vertex.y -= (_Amount * 200);
+				if (_Amount < 0.2)
+					_Amount *= 1.5;
+				v.vertex.y -= (_Amount * 100);
 			}
-			//v.color.rgb = -v.vertex.yyy;
+			v.color.rgb = -v.vertex.yyy;
 		}
 
 		void surf (Input IN, inout SurfaceOutputStandard o) 
 		{
-			// Albedo comes from a texture tinted by color
-
 			half4 c = tex2D (_MainTex, IN.uv_MainTex);
 			o.Albedo = c.rgb * IN.color.rgb;
 			// Metallic and smoothness come from slider variables
