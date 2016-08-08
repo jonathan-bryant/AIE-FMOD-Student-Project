@@ -11,6 +11,7 @@ public class ActorControls : MonoBehaviour
     Camera m_playerCamera;
     CharacterController m_cc;
     bool m_disableMovement;
+    public bool Disabled { get { return m_disableMovement; }set { m_disableMovement = value; } }
     Vector3 m_moveDirection;
     public float CurrentVelocity { get { return m_moveDirection.magnitude; } }
     bool m_riding;
