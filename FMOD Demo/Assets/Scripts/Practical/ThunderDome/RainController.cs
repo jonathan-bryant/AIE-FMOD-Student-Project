@@ -11,8 +11,12 @@ public class RainController : MonoBehaviour
     float m_originalRate;
     float m_originalSpeed;
 
+    Material m_material;
+
     void Start()
     {
+        m_material = GetComponent<Renderer>().material;
+
         m_originalRate = m_particleSystem.emission.rate.constantMax;
         m_originalSpeed = m_particleSystem.startSpeed;
 
@@ -30,16 +34,21 @@ public class RainController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        RaycastHit info;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out info, 10.0f))
         {
-            RaycastHit info;
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out info, 10.0f))
+            if (info.collider.name == "Rain Knob")
             {
-                if (info.collider.name == "Rain Knob")
+                m_material.SetInt("_OutlineEnabled", 1);
+                if (Input.GetMouseButtonDown(0))
                 {
                     m_actor.Disabled = true;
                     m_active = true;
                 }
+            }
+            else
+            {
+                m_material.SetInt("_OutlineEnabled", 0);
             }
         }
         if (Input.GetMouseButton(0) && m_active)
@@ -54,7 +63,7 @@ public class RainController : MonoBehaviour
             var rate = emission.rate;
             rate.constantMax = Mathf.Lerp(0, m_originalRate, m_rainValue);
             emission.rate = rate;
-            
+
             m_particleSystem.startSpeed = Mathf.Lerp(0.0f, m_originalSpeed, m_rainValue);
         }
         if (Input.GetMouseButtonUp(0) && m_active)

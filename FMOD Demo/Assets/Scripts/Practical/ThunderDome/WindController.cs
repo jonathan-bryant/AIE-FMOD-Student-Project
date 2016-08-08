@@ -11,9 +11,11 @@ public class WindController : MonoBehaviour
     float m_orignialX;
     bool m_active;
 
-    // Use this for initialization
+    Material m_material;
+
     void Start()
     {
+        m_material = GetComponent<Renderer>().material;
         m_active = false;
         var vol = m_particleSystem.velocityOverLifetime;
         var x = vol.x;
@@ -25,16 +27,23 @@ public class WindController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        RaycastHit info;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out info, 10.0f))
         {
-            RaycastHit info;
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out info, 10.0f))
+            if (info.collider.name == "Wind Knob")
             {
-                if (info.collider.name == "Wind Knob")
+                m_material.SetInt("_OutlineEnabled", 1);
+                if (Input.GetMouseButtonDown(0))
                 {
+
+
                     m_actor.Disabled = true;
                     m_active = true;
                 }
+            }
+            else
+            {
+                m_material.SetInt("_OutlineEnabled", 0);
             }
         }
         if (Input.GetMouseButton(0) && m_active)
