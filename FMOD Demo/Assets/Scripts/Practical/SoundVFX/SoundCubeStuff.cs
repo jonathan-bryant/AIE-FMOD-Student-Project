@@ -37,6 +37,7 @@ public class SoundCubeStuff : MonoBehaviour
 	
 	void Update () 
 	{
+        
         m_soundFFTData = m_soundRef.m_fftArray;
 
         for (int row = 0; row < 15; row++)
@@ -48,7 +49,7 @@ public class SoundCubeStuff : MonoBehaviour
 				{
 					 newCol += 1;
 				}
-                m_cubes[row][col].GetComponent<CubeReshaping>().m_material.SetFloat("_Amount", m_soundFFTData[(row+1) * (newCol)]);
+                m_cubes[row][col].GetComponent<CubeReshaping>().m_material.SetFloat("_Amount", m_soundFFTData[(row+1) * (newCol)] / 2.0f);
             }
         }
     }

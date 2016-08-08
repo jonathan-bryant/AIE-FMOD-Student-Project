@@ -9,11 +9,13 @@ using System;
 using UnityEngine;
 using System.Runtime.InteropServices;
 
-public class MainSound : MonoBehaviour 
+public class MainSound : MonoBehaviour
 {
     // Public Vars
     string m_soundPath;
     public float[] m_fftArray;
+
+    public Texture2D m_soundTex;
 
     // Private Vars
     FMOD.Sound m_sound;
@@ -25,10 +27,10 @@ public class MainSound : MonoBehaviour
 
     //FMOD.RESULT result;              // Used for error checking large number of FMOD functions.
 
-	void Start () 
-	{
+    void Awake()
+    {
         m_fftArray = new float[225];
-       
+
         m_soundPath = Application.dataPath + "/Scripts/Practical/SoundVFX/EDM.mp3";
         Debug.Log(m_soundPath);
         // Start by creating/initialising the sound, channel group and dsp effect's required.
@@ -37,10 +39,13 @@ public class MainSound : MonoBehaviour
         FMODUnity.RuntimeManager.LowlevelSystem.createDSPByType(FMOD.DSP_TYPE.FFT, out m_fftDsp);
         PlaySound();
         m_channel.addDSP(FMOD.CHANNELCONTROL_DSP_INDEX.TAIL, m_fftDsp);
-	}
-	
-	void Update () 
-	{
+
+        m_soundTex = new Texture2D(225, 1, TextureFormat.RGB24, false);
+        m_soundTex.name = "Image";
+    }
+
+    void Update()
+    {
         m_channel.isPlaying(out m_isPlaying);
         if (m_isPlaying)
         {
@@ -49,30 +54,39 @@ public class MainSound : MonoBehaviour
             m_fftDsp.getParameterData((int)FMOD.DSP_FFT.SPECTRUMDATA, out unmanagedData, out length);
             FMOD.DSP_PARAMETER_FFT m_fftData = (FMOD.DSP_PARAMETER_FFT)Marshal.PtrToStructure(unmanagedData, typeof(FMOD.DSP_PARAMETER_FFT));
 
-			
-			// Spectrum contains 2 channels and 2048 "bins"
-			// Grab the front 112 bins from each channel (should be the same really)
-			for (int bin = 0; bin < 225; bin++)
+
+
+            // Spectrum contains 2 channels and 2048 "bins"
+            // Grab the front 112 bins from each channel (should be the same really)
+            for (int bin = 0; bin < 225; bin++)
             {
-                m_fftArray[bin] = Mathf.Lerp(m_fftArray[bin], m_fftData.spectrum[0][bin], 0.4f);
+                m_fftArray[bin] = Mathf.Lerp(m_fftArray[bin], lin2DB(m_fftData.spectrum[0][bin]), 0.3f);
+                m_soundTex.SetPixel(bin, 1, new Color(m_fftArray[bin], m_fftArray[bin], m_fftArray[bin]));
             }
             //for (int bin = 0; bin < 113; bin++)
             //{
             //    m_fftArray[112 - bin] = Mathf.Lerp(m_fftArray[113 + bin], m_fftData.spectrum[1][bin], 0.3f);
             //}
-        }
-	}
+            m_soundTex.Apply();
 
-	#region Private Functions
+        }
+    }
+
+    #region Private Functions
 
     bool PlaySound()
     {
         FMODUnity.RuntimeManager.LowlevelSystem.playSound(m_sound, m_channelGroup, false, out m_channel);
         FMOD.VECTOR pos = FMODUnity.RuntimeUtils.ToFMODVector(transform.position);
         FMOD.VECTOR vel = FMODUnity.RuntimeUtils.ToFMODVector(new Vector3(0, 0, 0));
-        m_channel.set3DAttributes(ref pos,ref vel, ref vel);
-		m_sound.setLoopCount(1000);
+        m_channel.set3DAttributes(ref pos, ref vel, ref vel);
+        m_sound.setLoopCount(1000);
         return true;
+    }
+
+    float lin2DB(float linear)
+    {
+        return (Mathf.Clamp(linear * 5.0f, 0.0f, 1.0f));
     }
 
 	#endregion
