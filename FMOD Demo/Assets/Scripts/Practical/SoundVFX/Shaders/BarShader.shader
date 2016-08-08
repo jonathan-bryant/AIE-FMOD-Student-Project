@@ -71,7 +71,7 @@
 			{
 				float2 uv = i.uv / float2(iResolutionX, iResolutionY);
 
-				float fVBars = 50.0;
+				float fVBars = 200.0;
 				float fVSpacing = 1.0;
 
 				float fVFreq = (uv.x * 3.14);
@@ -82,7 +82,7 @@
 
 				float fft = squareWave * fSample;
 
-				float fHBars = 50.0;
+				float fHBars = 200.0;
 				float fHSpacing = 0.180;
 				float fHFreq = (uv.y * 3.14);
 				fHFreq = sign(sin(fHFreq * fHBars) + 1.0 - fHSpacing);
