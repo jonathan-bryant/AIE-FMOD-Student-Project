@@ -96,6 +96,7 @@ GameObject:
   - 33: {fileID: 168199894}
   - 65: {fileID: 168199893}
   - 23: {fileID: 168199892}
+  - 114: {fileID: 168199896}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -157,10 +158,21 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -24.5, y: 12.5, z: 0}
   m_LocalScale: {x: 1, y: 25, z: 50}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &168199896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 168199891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31d97dae422c5b342b68f065267a97f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundRef: {fileID: 853244862}
 --- !u!1 &419408479
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +231,6 @@ Transform:
   m_LocalRotation: {x: 0.6387198, y: -0.5213565, z: -0.15685709, w: 0.5437097}
   m_LocalPosition: {x: -0.87, y: 8.71, z: 3.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -250,7 +261,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
   m_LocalPosition: {x: -0, y: 0.03, z: -0.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
   m_Children: []
   m_Father: {fileID: 2042434905}
   m_RootOrder: 0
@@ -315,6 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_fftArray: []
+  m_soundTex: {fileID: 0}
 --- !u!1 &902930636
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,7 +398,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 12.5, z: 24.5}
   m_LocalScale: {x: 1, y: 25, z: 50}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -444,6 +454,7 @@ GameObject:
   - 33: {fileID: 1840156847}
   - 65: {fileID: 1840156846}
   - 23: {fileID: 1840156845}
+  - 114: {fileID: 1840156849}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -461,7 +472,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8e9a1d39b25f7144aaace3f6644aa118, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -505,10 +516,21 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 12.5, z: -24.5}
   m_LocalScale: {x: 1, y: 25, z: 50}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!114 &1840156849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1840156844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31d97dae422c5b342b68f065267a97f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundRef: {fileID: 853244862}
 --- !u!1 &1914510790
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +603,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -656,7 +677,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 24.9, z: 1.8}
   m_LocalScale: {x: 5, y: 5.0222282, z: 5}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 507285328}
   m_Father: {fileID: 0}
@@ -733,7 +753,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 42.91, y: 4.09, z: -0.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
