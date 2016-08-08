@@ -117,7 +117,10 @@ public class ActorControls : MonoBehaviour
             GameObject newObj = ray.collider.gameObject;
             m_selectedObject = newObj;
             if (newObj.tag != "Action")
+            {
+                m_selectedObject = null;
                 return;
+            }
 
             Material mat = newObj.GetComponent<Renderer>().material;
             mat.SetInt("_OutlineEnabled", 1);
