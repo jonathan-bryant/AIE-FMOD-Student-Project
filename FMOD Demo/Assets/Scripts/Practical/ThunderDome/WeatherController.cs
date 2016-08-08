@@ -3,6 +3,8 @@ using System.Collections;
 
 public class WeatherController : MonoBehaviour
 {
+    public WindController m_windController;
+    public RainController m_rainController;
     //---------------------------------Fmod-------------------------------
     //Call this to display it in Unity Inspector.
     //--------------------------------------------------------------------
@@ -22,10 +24,8 @@ public class WeatherController : MonoBehaviour
     //--------------------------------------------------------------------
     FMOD.Studio.ParameterInstance m_windParam;
     FMOD.Studio.ParameterInstance m_rainParam;
-    float m_windValue, m_rainValue;
-    public float Wind { get { return m_windValue; } }
-    public float Rain { get { return m_rainValue; } }
-    int m_selectedElement;
+    public float Wind { get { return m_windController.m_windValue; } }
+    public float Rain { get { return m_rainController.m_rainValue; } }
     
     void Start () {
         //---------------------------------Fmod-------------------------------
@@ -45,60 +45,10 @@ public class WeatherController : MonoBehaviour
         //Calling this function will start the EventInstance.
         //--------------------------------------------------------------------
         m_ambience.start();
-
-        m_windValue = 0.0f;
-        m_rainValue = 0.0f;
-        m_selectedElement = 1;
     }
 	
 	void Update () {
-        //Wind
-        if (Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            //m_selectedElement = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            m_selectedElement = 1;
-        }
-
-        if(Input.GetKey(KeyCode.KeypadPlus))
-        {
-            IncreaseElement();
-        }
-        if (Input.GetKey(KeyCode.KeypadMinus))
-        {
-            DecreaseElement();
-        }
-    }
-    void IncreaseElement()
-    {
-        if(m_selectedElement == 0)
-        {
-            m_windValue += Time.deltaTime;
-            m_windValue = Mathf.Clamp(m_windValue, 0.0f, 1.0f);
-            m_windParam.setValue(m_windValue);
-        }
-        else if(m_selectedElement == 1)
-        {
-            m_rainValue += Time.deltaTime;
-            m_rainValue = Mathf.Clamp(m_rainValue, 0.0f, 1.0f);
-            m_rainParam.setValue(m_rainValue);
-        }
-    }
-    void DecreaseElement()
-    {
-        if (m_selectedElement == 0)
-        {
-            m_windValue -= Time.deltaTime;
-            m_windValue = Mathf.Clamp(m_windValue, 0.0f, 1.0f);
-            m_windParam.setValue(m_windValue);
-        }
-        else if (m_selectedElement == 1)
-        {
-            m_rainValue -= Time.deltaTime;
-            m_rainValue = Mathf.Clamp(m_rainValue, 0.0f, 1.0f);
-            m_rainParam.setValue(m_rainValue);
-        }
+        m_windParam.setValue(m_windController.m_windValue);
+        m_rainParam.setValue(m_rainController.m_rainValue);
     }
 }

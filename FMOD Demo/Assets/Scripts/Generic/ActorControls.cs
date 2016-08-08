@@ -11,6 +11,7 @@ public class ActorControls : MonoBehaviour
     Camera m_playerCamera;
     CharacterController m_cc;
     bool m_disableMovement;
+    public bool Disabled { get { return m_disableMovement; }set { m_disableMovement = value; } }
     Vector3 m_moveDirection;
     public float CurrentVelocity { get { return m_moveDirection.magnitude; } }
     bool m_riding;
@@ -116,7 +117,10 @@ public class ActorControls : MonoBehaviour
             GameObject newObj = ray.collider.gameObject;
             m_selectedObject = newObj;
             if (newObj.tag != "Action")
+            {
+                m_selectedObject = null;
                 return;
+            }
 
             Material mat = newObj.GetComponent<Renderer>().material;
             mat.SetInt("_OutlineEnabled", 1);

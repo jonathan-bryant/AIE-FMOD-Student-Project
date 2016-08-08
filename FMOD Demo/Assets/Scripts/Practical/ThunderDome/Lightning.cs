@@ -58,9 +58,9 @@ public class Lightning : MonoBehaviour
         m_durationElapsed = Random.Range(m_duration.x, m_duration.y);
         m_fadeOut = m_durationElapsed * (Random.Range(m_randMinFadeoutPercent, m_randMaxFadeoutPercent) * 0.01f);
         m_intervalElapsed = Random.Range(m_interval.x, m_interval.y);
-        Vector4 col = m_material.GetVector("_TintColor");
+        Vector4 col = m_material.GetVector("_Color");
         col.w = 1.0f;
-        m_material.SetVector("_TintColor", col);
+        m_material.SetVector("_Color", col);
     }
 
     void GenerateLightning()
@@ -89,24 +89,24 @@ public class Lightning : MonoBehaviour
         m_durationElapsed -= Time.deltaTime;
         if (m_durationElapsed <= 0.0f)
         {
-            Vector4 col = m_material.GetVector("_TintColor");
+            Vector4 col = m_material.GetVector("_Color");
             col.w = 0.0f;
-            m_material.SetVector("_TintColor", col);
-            if (m_weatherController.Rain >= 0.75f && m_intervalElapsed > 0.0f)
+            m_material.SetVector("_Color", col);
+            if (m_weatherController.Rain >= 0.5f && m_intervalElapsed > 0.0f)
             {
                 m_intervalElapsed -= Time.deltaTime;
             }
             if (m_intervalElapsed <= 0.0f)
             {
-                if (m_weatherController.Rain >= 0.75f)
+                if (m_weatherController.Rain >= 0.5f)
                 {
                     GenerateLightning();
                     m_durationElapsed = Random.Range(m_duration.x, m_duration.y);
                     m_fadeOut = m_durationElapsed * (Random.Range(m_randMinFadeoutPercent, m_randMaxFadeoutPercent) * 0.01f);
                     m_intervalElapsed = Random.Range(m_interval.x, m_interval.y);
-                    col = m_material.GetVector("_TintColor");
+                    col = m_material.GetVector("_Color");
                     col.w = 1.0f;
-                    m_material.SetVector("_TintColor", col);
+                    m_material.SetVector("_Color", col);
                 }
 
             }
@@ -115,9 +115,9 @@ public class Lightning : MonoBehaviour
         {
             if (m_durationElapsed <= m_fadeOut)
             {
-                Vector4 col = m_material.GetVector("_TintColor");
+                Vector4 col = m_material.GetVector("_Color");
                 col.w = Mathf.Clamp((m_durationElapsed / m_fadeOut), 0.0f, 1.0f);
-                m_material.SetVector("_TintColor", col);
+                m_material.SetVector("_Color", col);
             }
         }
     }

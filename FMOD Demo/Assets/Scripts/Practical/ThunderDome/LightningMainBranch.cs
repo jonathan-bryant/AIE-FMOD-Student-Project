@@ -22,8 +22,6 @@ public class LightningMainBranch : LightningBranch
             LightningZag zag = zagObj.AddComponent<LightningZag>();
             //Name
             zag.m_name = "Zag " + i.ToString();
-            //Layer
-            zagObj.layer = 8;
             //Parent
             zagObj.transform.parent = this.transform;
             //Lightning

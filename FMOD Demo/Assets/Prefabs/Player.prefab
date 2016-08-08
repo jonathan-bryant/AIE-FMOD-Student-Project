@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 437070}
   - 33: {fileID: 3370004}
-  - 136: {fileID: 13640368}
   - 23: {fileID: 2375162}
   - 143: {fileID: 14383238}
   - 114: {fileID: 11414738}
@@ -27,7 +26,7 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 493262}
+  - 4: {fileID: 444852}
   - 20: {fileID: 2075872}
   - 92: {fileID: 9270032}
   - 124: {fileID: 12436744}
@@ -46,14 +45,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.50045, y: 1.72, z: -0.28202862}
+  m_LocalPosition: {x: -4.50045, y: 1.91, z: -0.28202862}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 493262}
+  - {fileID: 444852}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!4 &493262
+--- !u!4 &444852
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -75,7 +74,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -90,7 +89,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -165,7 +164,7 @@ MonoBehaviour:
   m_movementSpeed: 10
   m_lookSensitivity: 10
   m_gun: {fileID: 0}
-  m_selectDistacne: 4
+  m_selectDistacne: 6
 --- !u!124 &12436744
 Behaviour:
   m_ObjectHideFlags: 1
@@ -173,19 +172,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160306}
   m_Enabled: 1
---- !u!136 &13640368
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 132774}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &14383238
 CharacterController:
   m_ObjectHideFlags: 1
