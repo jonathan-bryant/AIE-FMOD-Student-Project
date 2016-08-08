@@ -4,9 +4,10 @@
 	{
 		_MainTex ("Texture", 2D) = "white" {}
 		_SoundImage ("SoundImage", 2D) = "white" {}
-		_Emission ("Emission", Color) = (0.0,0.0,0.0,1)
 		iResolutionX ("Resolution X", Float) = 1.0
 		iResolutionY ("Resolution Y", Float) = 1.0
+
+
 	}
 	SubShader
 	{
@@ -56,7 +57,6 @@
 			float4 _MainTex_ST;
 			float iResolutionX;
 			float iResolutionY;
-			float4 _Emission;
 			
 			v2f vert (appdata v)
 			{
@@ -110,7 +110,6 @@
 				// sample the texture
 				fixed4 col = tex2D(_MainTex, i.uv);
 				col.rgb = color.xyz;
-				col.rgb *= _Emission.rgb;
 				// apply fog
 				UNITY_APPLY_FOG(i.fogCoord, col);
 				return col;
