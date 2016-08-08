@@ -53,7 +53,6 @@ public class LightningZag : MonoBehaviour
             {
                 GameObject branchObj = new GameObject();
                 branchObj.name = "Branch" + m_branchNum;
-                branchObj.layer = 8;
                 branchObj.transform.parent = this.transform;
 
                 LightningSubBranch branch = branchObj.AddComponent<LightningSubBranch>();

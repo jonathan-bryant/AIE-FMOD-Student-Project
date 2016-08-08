@@ -56,8 +56,6 @@ public class RainController : MonoBehaviour
             emission.rate = rate;
             
             m_particleSystem.startSpeed = Mathf.Lerp(0.0f, m_originalSpeed, m_rainValue);
-
-            //m_particleSystem.maxParticles = (int)Mathf.Lerp(0, m_originalMaxParticles, m_rainValue);
         }
         if (Input.GetMouseButtonUp(0) && m_active)
         {
