@@ -7,7 +7,7 @@
 		_Glossiness ("Smoothness", Range(0,1)) = 0.5
 		_Metallic ("Metallic", Range(0,1)) = 0.0
 		_Amount ("Height Adjustment", Float) = 0.0
-		_worldX ("World X pos", Float) = 0.0
+		_Alpha ("Alpha", Range(0,1)) = 0.0
 	}
 	SubShader 
 	{
@@ -33,7 +33,7 @@
 		half _Metallic;
 		fixed4 _Color;
 		float _Amount;
-		float _worldX;
+		float _Alpha;
 
 		void vert (inout appdata_full v)
 		{
@@ -41,7 +41,7 @@
 			{
 				if (_Amount < 0.2)
 					_Amount *= 1.5;
-				v.vertex.y -= (_Amount * 100);
+				v.vertex.y *= (_Amount * 100);
 			}
 			v.color.rgb = -v.vertex.yyy;
 		}

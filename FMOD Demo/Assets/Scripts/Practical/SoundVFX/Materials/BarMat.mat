@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: vfxMat
-  m_Shader: {fileID: 4800000, guid: 1bb8208d86d0b7a4b958a38cd006f388, type: 3}
+  m_Name: BarMat
+  m_Shader: {fileID: 4800000, guid: b10c8659075ead44fbcadd10f9ff40e5, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -22,29 +22,24 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SoundImage
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
-          name: _Glossiness
-        second: 0.5
+          name: iResolutionX
+        second: 1
       data:
         first:
-          name: _Metallic
-        second: 0
-      data:
-        first:
-          name: _Amount
-        second: 0
-      data:
-        first:
-          name: _worldX
-        second: 0
-      data:
-        first:
-          name: _Alpha
-        second: 0
+          name: iResolutionY
+        second: 1
     m_Colors:
       data:
         first:
-          name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
+          name: _Emission
+        second: {r: 0.8235294, g: 0.26038063, b: 0.26038063, a: 1}
