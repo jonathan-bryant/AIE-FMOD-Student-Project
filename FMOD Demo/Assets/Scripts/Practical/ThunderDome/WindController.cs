@@ -17,7 +17,7 @@ public class WindController : MonoBehaviour
     {
         m_material = GetComponent<Renderer>().material;
         m_active = false;
-        var vol = m_particleSystem.velocityOverLifetime;
+        var vol = m_particleSystem.forceOverLifetime;
         var x = vol.x;
         m_orignialX = x.constantMax;
         x.constantMax = 0.0f;
@@ -53,9 +53,9 @@ public class WindController : MonoBehaviour
             m_windValue = Mathf.Clamp(m_windValue, 0.0f, 1.0f);
             transform.Rotate(new Vector3(0.0f, -mouseX * 10.0f, 0.0f));
 
-            var vol = m_particleSystem.velocityOverLifetime;
+            var vol = m_particleSystem.forceOverLifetime;
             var x = vol.x;
-            x.constantMax = Mathf.Lerp(0.0f, 100.0f, m_windValue);
+            x.constantMax = Mathf.Lerp(0.0f, m_orignialX, m_windValue);
             vol.x = x;
         }
         if (Input.GetMouseButtonUp(0) && m_active)
