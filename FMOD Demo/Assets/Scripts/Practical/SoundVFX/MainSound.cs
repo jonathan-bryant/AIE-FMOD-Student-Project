@@ -25,11 +25,13 @@ public class MainSound : MonoBehaviour
 
     bool m_isPlaying = false;
 
+	public int WINDOWSIZE = 1024;
+
     //FMOD.RESULT result;              // Used for error checking large number of FMOD functions.
 
     void Awake()
     {
-        m_fftArray = new float[225];
+        m_fftArray = new float[WINDOWSIZE];
 
         m_soundPath = Application.dataPath + "/Scripts/Practical/SoundVFX/EDM.mp3";
         Debug.Log(m_soundPath);
@@ -37,10 +39,13 @@ public class MainSound : MonoBehaviour
         FMODUnity.RuntimeManager.LowlevelSystem.createSound(m_soundPath, FMOD.MODE.CREATESTREAM | FMOD.MODE._3D, out m_sound);
         FMODUnity.RuntimeManager.LowlevelSystem.createChannelGroup("Music Group", out m_channelGroup);
         FMODUnity.RuntimeManager.LowlevelSystem.createDSPByType(FMOD.DSP_TYPE.FFT, out m_fftDsp);
+		m_fftDsp.setParameterInt((int)FMOD.DSP_FFT.WINDOWTYPE, (int)FMOD.DSP_FFT_WINDOW.HANNING);
+		m_fftDsp.setParameterInt((int)FMOD.DSP_FFT.WINDOWSIZE, WINDOWSIZE * 2);
+
         PlaySound();
         m_channel.addDSP(FMOD.CHANNELCONTROL_DSP_INDEX.TAIL, m_fftDsp);
 
-        m_soundTex = new Texture2D(225, 1, TextureFormat.RGB24, false);
+        m_soundTex = new Texture2D(WINDOWSIZE, 1, TextureFormat.RGB24, false);
         m_soundTex.name = "Image";
     }
 
@@ -51,14 +56,16 @@ public class MainSound : MonoBehaviour
         {
             IntPtr unmanagedData;
             uint length;
+			
             m_fftDsp.getParameterData((int)FMOD.DSP_FFT.SPECTRUMDATA, out unmanagedData, out length);
             FMOD.DSP_PARAMETER_FFT m_fftData = (FMOD.DSP_PARAMETER_FFT)Marshal.PtrToStructure(unmanagedData, typeof(FMOD.DSP_PARAMETER_FFT));
 
-
+			if (m_fftData.numchannels < 1)
+				return;
 
             // Spectrum contains 2 channels and 2048 "bins"
             // Grab the front 112 bins from each channel (should be the same really)
-            for (int bin = 0; bin < 225; bin++)
+            for (int bin = 0; bin < WINDOWSIZE; bin++)
             {
                 m_fftArray[bin] = Mathf.Lerp(m_fftArray[bin], lin2DB(m_fftData.spectrum[0][bin]), 0.3f);
                 m_soundTex.SetPixel(bin, 1, new Color(m_fftArray[bin], m_fftArray[bin], m_fftArray[bin]));

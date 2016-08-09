@@ -31,25 +31,33 @@ public class SoundCubeStuff : MonoBehaviour
                 m_cubes[i][j] = Instantiate(m_cubePrefab, pos, Quaternion.identity) as GameObject;
                 m_cubes[i][j].transform.SetParent(transform);
             }
-        }
-		
+        }		
     }
 	
 	void Update () 
-	{
-        
+	{        
         m_soundFFTData = m_soundRef.m_fftArray;
-
-        for (int row = 0; row < 15; row++)
+		int gridTotal = m_gridWidth * m_gridWidth;
+		int binsPerCube = m_soundRef.WINDOWSIZE / gridTotal;
+		int offset = 0;
+		for (int row = 0; row < m_gridWidth; row++)
         {
-            for (int col = 0; col < 15; col++)
+            for (int col = 0; col < m_gridWidth; col++)
             {
 				int newCol = col;
 				if (col < 14)
 				{
 					 newCol += 1;
 				}
-                m_cubes[row][col].GetComponent<CubeReshaping>().m_material.SetFloat("_Amount", m_soundFFTData[(row+1) * (newCol)] / 2.0f);
+				float totalFFT = 0;
+
+				for (int i = 0; i < binsPerCube; i++)
+				{
+					totalFFT += m_soundFFTData[(row + 1) * (newCol) + i];
+				}
+				offset += binsPerCube;
+
+                m_cubes[row][col].GetComponent<CubeReshaping>().m_material.SetFloat("_Amount", totalFFT);
             }
         }
     }
