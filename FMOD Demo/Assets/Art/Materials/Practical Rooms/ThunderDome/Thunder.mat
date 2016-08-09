@@ -7,8 +7,8 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Thunder
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHABLEND_ON _EMISSION _VERTEXCOLOR
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: 3000
   stringTagMap:
@@ -20,7 +20,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 28e75dcad52dcb942b9cdb6c1f2b3d71, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -55,7 +55,7 @@ Material:
         first:
           name: _EmissionMap
         second:
-          m_Texture: {fileID: 2800000, guid: 28e75dcad52dcb942b9cdb6c1f2b3d71, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -79,18 +79,11 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _SpecGlossMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _SrcBlend
-        second: 5
+        second: 1
       data:
         first:
           name: _DstBlend
@@ -102,11 +95,11 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 1
+        second: 0
       data:
         first:
           name: _Metallic
-        second: 1
+        second: 0
       data:
         first:
           name: _Parallax
@@ -134,19 +127,11 @@ Material:
       data:
         first:
           name: _Mode
-        second: 2
-      data:
-        first:
-          name: _EmissionScaleUI
-        second: 0
-      data:
-        first:
-          name: _IntensityVC
-        second: 1
+        second: 3
       data:
         first:
           name: _InvFade
-        second: 0.01
+        second: 1.84
     m_Colors:
       data:
         first:
@@ -155,20 +140,8 @@ Material:
       data:
         first:
           name: _Color
-<<<<<<< HEAD
-        second: {r: 1, g: 1, b: 1, a: 0.36111826}
-=======
-        second: {r: 1, g: 1, b: 1, a: 0}
->>>>>>> 29a18e075ab2382706753e6d4834364cd666b15d
-      data:
-        first:
-          name: _SpecColor
-        second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _EmissionColorUI
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 0, g: 0, b: 0, a: 0.21401776}
       data:
         first:
           name: _TintColor
-        second: {r: 0, g: 0, b: 0, a: 0.15346847}
+        second: {r: 0.36764705, g: 1, b: 0.45050716, a: 0.41597477}
