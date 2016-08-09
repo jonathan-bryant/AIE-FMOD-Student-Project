@@ -15,7 +15,7 @@ public class MainSound : MonoBehaviour
     string m_soundPath;
     public float[] m_fftArray;
 
-    public Texture2D m_soundTex;
+    [HideInInspector] public Texture2D m_soundTex;
 
     // Private Vars
     FMOD.Sound m_sound;
@@ -33,7 +33,7 @@ public class MainSound : MonoBehaviour
     {
         m_fftArray = new float[WINDOWSIZE];
 
-        m_soundPath = Application.dataPath + "/Scripts/Practical/SoundVFX/EDM.mp3";
+        m_soundPath = Application.dataPath + "/Scripts/Practical/SoundVFX/FIRST.mp3";
         Debug.Log(m_soundPath);
         // Start by creating/initialising the sound, channel group and dsp effect's required.
         FMODUnity.RuntimeManager.LowlevelSystem.createSound(m_soundPath, FMOD.MODE.CREATESTREAM | FMOD.MODE._3D, out m_sound);
@@ -47,6 +47,7 @@ public class MainSound : MonoBehaviour
 
         m_soundTex = new Texture2D(WINDOWSIZE, 1, TextureFormat.RGB24, false);
         m_soundTex.name = "Image";
+        m_soundTex.wrapMode = TextureWrapMode.Clamp;
     }
 
     void Update()
@@ -93,7 +94,7 @@ public class MainSound : MonoBehaviour
 
     float lin2DB(float linear)
     {
-        return (Mathf.Clamp(linear * 5.0f, 0.0f, 1.0f));
+        return (Mathf.Clamp(linear * 10.0f, -1.0f, 1.0f));
     }
 
 	#endregion

@@ -11,15 +11,24 @@ public class SoundCubeStuff : MonoBehaviour
 {
     // Public Vars
     public int m_gridWidth = 15;
-    public MainSound m_soundRef;
 
     // Private Vars
     [SerializeField]    GameObject m_cubePrefab;        // Prefab to use for visualisation.
     GameObject[][] m_cubes;                             // Array (grid) of prefabs.
+    MainSound m_soundRef;
     float[] m_soundFFTData;
 
 	void Start () 
 	{
+        m_soundRef = FindObjectOfType<MainSound>();
+        
+        if (m_soundRef == null)
+        {
+            Debug.LogError("No 'Main Sound' Script in scene!!!");
+            DestroyImmediate(this);
+            return;
+        }
+
         m_cubes = new GameObject[m_gridWidth][];
 
         for (int i = 0; i < m_gridWidth; i++)
