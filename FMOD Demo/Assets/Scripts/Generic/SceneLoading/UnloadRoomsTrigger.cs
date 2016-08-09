@@ -12,7 +12,6 @@ using System.Collections;
 public class UnloadRoomsTrigger : MonoBehaviour
 {
     int m_sceneCount;
-    Scene m_overworldScene;
 
     void Start()
     {
@@ -20,10 +19,6 @@ public class UnloadRoomsTrigger : MonoBehaviour
         for (int index = 0; index < m_sceneCount; index++)
         {
             Scene indexScene = SceneManager.GetSceneAt(index);
-            if (indexScene.name == "Overworld")
-            {
-                m_overworldScene = indexScene;
-            }
         }
     }
 
