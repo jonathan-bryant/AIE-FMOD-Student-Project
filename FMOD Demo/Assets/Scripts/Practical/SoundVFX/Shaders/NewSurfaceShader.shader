@@ -8,6 +8,7 @@
 		_Metallic ("Metallic", Range(0,1)) = 0.0
 		_Amount ("Height Adjustment", Float) = 0.0
 		_Alpha ("Alpha", Range(0,1)) = 0.0
+		_Emission ("Emission", Range(0,1)) = 0.0
 	}
 	SubShader 
 	{
@@ -31,6 +32,7 @@
 
 		half _Glossiness;
 		half _Metallic;
+		float _Emission;
 		fixed4 _Color;
 		float _Amount;
 		float _Alpha;
@@ -41,7 +43,7 @@
 			{
 				if (_Amount < 0.2)
 					_Amount *= 1.5;
-				v.vertex.y *= (_Amount * 100);
+				v.vertex.y *= (_Amount * 20);
 			}
 			v.color.rgb = -v.vertex.yyy;
 		}
@@ -49,11 +51,20 @@
 		void surf (Input IN, inout SurfaceOutputStandard o) 
 		{
 			half4 c = tex2D (_MainTex, IN.uv_MainTex);
-			o.Albedo = c.rgb * IN.color.rgb;
+			o.Albedo = c.rgb;
 			// Metallic and smoothness come from slider variables
+			//if (IN.color.rgb == float3(1, 1, 1))
+			//{
+			//	o.Emission = float3(0.5, 0.5, 0.5) * _Emission;
+			//}
+			//else
+			{
+				o.Emission = IN.color * _Emission;
+			}
+
 			o.Metallic = _Metallic;
 			o.Smoothness = _Glossiness;
-			o.Alpha = c.a * IN.color.a;
+			o.Alpha = _Alpha;
 		}
 		ENDCG
 	}

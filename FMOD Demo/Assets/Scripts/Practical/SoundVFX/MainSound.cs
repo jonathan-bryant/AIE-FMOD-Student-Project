@@ -15,7 +15,7 @@ public class MainSound : MonoBehaviour
     string m_soundPath;
     public float[] m_fftArray;
 
-    public Texture2D m_soundTex;
+    [HideInInspector] public Texture2D m_soundTex;
 
     // Private Vars
     FMOD.Sound m_sound;
@@ -33,7 +33,7 @@ public class MainSound : MonoBehaviour
     {
         m_fftArray = new float[WINDOWSIZE];
 
-        m_soundPath = Application.dataPath + "/Scripts/Practical/SoundVFX/EDM.mp3";
+        m_soundPath = Application.dataPath + "/Scripts/Practical/SoundVFX/Audio/FIRST.mp3";
         Debug.Log(m_soundPath);
         // Start by creating/initialising the sound, channel group and dsp effect's required.
         FMODUnity.RuntimeManager.LowlevelSystem.createSound(m_soundPath, FMOD.MODE.CREATESTREAM | FMOD.MODE._3D, out m_sound);
@@ -47,6 +47,7 @@ public class MainSound : MonoBehaviour
 
         m_soundTex = new Texture2D(WINDOWSIZE, 1, TextureFormat.RGB24, false);
         m_soundTex.name = "Image";
+        m_soundTex.wrapMode = TextureWrapMode.Clamp;
     }
 
     void Update()
@@ -63,17 +64,12 @@ public class MainSound : MonoBehaviour
 			if (m_fftData.numchannels < 1)
 				return;
 
-            // Spectrum contains 2 channels and 2048 "bins"
-            // Grab the front 112 bins from each channel (should be the same really)
+            // Spectrum contains 2 channels and 2048 "bins" by default
             for (int bin = 0; bin < WINDOWSIZE; bin++)
             {
-                m_fftArray[bin] = Mathf.Lerp(m_fftArray[bin], lin2DB(m_fftData.spectrum[0][bin]), 0.3f);
+                m_fftArray[bin] = Mathf.Lerp(m_fftArray[bin], lin2DB(m_fftData.spectrum[0][bin]), 0.5f);
                 m_soundTex.SetPixel(bin, 1, new Color(m_fftArray[bin], m_fftArray[bin], m_fftArray[bin]));
             }
-            //for (int bin = 0; bin < 113; bin++)
-            //{
-            //    m_fftArray[112 - bin] = Mathf.Lerp(m_fftArray[113 + bin], m_fftData.spectrum[1][bin], 0.3f);
-            //}
             m_soundTex.Apply();
 
         }
@@ -87,13 +83,12 @@ public class MainSound : MonoBehaviour
         FMOD.VECTOR pos = FMODUnity.RuntimeUtils.ToFMODVector(transform.position);
         FMOD.VECTOR vel = FMODUnity.RuntimeUtils.ToFMODVector(new Vector3(0, 0, 0));
         m_channel.set3DAttributes(ref pos, ref vel, ref vel);
-        m_sound.setLoopCount(1000);
         return true;
     }
 
     float lin2DB(float linear)
     {
-        return (Mathf.Clamp(linear * 5.0f, 0.0f, 1.0f));
+        return (Mathf.Clamp(linear * 15.0f, 0.0f, 1.0f));
     }
 
 	#endregion
