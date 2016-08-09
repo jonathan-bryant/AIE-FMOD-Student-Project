@@ -37,7 +37,7 @@ public class SoundCubeStuff : MonoBehaviour
             m_cubes[i] = new GameObject[m_gridWidth];
             for (int j = 0; j < m_gridWidth; j++)
             {
-                Vector3 pos = transform.position + new Vector3(20 - (i * 3), 0, 20 - (j * 3));
+                Vector3 pos = transform.position + new Vector3(2.5f - (i * 0.6f), 0, 2.5f - (j * 0.6f));
                 m_cubes[i][j] = Instantiate(m_cubePrefab, pos, Quaternion.identity) as GameObject;
                 m_cubes[i][j].transform.SetParent(transform);
             }
@@ -48,9 +48,6 @@ public class SoundCubeStuff : MonoBehaviour
 	{        
         // Get the update spectrum data from the main sound script;
         m_soundFFTData = m_soundRef.m_fftArray;
-		int gridTotal = m_gridWidth * m_gridWidth;
-		int binsPerCube = m_soundRef.WINDOWSIZE / gridTotal;
-		int offset = 0;
         // Loop through all cubes one at a time.
 		for (int row = 0; row < m_gridWidth; row++)
         {
@@ -61,13 +58,7 @@ public class SoundCubeStuff : MonoBehaviour
 				{
 					 newCol += 1;
 				}
-				float totalFFT = 0;
 
-				//for (int i = 0; i < binsPerCube; i++)
-				//{
-				//	totalFFT += m_soundFFTData[(row + 1) * (newCol) + i];
-				//}
-				//offset += binsPerCube;
                 // Assign the cube 
                 m_cubes[row][col].GetComponent<Renderer>().material.SetFloat("_Amount", m_soundFFTData[(row + 1) * (newCol)]);
             }
