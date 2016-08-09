@@ -63236,8 +63236,8 @@ ParticleSystemRenderer:
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
   m_CameraVelocityScale: 0
-  m_VelocityScale: 0
-  m_LengthScale: 4
+  m_VelocityScale: 0.05
+  m_LengthScale: 0
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_RenderAlignment: 0
@@ -63294,7 +63294,7 @@ ParticleSystem:
   looping: 1
   prewarm: 0
   playOnAwake: 1
-  moveWithTransform: 1
+  moveWithTransform: 0
   scalingMode: 1
   InitialModule:
     serializedVersion: 2
@@ -63605,7 +63605,7 @@ ParticleSystem:
       minMaxState: 0
     randomizeRotationDirection: 0
     gravityModifier: 0
-    maxNumParticles: 4000
+    maxNumParticles: 100000
     rotation3D: 0
   ShapeModule:
     serializedVersion: 2
@@ -63614,8 +63614,8 @@ ParticleSystem:
     radius: 1
     angle: 25
     length: 5
-    boxX: 200
-    boxY: 200
+    boxX: 103.57254
+    boxY: 227.59225
     boxZ: 1
     arc: 360
     placementMode: 0
@@ -63966,7 +63966,7 @@ ParticleSystem:
   VelocityModule:
     enabled: 1
     x:
-      scalar: 100
+      scalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -64110,9 +64110,9 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
   ForceModule:
-    enabled: 0
+    enabled: 1
     x:
-      scalar: 0
+      scalar: 500
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -64216,7 +64216,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    inWorldSpace: 0
+    inWorldSpace: 1
     randomizePerFrame: 0
   ExternalForcesModule:
     enabled: 0
@@ -64752,7 +64752,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1408195996}
   m_LocalRotation: {x: 0.50000066, y: -0.49999923, z: 0.4999996, w: 0.50000054}
-  m_LocalPosition: {x: 0.66, y: 26.89, z: -32.94}
+  m_LocalPosition: {x: -11.9, y: 26.89, z: -33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 90, y: -89.999794, z: 0}
   m_Children:
@@ -98768,42 +98768,9 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 3334680, guid: 6328d47bb6c68c04f9e01d2714d7c95f,
     type: 2}
   m_PrefabInternal: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1788381107}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.019607844}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
-  m_StereoMirrorMode: 0
---- !u!1 &1970184193
-=======
   m_GameObject: {fileID: 2142391388}
   m_Mesh: {fileID: 4300000, guid: 4ab5ec0f28097174b99ee91ee75feb4e, type: 3}
 --- !u!1 &2142676620
->>>>>>> 29a18e075ab2382706753e6d4834364cd666b15d
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 130132, guid: 6328d47bb6c68c04f9e01d2714d7c95f, type: 2}
