@@ -18,7 +18,7 @@ The placeholder VO is from NASA's public library of space mission sounds:
 https://soundcloud.com/nasa</value>
         </property>
         <property name="outputFormat">
-            <value>0</value>
+            <value>2</value>
         </property>
         <relationship name="mixer">
             <destination>{18c84b0e-3424-4fa1-a611-7d63345ed228}</destination>
@@ -41,14 +41,11 @@ https://soundcloud.com/nasa</value>
         <relationship name="timeline">
             <destination>{b3f8bb80-c396-465e-a9b7-f2ce5d678e74}</destination>
         </relationship>
-        <relationship name="parameters">
-            <destination>{c09a5658-c02e-44aa-9c76-d852ddfa29a9}</destination>
-        </relationship>
         <relationship name="banks">
             <destination>{2503a6bf-a1f9-4334-9fec-bc04572f5674}</destination>
         </relationship>
         <relationship name="folder">
-            <destination>{c361279e-415f-4586-8f58-a068b965e3f2}</destination>
+            <destination>{83670875-44e8-4ef3-9f76-7961ff7816ca}</destination>
         </relationship>
     </object>
     <object class="EventMixer" id="{18c84b0e-3424-4fa1-a611-7d63345ed228}">
@@ -57,9 +54,6 @@ https://soundcloud.com/nasa</value>
         </relationship>
     </object>
     <object class="MasterTrack" id="{dce4b7d8-25dd-4314-8d90-0205a70b5bd6}">
-        <relationship name="automationTracks">
-            <destination>{34671de4-9d2d-4fd1-be1c-06fa75e334da}</destination>
-        </relationship>
         <relationship name="mixerGroup">
             <destination>{39314272-9fa6-45e0-bb35-c773e7030604}</destination>
         </relationship>
@@ -82,21 +76,19 @@ https://soundcloud.com/nasa</value>
     </object>
     <object class="MarkerTrack" id="{0f585b1f-e55a-4c81-b959-dad1ea69005a}"/>
     <object class="GroupTrack" id="{5c24c66c-4c03-4aae-9e44-7cfc85415f4f}">
+        <relationship name="modules">
+            <destination>{1642c2bd-75f9-4cc1-a949-83533557f148}</destination>
+        </relationship>
         <relationship name="mixerGroup">
             <destination>{ac9a2e3e-24b3-47f0-b96a-41e46b4dc5d5}</destination>
         </relationship>
     </object>
     <object class="Timeline" id="{b3f8bb80-c396-465e-a9b7-f2ce5d678e74}">
+        <relationship name="modules">
+            <destination>{1642c2bd-75f9-4cc1-a949-83533557f148}</destination>
+        </relationship>
         <relationship name="markers">
             <destination>{5d54d106-dae3-41e7-9e40-0357990f0caa}</destination>
-        </relationship>
-    </object>
-    <object class="DistanceParameter" id="{c09a5658-c02e-44aa-9c76-d852ddfa29a9}">
-        <property name="maximum">
-            <value>100</value>
-        </property>
-        <relationship name="automationCurves">
-            <destination>{16ab388b-8f7d-4d14-8a67-d0c293b6fbfb}</destination>
         </relationship>
     </object>
     <object class="EventMixerMaster" id="{39314272-9fa6-45e0-bb35-c773e7030604}">
@@ -110,23 +102,23 @@ https://soundcloud.com/nasa</value>
             <destination>{18c84b0e-3424-4fa1-a611-7d63345ed228}</destination>
         </relationship>
     </object>
-    <object class="AutomationTrack" id="{34671de4-9d2d-4fd1-be1c-06fa75e334da}">
-        <property name="nameOfPropertyBeingAutomated">
-            <value>volume</value>
-        </property>
-        <relationship name="automationCurves">
-            <destination>{16ab388b-8f7d-4d14-8a67-d0c293b6fbfb}</destination>
-        </relationship>
-        <relationship name="objectBeingAutomated">
-            <destination>{39314272-9fa6-45e0-bb35-c773e7030604}</destination>
-        </relationship>
-    </object>
     <object class="MixerBusEffectChain" id="{f9831ad1-3c22-42b6-8029-e20f06f5043b}">
         <relationship name="effects">
             <destination>{528cb384-2658-4a22-a3d0-add83b658287}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{20329624-153d-4836-bd90-48f1f190889c}"/>
+    <object class="SingleSound" id="{1642c2bd-75f9-4cc1-a949-83533557f148}">
+        <property name="start">
+            <value>0</value>
+        </property>
+        <property name="length">
+            <value>2.1829166666666668</value>
+        </property>
+        <relationship name="audioFile">
+            <destination>{92582a51-7c39-4c3d-b167-913dd9503cd7}</destination>
+        </relationship>
+    </object>
     <object class="EventMixerGroup" id="{ac9a2e3e-24b3-47f0-b96a-41e46b4dc5d5}">
         <property name="name">
             <value>VO</value>
@@ -155,16 +147,11 @@ https://soundcloud.com/nasa</value>
             <destination>{0f585b1f-e55a-4c81-b959-dad1ea69005a}</destination>
         </relationship>
     </object>
-    <object class="AutomationCurve" id="{16ab388b-8f7d-4d14-8a67-d0c293b6fbfb}">
-        <relationship name="automationPoints">
-            <destination>{06897f61-8a95-4c6d-9965-20b39bec3cdb}</destination>
-            <destination>{217dd988-6d34-498a-937b-0e2d7d69f9be}</destination>
-        </relationship>
-    </object>
     <object class="MixerBusEffectChain" id="{0a052d21-f987-4a28-926c-5188653b56f6}">
         <relationship name="effects">
             <destination>{01668bdd-6012-4b7d-97b3-4f8772defb81}</destination>
             <destination>{a538b4a8-ca38-49e5-87a9-c046581d3006}</destination>
+            <destination>{4b07eb4a-2238-4039-8d1c-22a89adf80da}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{e01c4a7d-0ba4-4f48-b3d6-4f3374b6f8a5}"/>
@@ -176,28 +163,20 @@ https://soundcloud.com/nasa</value>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{b16e7ab1-db7f-4db0-bb62-435680c19fb5}"/>
-    <object class="AutomationPoint" id="{06897f61-8a95-4c6d-9965-20b39bec3cdb}">
-        <property name="position">
-            <value>19.278096800656279</value>
-        </property>
-        <property name="value">
-            <value>9.40087032</value>
-        </property>
-    </object>
-    <object class="AutomationPoint" id="{217dd988-6d34-498a-937b-0e2d7d69f9be}">
-        <property name="position">
-            <value>20.508634451052778</value>
-        </property>
-        <property name="value">
-            <value>-76.005806</value>
-        </property>
-    </object>
     <object class="PluginEffect" id="{01668bdd-6012-4b7d-97b3-4f8772defb81}">
         <relationship name="plugin">
             <destination>{270dcc38-be99-4244-afde-69f3da13ea64}</destination>
         </relationship>
     </object>
     <object class="MixerBusFader" id="{a538b4a8-ca38-49e5-87a9-c046581d3006}"/>
+    <object class="SpatialiserEffect" id="{4b07eb4a-2238-4039-8d1c-22a89adf80da}">
+        <property name="minimumDistance">
+            <value>0</value>
+        </property>
+        <property name="maximumDistance">
+            <value>30</value>
+        </property>
+    </object>
     <object class="MixerBusFader" id="{c5e439c6-3497-48f7-b146-804c6fe26f8b}"/>
     <object class="Sidechain" id="{510513cf-6a81-4104-b162-3d91231ad8d6}"/>
     <object class="Plugin" id="{270dcc38-be99-4244-afde-69f3da13ea64}">
