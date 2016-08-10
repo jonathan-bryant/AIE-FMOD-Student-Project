@@ -97,6 +97,7 @@ GameObject:
   - 65: {fileID: 119727762}
   - 23: {fileID: 119727761}
   - 114: {fileID: 119727760}
+  - 114: {fileID: 119727765}
   m_Layer: 0
   m_Name: WhiteKey (2)
   m_TagString: Untagged
@@ -115,16 +116,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: 
+  Event: event:/Basic Rooms/Sound Module Room/D#
   PlayEvent: 3
-  StopEvent: 4
+  StopEvent: 0
   CollisionTag: Player
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   Params:
-  - Name: Material
-    Value: 3
+  - Name: HeldDown
+    Value: 1
 --- !u!23 &119727761
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -179,9 +180,28 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -35.94, y: 0.101, z: -2.29}
   m_LocalScale: {x: 1.1, y: 0.10935646, z: 2.1038349}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &119727765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 119727759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Emitters:
+  - Target: {fileID: 119727760}
+    Params:
+    - Name: HeldDown
+      Value: 0
+  TriggerEvent: 4
+  CollisionTag: Player
 --- !u!1001 &142100195
 Prefab:
   m_ObjectHideFlags: 0
@@ -268,6 +288,7 @@ GameObject:
   - 65: {fileID: 144242009}
   - 23: {fileID: 144242008}
   - 114: {fileID: 144242007}
+  - 114: {fileID: 144242012}
   m_Layer: 0
   m_Name: WhiteKey (4)
   m_TagString: Untagged
@@ -286,16 +307,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: 
+  Event: event:/Basic Rooms/Sound Module Room/F#
   PlayEvent: 3
-  StopEvent: 4
+  StopEvent: 0
   CollisionTag: Player
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   Params:
-  - Name: Material
-    Value: 3
+  - Name: HeldDown
+    Value: 1
 --- !u!23 &144242008
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -350,9 +371,28 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -39.56, y: 0.101, z: -2.29}
   m_LocalScale: {x: 1.1, y: 0.10935646, z: 2.1038349}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!114 &144242012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 144242006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Emitters:
+  - Target: {fileID: 144242007}
+    Params:
+    - Name: HeldDown
+      Value: 0
+  TriggerEvent: 4
+  CollisionTag: Player
 --- !u!1 &419857798
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,6 +405,7 @@ GameObject:
   - 65: {fileID: 419857801}
   - 23: {fileID: 419857800}
   - 114: {fileID: 419857799}
+  - 114: {fileID: 419857804}
   m_Layer: 0
   m_Name: WhiteKey (6)
   m_TagString: Untagged
@@ -383,16 +424,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: 
+  Event: event:/Basic Rooms/Sound Module Room/F
   PlayEvent: 3
-  StopEvent: 4
+  StopEvent: 0
   CollisionTag: Player
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   Params:
-  - Name: Material
-    Value: 3
+  - Name: HeldDown
+    Value: 1
 --- !u!23 &419857800
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -447,9 +488,28 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -38.36, y: 0.101, z: -2.29}
   m_LocalScale: {x: 1.1, y: 0.10935646, z: 2.1038349}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!114 &419857804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 419857798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Emitters:
+  - Target: {fileID: 419857799}
+    Params:
+    - Name: HeldDown
+      Value: 0
+  TriggerEvent: 4
+  CollisionTag: Player
 --- !u!1 &686355451
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +522,7 @@ GameObject:
   - 65: {fileID: 686355454}
   - 23: {fileID: 686355453}
   - 114: {fileID: 686355452}
+  - 114: {fileID: 686355457}
   m_Layer: 0
   m_Name: WhiteKey (8)
   m_TagString: Untagged
@@ -480,16 +541,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: 
+  Event: event:/Basic Rooms/Sound Module Room/A#
   PlayEvent: 3
-  StopEvent: 4
+  StopEvent: 0
   CollisionTag: Player
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   Params:
-  - Name: Material
-    Value: 3
+  - Name: HeldDown
+    Value: 1
 --- !u!23 &686355453
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -544,9 +605,28 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -44.36, y: 0.101, z: -2.29}
   m_LocalScale: {x: 1.1, y: 0.10935646, z: 2.1038349}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
+--- !u!114 &686355457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 686355451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Emitters:
+  - Target: {fileID: 686355452}
+    Params:
+    - Name: HeldDown
+      Value: 0
+  TriggerEvent: 4
+  CollisionTag: Player
 --- !u!1 &715488488
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,6 +639,7 @@ GameObject:
   - 65: {fileID: 715488491}
   - 23: {fileID: 715488490}
   - 114: {fileID: 715488489}
+  - 114: {fileID: 715488494}
   m_Layer: 0
   m_Name: WhiteKey (3)
   m_TagString: Untagged
@@ -577,16 +658,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: 
+  Event: event:/Basic Rooms/Sound Module Room/D
   PlayEvent: 3
-  StopEvent: 4
+  StopEvent: 0
   CollisionTag: Player
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   Params:
-  - Name: Material
-    Value: 3
+  - Name: HeldDown
+    Value: 1
 --- !u!23 &715488490
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -641,9 +722,28 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -34.74, y: 0.101, z: -2.29}
   m_LocalScale: {x: 1.1, y: 0.10935646, z: 2.1038349}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!114 &715488494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 715488488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Emitters:
+  - Target: {fileID: 715488489}
+    Params:
+    - Name: HeldDown
+      Value: 0
+  TriggerEvent: 4
+  CollisionTag: Player
 --- !u!1 &807557034
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,6 +756,7 @@ GameObject:
   - 65: {fileID: 807557037}
   - 23: {fileID: 807557036}
   - 114: {fileID: 807557035}
+  - 114: {fileID: 807557040}
   m_Layer: 0
   m_Name: WhiteKey (7)
   m_TagString: Untagged
@@ -674,16 +775,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: 
+  Event: event:/Basic Rooms/Sound Module Room/E
   PlayEvent: 3
-  StopEvent: 4
+  StopEvent: 0
   CollisionTag: Player
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   Params:
-  - Name: Material
-    Value: 3
+  - Name: HeldDown
+    Value: 1
 --- !u!23 &807557036
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -738,9 +839,28 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -37.16, y: 0.101, z: -2.29}
   m_LocalScale: {x: 1.1, y: 0.10935646, z: 2.1038349}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
+--- !u!114 &807557040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 807557034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Emitters:
+  - Target: {fileID: 807557035}
+    Params:
+    - Name: HeldDown
+      Value: 0
+  TriggerEvent: 4
+  CollisionTag: Player
 --- !u!1 &1057145313
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,6 +873,7 @@ GameObject:
   - 65: {fileID: 1057145316}
   - 23: {fileID: 1057145315}
   - 114: {fileID: 1057145314}
+  - 114: {fileID: 1057145319}
   m_Layer: 0
   m_Name: WhiteKey (12)
   m_TagString: Untagged
@@ -771,16 +892,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: 
+  Event: event:/Basic Rooms/Sound Module Room/G#
   PlayEvent: 3
-  StopEvent: 4
+  StopEvent: 0
   CollisionTag: Player
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   Params:
-  - Name: Material
-    Value: 3
+  - Name: HeldDown
+    Value: 1
 --- !u!23 &1057145315
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -835,9 +956,28 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -41.94, y: 0.101, z: -2.29}
   m_LocalScale: {x: 1.1, y: 0.10935646, z: 2.1038349}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
+--- !u!114 &1057145319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1057145313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Emitters:
+  - Target: {fileID: 1057145314}
+    Params:
+    - Name: HeldDown
+      Value: 0
+  TriggerEvent: 4
+  CollisionTag: Player
 --- !u!1 &1490209665
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,6 +1036,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -911,6 +1052,7 @@ GameObject:
   - 65: {fileID: 1611598786}
   - 23: {fileID: 1611598785}
   - 114: {fileID: 1611598784}
+  - 114: {fileID: 1611598789}
   m_Layer: 0
   m_Name: WhiteKey (13)
   m_TagString: Untagged
@@ -929,16 +1071,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: 
+  Event: event:/Basic Rooms/Sound Module Room/A
   PlayEvent: 3
-  StopEvent: 4
+  StopEvent: 0
   CollisionTag: Player
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   Params:
-  - Name: Material
-    Value: 3
+  - Name: HeldDown
+    Value: 1
 --- !u!23 &1611598785
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -993,9 +1135,28 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -43.14, y: 0.101, z: -2.29}
   m_LocalScale: {x: 1.1, y: 0.10935646, z: 2.1038349}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
+--- !u!114 &1611598789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1611598783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Emitters:
+  - Target: {fileID: 1611598784}
+    Params:
+    - Name: HeldDown
+      Value: 0
+  TriggerEvent: 4
+  CollisionTag: Player
 --- !u!1 &1630057675
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,6 +1169,7 @@ GameObject:
   - 65: {fileID: 1630057678}
   - 23: {fileID: 1630057677}
   - 114: {fileID: 1630057676}
+  - 114: {fileID: 1630057681}
   m_Layer: 0
   m_Name: WhiteKey
   m_TagString: Untagged
@@ -1026,16 +1188,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: 
+  Event: event:/Basic Rooms/Sound Module Room/C
   PlayEvent: 3
-  StopEvent: 4
+  StopEvent: 0
   CollisionTag: Player
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   Params:
-  - Name: Material
-    Value: 3
+  - Name: HeldDown
+    Value: 1
 --- !u!23 &1630057677
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1090,9 +1252,28 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -32.34, y: 0.101, z: -2.29}
   m_LocalScale: {x: 1.1, y: 0.10935646, z: 2.1038349}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &1630057681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1630057675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Emitters:
+  - Target: {fileID: 1630057676}
+    Params:
+    - Name: HeldDown
+      Value: 0
+  TriggerEvent: 4
+  CollisionTag: Player
 --- !u!1 &1709955096
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,6 +1286,7 @@ GameObject:
   - 65: {fileID: 1709955099}
   - 23: {fileID: 1709955098}
   - 114: {fileID: 1709955097}
+  - 114: {fileID: 1709955102}
   m_Layer: 0
   m_Name: WhiteKey (1)
   m_TagString: Untagged
@@ -1123,16 +1305,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: 
+  Event: event:/Basic Rooms/Sound Module Room/C#
   PlayEvent: 3
-  StopEvent: 4
+  StopEvent: 0
   CollisionTag: Player
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   Params:
-  - Name: Material
-    Value: 3
+  - Name: HeldDown
+    Value: 1
 --- !u!23 &1709955098
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1187,9 +1369,28 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -33.54, y: 0.101, z: -2.29}
   m_LocalScale: {x: 1.1, y: 0.10935646, z: 2.1038349}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &1709955102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1709955096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Emitters:
+  - Target: {fileID: 1709955097}
+    Params:
+    - Name: HeldDown
+      Value: 0
+  TriggerEvent: 4
+  CollisionTag: Player
 --- !u!1 &1736488310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,6 +1403,7 @@ GameObject:
   - 65: {fileID: 1736488313}
   - 23: {fileID: 1736488312}
   - 114: {fileID: 1736488311}
+  - 114: {fileID: 1736488316}
   m_Layer: 0
   m_Name: WhiteKey (5)
   m_TagString: Untagged
@@ -1220,16 +1422,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: 
+  Event: event:/Basic Rooms/Sound Module Room/G
   PlayEvent: 3
-  StopEvent: 4
+  StopEvent: 0
   CollisionTag: Player
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   Params:
-  - Name: Material
-    Value: 3
+  - Name: HeldDown
+    Value: 1
 --- !u!23 &1736488312
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1284,9 +1486,28 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -40.76, y: 0.101, z: -2.29}
   m_LocalScale: {x: 1.1, y: 0.10935646, z: 2.1038349}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
+--- !u!114 &1736488316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1736488310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Emitters:
+  - Target: {fileID: 1736488311}
+    Params:
+    - Name: HeldDown
+      Value: 0
+  TriggerEvent: 4
+  CollisionTag: Player
 --- !u!1001 &1845405969
 Prefab:
   m_ObjectHideFlags: 0
@@ -1345,6 +1566,7 @@ GameObject:
   - 65: {fileID: 2061533966}
   - 23: {fileID: 2061533965}
   - 114: {fileID: 2061533964}
+  - 114: {fileID: 2061533969}
   m_Layer: 0
   m_Name: WhiteKey (9)
   m_TagString: Untagged
@@ -1363,16 +1585,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: 
+  Event: event:/Basic Rooms/Sound Module Room/B
   PlayEvent: 3
-  StopEvent: 4
+  StopEvent: 0
   CollisionTag: Player
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
   Params:
-  - Name: Material
-    Value: 3
+  - Name: HeldDown
+    Value: 1
 --- !u!23 &2061533965
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1427,6 +1649,25 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -45.56, y: 0.101, z: -2.29}
   m_LocalScale: {x: 1.1, y: 0.10935646, z: 2.1038349}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
+--- !u!114 &2061533969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2061533963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Emitters:
+  - Target: {fileID: 2061533964}
+    Params:
+    - Name: HeldDown
+      Value: 0
+  TriggerEvent: 4
+  CollisionTag: Player
