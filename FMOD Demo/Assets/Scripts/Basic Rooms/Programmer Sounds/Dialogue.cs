@@ -49,7 +49,7 @@ public class Dialogue : MonoBehaviour
         //http://www.fmod.org/documentation/#content/generated/engine_new_unity/script_example_basic.html.
         //--------------------------------------------------------------------
 
-        FMOD.Studio.EventInstance dialogueInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Basic Rooms/Programmer Sounds/Dialogue");
+        FMOD.Studio.EventInstance dialogueInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Basic Rooms/Programmer Sounds Room/Dialogue");
 
         //---------------------------------Fmod-------------------------------
         //The reason why, in C#, that all the GCHandling and marshalling is
