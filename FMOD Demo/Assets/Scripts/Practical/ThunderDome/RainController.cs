@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class RainController : MonoBehaviour
-{
-    public ActorControls m_actor;
+{ 
+    ActorControls m_actor;
     public ParticleSystem m_particleSystem;
     public float m_rainValue;
 
@@ -15,6 +15,7 @@ public class RainController : MonoBehaviour
 
     void Start()
     {
+        m_actor = Camera.main.GetComponentInParent<ActorControls>();
         m_material = GetComponent<Renderer>().material;
 
         m_originalRate = m_particleSystem.emission.rate.constantMax;

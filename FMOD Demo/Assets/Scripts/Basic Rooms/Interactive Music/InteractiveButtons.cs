@@ -3,14 +3,13 @@ using System.Collections;
 
 public class InteractiveButtons : MonoBehaviour
 {
-
-    public ActorControls m_actor;
+    ActorControls m_actor;
     public FMODUnity.StudioEventEmitter m_emitter;
     public GameObject[] m_buttons;
 
     void Start()
     {
-
+        m_actor = Camera.main.GetComponentInParent<ActorControls>();
     }
 
     void Update()

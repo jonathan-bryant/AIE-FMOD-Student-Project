@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WindController : MonoBehaviour
 {
-    public ActorControls m_actor;
+    ActorControls m_actor;
     public ParticleSystem m_particleSystem;
 
     public float m_windValue;
@@ -15,6 +15,7 @@ public class WindController : MonoBehaviour
 
     void Start()
     {
+        m_actor = Camera.main.GetComponentInParent<ActorControls>();
         m_material = GetComponent<Renderer>().material;
         m_active = false;
         var vol = m_particleSystem.forceOverLifetime;

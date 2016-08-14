@@ -3,7 +3,7 @@ using System.Collections;
 
 public class LoadKnob : MonoBehaviour {
 
-    public ActorControls m_actor;
+    ActorControls m_actor;
     public FMODUnity.StudioEventEmitter m_emitter;
 
     Material m_material;
@@ -13,6 +13,7 @@ public class LoadKnob : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        m_actor = Camera.main.GetComponentInParent<ActorControls>();
         m_material = GetComponent<Renderer>().material;
         m_active = false;
         m_loadValue = 0.0f;
