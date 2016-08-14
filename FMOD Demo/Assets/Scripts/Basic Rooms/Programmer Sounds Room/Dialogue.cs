@@ -50,6 +50,7 @@ public class Dialogue : MonoBehaviour
         //--------------------------------------------------------------------
 
         FMOD.Studio.EventInstance dialogueInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Basic Rooms/Programmer Sounds Room/Dialogue");
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(dialogueInstance, transform, null);
 
         //---------------------------------Fmod-------------------------------
         //The reason why, in C#, that all the GCHandling and marshalling is
