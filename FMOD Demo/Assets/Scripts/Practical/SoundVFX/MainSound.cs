@@ -33,7 +33,7 @@ public class MainSound : MonoBehaviour
     {
         m_fftArray = new float[WINDOWSIZE];
 
-        m_soundPath = Application.dataPath + "/Scripts/Practical/SoundVFX/Audio/FIRST.mp3";
+        m_soundPath = Application.dataPath + "FIRST.mp3";
         Debug.Log(m_soundPath);
         // Start by creating/initialising the sound, channel group and dsp effect's required.
         FMODUnity.RuntimeManager.LowlevelSystem.createSound(m_soundPath, FMOD.MODE.CREATESTREAM | FMOD.MODE._3D, out m_sound);
