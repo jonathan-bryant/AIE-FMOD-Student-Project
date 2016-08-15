@@ -70,7 +70,7 @@
     </object>
     <object class="EventMixerMaster" id="{7b528f99-6a20-4c68-b12a-4cc1f960403a}">
         <property name="volume">
-            <value>5</value>
+            <value>1</value>
         </property>
         <relationship name="effectChain">
             <destination>{9bc2c53a-16da-4d4a-97ba-26e91036e09d}</destination>
@@ -89,6 +89,9 @@
     </object>
     <object class="MixerBusPanner" id="{31b8818d-5fda-40f1-8ea5-e290949969e2}"/>
     <object class="EventMixerGroup" id="{5a7a0c16-2f97-4822-97cd-1983b8ae7b2d}">
+        <property name="volume">
+            <value>-3.5</value>
+        </property>
         <property name="name">
             <value>Audio 1</value>
         </property>
@@ -141,13 +144,13 @@
     </object>
     <object class="ThreeEQEffect" id="{eec8431d-6894-46f0-9a26-ac2ef6fc99c4}">
         <property name="lowGain">
-            <value>-29.5</value>
+            <value>-18</value>
         </property>
         <property name="midGain">
-            <value>4</value>
+            <value>4.5</value>
         </property>
         <property name="highGain">
-            <value>-24.5</value>
+            <value>-13.5</value>
         </property>
         <property name="lowCrossover">
             <value>660</value>
@@ -163,8 +166,20 @@
     </object>
     <object class="MixerBusFader" id="{e4611e2d-55d4-40f0-9da1-324ea378fc76}"/>
     <object class="SpatialiserEffect" id="{9ca29c9f-60a7-4a40-8bc8-80fcd7b25639}">
+        <property name="distanceRolloffType">
+            <value>3</value>
+        </property>
         <property name="maximumDistance">
-            <value>5</value>
+            <value>3</value>
+        </property>
+        <property name="extentMode">
+            <value>1</value>
+        </property>
+        <property name="soundSize">
+            <value>0.399999976</value>
+        </property>
+        <property name="minimumExtent">
+            <value>36</value>
         </property>
     </object>
     <object class="MixerSend" id="{91d2a6e7-971d-4ba4-b4b5-53b0279dcf62}">
@@ -259,7 +274,7 @@
             <value>LinearCurveStrategy{(0.000000,0.000000)(1.000000,1.000000)}</value>
         </property>
         <property name="value">
-            <value>0.475000024</value>
+            <value>0.495000035</value>
         </property>
     </object>
 </objects>

@@ -16,13 +16,12 @@ public class PauseMenu : MonoBehaviour
 
     // Private Vars
     [SerializeField]    Canvas m_pauseMenu;
-    [SerializeField]    GameObject m_player;
     
 	void Start () 
 	{
         m_pauseMenu.enabled = false;
 
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this);        
 	}
 	
 	void Update () 
@@ -47,7 +46,6 @@ public class PauseMenu : MonoBehaviour
         //if (SceneManager.GetSceneAt(a_value.value - 1) != SceneManager.GetActiveScene())
         {
             SceneManager.LoadScene(a_value.value);
-            Debug.Log("new scene");
             DeactivateMenu();
         }
     }

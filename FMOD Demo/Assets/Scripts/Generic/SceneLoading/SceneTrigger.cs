@@ -75,7 +75,7 @@ public class SceneTrigger : MonoBehaviour
 
     IEnumerator LoadScene(string a_sceneName)
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return null;
         m_async = SceneManager.LoadSceneAsync(m_sceneToLoad, LoadSceneMode.Additive);
         // Not all triggers may have a door attached to it.
         if (m_door != null)
@@ -86,7 +86,8 @@ public class SceneTrigger : MonoBehaviour
     {
         yield return m_async;
         // Put the door opening stuff here!
-        m_opening = true;
+        if (m_async.isDone)
+            m_opening = true;
     }
 	#endregion
 }
