@@ -28,7 +28,6 @@ public class SceneSelectDropdown : MonoBehaviour
             Dropdown.OptionData temp = new Dropdown.OptionData();
             temp.text = m_sceneNames[i];
             m_dropdown.options.Add(temp);
-            Debug.Log(i);
         }
 	}
 

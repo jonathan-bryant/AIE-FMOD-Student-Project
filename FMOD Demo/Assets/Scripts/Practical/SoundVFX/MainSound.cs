@@ -33,7 +33,7 @@ public class MainSound : MonoBehaviour
     {
         m_fftArray = new float[WINDOWSIZE];
 
-        m_soundPath = Application.dataPath + "/Scripts/Practical/SoundVFX/Audio/FIRST.mp3";
+        m_soundPath = Application.dataPath + "/Scripts/Practical/SoundVFX/Audio/Feel.mp3";
         Debug.Log(m_soundPath);
         // Start by creating/initialising the sound, channel group and dsp effect's required.
         FMODUnity.RuntimeManager.LowlevelSystem.createSound(m_soundPath, FMOD.MODE.CREATESTREAM | FMOD.MODE._3D, out m_sound);
@@ -67,7 +67,9 @@ public class MainSound : MonoBehaviour
             // Spectrum contains 2 channels and 2048 "bins" by default
             for (int bin = 0; bin < WINDOWSIZE; bin++)
             {
-                m_fftArray[bin] = Mathf.Lerp(m_fftArray[bin], lin2DB(m_fftData.spectrum[0][bin]), 0.5f);
+                float temp = lin2DB(m_fftData.spectrum[0][bin]);
+                temp = ((temp + 80.0f) * (1 / 80.0f));
+                m_fftArray[bin] = Mathf.Lerp(m_fftArray[bin], temp, 0.6f);
                 m_soundTex.SetPixel(bin, 1, new Color(m_fftArray[bin], m_fftArray[bin], m_fftArray[bin]));
             }
             m_soundTex.Apply();
@@ -88,7 +90,7 @@ public class MainSound : MonoBehaviour
 
     float lin2DB(float linear)
     {
-        return (Mathf.Clamp(linear * 15.0f, 0.0f, 1.0f));
+        return (Mathf.Clamp(Mathf.Log10(linear) * 20, -80.0f, 0.0f));
     }
 
 	#endregion
