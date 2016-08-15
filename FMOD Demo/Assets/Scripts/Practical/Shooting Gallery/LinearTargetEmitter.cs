@@ -55,7 +55,7 @@ public class LinearTargetEmitter : BaseTarget
     {
         if (!m_active)
             return;
-        m_scoreBoard.AddScore(m_points);
+        m_manager.AddScore(m_points);
         Destroy(a_target.gameObject);
         m_targets.Remove(a_target);
     }

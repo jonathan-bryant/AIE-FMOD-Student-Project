@@ -38,7 +38,7 @@ public class WindController : MonoBehaviour
                 {
 
 
-                    m_actor.Disabled = true;
+                    m_actor.m_disabledMouse = true;
                     m_active = true;
                 }
             }
@@ -61,7 +61,7 @@ public class WindController : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0) && m_active)
         {
-            m_actor.Disabled = false;
+            m_actor.m_disabledMouse = false;
             m_active = false;
         }
     }

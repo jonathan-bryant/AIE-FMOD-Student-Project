@@ -28,7 +28,7 @@ public class Target : MonoBehaviour {
     //This int will be used on start to change the parameter value of the 
     //hit.
     //--------------------------------------------------------------------
-    [UnityEngine.Range(1, 3)]
+    [UnityEngine.Range(0, 2)]
     public int m_material;
 
     void Start () {
@@ -53,7 +53,7 @@ public class Target : MonoBehaviour {
 	
 	void Update () {
         Debug.DrawRay(transform.position, transform.forward, Color.red);
-	}
+    }
 
     void OnCollisionEnter(Collision a_col)
     {
@@ -68,7 +68,7 @@ public class Target : MonoBehaviour {
             //follow the gameobject. Everytime the EventInstance.start() function 
             //is called, the gameobject needs to be reattached.
             //--------------------------------------------------------------------
-            FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_hitSound, this.transform, null);
+            m_hitSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject, null));
 
             if (m_Parent)
                 m_Parent.Hit(this);

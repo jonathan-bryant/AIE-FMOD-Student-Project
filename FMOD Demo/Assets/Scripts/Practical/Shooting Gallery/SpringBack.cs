@@ -83,7 +83,7 @@ public class SpringBack : BaseTarget
     {
         if (!m_active || m_dead || m_preparing)
             return;
-        m_scoreBoard.AddScore(m_points);
+        m_manager.AddScore(m_points);
         m_elapsed = 0.0f;
         m_preparing = true;
         m_dead = true;

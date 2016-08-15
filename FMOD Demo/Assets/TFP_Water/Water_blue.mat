@@ -38,6 +38,41 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _Water01
+        second:
+          m_Texture: {fileID: 2800000, guid: 90ff426733b42774fa4fb464cc68b2c9, type: 3}
+          m_Scale: {x: 0.6, y: 0.6}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Wave01
+        second:
+          m_Texture: {fileID: 2800000, guid: 077a10adfe7833347b250d448bf41899, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Water02
+        second:
+          m_Texture: {fileID: 2800000, guid: e13418555c7b85443a784514bbec2574, type: 3}
+          m_Scale: {x: 0.2, y: 0.2}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Wave02
+        second:
+          m_Texture: {fileID: 2800000, guid: eaa8c0021d7b12140b65997434a07438, type: 3}
+          m_Scale: {x: 2, y: 2}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MetallicGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _ParallaxMap
         second:
           m_Texture: {fileID: 0}
@@ -70,41 +105,6 @@ Material:
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _MetallicGlossMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Water01
-        second:
-          m_Texture: {fileID: 2800000, guid: 90ff426733b42774fa4fb464cc68b2c9, type: 3}
-          m_Scale: {x: 0.6, y: 0.6}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Wave01
-        second:
-          m_Texture: {fileID: 2800000, guid: 077a10adfe7833347b250d448bf41899, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Water02
-        second:
-          m_Texture: {fileID: 2800000, guid: e13418555c7b85443a784514bbec2574, type: 3}
-          m_Scale: {x: 0.2, y: 0.2}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Wave02
-        second:
-          m_Texture: {fileID: 2800000, guid: eaa8c0021d7b12140b65997434a07438, type: 3}
-          m_Scale: {x: 2, y: 2}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -231,8 +231,12 @@ Material:
         second: 0
       data:
         first:
-          name: _Parallax
-        second: 0.02
+          name: _RefractionAmount
+        second: 0.0028
+      data:
+        first:
+          name: _DepthRefractionBlend
+        second: 0.1
       data:
         first:
           name: _ZWrite
@@ -241,6 +245,10 @@ Material:
         first:
           name: _BumpScale
         second: 1
+      data:
+        first:
+          name: _Parallax
+        second: 0.02
       data:
         first:
           name: _OcclusionStrength
@@ -255,20 +263,12 @@ Material:
         second: 0
       data:
         first:
-          name: _Mode
-        second: 0
-      data:
-        first:
           name: _EmissionScaleUI
         second: 0
       data:
         first:
-          name: _RefractionAmount
-        second: 0.0028
-      data:
-        first:
-          name: _DepthRefractionBlend
-        second: 0.1
+          name: _Mode
+        second: 0
       data:
         first:
           name: _FogHeight
@@ -340,12 +340,12 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _ReflectionTex
-        second: {r: 0.4228482, g: 0.5808823, b: 0.5351069, a: 1}
-      data:
-        first:
           name: _FogColor
         second: {r: 0.5735294, g: 0.5735294, b: 0.5735294, a: 1}
+      data:
+        first:
+          name: _ReflectionTex
+        second: {r: 0.4228482, g: 0.5808823, b: 0.5351069, a: 1}
       data:
         first:
           name: _ShallowFogColor

@@ -43,7 +43,7 @@ public class RainController : MonoBehaviour
                 m_material.SetInt("_OutlineEnabled", 1);
                 if (Input.GetMouseButtonDown(0))
                 {
-                    m_actor.Disabled = true;
+                    m_actor.m_disabledMouse = true;
                     m_active = true;
                 }
             }
@@ -69,7 +69,7 @@ public class RainController : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0) && m_active)
         {
-            m_actor.Disabled = false;
+            m_actor.m_disabledMouse = false;
             m_active = false;
         }
     }

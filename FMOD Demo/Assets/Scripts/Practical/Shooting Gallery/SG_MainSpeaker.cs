@@ -54,16 +54,20 @@ public class SG_MainSpeaker : MonoBehaviour {
     //EventInstance to the passed in value, changing the behaviour of the 
     //sound
     //--------------------------------------------------------------------
-    public void SetGameResult(int a_result)
+    public void SetGameResult(int a_value)
     {
-        m_resultParam.setValue(a_result);
+        m_resultParam.setValue(a_value);
     }
-    public void IsActive(bool a_active)
+    public void IsActive(bool a_value)
     {
-        m_activeParam.setValue(a_active ? 1 : 0);
+        m_activeParam.setValue(a_value ? 1 : 0);
     }
-    public void SetRound(int a_round)
+    public void Pause(bool a_value)
     {
-        m_roundsParam.setValue(a_round);
+        m_music.setPaused(a_value);
+    }
+    public void SetRound(int a_value)
+    {
+        m_roundsParam.setValue(a_value);
     }
 }
