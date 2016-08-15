@@ -4,7 +4,7 @@ using System.Collections;
 public class BaseTarget : MonoBehaviour {
 
     public int m_points;
-    public ScoreBoard m_scoreBoard;
+    public ShootingGalleryManager m_manager;
     protected bool m_active;
 
 	// Use this for initialization

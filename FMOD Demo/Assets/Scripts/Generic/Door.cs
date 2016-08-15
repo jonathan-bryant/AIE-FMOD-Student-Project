@@ -63,7 +63,7 @@ public class Door : ActionObject
         }
     }
 
-    public override void Use(bool a_use)
+    protected override void Action(GameObject sender, bool a_use)
     {
         if (!m_doorOpen)
         {
