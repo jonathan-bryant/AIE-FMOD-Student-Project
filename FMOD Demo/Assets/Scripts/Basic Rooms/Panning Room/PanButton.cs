@@ -27,7 +27,7 @@ public class PanButton : ActionObject
             m_bgMusic.SetParameter("Panning", m_panElapsed);
         }
     }
-    public override void Use(bool a_use)
+    protected override void Action(GameObject sender, bool a_use)
     {
         if(a_use)
             m_enablePan = !m_enablePan;
