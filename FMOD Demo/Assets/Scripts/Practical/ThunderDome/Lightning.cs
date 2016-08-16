@@ -92,13 +92,13 @@ public class Lightning : MonoBehaviour
             Vector4 col = m_material.GetVector("_Color");
             col.w = 0.0f;
             m_material.SetVector("_Color", col);
-            if (m_weatherController.Rain >= 0.5f && m_intervalElapsed > 0.0f)
+            if (m_weatherController.Rain >= 0.8f && m_intervalElapsed > 0.0f)
             {
                 m_intervalElapsed -= Time.deltaTime;
             }
             if (m_intervalElapsed <= 0.0f)
             {
-                if (m_weatherController.Rain >= 0.5f)
+                if (m_weatherController.Rain >= 0.8f)
                 {
                     GenerateLightning();
                     m_durationElapsed = Random.Range(m_duration.x, m_duration.y);

@@ -1,23 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RainController : MonoBehaviour
-{ 
+public class RainController : ActionObject
+{
     ActorControls m_actor;
     public ParticleSystem m_particleSystem;
-    public float m_rainValue;
 
-    bool m_active;
+    bool m_inControl;
+    float m_rainValue;
+    public float RainValue { get { return m_rainValue; } }
+
     float m_originalRate;
     float m_originalSpeed;
-
-    Material m_material;
 
     void Start()
     {
         m_actor = Camera.main.GetComponentInParent<ActorControls>();
-        m_material = GetComponent<Renderer>().material;
 
+        m_rainValue = 0.0f;
         m_originalRate = m_particleSystem.emission.rate.constantMax;
         m_originalSpeed = m_particleSystem.startSpeed;
 
@@ -28,49 +28,44 @@ public class RainController : MonoBehaviour
         emission.rate = rate;
 
         m_particleSystem.startSpeed = Mathf.Lerp(0.0f, m_originalSpeed, m_rainValue);
-
-        m_active = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        RaycastHit info;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out info, 10.0f))
-        {
-            if (info.collider.name == "Rain Knob")
-            {
-                m_material.SetInt("_OutlineEnabled", 1);
-                if (Input.GetMouseButtonDown(0))
-                {
-                    m_actor.m_disabledMouse = true;
-                    m_active = true;
-                }
-            }
-            else
-            {
-                m_material.SetInt("_OutlineEnabled", 0);
-            }
-        }
-        if (Input.GetMouseButton(0) && m_active)
+        if (m_inControl)
         {
             float mouseX = Input.GetAxis("Mouse X");
-            m_rainValue += mouseX / 50.0f;
-            m_rainValue = Mathf.Clamp(m_rainValue, 0.0f, 1.0f);
-            transform.Rotate(new Vector3(0.0f, -mouseX * 10.0f, 0.0f));
+            if (mouseX != 0.0f)
+            {
+                if ((mouseX > 0.0f && m_rainValue == 1.0f) || (mouseX < 0.0f && m_rainValue == 0.0f))
+                    return;
 
-            var emission = m_particleSystem.emission;
+                m_rainValue += mouseX / 100.0f;
+                m_rainValue = Mathf.Clamp(m_rainValue, 0.0f, 1.0f);
+                transform.Rotate(new Vector3(0.0f, -mouseX * 18.0f, 0.0f));
 
-            var rate = emission.rate;
-            rate.constantMax = Mathf.Lerp(0, m_originalRate, m_rainValue);
-            emission.rate = rate;
+                var emission = m_particleSystem.emission;
 
-            m_particleSystem.startSpeed = Mathf.Lerp(0.0f, m_originalSpeed, m_rainValue);
+                var rate = emission.rate;
+                rate.constantMax = Mathf.Lerp(0, m_originalRate, m_rainValue);
+                emission.rate = rate;
+
+                m_particleSystem.startSpeed = Mathf.Lerp(0.0f, m_originalSpeed, m_rainValue);
+            }
         }
-        if (Input.GetMouseButtonUp(0) && m_active)
+    }
+
+    override protected void Action(GameObject sender, bool a_use)
+    {
+        if (a_use)
+        {
+            m_actor.m_disabledMouse = true;
+            m_inControl = true;
+        }
+        else
         {
             m_actor.m_disabledMouse = false;
-            m_active = false;
+            m_inControl = false;
         }
     }
 }

@@ -5,6 +5,7 @@ public class WeatherController : MonoBehaviour
 {
     public WindController m_windController;
     public RainController m_rainController;
+    public SunController m_sunController;
     //---------------------------------Fmod-------------------------------
     //Call this to display it in Unity Inspector.
     //--------------------------------------------------------------------
@@ -24,8 +25,8 @@ public class WeatherController : MonoBehaviour
     //--------------------------------------------------------------------
     FMOD.Studio.ParameterInstance m_windParam;
     FMOD.Studio.ParameterInstance m_rainParam;
-    public float Wind { get { return m_windController.m_windValue; } }
-    public float Rain { get { return m_rainController.m_rainValue; } }
+    FMOD.Studio.ParameterInstance m_sunParam;
+    public float Rain { get { return m_rainController.RainValue; } }
     
     void Start () {
         //---------------------------------Fmod-------------------------------
@@ -40,15 +41,23 @@ public class WeatherController : MonoBehaviour
         //--------------------------------------------------------------------
         m_ambience.getParameter("Wind", out m_windParam);
         m_ambience.getParameter("Rain", out m_rainParam);
+        m_ambience.getParameter("Sun", out m_sunParam);
 
         //---------------------------------Fmod-------------------------------
         //Calling this function will start the EventInstance.
         //--------------------------------------------------------------------
         m_ambience.start();
+        m_ambience.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform, null));
     }
 	
 	void Update () {
-        m_windParam.setValue(m_windController.m_windValue);
-        m_rainParam.setValue(m_rainController.m_rainValue);
+        m_windParam.setValue(m_windController.WindValue);
+        m_rainParam.setValue(m_rainController.RainValue);
+        m_sunParam.setValue(m_sunController.SunValue);
+    }
+
+    void OnDestroy()
+    {
+        m_ambience.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 }
