@@ -58,7 +58,7 @@ www.yangseunghyuk.com</value>
             <destination>{0ea8c83c-1f7e-4fe6-bec4-4f87781e2be8}</destination>
         </relationship>
         <relationship name="banks">
-            <destination>{2503a6bf-a1f9-4334-9fec-bc04572f5674}</destination>
+            <destination>{88f92462-5b08-46f3-beef-d225312347e2}</destination>
         </relationship>
         <relationship name="folder">
             <destination>{0c084925-e4e2-4432-93fe-2c10b228ec77}</destination>
@@ -115,11 +115,11 @@ www.yangseunghyuk.com</value>
             <destination>{7dd6373a-e1ee-4546-bf6a-2f3006320812}</destination>
         </relationship>
         <relationship name="markers">
-            <destination>{e19984ff-cdcf-43eb-8835-464a080318e2}</destination>
-            <destination>{7928b060-3d94-40e0-a3ec-7be290db1fd1}</destination>
-            <destination>{e7bd35b5-573c-4e2b-9f13-4a774f07d883}</destination>
-            <destination>{071091fc-c2f9-4dd7-ae64-3faec2db2744}</destination>
             <destination>{3b9da470-940e-4141-8c63-9459081b2a54}</destination>
+            <destination>{071091fc-c2f9-4dd7-ae64-3faec2db2744}</destination>
+            <destination>{e7bd35b5-573c-4e2b-9f13-4a774f07d883}</destination>
+            <destination>{7928b060-3d94-40e0-a3ec-7be290db1fd1}</destination>
+            <destination>{e19984ff-cdcf-43eb-8835-464a080318e2}</destination>
         </relationship>
     </object>
     <object class="GameParameter" id="{0ea8c83c-1f7e-4fe6-bec4-4f87781e2be8}">
@@ -186,32 +186,35 @@ www.yangseunghyuk.com</value>
             <destination>{db4c7ee4-2fbf-4b9c-afee-81c2dcd3b21c}</destination>
         </relationship>
     </object>
-    <object class="NamedMarker" id="{e19984ff-cdcf-43eb-8835-464a080318e2}">
+    <object class="TransitionMarker" id="{3b9da470-940e-4141-8c63-9459081b2a54}">
         <property name="position">
-            <value>147.42857142857142</value>
+            <value>12</value>
         </property>
-        <property name="name">
-            <value>End</value>
-        </property>
+        <relationship name="destination">
+            <destination>{7928b060-3d94-40e0-a3ec-7be290db1fd1}</destination>
+        </relationship>
         <relationship name="timeline">
             <destination>{905fcacb-5101-4e22-9220-085c03d0fce4}</destination>
         </relationship>
         <relationship name="markerTrack">
-            <destination>{1f042cc5-f801-4537-a27b-c42cfe75e0e3}</destination>
+            <destination>{5c46f492-450b-44a7-aabd-50c498dfc862}</destination>
         </relationship>
     </object>
-    <object class="NamedMarker" id="{7928b060-3d94-40e0-a3ec-7be290db1fd1}">
+    <object class="LoopRegion" id="{071091fc-c2f9-4dd7-ae64-3faec2db2744}">
         <property name="position">
             <value>51.428571428571423</value>
         </property>
-        <property name="name">
-            <value>MID</value>
+        <property name="length">
+            <value>3.4314285714285759</value>
+        </property>
+        <property name="triggerProbabilityEnabled">
+            <value>true</value>
         </property>
         <relationship name="timeline">
             <destination>{905fcacb-5101-4e22-9220-085c03d0fce4}</destination>
         </relationship>
         <relationship name="markerTrack">
-            <destination>{1f042cc5-f801-4537-a27b-c42cfe75e0e3}</destination>
+            <destination>{5706f3a4-f349-4aee-b06f-44fdb7b0d76c}</destination>
         </relationship>
     </object>
     <object class="TransitionRegion" id="{e7bd35b5-573c-4e2b-9f13-4a774f07d883}">
@@ -237,35 +240,32 @@ www.yangseunghyuk.com</value>
             <destination>{fc314802-3758-4210-b20c-f15dee0056c3}</destination>
         </relationship>
     </object>
-    <object class="LoopRegion" id="{071091fc-c2f9-4dd7-ae64-3faec2db2744}">
+    <object class="NamedMarker" id="{7928b060-3d94-40e0-a3ec-7be290db1fd1}">
         <property name="position">
             <value>51.428571428571423</value>
         </property>
-        <property name="length">
-            <value>3.4314285714285759</value>
-        </property>
-        <property name="triggerProbabilityEnabled">
-            <value>true</value>
+        <property name="name">
+            <value>MID</value>
         </property>
         <relationship name="timeline">
             <destination>{905fcacb-5101-4e22-9220-085c03d0fce4}</destination>
         </relationship>
         <relationship name="markerTrack">
-            <destination>{5706f3a4-f349-4aee-b06f-44fdb7b0d76c}</destination>
+            <destination>{1f042cc5-f801-4537-a27b-c42cfe75e0e3}</destination>
         </relationship>
     </object>
-    <object class="TransitionMarker" id="{3b9da470-940e-4141-8c63-9459081b2a54}">
+    <object class="NamedMarker" id="{e19984ff-cdcf-43eb-8835-464a080318e2}">
         <property name="position">
-            <value>12</value>
+            <value>147.42857142857142</value>
+        </property>
+        <property name="name">
+            <value>End</value>
         </property>
         <relationship name="timeline">
             <destination>{905fcacb-5101-4e22-9220-085c03d0fce4}</destination>
         </relationship>
         <relationship name="markerTrack">
-            <destination>{5c46f492-450b-44a7-aabd-50c498dfc862}</destination>
-        </relationship>
-        <relationship name="destination">
-            <destination>{7928b060-3d94-40e0-a3ec-7be290db1fd1}</destination>
+            <destination>{1f042cc5-f801-4537-a27b-c42cfe75e0e3}</destination>
         </relationship>
     </object>
     <object class="MixerBusEffectChain" id="{e8f8236d-ce6b-4f7a-9de1-a700364fbbdf}">

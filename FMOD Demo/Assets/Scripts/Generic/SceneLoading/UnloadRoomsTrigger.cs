@@ -16,10 +16,6 @@ public class UnloadRoomsTrigger : MonoBehaviour
     void Start()
     {
         m_sceneCount = SceneManager.sceneCount;
-        for (int index = 0; index < m_sceneCount; index++)
-        {
-            Scene indexScene = SceneManager.GetSceneAt(index);
-        }
     }
 
     #region Private Functions
@@ -27,7 +23,6 @@ public class UnloadRoomsTrigger : MonoBehaviour
     void OnTriggerEnter()
     {
         m_sceneCount = SceneManager.sceneCount;
-        Debug.Log(m_sceneCount);
         for (int index = 0; index < m_sceneCount; index++)
         {
             Scene indexScene = SceneManager.GetSceneAt(index);

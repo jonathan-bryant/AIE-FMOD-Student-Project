@@ -14,6 +14,14 @@ public class SceneTrigger : MonoBehaviour
     // Public Vars
     public string m_sceneToLoad;
     public GameObject m_door;
+    //---------------------------------Fmod-------------------------------
+    //  Bank reference is the same as and Event, except using BankRef.
+    //  Another difference between Events and Banks is loading and 
+    //  unloading is done usig the string and not a class or instance.
+    //--------------------------------------------------------------------
+    [FMODUnity.BankRef]    public string m_bankString;
+
+    public float m_unloadWaitTime = 3.0f;
 
     // Private Vars
     float m_doorSizeZ;
@@ -21,7 +29,6 @@ public class SceneTrigger : MonoBehaviour
 
     static AsyncOperation m_async;
     int m_sceneIndex;
-    bool m_opening = false;
 
 	void Start () 
 	{
@@ -38,45 +45,38 @@ public class SceneTrigger : MonoBehaviour
         }
 	}
 
-    void Update()
-    {
-        if (m_door != null)
-        {
-            if (m_opening && m_door.transform.position.z > m_doorSizeZ)
-            {
-                Vector3 temp = m_doorDefaultPos;
-                temp.z = m_doorSizeZ;
-                m_door.transform.position = Vector3.Lerp(m_door.transform.position, temp, 0.1f);
-                // Play door opening sound
-            }
-            else if (!m_opening && m_door.transform.position.z < m_doorDefaultPos.z)
-            {
-                m_door.transform.position = Vector3.Lerp(m_door.transform.position, m_doorDefaultPos, 0.1f);
-            }
-        }
-    }
-
 	#region Private Functions
 
-    void OnTriggerEnter()
+    public void LoadRoom()
     {
         Scene temp = SceneManager.GetSceneByName(m_sceneToLoad);
         if (!temp.isLoaded)
         {
             //Entering
-            StartCoroutine(LoadScene(m_sceneToLoad));
-        }
-        else
-        {
-            // Exiting
-            m_opening = false;
+            StartCoroutine(LoadScene());
         }
     }
 
-    IEnumerator LoadScene(string a_sceneName)
+    IEnumerator LoadScene()
     {
-        yield return null;
+        //---------------------------------Fmod-------------------------------
+        //  Start loading the bank in the backgrouond including the audio 
+        //  sample data.
+        //--------------------------------------------------------------------
+        FMODUnity.RuntimeManager.LoadBank(m_bankString, true);
+
+        //---------------------------------Fmod-------------------------------
+        //  Keep yielding the coroutine until the bank has loaded.
+        //--------------------------------------------------------------------
+        while (FMODUnity.RuntimeManager.AnyBankLoading())
+        {
+            yield return null;
+        }
+
+        // For some reason Unity has issues with loading a scene the same 
+        // frame as a trigger response, so delay a framw with yield return null.
         m_async = SceneManager.LoadSceneAsync(m_sceneToLoad, LoadSceneMode.Additive);
+
         // Not all triggers may have a door attached to it.
         if (m_door != null)
             StartCoroutine(WaitAndOpenDoor());
@@ -84,10 +84,52 @@ public class SceneTrigger : MonoBehaviour
 
     IEnumerator WaitAndOpenDoor()
     {
-        yield return m_async;
         // Put the door opening stuff here!
-        if (m_async.isDone)
-            m_opening = true;
+        while (!m_async.isDone)
+        {
+            yield return null;
+        }
+
+        while (m_door.transform.position.z > m_doorSizeZ)
+        {
+            Vector3 temp = m_doorDefaultPos;
+            temp.z = m_doorSizeZ;
+            m_door.transform.position = Vector3.Lerp(m_door.transform.position, temp, 0.1f);
+            // Play door opening sound
+            yield return null;
+        }
     }
-	#endregion
+
+    public void UnloadRoom()
+    {
+        if (SceneManager.GetSceneByName(m_sceneToLoad).isLoaded)
+        {
+            StartCoroutine(CloseDoor());
+        }
+    }
+
+    IEnumerator CloseDoor()
+    {
+        if (m_door != null)
+        {
+            while (m_door.transform.position.z < m_doorDefaultPos.z)
+            {
+                m_door.transform.position = Vector3.Lerp(m_door.transform.position, m_doorDefaultPos, 0.1f);
+                yield return null;
+            }
+        }
+
+        StartCoroutine(UnloadScene());
+    }
+
+    IEnumerator UnloadScene()
+    {
+        yield return new WaitForSeconds(m_unloadWaitTime);
+
+        FMODUnity.RuntimeManager.UnloadBank(m_bankString);
+
+        SceneManager.UnloadScene(m_sceneToLoad);
+    }
+
+    #endregion
 }
