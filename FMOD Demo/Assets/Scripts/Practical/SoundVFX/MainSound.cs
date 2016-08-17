@@ -38,7 +38,6 @@ public class MainSound : MonoBehaviour
 #if UNITY_EDITOR
         m_soundPath = Application.dataPath + "/Scripts/Practical/SoundVFX/Audio/Feel.mp3";
 #endif
-        Debug.Log(m_soundPath);
         // Start by creating/initialising the sound, channel group and dsp effect's required.
         FMODUnity.RuntimeManager.LowlevelSystem.createSound(m_soundPath, FMOD.MODE.CREATESTREAM | FMOD.MODE._3D, out m_sound);
         FMODUnity.RuntimeManager.LowlevelSystem.createChannelGroup("Music Group", out m_channelGroup);
