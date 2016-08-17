@@ -13,11 +13,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 11467734}
-  - {fileID: 11453026}
   - {fileID: 11449952}
   - {fileID: 11436392}
   - {fileID: 11445476}
   - {fileID: 11443652}
+  - {fileID: 11430692}
+  - {fileID: 11421350}
+  - {fileID: 11490564}
+  - {fileID: 11498086}
+  - {fileID: 11456250}
+  - {fileID: 11498606}
+  - {fileID: 11429906}
+  - {fileID: 11497746}
+  - {fileID: 11483724}
+  - {fileID: 11419488}
+  - {fileID: 11478428}
+  - {fileID: 11487806}
   EditorEvents:
   - {fileID: 11427286}
   - {fileID: 11468770}
@@ -56,7 +67,7 @@ MonoBehaviour:
   - {fileID: 11441138}
   MasterBankRef: {fileID: 11443652}
   StringsBankRef: {fileID: 11467734}
-  stringsBankWriteTime: 636068762739636887
+  stringsBankWriteTime: 636070244775970648
   cacheVersion: 2
 --- !u!114 &11401726
 MonoBehaviour:
@@ -72,12 +83,12 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Situation_Oriental
   guid: e8905473ee897a49a43266891228345d
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11443652}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 11489740}
+  - {fileID: 11438994}
   MinDistance: 0
   MaxDistance: 0
 --- !u!114 &11402064
@@ -94,13 +105,28 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Sound Module Room/D#
   guid: aec99e5aa3a6e241927b341b48779357
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11497746}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &11402738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Wind
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &11402920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,17 +202,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
+  m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Path: event:/Basic Rooms/Panning Music
   guid: 766fd9f11dbbfb4eae8eff9f6e4cfb38
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11419488}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 11408452}
+  - {fileID: 11444320}
   MinDistance: 1
   MaxDistance: 30
 --- !u!114 &11412848
@@ -226,7 +252,7 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Sound Module Room/D
   guid: 97d252a8ed06494abf93bd582d311ef0
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11497746}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -278,6 +304,24 @@ MonoBehaviour:
   Min: 0
   Max: 2
   Default: 0
+--- !u!114 &11419488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: FMOD\Build\Desktop\Panner Room.bank
+  lastModified: 636070244776240663
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 2144224
+  Exists: 1
 --- !u!114 &11419490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,6 +337,24 @@ MonoBehaviour:
   Min: 0
   Max: 2000
   Default: 0
+--- !u!114 &11421350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: FMOD\Build\Desktop\Transceiver Room.bank
+  lastModified: 636070244781950990
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 51232
+  Exists: 1
 --- !u!114 &11421466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,7 +369,7 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Snapshot Room/music
   guid: 15381d72f908f644bf294b1fe64ee014
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11478428}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -328,7 +390,7 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Event Cone Angle Room/Event Cone Angle
   guid: 08f9fb6726a7d24989c3e9bd0723fd3a
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11456250}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -349,15 +411,66 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Player Paramter Room/Basic Engine
   guid: 72edbbcaaeee144b98313e7b4542cc1e
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11490564}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 11419490}
-  - {fileID: 11451678}
+  - {fileID: 11484222}
+  - {fileID: 11437552}
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &11428120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Enabled
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &11429906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: FMOD\Build\Desktop\Sound Spin Room.bank
+  lastModified: 636070244777770751
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 2143936
+  Exists: 1
+--- !u!114 &11430692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: FMOD\Build\Desktop\Thunder Dome.bank
+  lastModified: 636070244781900987
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 4029120
+  Exists: 1
 --- !u!114 &11432126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,7 +485,7 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Sound Module Room/A
   guid: cfe5849bb6e8974daecf35cd2931d95b
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11497746}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -414,13 +527,28 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Sound Module Room/A#
   guid: 72472d4818f5534990a96a61a2ab7b6d
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11497746}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &11434580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Surface
+  Min: 0
+  Max: 3
+  Default: 0
 --- !u!114 &11436392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -439,6 +567,21 @@ MonoBehaviour:
   - Name: 
     Value: 232096
   Exists: 1
+--- !u!114 &11437552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Load
+  Min: -1
+  Max: 1
+  Default: -1
 --- !u!114 &11437688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,15 +626,30 @@ MonoBehaviour:
   Path: event:/Thunder Dome/Ambience
   guid: 60342a028c005744a6752e4c115a33f9
   Banks:
-  - {fileID: 11443652}
+  - {fileID: 11430692}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 11437688}
-  - {fileID: 11451742}
+  - {fileID: 11440940}
+  - {fileID: 11402738}
   MinDistance: 0
   MaxDistance: 250
+--- !u!114 &11438994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Intensity
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &11440494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,14 +664,29 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Sound Spin Room/Sound Spin
   guid: 9571b7483b4792498361219fb0304d75
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11429906}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 11417304}
+  - {fileID: 11445572}
   MinDistance: 0
   MaxDistance: 0
+--- !u!114 &11440940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  Name: Rain
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &11441138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,12 +701,12 @@ MonoBehaviour:
   Path: event:/Thunder Dome/Thunder
   guid: b41ef1236f171f47ac352fef65873950
   Banks:
-  - {fileID: 11443652}
+  - {fileID: 11430692}
   IsStream: 1
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: 11404422}
+  - {fileID: 11487096}
   MinDistance: 1
   MaxDistance: 1600
 --- !u!114 &11442382
@@ -550,7 +723,7 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Sound Module Room/F
   guid: 7fb5c70b140ca248b097f7b6b795bfa3
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11497746}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -569,12 +742,27 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Master Bank.bank
-  lastModified: 636068762739596885
+  lastModified: 636070244775930646
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 4039904
+    Value: 2411456
   Exists: 1
+--- !u!114 &11444320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Panning
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &11445476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,6 +781,21 @@ MonoBehaviour:
   - Name: 
     Value: 2239328
   Exists: 1
+--- !u!114 &11445572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Intensity
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &11446952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -678,7 +881,7 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Programmer Sounds Room/Dialogue
   guid: c0f0ee6b9da5d5459ebd3f6f53cc535b
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11498606}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -702,6 +905,24 @@ MonoBehaviour:
   FileSizes:
   - Name: 
     Value: 5248320
+  Exists: 0
+--- !u!114 &11456250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: FMOD\Build\Desktop\Event Cone Room.bank
+  lastModified: 636070244771620399
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 22432
   Exists: 1
 --- !u!114 &11457274
 MonoBehaviour:
@@ -739,7 +960,7 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Transceiver Room/Transmit Transceiver
   guid: 2059fca8f9a1994da43063a91d5d938b
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11421350}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -760,7 +981,7 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Sound Module Room/B
   guid: 28dac24b365347478e47f29b627a82e1
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11497746}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -856,7 +1077,7 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Sound Module Room/C
   guid: 4ae9d7fb09c24c4f8ead778a160d33b5
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11497746}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -877,7 +1098,7 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Sound Module Room/E
   guid: 581d70b19735cb4fb3bebdb6897847c1
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11497746}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -896,11 +1117,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636068762739636887
+  lastModified: 636070244775970648
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 2848
+    Value: 3412
   Exists: 1
 --- !u!114 &11468770
 MonoBehaviour:
@@ -916,7 +1137,7 @@ MonoBehaviour:
   Path: event:/Basic Rooms/VolumeControl Room/music
   guid: 0b47eeea5192024fae871dfbb7372f18
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11483724}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -937,12 +1158,12 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Footsteps
   guid: 1eebb8aa5ec56146bf0bd007ce4f9012
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11443652}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 11402920}
+  - {fileID: 11434580}
   MinDistance: 1
   MaxDistance: 20
 --- !u!114 &11471504
@@ -959,7 +1180,7 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Sound Module Room/F#
   guid: ed5fe3e32f53704883aac6c82d9e9c7d
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11497746}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -980,7 +1201,7 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Custom Distance Attenuation Room/CDA
   guid: 8e03892a08c6b54ba5879173d242d88d
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11487806}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -1001,14 +1222,32 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Door Transceiver
   guid: 8feb7d8e20637d489ad1c5ad75e0a1a8
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11421350}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 11438302}
+  - {fileID: 11428120}
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &11478428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: FMOD\Build\Desktop\Snapshot Room.bank
+  lastModified: 636070244777320725
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 2143712
+  Exists: 1
 --- !u!114 &11479790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1038,7 +1277,7 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Transceiver Room/Speaker Transceiver
   guid: f58eb589a317434b87f62987f0cdb0d7
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11421350}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -1059,13 +1298,46 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Sound Module Room/G
   guid: 71ebc969db2c0b40a342d9c7207b960f
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11497746}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &11483724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: FMOD\Build\Desktop\Volume Control Room.bank
+  lastModified: 636070244782191004
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 2143584
+  Exists: 1
+--- !u!114 &11484222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: RPM
+  Min: 0
+  Max: 2000
+  Default: 0
 --- !u!114 &11485542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1080,14 +1352,14 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Scatter Room
   guid: 8a7cc4442b94e149a536658f0da500ff
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11498086}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 9.2
---- !u!114 &11489642
+--- !u!114 &11487096
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1097,6 +1369,39 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Thunder
+  Min: 0
+  Max: 6
+  Default: 0
+--- !u!114 &11487806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  Path: FMOD\Build\Desktop\Custom Distance Atten Room.bank
+  lastModified: 636070244771570396
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 2144256
+  Exists: 1
+--- !u!114 &11489642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Name: RPM
   Min: 0
@@ -1111,12 +1416,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
+  m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Name: Intensity
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &11490564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: FMOD\Build\Desktop\Player Parameter Room.bank
+  lastModified: 636070244776310667
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 91616
+  Exists: 1
 --- !u!114 &11491122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1131,7 +1454,7 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Sound Module Room/C#
   guid: 618f76401a474c4092c5f9e20bf4c0cc
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11497746}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1168,6 +1491,24 @@ MonoBehaviour:
   Min: -1
   Max: 1
   Default: 0
+--- !u!114 &11497746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: FMOD\Build\Desktop\Sound Module Room.bank
+  lastModified: 636070244777610742
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 200576
+  Exists: 1
 --- !u!114 &11498038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1182,10 +1523,46 @@ MonoBehaviour:
   Path: event:/Basic Rooms/Sound Module Room/G#
   guid: c07dece5a0326540ab48122913e2d34c
   Banks:
-  - {fileID: 11453026}
+  - {fileID: 11497746}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &11498086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: FMOD\Build\Desktop\Scatter Room.bank
+  lastModified: 636070244777130714
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 355488
+  Exists: 1
+--- !u!114 &11498606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  Path: FMOD\Build\Desktop\Programmer Sounds Room.bank
+  lastModified: 636070244776340669
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 1510
+  Exists: 1

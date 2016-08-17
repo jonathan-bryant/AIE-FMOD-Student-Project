@@ -7,7 +7,8 @@ Date:			16/08/2016
 
 using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class DescriptionCanvasScript : MonoBehaviour
 {
@@ -15,12 +16,12 @@ public class DescriptionCanvasScript : MonoBehaviour
 	public float m_timeUntilFade = 2.0f;
 
 	public CanvasGroup m_canvas;
-
+    List<Image> images;
 	void Start ()
 	{
 		m_canvas = GetComponentInChildren<CanvasGroup>();
         m_canvas.alpha = 0;
-	}
+    }
 	
 
 	void Update ()
@@ -36,7 +37,8 @@ public class DescriptionCanvasScript : MonoBehaviour
 		else if (m_active && m_canvas.alpha < 1)
 		{
 			m_canvas.alpha += Time.deltaTime / 2.0f;
-		}
+        }
+        
 	}
 
 	public void FadeIn()
