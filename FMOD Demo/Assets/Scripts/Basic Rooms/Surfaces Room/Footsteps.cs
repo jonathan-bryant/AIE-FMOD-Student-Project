@@ -4,8 +4,9 @@ using System.Collections;
 public class Footsteps : MonoBehaviour
 {
     ActorControls m_actor;
-    Collider m_lastCollider;
-    bool m_isWalking;
+    public float m_fps;         //Footsteps per second
+    float m_fpsElapsed;
+    float m_currentParamValue;  //1.0f == carpet, 2.0f == grass, 3.0f == wood
 
     //---------------------------------Fmod-------------------------------
     //Call this to display it in Unity Inspector.
@@ -19,58 +20,29 @@ public class Footsteps : MonoBehaviour
     //EventInstance. Used to play or stop the sound, etc.
     //--------------------------------------------------------------------
     FMOD.Studio.EventInstance m_footstepSurfaceEvent;
-    //---------------------------------Fmod-------------------------------
-    //Parameter. Used to adjust EventInstances tracks. Such as: changing 
-    //from wood to a carpet floor inside the same Event.
-    //--------------------------------------------------------------------
-    FMOD.Studio.ParameterInstance m_footstepSurfaceParameter;
+
 
     void Start()
     {
-        m_isWalking = false;
         m_actor = GetComponent<ActorControls>();
-
-        //---------------------------------Fmod-------------------------------
-        //Create insance of footsteps event.
-        //--------------------------------------------------------------------
-        m_footstepSurfaceEvent = FMODUnity.RuntimeManager.CreateInstance(m_footstepSurfaceName);
-        //---------------------------------Fmod-------------------------------
-        //Get a reference to the surface paramater and store it in
-        //ParamaterInstance.
-        //--------------------------------------------------------------------
-        m_footstepSurfaceEvent.getParameter("Surface", out m_footstepSurfaceParameter);
+        m_fpsElapsed = 0.0f;
+        m_currentParamValue = 0.0f;
     }
 
     void Update()
     {
-        //---------------------------------Fmod--------------------wwwd-----------
-        //IsWalking is a safeguard so the EventInstance.start() function is
-        //not called every update. Calling EventInstance.start() without
-        //calling EventInstance.stop() will restart the instance.
-        //--------------------------------------------------------------------
-        if (m_actor.CurrentVelocity <= 9.8f && m_isWalking)
+        m_fpsElapsed += Time.deltaTime;
+        if (m_actor.CurrentVelocity > 9.8f && m_fpsElapsed >= m_fps)
         {
-            //---------------------------------Fmod-------------------------------
-            //When actor is idle, call EventInstance.stop().
-            //--------------------------------------------------------------------
-            m_footstepSurfaceEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-
-            m_isWalking = false;
-        }
-        else if (m_actor.CurrentVelocity > 9.8f && !m_isWalking)
-        {
-            //---------------------------------Fmod-------------------------------
-            //When actor is walking, call EventInstance.start().
-            //--------------------------------------------------------------------
-            m_footstepSurfaceEvent.start();
-            //---------------------------------Fmod-------------------------------
-            //A gameobject need to be attached to the instance, so the sound can 
-            //follow the gameobject. Everytime the EventInstance.start() function 
-            //is called, the gameobject needs to be reattached.
-            //--------------------------------------------------------------------
-            FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_footstepSurfaceEvent, transform, null);
-
-            m_isWalking = true;
+            if (m_currentParamValue > 0.99f)
+            {
+                FMOD.Studio.EventInstance instance = FMODUnity.RuntimeManager.CreateInstance(m_footstepSurfaceName);
+                instance.setParameterValue("Surface", m_currentParamValue);
+                instance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+                instance.start();
+                instance.release();
+            }
+            m_fpsElapsed = 0.0f;
         }
     }
 
@@ -81,30 +53,24 @@ public class Footsteps : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit a_hit)
     {
-        //---------------------------------Fmod-------------------------------
-        //Depending on the type of ground that is triggered, call ParameterInstance.setValue() to change the transition of the footstep.
-        //--------------------------------------------------------------------
         string name = a_hit.gameObject.name;
-        if (m_lastCollider == a_hit.collider)
-            return;
+        string tag = a_hit.gameObject.tag;
 
-        if (name.Contains("Grass"))
+        if (name.Contains("Grass") || tag == "Grass")
         {
-            m_footstepSurfaceParameter.setValue(2.0f);
+            m_currentParamValue = 2.0f;
         }
-        else if (name.Contains("Carpet"))
+        else if (name.Contains("Carpet") || tag == "Carpet")
         {
-            m_footstepSurfaceParameter.setValue(1.0f);
+            m_currentParamValue = 1.0f;
         }
-        else if (name.Contains("Wood"))
+        else if (name.Contains("Wood") || tag == "Wood")
         {
-            m_footstepSurfaceParameter.setValue(3.0f);
+            m_currentParamValue = 3.0f;
         }
         else
         {
-            m_footstepSurfaceParameter.setValue(0.0f);
+            m_currentParamValue = 0.0f;
         }
-
-        m_lastCollider = a_hit.collider;
     }
 }
