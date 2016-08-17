@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
 public class TreadmillSpawner : MonoBehaviour
 {
-
+    public ParticleSystem m_grassParticleEmitter;
+    public ParticleSystem m_woodParticleEmitter;
+    public ParticleSystem m_carpetParticleEmitter;
     public GameObject[] m_surfaces;
     public float m_speed;
     public int m_numOfTiles;
@@ -14,25 +17,49 @@ public class TreadmillSpawner : MonoBehaviour
     int m_index;
 
     List<GameObject> m_floors;
-    
+
+    public Text m_type;
+    public Text m_paramValue;
+
+    Transform m_actor;
+
     void Start()
     {
+        m_actor = Camera.main.transform.parent;
         m_floors = new List<GameObject>();
         for (int i = m_numOfTiles - 1; i >= 0; --i)
         {
             AddFloor(transform.position + transform.forward * m_surfaces[0].transform.localScale.z * i);
         }
-    }    
+    }
     void Update()
     {
         MoveFloors();
         MoveGears();
+        RaycastHit m_info;
+        Ray ray = new Ray(m_actor.position - new Vector3(0.0f, m_actor.localScale.y, 0.0f), -m_actor.up);
+
+        int layerMask = (1 << 8);
+
+        Debug.DrawRay(ray.origin, ray.direction);
+        if (Physics.Raycast(ray, out m_info, Mathf.Infinity, layerMask))
+        {
+            m_type.text = "Type:\n" + m_info.collider.gameObject.name;
+            if (m_info.collider.gameObject.name == "Grass")
+                m_paramValue.text = "Value:\n2.0f";
+            if (m_info.collider.gameObject.name == "Carpet")
+                m_paramValue.text = "Value:\n1.0f";
+            if (m_info.collider.gameObject.name == "Wood")
+                m_paramValue.text = "Value:\n3.0f";
+        }
     }
 
     void AddFloor(Vector3 a_position)
     {
         int index = m_index / m_numOfRepititions;
-        GameObject floor = Instantiate(m_surfaces[Mathf.Clamp(index, 0, 2)]);
+        index = Mathf.Clamp(index, 0, 2);
+        GameObject floor = Instantiate(m_surfaces[index]);
+        floor.name = m_surfaces[index].name;
         if (a_position == Vector3.zero)
         {
             floor.transform.position = transform.position;
@@ -50,6 +77,22 @@ public class TreadmillSpawner : MonoBehaviour
         for (int i = 0; i < m_floors.Count; ++i)
         {
             m_floors[i].transform.position += transform.forward * m_speed * Time.deltaTime;
+
+            if (m_floors[i].transform.position.z <= -19.75 + m_floors[i].transform.localScale.z * 0.5f)
+            {
+                if (m_floors[i].tag == "Grass")
+                {
+                    m_grassParticleEmitter.Play();
+                }
+                else if (m_floors[i].tag == "Wood")
+                {
+                    m_woodParticleEmitter.Play();
+                }
+                else if (m_floors[i].tag == "Carpet")
+                {
+                    m_carpetParticleEmitter.Play();
+                }
+            }
         }
         if (Mathf.Abs(m_floors[0].transform.position.z - transform.position.z) >= m_surfaces[0].transform.localScale.z * (m_numOfTiles - 1))
         {
@@ -60,7 +103,7 @@ public class TreadmillSpawner : MonoBehaviour
     }
     void MoveGears()
     {
-        for(int i = 0; i < m_gears.Count; ++i)
+        for (int i = 0; i < m_gears.Count; ++i)
         {
             m_gears[i].transform.Rotate(new Vector3(0.0f, 1.0f, 0.0f), -m_speed / (m_gears[i].transform.localScale.x * 0.5f));
         }
@@ -68,7 +111,7 @@ public class TreadmillSpawner : MonoBehaviour
 
     void OnTriggerStay(Collider a_col)
     {
-        if(a_col.gameObject.tag == "Player")
+        if (a_col.gameObject.tag == "Player")
         {
             a_col.gameObject.transform.position += transform.forward * m_speed * Time.deltaTime;
         }

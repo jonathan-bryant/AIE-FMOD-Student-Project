@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Grass : MonoBehaviour {
 
+    public ParticleSystem m_grassParticles;
     //rotate grass
     //Random platform animation
     bool m_standing;
@@ -17,8 +18,18 @@ public class Grass : MonoBehaviour {
 	
 	}
 
-    void OnTriggerEnter()
+    void OnCollisionEnter(Collision a_col)
     {
-
+        if(a_col.gameObject.name.Contains("End Wall"))
+        {
+            m_grassParticles.Play();
+        }
+    }
+    void OnCollisionExit(Collision a_col)
+    {
+        if (a_col.gameObject.name.Contains("End Wall"))
+        {
+            m_grassParticles.Stop();
+        }
     }
 }
