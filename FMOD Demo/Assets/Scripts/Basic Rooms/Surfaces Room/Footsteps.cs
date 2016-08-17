@@ -38,7 +38,7 @@ public class Footsteps : MonoBehaviour
             {
                 FMOD.Studio.EventInstance instance = FMODUnity.RuntimeManager.CreateInstance(m_footstepSurfaceName);
                 instance.setParameterValue("Surface", m_currentParamValue);
-                instance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+                instance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position - new Vector3(0,transform.localScale.y,0)));
                 instance.start();
                 instance.release();
             }
