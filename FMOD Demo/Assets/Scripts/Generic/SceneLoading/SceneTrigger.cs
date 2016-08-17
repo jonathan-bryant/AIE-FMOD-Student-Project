@@ -59,20 +59,22 @@ public class SceneTrigger : MonoBehaviour
 
     IEnumerator LoadScene()
     {
-        //---------------------------------Fmod-------------------------------
-        //  Start loading the bank in the backgrouond including the audio 
-        //  sample data.
-        //--------------------------------------------------------------------
-        FMODUnity.RuntimeManager.LoadBank(m_bankString, true);
-
-        //---------------------------------Fmod-------------------------------
-        //  Keep yielding the coroutine until the bank has loaded.
-        //--------------------------------------------------------------------
-        while (FMODUnity.RuntimeManager.AnyBankLoading())
+        if (m_bankString != "")
         {
-            yield return null;
-        }
+            //---------------------------------Fmod-------------------------------
+            //  Start loading the bank in the backgrouond including the audio 
+            //  sample data.
+            //--------------------------------------------------------------------
+            FMODUnity.RuntimeManager.LoadBank(m_bankString, true);
 
+            //---------------------------------Fmod-------------------------------
+            //  Keep yielding the coroutine until the bank has loaded.
+            //--------------------------------------------------------------------
+            while (FMODUnity.RuntimeManager.AnyBankLoading())
+            {
+                yield return null;
+            }
+        }
         // For some reason Unity has issues with loading a scene the same 
         // frame as a trigger response, so delay a framw with yield return null.
         m_async = SceneManager.LoadSceneAsync(m_sceneToLoad, LoadSceneMode.Additive);

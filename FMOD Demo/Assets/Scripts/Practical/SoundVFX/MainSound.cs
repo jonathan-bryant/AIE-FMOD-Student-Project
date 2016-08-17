@@ -13,6 +13,7 @@ public class MainSound : MonoBehaviour
 {
     // Public Vars
     string m_soundPath;
+
     public float[] m_fftArray;
 
     [HideInInspector] public Texture2D m_soundTex;
@@ -33,7 +34,10 @@ public class MainSound : MonoBehaviour
     {
         m_fftArray = new float[WINDOWSIZE];
 
+        m_soundPath = Application.dataPath + "/Audio/Feel.mp3";
+#if UNITY_EDITOR
         m_soundPath = Application.dataPath + "/Scripts/Practical/SoundVFX/Audio/Feel.mp3";
+#endif
         Debug.Log(m_soundPath);
         // Start by creating/initialising the sound, channel group and dsp effect's required.
         FMODUnity.RuntimeManager.LowlevelSystem.createSound(m_soundPath, FMOD.MODE.CREATESTREAM | FMOD.MODE._3D, out m_sound);

@@ -11,8 +11,7 @@ public class ActionObject : MonoBehaviour
     protected Vector3 m_descriptionPosition;
 
     //[SerializeField] GameObject m_descriptionPrefab;
-    [SerializeField]
-     GameObject m_descriptionObject;
+    [SerializeField]     GameObject m_descriptionObject;
     DescriptionCanvasScript m_descriptionScript;
 
     void Awake()
