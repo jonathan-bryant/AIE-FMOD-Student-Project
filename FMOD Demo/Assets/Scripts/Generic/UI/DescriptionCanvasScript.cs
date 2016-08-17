@@ -20,17 +20,16 @@ public class DescriptionCanvasScript : MonoBehaviour
 	void Start ()
 	{
 		m_canvas = GetComponentInChildren<CanvasGroup>();
-        m_canvas.alpha = 0;
+        m_canvas.alpha = 0.5f;
     }
 	
 
 	void Update ()
-	{
-		if (m_active)
-		{
-			transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward, Vector3.up);
-		}
-		if (!m_active && m_canvas.alpha > 0)
+    {
+        // Make canvas billboard to camera.
+        transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward, Vector3.up);
+
+        if (!m_active && m_canvas.alpha > 0.5f)
 		{
 			m_canvas.alpha -= Time.deltaTime / 2.0f;
 		}

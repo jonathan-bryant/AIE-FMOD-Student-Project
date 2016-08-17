@@ -9,15 +9,17 @@ public class ActionObject : MonoBehaviour
     protected string m_description;
     protected bool m_descriptionIs3D;
     protected Vector3 m_descriptionPosition;
-    
-    void Start()
-    {
 
-    }
-    void Update()
+    //[SerializeField] GameObject m_descriptionPrefab;
+    [SerializeField]
+     GameObject m_descriptionObject;
+    DescriptionCanvasScript m_descriptionScript;
+
+    void Awake()
     {
-        if (m_isHighlighted)
-            DisplayDescription();
+        //m_descriptionObject = Instantiate(m_descriptionPrefab, transform.position + new Vector3(0, 1, 4), Quaternion.identity) as GameObject;
+        //m_descriptionObject.transform.SetParent(transform);
+        m_descriptionScript = m_descriptionObject.GetComponent<DescriptionCanvasScript>();
     }
 
     public void Use(GameObject sender)
@@ -30,16 +32,17 @@ public class ActionObject : MonoBehaviour
 
     }
 
-    void DisplayDescription()
+    void OnMouseEnter()
     {
-        //Show description
-        if(m_descriptionIs3D)
-        {
+        m_descriptionScript.FadeIn();
+    }
 
-        }
-        else
-        {
-
-        }
+    void OnMouseExit()
+    {
+        m_descriptionScript.FadeOut();
+    }
+    void OnMouseOver()
+    {
+        m_descriptionScript.m_active = true;
     }
 }
