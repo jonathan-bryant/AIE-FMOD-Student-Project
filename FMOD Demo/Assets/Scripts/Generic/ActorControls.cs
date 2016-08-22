@@ -26,7 +26,7 @@ public class ActorControls : MonoBehaviour
     public bool m_disabledMovement;
     public bool m_disabledMouse;
 
-    public Vector3 CurrentVelocity { get { return m_velocity; } }
+    public Vector3 CurrentVelocity { get { return new Vector3(m_velocity.x, 0.0f, m_velocity.z); } }
     public bool IsGrounded { get { return m_cc.isGrounded; } }
 
     void Start()
