@@ -96,10 +96,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132774}
-  m_LocalRotation: {x: 0, y: 0.7071082, z: 0, w: 0.70710546}
-  m_LocalPosition: {x: -2.98, y: 0.64, z: -15.01}
+  m_LocalRotation: {x: 0, y: 0.7071066, z: 0, w: -0.70710695}
+  m_LocalPosition: {x: -30.6, y: 0.75, z: -15.05}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
-  m_LocalEulerAnglesHint: {x: 0, y: 90.0002, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
   m_Children:
   - {fileID: 444852}
   m_Father: {fileID: 0}
@@ -156,7 +156,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -273,10 +273,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302f2a8ace228434f90acd2b212923c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_movementSpeed: 5
   m_lookSensitivity: 10
+  m_movementSpeed: 50
+  m_jumpPower: 250
+  m_selectDistance: 4
   m_gun: {fileID: 184524}
-  m_selectDistacne: 4
+  m_drag: 0.2
+  m_disabledMovement: 0
+  m_disabledMouse: 0
 --- !u!114 &11427630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -410,6 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5154dabaa61264a8bb4b3740d7b2e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_fps: 0.5
   m_footstepSurfaceName: event:/Basic Rooms/Footsteps
 --- !u!124 &12436744
 Behaviour:
@@ -431,7 +436,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.4
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}

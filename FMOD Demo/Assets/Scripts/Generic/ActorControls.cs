@@ -6,28 +6,31 @@ public class ActorControls : MonoBehaviour
 {
     public float m_lookSensitivity;
     public float m_movementSpeed;
+    public float m_jumpPower;
     public float m_selectDistance = 4.0f;
     public GameObject m_gun;
 
     CharacterController m_cc;
     Camera m_camera;
 
-    float m_currentSpeed;
-    Vector3 m_moveDirection;
+    Vector3 m_velocity;
+    public float m_drag;
+    float m_minThreshold = 0.017f;
 
     ActionObject m_actionObject;
 
     public bool m_disabledMovement;
     public bool m_disabledMouse;
 
-    public float CurrentVelocity { get { return m_moveDirection.magnitude; } }
+    public Vector3 CurrentVelocity { get { return m_velocity; } }
+    public bool IsGrounded { get { return m_cc.isGrounded; } }
 
     void Start()
     {
+        m_drag = 1.0f / (m_drag + 1.0f);
         Application.runInBackground = true;
         m_cc = GetComponent<CharacterController>();
         m_camera = Camera.main;
-        m_currentSpeed = m_movementSpeed;
         m_disabledMovement = true;
         m_disabledMouse = true;
         if (m_gun)
@@ -37,8 +40,11 @@ public class ActorControls : MonoBehaviour
     {
         DisableMovement();
         Action();
-        Move();
         Look();
+    }
+    void FixedUpdate()
+    {
+        Move();
     }
 
     public void ActivateGun(bool a_value)
@@ -67,29 +73,41 @@ public class ActorControls : MonoBehaviour
     }
     void Move()
     {
-        m_moveDirection = Vector3.zero;
+        m_velocity.y -= 9.8f * Time.fixedDeltaTime;
+        m_velocity.x *= m_drag;
+        m_velocity.z *= m_drag;
+        if (Mathf.Abs(m_velocity.x) <= m_minThreshold)
+            m_velocity.x = 0.0f;
+        if (Mathf.Abs(m_velocity.z) <= m_minThreshold)
+            m_velocity.z = 0.0f;
+        if (m_cc.isGrounded)
+        {
+            m_velocity.y = 0.0f;
+        }
         if (!m_disabledMovement)
         {
             if (Input.GetKey(KeyCode.A))
             {
-                m_moveDirection += -transform.right;
+                m_velocity += -transform.right * m_movementSpeed * Time.fixedDeltaTime;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                m_moveDirection += transform.right;
+                m_velocity += transform.right * m_movementSpeed * Time.fixedDeltaTime;
             }
             if (Input.GetKey(KeyCode.W))
             {
-                m_moveDirection += transform.forward;
+                m_velocity += transform.forward * m_movementSpeed * Time.fixedDeltaTime;
             }
             if (Input.GetKey(KeyCode.S))
             {
-                m_moveDirection += -transform.forward;
+                m_velocity += -transform.forward * m_movementSpeed * Time.fixedDeltaTime;
             }
-            m_moveDirection *= m_currentSpeed;
+            if (Input.GetKey(KeyCode.Space) && m_cc.isGrounded)
+            {
+                m_velocity += transform.up * m_jumpPower * Time.fixedDeltaTime;
+            }
         }
-        m_moveDirection.y -= 9.8f;
-        m_cc.Move(m_moveDirection * Time.deltaTime);
+        m_cc.Move(m_velocity * Time.fixedDeltaTime);
     }
     void Look()
     {
