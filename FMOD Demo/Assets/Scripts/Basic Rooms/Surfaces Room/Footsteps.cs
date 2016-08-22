@@ -32,7 +32,9 @@ public class Footsteps : MonoBehaviour
     void Update()
     {
         m_fpsElapsed += Time.deltaTime;
-        if (m_actor.CurrentVelocity > 9.8f && m_fpsElapsed >= m_fps)
+        Vector3 velocity = m_actor.CurrentVelocity;
+        velocity.y = 0.0f;
+        if (velocity.magnitude > 0.0f && m_actor.IsGrounded && m_fpsElapsed >= m_fps)
         {
             if (m_currentParamValue > 0.99f)
             {
