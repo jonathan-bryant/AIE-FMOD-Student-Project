@@ -6,46 +6,34 @@
 using UnityEngine;
 using System.Collections;
 
-public class PanButton : ActionObject
+public class InteractiveButton : ActionObject
 {
     /*===============================================Fmod====================================================
-    |   This StudioEventEmitter is a reference to an emitter created using Fmods scripts, in Unity.         |
+    |   The setParamterValue function takes in the name of the parameter, and the value to give it.         |
+    |   Parameters can be used to change volumes, or to jump to sections in the sound.                      |
     =======================================================================================================*/
-    public FMODUnity.StudioEventEmitter m_bgMusic;
-
-    bool m_enablePan;
-    public bool PanEnabled { get { return m_enablePan; }}    
-    float m_panElapsed;
-
+    public FMODUnity.StudioEventEmitter m_emitter;
+    public float m_value;
+    ActorControls m_actor;
+    
     void Start()
     {
-        m_panElapsed = 0.0f;
+        m_actor = Camera.main.GetComponentInParent<ActorControls>();
     }
-    
     void Update()
     {
-        if (m_enablePan)
-        {
-            m_panElapsed = Mathf.Min(1.0f, m_panElapsed + Time.deltaTime);
-            /*===============================================Fmod====================================================
-            |   The setParamterValue function takes in the name of the parameter, and the value to give it.         |
-            |   Parameters can be used to change volumes, or to jump to sections in the sound.                      |
-            =======================================================================================================*/
-            m_bgMusic.SetParameter("Panning", m_panElapsed);
-        }
-        else
-        {
-            m_panElapsed = Mathf.Max(0.0f, m_panElapsed - Time.deltaTime);
-            /*===============================================Fmod====================================================
-            |   The setParamterValue function takes in the name of the parameter, and the value to give it.         |
-            |   Parameters can be used to change volumes, or to jump to sections in the sound.                      |
-            =======================================================================================================*/
-            m_bgMusic.SetParameter("Panning", m_panElapsed);
-        }
+
     }
+
     protected override void Action(GameObject sender, bool a_use)
     {
-        if(a_use)
-            m_enablePan = !m_enablePan;
+        if (a_use)
+        {
+            /*===============================================Fmod====================================================
+            |   The setParamterValue function takes in the name of the parameter, and the value to give it.         |
+            |   Parameters can be used to change volumes, or to jump to sections in the sound.                      |
+            =======================================================================================================*/
+            m_emitter.SetParameter("Intensity", m_value);
+        }
     }
 }
