@@ -1,64 +1,67 @@
-﻿using UnityEngine;
+﻿/* ========================================================================================== */
+/*                                                                                            */
+/* FMOD Studio - C# Wrapper . Copyright (c), Firelight Technologies Pty, Ltd. 2004-2016.      */
+/*                                                                                            */
+/* ========================================================================================== */
+using UnityEngine;
 using System.Collections;
 
 public class DoorTransceiver : MonoBehaviour
 {
-
     public Door m_door;
 
-    //---------------------------------Fmod-------------------------------
-    //Call this to display it in Unity Inspector.
-    //--------------------------------------------------------------------
+    /*===============================================Fmod====================================================
+    |   This piece of code will allow the string m_footstepSurfaceName to use the event browser to select   |
+    |   the event, in the inspector.                                                                        |
+    =======================================================================================================*/
     [FMODUnity.EventRef]
-    //---------------------------------Fmod-------------------------------
-    //Name of Event. Used in conjunction with EventInstance.
-    //--------------------------------------------------------------------
+    /*===============================================Fmod====================================================
+    |   Name of Event. Used in conjunction with EventInstance.                                              |
+    =======================================================================================================*/
     public string m_transceiverPath;
-    //---------------------------------Fmod-------------------------------
-    //EventInstance. Used to play or stop the sound, etc.
-    //--------------------------------------------------------------------
+    /*===============================================Fmod====================================================
+    |   EventInstance. Used to play or stop the sound, etc.                                                 |
+    =======================================================================================================*/
     FMOD.Studio.EventInstance m_transceiverEvent;
-    //---------------------------------Fmod-------------------------------
-    //Parameter. Used to adjust EventInstances tracks. Such as: changing 
-    //from wood to a carpet floor inside the same Event.
-    //--------------------------------------------------------------------
+    /*===============================================Fmod====================================================
+    |   Parameter. Used to adjust EventInstances tracks. Such as: changing                                  |
+    |   from wood to a carpet floor inside the same Event.                                                  |
+    =======================================================================================================*/
     FMOD.Studio.ParameterInstance m_transceiverEnabledParameter;
-
-    // Use this for initialization
+    
     void Start()
     {
+        /*===============================================Fmod====================================================
+        |   The CreateInstance function takes in the name of the event as a parameter,                          |
+        |   e.g. "event:/Basic Rooms/Footsteps".                                                                |
+        |   This will simply create an instance.                                                                |
+        =======================================================================================================*/
         m_transceiverEvent = FMODUnity.RuntimeManager.CreateInstance(m_transceiverPath);
-        //---------------------------------Fmod-------------------------------
-        //Create insance of footsteps event.
-        //--------------------------------------------------------------------
-        m_transceiverEvent = FMODUnity.RuntimeManager.CreateInstance(m_transceiverPath);
-        //---------------------------------Fmod-------------------------------
-        //Get a reference to the surface paramater and store it in
-        //ParamaterInstance.
-        //--------------------------------------------------------------------
+        /*===============================================Fmod====================================================
+        |   Get a reference to the surface paramater and store it in                                            |
+        |   ParamaterInstance.                                                                                  |
+        =======================================================================================================*/
         m_transceiverEvent.getParameter("Enabled", out m_transceiverEnabledParameter);
-        //---------------------------------Fmod-------------------------------
-        //Start the EventInstance.
-        //--------------------------------------------------------------------
+        /*===============================================Fmod====================================================
+        |   The start function will simply run the event.                                                       |
+        =======================================================================================================*/
         m_transceiverEvent.start();
-        //---------------------------------Fmod-------------------------------
-        //Attach the instance to the gameobject when EventInstance.start() is 
-        //called.
-        //--------------------------------------------------------------------
+        /*===============================================Fmod====================================================
+        |   The AttachInstanceToGameObject function is used to set the position of the audio.                   |                                                           |
+        =======================================================================================================*/
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_transceiverEvent, transform, null);
-        //---------------------------------Fmod-------------------------------
-        //Set Enabled parameter to false. Door is closed.
-        //--------------------------------------------------------------------
+        /*===============================================Fmod====================================================
+        |   The setParamterValue function takes in the name of the parameter, and the value to give it.         |
+        |   Parameters can be used to change volumes, or to jump to sections in the sound.                      |
+        =======================================================================================================*/
         m_transceiverEnabledParameter.setValue(0.0f);
-    }
-
-    // Update is called once per frame
+    }    
     void Update()
     {
-        //---------------------------------Fmod-------------------------------
-        //Set value of ParameterInstance to enabled if door is open.
-        //--------------------------------------------------------------------
+        /*===============================================Fmod====================================================
+        |   The setParamterValue function takes in the name of the parameter, and the value to give it.         |
+        |   Parameters can be used to change volumes, or to jump to sections in the sound.                      |
+        =======================================================================================================*/
         m_transceiverEnabledParameter.setValue(m_door.DoorElapsed);
-
     }
 }

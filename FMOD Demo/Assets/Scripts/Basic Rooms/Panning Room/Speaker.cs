@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿/* ========================================================================================== */
+/*                                                                                            */
+/* FMOD Studio - C# Wrapper . Copyright (c), Firelight Technologies Pty, Ltd. 2004-2016.      */
+/*                                                                                            */
+/* ========================================================================================== */
+using UnityEngine;
 using System.Collections;
 
 public class Speaker : MonoBehaviour
 {
     public PanButton m_panButton;
-    // Use this for initialization
     float m_elapsedPulsate;
     Vector3 m_originalScale;
     public bool m_flip;
@@ -13,8 +17,6 @@ public class Speaker : MonoBehaviour
     {
         m_originalScale = transform.localScale;
     }
-
-    // Update is called once per frame
     void Update()
     {
         bool m_panEnable = m_panButton.PanEnabled;

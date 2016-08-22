@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/* ========================================================================================== */
+/*                                                                                            */
+/* FMOD Studio - C# Wrapper . Copyright (c), Firelight Technologies Pty, Ltd. 2004-2016.      */
+/*                                                                                            */
+/* ========================================================================================== */
+using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(CharacterController))]
@@ -12,17 +17,16 @@ public class ActorControls : MonoBehaviour
 
     CharacterController m_cc;
     Camera m_camera;
+    ActionObject m_actionObject;
 
     Vector3 m_velocity;
     public float m_drag;
     float m_minThreshold = 0.017f;
 
-    ActionObject m_actionObject;
-
     public bool m_disabledMovement;
     public bool m_disabledMouse;
 
-    public Vector3 CurrentVelocity { get { return m_velocity; } }
+    public Vector3 CurrentVelocity { get { return new Vector3(m_velocity.x, 0.0f, m_velocity.z); } }
     public bool IsGrounded { get { return m_cc.isGrounded; } }
 
     void Start()

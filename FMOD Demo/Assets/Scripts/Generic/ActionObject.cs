@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/* ========================================================================================== */
+/*                                                                                            */
+/* FMOD Studio - C# Wrapper . Copyright (c), Firelight Technologies Pty, Ltd. 2004-2016.      */
+/*                                                                                            */
+/* ========================================================================================== */
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -11,14 +16,16 @@ public class ActionObject : MonoBehaviour
     protected Vector3 m_descriptionPosition;
 
     //[SerializeField] GameObject m_descriptionPrefab;
-    [SerializeField]     GameObject m_descriptionObject;
+    [SerializeField]
+    GameObject m_descriptionObject;
     DescriptionCanvasScript m_descriptionScript;
 
     void Awake()
     {
         //m_descriptionObject = Instantiate(m_descriptionPrefab, transform.position + new Vector3(0, 1, 4), Quaternion.identity) as GameObject;
         //m_descriptionObject.transform.SetParent(transform);
-        m_descriptionScript = m_descriptionObject.GetComponent<DescriptionCanvasScript>();
+        if(m_descriptionObject)
+            m_descriptionScript = m_descriptionObject.GetComponent<DescriptionCanvasScript>();
     }
 
     public void Use(GameObject sender)
@@ -33,15 +40,18 @@ public class ActionObject : MonoBehaviour
 
     void OnMouseEnter()
     {
-        m_descriptionScript.FadeIn();
+        if (m_descriptionObject)
+            m_descriptionScript.FadeIn();
     }
 
     void OnMouseExit()
     {
-        m_descriptionScript.FadeOut();
+        if (m_descriptionObject)
+            m_descriptionScript.FadeOut();
     }
     void OnMouseOver()
     {
-        m_descriptionScript.m_active = true;
+        if (m_descriptionObject)
+            m_descriptionScript.m_active = true;
     }
 }

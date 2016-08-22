@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class TreadmillSpawner : MonoBehaviour
 {
     public ParticleSystem m_grassParticleEmitter;
-    public ParticleSystem m_woodParticleEmitter;
+    public ParticleSystem m_tileParticleEmitter;
     public ParticleSystem m_carpetParticleEmitter;
     public GameObject[] m_floorTextures;
     public GameObject[] m_wallTextures;
@@ -52,7 +52,7 @@ public class TreadmillSpawner : MonoBehaviour
                 m_paramValue.text = "Value:\n2.0f";
             if (m_info.collider.gameObject.name == "Carpet")
                 m_paramValue.text = "Value:\n1.0f";
-            if (m_info.collider.gameObject.name == "Wood")
+            if (m_info.collider.gameObject.name == "Tile")
                 m_paramValue.text = "Value:\n3.0f";
         }
     }
@@ -97,9 +97,9 @@ public class TreadmillSpawner : MonoBehaviour
                 {
                     m_grassParticleEmitter.Play();
                 }
-                else if (m_floors[i].tag == "Wood")
+                else if (m_floors[i].tag == "Tile")
                 {
-                    m_woodParticleEmitter.Play();
+                    m_tileParticleEmitter.Play();
                 }
                 else if (m_floors[i].tag == "Carpet")
                 {
