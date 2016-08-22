@@ -11,7 +11,7 @@ public class Footsteps : MonoBehaviour
     ActorControls m_actor;
     public float m_fps;         /* Footsteps per second */
     float m_fpsElapsed;
-    float m_currentParamValue;  /* carpet = 1.0f, grass = 2.0f, wood = 3.0f */
+    float m_currentParamValue;  /* carpet = 1.0f, grass = 2.0f, tile = 3.0f */
 
     /*===============================================Fmod====================================================
     |   This piece of code will allow the string m_footstepSurfaceName to use the event browser to select   |
@@ -92,7 +92,7 @@ public class Footsteps : MonoBehaviour
         {
             m_currentParamValue = 1.0f;
         }
-        else if (name.Contains("Wood") || tag == "Wood")
+        else if (name.Contains("Tile") || tag == "Tile")
         {
             m_currentParamValue = 3.0f;
         }
