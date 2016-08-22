@@ -31,5 +31,20 @@ public class CanvasTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         scriptRef.FadeOut();
     }
 
+    void OnGUI()
+    {
+        string[] names = QualitySettings.names;
+        GUILayout.BeginVertical();
+        int i = 0;
+        while (i < names.Length)
+        {
+            if (GUILayout.Button(names[i]))
+                QualitySettings.SetQualityLevel(i, true);
+
+            i++;
+        }
+        GUILayout.EndVertical();
+    }
+
     #endregion
 }
