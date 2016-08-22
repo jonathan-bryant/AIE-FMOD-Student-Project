@@ -8,7 +8,8 @@ public class TreadmillSpawner : MonoBehaviour
     public ParticleSystem m_grassParticleEmitter;
     public ParticleSystem m_woodParticleEmitter;
     public ParticleSystem m_carpetParticleEmitter;
-    public GameObject[] m_surfaces;
+    public GameObject[] m_floorTextures;
+    public GameObject[] m_wallTextures;
     public float m_speed;
     public int m_numOfTiles;
     public int m_numOfRepititions;
@@ -17,6 +18,7 @@ public class TreadmillSpawner : MonoBehaviour
     int m_index;
 
     List<GameObject> m_floors;
+    List<GameObject> m_walls;
 
     public Text m_type;
     public Text m_paramValue;
@@ -27,14 +29,15 @@ public class TreadmillSpawner : MonoBehaviour
     {
         m_actor = Camera.main.transform.parent;
         m_floors = new List<GameObject>();
+        m_walls = new List<GameObject>();
         for (int i = m_numOfTiles - 1; i >= 0; --i)
         {
-            AddFloor(transform.position + transform.forward * m_surfaces[0].transform.localScale.z * i);
+            AddTrack(transform.position + transform.forward * m_floorTextures[0].transform.localScale.z * i);
         }
     }
     void Update()
     {
-        MoveFloors();
+        MoveTreadmill();
         MoveGears();
         RaycastHit m_info;
         Ray ray = new Ray(m_actor.position - new Vector3(0.0f, m_actor.localScale.y, 0.0f), -m_actor.up);
@@ -54,12 +57,12 @@ public class TreadmillSpawner : MonoBehaviour
         }
     }
 
-    void AddFloor(Vector3 a_position)
+    void AddTrack(Vector3 a_position)
     {
         int index = m_index / m_numOfRepititions;
         index = Mathf.Clamp(index, 0, 2);
-        GameObject floor = Instantiate(m_surfaces[index]);
-        floor.name = m_surfaces[index].name;
+        GameObject floor = Instantiate(m_floorTextures[index]);
+        floor.name = m_floorTextures[index].name;
         if (a_position == Vector3.zero)
         {
             floor.transform.position = transform.position;
@@ -68,15 +71,25 @@ public class TreadmillSpawner : MonoBehaviour
         {
             floor.transform.position = a_position;
         }
+        m_floors.Add(floor);
+
+        GameObject wall = Instantiate(m_wallTextures[index]);
+        wall.name = m_wallTextures[index].name;
+        Vector3 wallPos = floor.transform.position;
+        wallPos.x -= floor.transform.localScale.x * 0.5f;
+        wallPos.y += m_wallTextures[index].transform.localScale.y * 0.5f;
+        wall.transform.position = wallPos;
+        m_walls.Add(wall);
+
         m_index++;
         m_index %= 3 * m_numOfRepititions;
-        m_floors.Add(floor);
     }
-    void MoveFloors()
+    void MoveTreadmill()
     {
         for (int i = 0; i < m_floors.Count; ++i)
         {
             m_floors[i].transform.position += transform.forward * m_speed * Time.deltaTime;
+            m_walls[i].transform.position += transform.forward * m_speed * Time.deltaTime;
 
             if (m_floors[i].transform.position.z <= -19.75 + m_floors[i].transform.localScale.z * 0.5f)
             {
@@ -94,11 +107,13 @@ public class TreadmillSpawner : MonoBehaviour
                 }
             }
         }
-        if (Mathf.Abs(m_floors[0].transform.position.z - transform.position.z) >= m_surfaces[0].transform.localScale.z * (m_numOfTiles - 1))
+        if (Mathf.Abs(m_floors[0].transform.position.z - transform.position.z) >= m_floorTextures[0].transform.localScale.z * (m_numOfTiles - 1))
         {
             Destroy(m_floors[0]);
+            Destroy(m_walls[0]);
             m_floors.RemoveAt(0);
-            AddFloor(m_floors[0].transform.position - transform.forward * m_surfaces[0].transform.localScale.z * (m_numOfTiles - 1));
+            m_walls.RemoveAt(0);
+            AddTrack(m_floors[0].transform.position - transform.forward * m_floorTextures[0].transform.localScale.z * (m_numOfTiles - 1));
         }
     }
     void MoveGears()
