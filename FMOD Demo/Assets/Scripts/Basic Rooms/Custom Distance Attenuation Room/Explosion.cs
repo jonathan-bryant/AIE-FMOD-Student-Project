@@ -13,6 +13,7 @@ public class Explosion : MonoBehaviour
     |   Name of Event. Used in conjunction with EventInstance.                                              |
     =======================================================================================================*/
     public string m_footstepSurfaceName;
+    Vector3 m_position;
 
     void Start()
     {
@@ -24,6 +25,10 @@ public class Explosion : MonoBehaviour
 
     public void PlaySound()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(m_footstepSurfaceName, transform.position);
+        FMODUnity.RuntimeManager.PlayOneShot(m_footstepSurfaceName, m_position);
+    }
+    public void SetPosition(Vector3 a_position)
+    {
+        m_position = a_position;
     }
 }
