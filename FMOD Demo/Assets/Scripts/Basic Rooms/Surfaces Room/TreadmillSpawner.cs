@@ -46,11 +46,11 @@ public class TreadmillSpawner : MonoBehaviour
         if (Physics.Raycast(ray, out m_info, Mathf.Infinity, layerMask))
         {
             m_type.text = "Type:\n" + m_info.collider.gameObject.name;
-            if (m_info.collider.gameObject.name == "Grass")
+            if (m_info.collider.gameObject.name.Contains("Grass"))
                 m_paramValue.text = "Value:\n2.0f";
-            if (m_info.collider.gameObject.name == "Carpet")
+            if (m_info.collider.gameObject.name.Contains("Carpet"))
                 m_paramValue.text = "Value:\n1.0f";
-            if (m_info.collider.gameObject.name == "Tile")
+            if (m_info.collider.gameObject.name.Contains("Tile"))
                 m_paramValue.text = "Value:\n3.0f";
         }
     }
