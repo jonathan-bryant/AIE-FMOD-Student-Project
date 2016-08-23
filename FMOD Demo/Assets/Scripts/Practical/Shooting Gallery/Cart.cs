@@ -21,7 +21,6 @@ public class Cart : ActionObject
     void Start()
     {
         m_playerIsSeated = false;
-        m_description = "penis";
         m_player = Camera.main.GetComponentInParent<ActorControls>();
     }
     void Update()
