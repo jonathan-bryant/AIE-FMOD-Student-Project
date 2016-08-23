@@ -9,7 +9,6 @@ public class TreadmillSpawner : MonoBehaviour
     public ParticleSystem m_tileParticleEmitter;
     public ParticleSystem m_carpetParticleEmitter;
     public GameObject[] m_floorTextures;
-    public GameObject[] m_wallTextures;
     public float m_speed;
     public int m_numOfTiles;
     public int m_numOfRepititions;
@@ -29,7 +28,6 @@ public class TreadmillSpawner : MonoBehaviour
     {
         m_actor = Camera.main.transform.parent;
         m_floors = new List<GameObject>();
-        m_walls = new List<GameObject>();
         for (int i = m_numOfTiles - 1; i >= 0; --i)
         {
             AddTrack(transform.position + transform.forward * m_floorTextures[0].transform.localScale.z * 2.0f * i);
@@ -72,14 +70,7 @@ public class TreadmillSpawner : MonoBehaviour
             floor.transform.position = a_position;
         }
         m_floors.Add(floor);
-
-        GameObject wall = Instantiate(m_wallTextures[index]);
-        wall.name = m_wallTextures[index].name;
-        Vector3 wallPos = floor.transform.position;
-        wallPos.x -= floor.transform.localScale.x;
-        wallPos.y += m_wallTextures[index].transform.localScale.y * 0.5f;
-        wall.transform.position = wallPos;
-        m_walls.Add(wall);
+		floor.transform.SetParent(this.gameObject.transform);
 
         m_index++;
         m_index %= 3 * m_numOfRepititions;
@@ -89,7 +80,6 @@ public class TreadmillSpawner : MonoBehaviour
         for (int i = 0; i < m_floors.Count; ++i)
         {
             m_floors[i].transform.position += transform.forward * m_speed * Time.deltaTime;
-            m_walls[i].transform.position += transform.forward * m_speed * Time.deltaTime;
 
             if (m_floors[i].transform.position.z <= -19.75 + m_floors[i].transform.localScale.z * 0.5f)
             {
@@ -110,9 +100,7 @@ public class TreadmillSpawner : MonoBehaviour
         if (Mathf.Abs(m_floors[0].transform.position.z - transform.position.z) >= m_floorTextures[0].transform.localScale.z * 2.0f * (m_numOfTiles - 1))
         {
             Destroy(m_floors[0]);
-            Destroy(m_walls[0]);
             m_floors.RemoveAt(0);
-            m_walls.RemoveAt(0);
             AddTrack(m_floors[0].transform.position - transform.forward * m_floorTextures[0].transform.localScale.z * 2.0f * (m_numOfTiles - 1));
         }
     }
