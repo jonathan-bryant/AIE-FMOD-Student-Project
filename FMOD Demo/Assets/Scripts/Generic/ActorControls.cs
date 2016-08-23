@@ -155,7 +155,15 @@ public class ActorControls : MonoBehaviour
             //If the action key is pressed, call use on the actionObject
             if (Input.GetKeyDown(KeyCode.F))
             {
-                m_actionObject.Use(gameObject);
+                m_actionObject.ActionPressed(gameObject);
+            }
+            else if(Input.GetKey(KeyCode.F))
+            {
+                m_actionObject.ActionDown(gameObject);
+            }
+            else
+            {
+                m_actionObject.ActionReleased(gameObject);
             }
             return;
         }

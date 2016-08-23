@@ -3,8 +3,6 @@ using System.Collections;
 
 public class Explosion : MonoBehaviour
 {
-    public ParticleSystem m_particle;
-
     /*===============================================Fmod====================================================
     |   This piece of code will allow the string m_footstepSurfaceName to use the event browser to select   |
     |   the event, in the inspector.                                                                        |
@@ -16,18 +14,16 @@ public class Explosion : MonoBehaviour
     =======================================================================================================*/
     public string m_footstepSurfaceName;
 
-    float m_elapsed;
+    void Start()
+    {
 
-	void Start () {
+    }
+    void Update()
+    {
+    }
 
-	}
-	void Update () {
-        m_elapsed += Time.deltaTime;
-        if(m_elapsed >= 6.0f)
-        {
-            FMODUnity.RuntimeManager.PlayOneShot(m_footstepSurfaceName, transform.position);
-            m_elapsed = 0.0f;
-            m_particle.Play();
-        }
-	}
+    public void PlaySound()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(m_footstepSurfaceName, transform.position);
+    }
 }

@@ -18,7 +18,7 @@ public class Ignition : ActionObject
 	    
 	}
 
-    protected override void Action(GameObject sender, bool a_use)
+    public override void ActionPressed(GameObject sender)
     {
         m_active = !m_active;
         if(m_active == true)

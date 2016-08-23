@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CannonFire : ActionObject {
-
-	// Use this for initialization
-	void Start () {
+public class CannonFire : ActionObject
+{
+    public CannonController m_controller;
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -13,8 +14,8 @@ public class CannonFire : ActionObject {
 	
 	}
 
-    protected override void Action(GameObject sender, bool a_use)
+    public override void ActionPressed(GameObject sender)
     {
-
+        m_controller.Fire();
     }
 }

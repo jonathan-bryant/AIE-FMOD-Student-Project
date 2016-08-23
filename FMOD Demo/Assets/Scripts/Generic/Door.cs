@@ -14,7 +14,7 @@ public class Door : ActionObject
     {
         get
         {
-            return m_doorTransceiverElapsed  / m_duration;
+            return m_doorTransceiverElapsed / m_duration;
         }
     }
     bool m_doorOpen;
@@ -63,7 +63,7 @@ public class Door : ActionObject
         }
     }
 
-    protected override void Action(GameObject sender, bool a_use)
+    public override void ActionPressed(GameObject sender)
     {
         if (!m_doorOpen)
         {
