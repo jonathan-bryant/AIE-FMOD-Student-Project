@@ -80,23 +80,23 @@ public class TreadmillSpawner : MonoBehaviour
         for (int i = 0; i < m_floors.Count; ++i)
         {
             m_floors[i].transform.position += transform.forward * m_speed * Time.deltaTime;
-
-            if (m_floors[i].transform.position.z <= -19.75 + m_floors[i].transform.localScale.z * 0.5f)
+        }
+        if (m_floors[0].transform.position.z <= -7.072793 + m_floors[0].transform.localScale.z * 0.5f)
+        {
+            if (m_floors[0].tag == "Grass")
             {
-                if (m_floors[i].tag == "Grass")
-                {
-                    m_grassParticleEmitter.Play();
-                }
-                else if (m_floors[i].tag == "Tile")
-                {
-                    m_tileParticleEmitter.Play();
-                }
-                else if (m_floors[i].tag == "Carpet")
-                {
-                    m_carpetParticleEmitter.Play();
-                }
+                m_grassParticleEmitter.Play();
+            }
+            else if (m_floors[0].tag == "Tile")
+            {
+                m_tileParticleEmitter.Play();
+            }
+            else if (m_floors[0].tag == "Carpet")
+            {
+                m_carpetParticleEmitter.Play();
             }
         }
+
         if (Mathf.Abs(m_floors[0].transform.position.z - transform.position.z) >= m_floorTextures[0].transform.localScale.z * 2.0f * (m_numOfTiles - 1))
         {
             Destroy(m_floors[0]);
