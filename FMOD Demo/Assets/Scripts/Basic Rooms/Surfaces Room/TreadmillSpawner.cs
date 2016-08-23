@@ -45,7 +45,7 @@ public class TreadmillSpawner : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction);
         if (Physics.Raycast(ray, out m_info, Mathf.Infinity, layerMask))
         {
-            m_type.text = "Type:\n" + m_info.collider.gameObject.name;
+            m_type.text = "Type: " + m_info.collider.gameObject.name;
             if (m_info.collider.gameObject.name.Contains("Grass"))
                 m_paramValue.text = "Value:\n2.0f";
             if (m_info.collider.gameObject.name.Contains("Carpet"))

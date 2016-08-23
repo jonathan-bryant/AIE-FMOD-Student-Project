@@ -19,6 +19,7 @@ public class CannonBall : MonoBehaviour {
         if(a_collision.gameObject.tag == "Ground")
         {
             m_particle.transform.position = transform.position;
+            m_explosion.SetPosition(transform.position);
             m_explosion.PlaySound();
             m_particle.Play();
             Destroy(this.gameObject);
