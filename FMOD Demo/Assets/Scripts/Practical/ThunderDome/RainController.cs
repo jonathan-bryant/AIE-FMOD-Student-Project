@@ -55,17 +55,14 @@ public class RainController : ActionObject
         }
     }
 
-    override protected void Action(GameObject sender, bool a_use)
+    public override void ActionPressed(GameObject sender)
     {
-        if (a_use)
-        {
-            m_actor.m_disabledMouse = true;
-            m_inControl = true;
-        }
-        else
-        {
-            m_actor.m_disabledMouse = false;
-            m_inControl = false;
-        }
+        m_actor.m_disabledMouse = true;
+        m_inControl = true;
+    }
+    public override void ActionReleased(GameObject sender)
+    {
+        m_actor.m_disabledMouse = false;
+        m_inControl = false;
     }
 }

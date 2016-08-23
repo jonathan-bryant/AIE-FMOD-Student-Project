@@ -254,7 +254,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff3785b69f2bd7044b84a3032fb5ee1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_cannonBall: {fileID: 149642, guid: 60cb0d1fc80bac44b8c712b68beff85c, type: 2}
   m_cannon: {fileID: 969464434}
+  m_power: 15
 --- !u!1 &901621165
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +454,7 @@ GameObject:
   - 23: {fileID: 987004533}
   - 114: {fileID: 987004536}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -527,6 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582b5b7713e2f2e49919b28401252f3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_controller: {fileID: 848165594}
 --- !u!1 &993072318
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,7 +645,7 @@ GameObject:
   - 198: {fileID: 1065961154}
   - 199: {fileID: 1065961153}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Explosion Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2213,7 +2216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1617400512
 Transform:
   m_ObjectHideFlags: 0
@@ -2442,7 +2445,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a29599d075ce74bad2227841d8d40d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_descriptionObject: {fileID: 0}
   m_up: 0
   m_controller: {fileID: 848165594}
 --- !u!1 &1751483709
@@ -2472,7 +2474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07d97b8f86a8a434e95cfc9f4c6fa55e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_particle: {fileID: 1065961154}
   m_footstepSurfaceName: event:/Basic Rooms/Custom Distance Attenuation Room/Single
     Explosion
 --- !u!4 &1751483711
@@ -2797,6 +2798,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a29599d075ce74bad2227841d8d40d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_descriptionObject: {fileID: 0}
   m_up: 1
   m_controller: {fileID: 848165594}

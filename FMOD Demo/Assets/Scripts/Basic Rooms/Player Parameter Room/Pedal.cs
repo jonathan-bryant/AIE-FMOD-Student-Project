@@ -18,7 +18,7 @@ public class Pedal : ActionObject
 	    
 	}
 
-    protected override void Action(GameObject sender, bool a_use)
+    public override void ActionPressed(GameObject sender)
     {
         m_car.Accelerate();
         m_isAccelerating = !m_isAccelerating;

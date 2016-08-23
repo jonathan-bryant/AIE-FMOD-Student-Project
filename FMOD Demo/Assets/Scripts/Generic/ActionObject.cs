@@ -9,15 +9,15 @@ using System.Collections;
 
 public class ActionObject : MonoBehaviour
 {
-    bool m_InUse = false;
-    bool m_isHighlighted;
-
-    public void Use(GameObject sender)
+    public virtual void ActionPressed(GameObject sender)
     {
-        m_InUse = !m_InUse;
-        Action(sender, m_InUse);
+
     }
-    protected virtual void Action(GameObject sender, bool a_use)
+    public virtual void ActionReleased(GameObject sender)
+    {
+
+    }
+    public virtual void ActionDown(GameObject sender)
     {
 
     }

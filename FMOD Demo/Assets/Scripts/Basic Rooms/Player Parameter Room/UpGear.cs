@@ -15,7 +15,7 @@ public class UpGear : ActionObject
 	void Update () {
 	
 	}
-    protected override void Action(GameObject sender, bool a_use)
+    public override void ActionPressed(GameObject sender)
     {
         m_car.UpGear();
     }

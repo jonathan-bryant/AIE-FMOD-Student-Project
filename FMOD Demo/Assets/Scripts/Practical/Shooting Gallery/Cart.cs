@@ -31,7 +31,7 @@ public class Cart : ActionObject
     {
         if (m_playerIsSeated && Input.GetKeyDown(KeyCode.F))
         {
-            Use(m_player.gameObject);
+            ActionPressed(this.gameObject);
         }
         if (m_manager.IsActive)
         {
@@ -40,9 +40,9 @@ public class Cart : ActionObject
         }
     }
 
-    protected override void Action(GameObject sender, bool a_use)
+    public override void ActionPressed(GameObject sender)
     {
-        if (a_use)
+        if (!m_playerIsSeated)
         {
             m_manager.Play();
             m_player.m_disabledMovement = true;

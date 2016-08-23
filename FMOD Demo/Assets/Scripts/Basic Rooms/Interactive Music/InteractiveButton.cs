@@ -15,7 +15,7 @@ public class InteractiveButton : ActionObject
     public FMODUnity.StudioEventEmitter m_emitter;
     public float m_value;
     ActorControls m_actor;
-    
+
     void Start()
     {
         m_actor = Camera.main.GetComponentInParent<ActorControls>();
@@ -25,15 +25,12 @@ public class InteractiveButton : ActionObject
 
     }
 
-    protected override void Action(GameObject sender, bool a_use)
+    public override void ActionPressed(GameObject sender)
     {
-        if (a_use)
-        {
-            /*===============================================Fmod====================================================
-            |   The setParamterValue function takes in the name of the parameter, and the value to give it.         |
-            |   Parameters can be used to change volumes, or to jump to sections in the sound.                      |
-            =======================================================================================================*/
-            m_emitter.SetParameter("Intensity", m_value);
-        }
+        /*===============================================Fmod====================================================
+        |   The setParamterValue function takes in the name of the parameter, and the value to give it.         |
+        |   Parameters can be used to change volumes, or to jump to sections in the sound.                      |
+        =======================================================================================================*/
+        m_emitter.SetParameter("Intensity", m_value);
     }
 }
