@@ -64,7 +64,7 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void LoadHelper()
     {
         // Play animation to load
-        m_uiAnimator.SetTime(0.0f);
+        m_uiAnimator.SetTime(0);
         m_uiAnimator.Play(m_uiLoadAnim, 0, 0.0f);
         PlayForward();
         m_currentState = HELPERSTATE.LOADING;
@@ -77,7 +77,6 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
         {
             if (m_currentState != HELPERSTATE.LOADING)
             {
-                Debug.Log("Break: " + m_currentState);
                 break;
             }
             yield return null;
@@ -98,7 +97,6 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
         if (m_uiAnimator.GetCurrentAnimatorStateInfo(0).IsName(m_uiLoadAnim) || 
             (m_uiAnimator.GetCurrentAnimatorStateInfo(0).IsName(m_uiOpenAnim) && m_uiAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1))
         {
-            Debug.Log("STOPHELPER()");
             StopAnimation();
             m_currentState = HELPERSTATE.STOPPED;
             StartCoroutine(WaitAndCloseHelper());
@@ -137,7 +135,6 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log(m_currentState);
         switch (m_currentState)
         {
             case HELPERSTATE.IDLE:
@@ -145,6 +142,8 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
                     LoadHelper();
                 break;
             case HELPERSTATE.STOPPED:
+                LoadHelper();
+
                 break;
             case HELPERSTATE.OPENING:
                 break;
