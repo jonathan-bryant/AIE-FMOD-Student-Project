@@ -47,11 +47,11 @@ public class TreadmillSpawner : MonoBehaviour
         {
             m_type.text = "Type: " + m_info.collider.gameObject.name;
             if (m_info.collider.gameObject.name.Contains("Grass"))
-                m_paramValue.text = "Value:\n2.0f";
+                m_paramValue.text = "Value:\n2";
             if (m_info.collider.gameObject.name.Contains("Carpet"))
-                m_paramValue.text = "Value:\n1.0f";
+                m_paramValue.text = "Value:\n1";
             if (m_info.collider.gameObject.name.Contains("Tile"))
-                m_paramValue.text = "Value:\n3.0f";
+                m_paramValue.text = "Value:\n3";
         }
     }
 
