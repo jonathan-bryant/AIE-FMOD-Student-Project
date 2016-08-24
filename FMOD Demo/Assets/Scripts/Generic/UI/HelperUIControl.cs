@@ -34,6 +34,7 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
     bool m_updateFacing = false;
     HELPERSTATE m_currentState = HELPERSTATE.IDLE;
 
+    float m_currentAnimationProgress;
     GameObject m_playerRef = null;     // Used for getting the players position to billboard the UI.
     Animator m_uiAnimator;
 
@@ -51,6 +52,8 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
             transform.LookAt(m_playerRef.transform.position, Vector3.up);    // Lerp the facing direction to make smooth.
             transform.Rotate(Vector3.up, 180.0f);
         }
+
+        m_currentAnimationProgress = AnimationProgress();
     }
 
     void LateUpdate()
@@ -63,24 +66,33 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void LoadHelper()
     {
-        // Play animation to load
-        m_uiAnimator.SetTime(0);
+        StopAllCoroutines();
+        // Play loading animation for circle image
         m_uiAnimator.Play(m_uiLoadAnim, 0, 0.0f);
+        // Set the animator time back to 0
+        m_uiAnimator.SetTime(0);
+        // Sets a modifying variable to positive for Forward.
         PlayForward();
+        // Set the current state to loading as loading has started.
         m_currentState = HELPERSTATE.LOADING;
+        // Run the coroutine that will then run the next animation as long as this animation has completed.
         StartCoroutine(LoadWaitAndOpen());
     }
 
     IEnumerator LoadWaitAndOpen()
     {
-        while (AnimationProgress() < 0.90f)
+        // Loop until the animation has played once.
+        while (m_currentAnimationProgress < 0.95f)
         {
+            Debug.Log(m_currentAnimationProgress);
+            // If at any point the cursor has left the image before it has completed the animation, 
             if (m_currentState != HELPERSTATE.LOADING)
             {
                 break;
             }
             yield return null;
         }
+        Debug.Log("BREAK OUT");
         if (m_currentState == HELPERSTATE.LOADING)
             OpenHelper();
     }
@@ -113,7 +125,7 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
             if (m_uiAnimator.GetCurrentAnimatorStateInfo(0).IsName(m_uiLoadAnim))
             {
                 PlayBackwards();
-                while (m_uiAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0)
+                while (m_uiAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0 && m_uiAnimator.GetFloat("Speed") == -1)
                 {
                     yield return null;
                 }
