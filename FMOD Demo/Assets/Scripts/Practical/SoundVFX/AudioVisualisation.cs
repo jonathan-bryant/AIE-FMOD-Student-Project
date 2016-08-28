@@ -17,6 +17,7 @@ public enum SHADERTYPE
 {
     BAR_VIS,
     LINE_VIS,
+	STRING_VIS,
 }
 
 public class AudioVisualisation : MonoBehaviour 
@@ -46,6 +47,8 @@ public class AudioVisualisation : MonoBehaviour
                 break;
             case SHADERTYPE.LINE_VIS: shaderName = "Custom/LineSurfaceShader";
                 break;
+			case SHADERTYPE.STRING_VIS: shaderName = "Custom/StringVFXShader";
+				break;
         }
 
         m_mat = GetComponent<Renderer>().material;

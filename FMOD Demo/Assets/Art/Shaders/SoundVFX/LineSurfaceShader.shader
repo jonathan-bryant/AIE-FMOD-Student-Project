@@ -86,7 +86,7 @@
 
 			float vert = abs(uv.y - 0.5);
 			color += smoothstep(vert, vert * 8.0, sample1);
-			color += smoothstep(0.5, 1.0, sample2) * (1.0 - clamped_dist);
+			//color += smoothstep(0.5, 1.0, sample2) * (1.0 - clamped_dist); // Circles in the centre
 
 			// Albedo comes from a texture tinted by color
 			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;

@@ -1,5 +1,9 @@
-﻿Shader "Custom/BarSurfaceShader" {
-	Properties {
+﻿//  https://www.shadertoy.com/view/MdVSWG
+
+Shader "Custom/BarSurfaceShader" 
+{
+	Properties 
+	{
 		_Color ("Color", Color) = (1,1,1,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_Glossiness ("Smoothness", Range(0,1)) = 0.5
@@ -9,7 +13,8 @@
 		iResolutionX("Resolution X", Float) = 1.0
 		iResolutionY("Resolution Y", Float) = 1.0
 	}
-	SubShader {
+	SubShader 
+	{
 		Tags { "RenderType"="Opaque" }
 		LOD 200
 		
@@ -19,8 +24,6 @@
 
 		// Use shader model 3.0 target, to get nicer looking lighting
 		#pragma target 3.0
-
-		// https://www.shadertoy.com/view/MdVSWG
 
 		float3 B2_spline(float3 x)	// Returns 3 B-spline functions of degree 2
 		{
@@ -35,16 +38,16 @@
 				b2 * pow(3.0 - t, two));
 		}
 
+		struct Input 
+		{
+			float2 uv_MainTex;
+		};
+
 		sampler2D _MainTex;
 		sampler2D _SoundImage;
 		float iResolutionX;
 		float iResolutionY;
 		float _Emission;
-
-		struct Input {
-			float2 uv_MainTex;
-		};
-
 		half _Glossiness;
 		half _Metallic;
 		fixed4 _Color;

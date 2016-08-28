@@ -43,7 +43,7 @@
 			{
 				if (_Amount < 0.2)
 					_Amount *= 1.5;
-				v.vertex.y *= (_Amount * 20);
+				v.vertex.y *= (_Amount * 15);
 			}
 			v.color.rgb = -v.vertex.yyy;
 		}
