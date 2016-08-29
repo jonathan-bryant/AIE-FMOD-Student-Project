@@ -65,9 +65,10 @@ MonoBehaviour:
   - {fileID: 11429208}
   - {fileID: 11436020}
   - {fileID: 11430068}
+  - {fileID: 11420362}
   MasterBankRef: {fileID: 11469062}
   StringsBankRef: {fileID: 11446514}
-  stringsBankWriteTime: 636076295489766744
+  stringsBankWriteTime: 636080616560604284
   cacheVersion: 2
 --- !u!114 &11400222
 MonoBehaviour:
@@ -98,6 +99,36 @@ MonoBehaviour:
   Name: Sun
   Min: 0
   Max: 360
+  Default: 0
+--- !u!114 &11400352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Intensity
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &11400600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  Name: Intensity
+  Min: 0
+  Max: 1
   Default: 0
 --- !u!114 &11400772
 MonoBehaviour:
@@ -210,6 +241,21 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 40
+--- !u!114 &11401888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Panning
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &11401968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,7 +268,7 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Volume Control Room.bank
-  lastModified: 636070244782191004
+  lastModified: 636080616579104310
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -303,6 +349,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &11403396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Load
+  Min: -1
+  Max: 1
+  Default: -1
 --- !u!114 &11403398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,6 +445,21 @@ MonoBehaviour:
   Min: -1
   Max: 1
   Default: -1
+--- !u!114 &11404564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Result
+  Min: -1
+  Max: 1
+  Default: 0
 --- !u!114 &11404658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,6 +571,21 @@ MonoBehaviour:
   Min: -1
   Max: 1
   Default: 0
+--- !u!114 &11405458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Load
+  Min: -1
+  Max: 1
+  Default: -1
 --- !u!114 &11405500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,8 +695,8 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 11497412}
-  - {fileID: 11499210}
+  - {fileID: 11473368}
+  - {fileID: 11442394}
   MinDistance: 1
   MaxDistance: 20
 --- !u!114 &11406120
@@ -702,7 +793,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 11494794}
+  - {fileID: 11400352}
   MinDistance: 0
   MaxDistance: 0
 --- !u!114 &11406842
@@ -779,6 +870,21 @@ MonoBehaviour:
   Name: Intensity
   Min: 0
   Max: 1
+  Default: 0
+--- !u!114 &11407906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: RPM
+  Min: 0
+  Max: 10000
   Default: 0
 --- !u!114 &11408052
 MonoBehaviour:
@@ -867,7 +973,7 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Player Parameter Room.bank
-  lastModified: 636070244776310667
+  lastModified: 636080616565104291
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -977,6 +1083,21 @@ MonoBehaviour:
   Name: RPM
   Min: 0
   Max: 10000
+  Default: 0
+--- !u!114 &11412044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Sun
+  Min: 0
+  Max: 360
   Default: 0
 --- !u!114 &11412488
 MonoBehaviour:
@@ -1404,7 +1525,7 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Sound Spin Room.bank
-  lastModified: 636070244777770751
+  lastModified: 636080616573404302
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -1476,6 +1597,27 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &11420362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Knife Party - EDM Trend Machine
+  guid: bfcd7e6f5015ad4fa4970fba4f9857ca
+  Banks:
+  - {fileID: 11469062}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
 --- !u!114 &11420930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1498,6 +1640,21 @@ MonoBehaviour:
   - {fileID: 11497622}
   MinDistance: 1
   MaxDistance: 20
+--- !u!114 &11421020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 2
+  Default: 0
 --- !u!114 &11421464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1690,7 +1847,7 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Programmer Sounds Room.bank
-  lastModified: 636070244776340669
+  lastModified: 636080616565104291
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -1816,6 +1973,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &11426508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Sun
+  Min: 0
+  Max: 360
+  Default: 0
 --- !u!114 &11427026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1890,6 +2062,21 @@ MonoBehaviour:
   Name: Intensity
   Min: 0
   Max: 1
+  Default: 0
+--- !u!114 &11427394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: RPM
+  Min: 0
+  Max: 2000
   Default: 0
 --- !u!114 &11427400
 MonoBehaviour:
@@ -2005,7 +2192,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
+  m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Name: Wind
   Min: 0
@@ -2035,7 +2222,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
+  m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Name: Result
   Min: -1
@@ -2060,8 +2247,8 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 11427982}
-  - {fileID: 11412816}
+  - {fileID: 11405458}
+  - {fileID: 11437854}
   MinDistance: 1
   MaxDistance: 20
 --- !u!114 &11428910
@@ -2073,7 +2260,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
+  m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Name: Load
   Min: -1
@@ -2088,7 +2275,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
+  m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Name: RPM
   Min: 0
@@ -2472,6 +2659,21 @@ MonoBehaviour:
   Min: -1
   Max: 1
   Default: -1
+--- !u!114 &11432656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Intensity
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &11432868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2484,7 +2686,7 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Scatter Room.bank
-  lastModified: 636070244777130714
+  lastModified: 636080616567404294
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -2614,7 +2816,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 11485834}
+  - {fileID: 11488066}
   MinDistance: 1
   MaxDistance: 20
 --- !u!114 &11434214
@@ -2803,6 +3005,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &11435796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Load
+  Min: -1
+  Max: 1
+  Default: -1
 --- !u!114 &11436020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2822,7 +3039,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 11468506}
+  - {fileID: 11498772}
   MinDistance: 1
   MaxDistance: 30
 --- !u!114 &11436108
@@ -2954,7 +3171,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
+  m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Name: Round
   Min: 0
@@ -2994,7 +3211,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 11428690}
+  - {fileID: 11400600}
   MinDistance: 0
   MaxDistance: 0
 --- !u!114 &11437762
@@ -3011,6 +3228,21 @@ MonoBehaviour:
   Name: RPM
   Min: 0
   Max: 2000
+  Default: 0
+--- !u!114 &11437854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: RPM
+  Min: 0
+  Max: 10000
   Default: 0
 --- !u!114 &11438344
 MonoBehaviour:
@@ -3102,6 +3334,21 @@ MonoBehaviour:
   Min: -1
   Max: 1
   Default: -1
+--- !u!114 &11440086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Rain
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &11440234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3222,6 +3469,21 @@ MonoBehaviour:
   Min: 0
   Max: 360
   Default: 0
+--- !u!114 &11442270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Material
+  Min: 0
+  Max: 2
+  Default: 0
 --- !u!114 &11442320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3251,6 +3513,21 @@ MonoBehaviour:
   Name: Rain
   Min: 0
   Max: 1
+  Default: 0
+--- !u!114 &11442394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: RPM
+  Min: 0
+  Max: 2000
   Default: 0
 --- !u!114 &11442646
 MonoBehaviour:
@@ -3291,7 +3568,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
+  m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Name: Panning
   Min: 0
@@ -3309,7 +3586,7 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Custom Distance Atten Room.bank
-  lastModified: 636076295489726741
+  lastModified: 636080616561604286
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -3531,6 +3808,21 @@ MonoBehaviour:
   Min: 0
   Max: 10000
   Default: 0
+--- !u!114 &11446258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Surface
+  Min: 0
+  Max: 3
+  Default: 0
 --- !u!114 &11446454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3558,11 +3850,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636076295489766744
+  lastModified: 636080616560604284
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 3540
+    Value: 3602
   Exists: 1
 --- !u!114 &11446654
 MonoBehaviour:
@@ -3644,6 +3936,21 @@ MonoBehaviour:
   Name: Intensity
   Min: 0
   Max: 1
+  Default: 0
+--- !u!114 &11447856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Thunder
+  Min: 0
+  Max: 6
   Default: 0
 --- !u!114 &11447956
 MonoBehaviour:
@@ -3955,9 +4262,9 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 11465064}
-  - {fileID: 11450552}
-  - {fileID: 11437368}
+  - {fileID: 11473370}
+  - {fileID: 11486536}
+  - {fileID: 11421020}
   MinDistance: 0
   MaxDistance: 0
 --- !u!114 &11453270
@@ -4275,6 +4582,21 @@ MonoBehaviour:
   Min: 0
   Max: 2
   Default: 0
+--- !u!114 &11457030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Wind
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &11457520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4324,7 +4646,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: 11436978}
+  - {fileID: 11458714}
   MinDistance: 1
   MaxDistance: 20
 --- !u!114 &11457790
@@ -4452,6 +4774,21 @@ MonoBehaviour:
   Name: Thunder
   Min: 0
   Max: 6
+  Default: 0
+--- !u!114 &11458714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Surface
+  Min: 0
+  Max: 3
   Default: 0
 --- !u!114 &11458836
 MonoBehaviour:
@@ -4675,6 +5012,21 @@ MonoBehaviour:
   Min: 0
   Max: 2000
   Default: 0
+--- !u!114 &11460178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  Name: Intensity
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &11460524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4687,7 +5039,7 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Transceiver Room.bank
-  lastModified: 636070244781950990
+  lastModified: 636080616578404309
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -4831,7 +5183,7 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Panner Room.bank
-  lastModified: 636070244776240663
+  lastModified: 636080616564204289
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -5110,7 +5462,7 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\RC Car.bank
-  lastModified: 636057561851652822
+  lastModified: 636080616566704293
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -5435,12 +5787,27 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Master Bank.bank
-  lastModified: 636075609250765182
+  lastModified: 636080616560604284
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 2411232
+    Value: 6741024
   Exists: 1
+--- !u!114 &11469240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Active
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &11469424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5660,7 +6027,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
+  m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Name: Load
   Min: -1
@@ -5740,6 +6107,36 @@ MonoBehaviour:
   Name: Material
   Min: 0
   Max: 2
+  Default: 0
+--- !u!114 &11473368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Load
+  Min: -1
+  Max: 1
+  Default: -1
+--- !u!114 &11473370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Active
+  Min: 0
+  Max: 1
   Default: 0
 --- !u!114 &11473712
 MonoBehaviour:
@@ -5933,7 +6330,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: 11437434}
+  - {fileID: 11477796}
   MinDistance: 1
   MaxDistance: 1600
 --- !u!114 &11475608
@@ -5951,6 +6348,21 @@ MonoBehaviour:
   Min: 0
   Max: 2
   Default: 0
+--- !u!114 &11475884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Load
+  Min: -1
+  Max: 1
+  Default: -1
 --- !u!114 &11476366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6071,6 +6483,21 @@ MonoBehaviour:
   Min: -1
   Max: 1
   Default: -1
+--- !u!114 &11477796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Thunder
+  Min: 0
+  Max: 6
+  Default: 0
 --- !u!114 &11478252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6131,6 +6558,21 @@ MonoBehaviour:
   Min: -1
   Max: 1
   Default: 0
+--- !u!114 &11479450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Material
+  Min: 0
+  Max: 2
+  Default: 0
 --- !u!114 &11479708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6171,6 +6613,21 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  Name: RPM
+  Min: 0
+  Max: 2000
+  Default: 0
+--- !u!114 &11480140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
   m_EditorClassIdentifier: 
   Name: RPM
   Min: 0
@@ -6248,7 +6705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Event Cone Room.bank
-  lastModified: 636076467144444830
+  lastModified: 636080616563204288
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -6317,7 +6774,7 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Thunder Dome.bank
-  lastModified: 636070393856947592
+  lastModified: 636080616576104306
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -6368,6 +6825,21 @@ MonoBehaviour:
   Min: -1
   Max: 1
   Default: 0
+--- !u!114 &11483176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: RPM
+  Min: 0
+  Max: 2000
+  Default: 0
 --- !u!114 &11483258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6383,6 +6855,21 @@ MonoBehaviour:
   Min: 0
   Max: 360
   Default: 0
+--- !u!114 &11483368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Load
+  Min: -1
+  Max: 1
+  Default: -1
 --- !u!114 &11484522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6483,8 +6970,8 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 11480628}
-  - {fileID: 11427790}
+  - {fileID: 11427394}
+  - {fileID: 11403396}
   MinDistance: 1
   MaxDistance: 20
 --- !u!114 &11485348
@@ -6607,6 +7094,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &11486536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Result
+  Min: -1
+  Max: 1
+  Default: 0
 --- !u!114 &11486732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6652,6 +7154,51 @@ MonoBehaviour:
   Min: -1
   Max: 1
   Default: -1
+--- !u!114 &11488066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Enabled
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &11488090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Wind
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &11488254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Round
+  Min: 0
+  Max: 2
+  Default: 0
 --- !u!114 &11488472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6760,7 +7307,7 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Snapshot Room.bank
-  lastModified: 636070244777320725
+  lastModified: 636080616569304297
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -6793,7 +7340,7 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Shooting Gallery.bank
-  lastModified: 636068752538063390
+  lastModified: 636080616568604296
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -6944,9 +7491,9 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 11442374}
-  - {fileID: 11439206}
-  - {fileID: 11450730}
+  - {fileID: 11440086}
+  - {fileID: 11488090}
+  - {fileID: 11412044}
   MinDistance: 0
   MaxDistance: 250
 --- !u!114 &11493502
@@ -7042,7 +7589,7 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Sound Module Room.bank
-  lastModified: 636070244777610742
+  lastModified: 636080616572904302
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -7120,7 +7667,7 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Path: FMOD\Build\Desktop\Dialogue.bank
-  lastModified: 636064218543236586
+  lastModified: 636080616562404287
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -7153,6 +7700,21 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   Name: Intensity
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &11495238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Enabled
   Min: 0
   Max: 1
   Default: 0
@@ -7280,7 +7842,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: 11438652}
+  - {fileID: 11442270}
   MinDistance: 1
   MaxDistance: 15
 --- !u!114 &11496868
@@ -7403,6 +7965,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &11498178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Rain
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &11498400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7447,6 +8024,21 @@ MonoBehaviour:
   Name: Surface
   Min: 0
   Max: 3
+  Default: 0
+--- !u!114 &11498772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Panning
+  Min: 0
+  Max: 1
   Default: 0
 --- !u!114 &11499022
 MonoBehaviour:
