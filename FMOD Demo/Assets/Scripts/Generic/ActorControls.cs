@@ -10,7 +10,7 @@ using System.Collections;
 public class ActorControls : MonoBehaviour
 {
     public float m_lookSensitivity;
-    public float m_movementSpeed;
+    public float m_walkSpeed, m_runSpeed;
     public float m_jumpPower;
     public float m_selectDistance = 4.0f;
     public GameObject m_gun;
@@ -25,12 +25,15 @@ public class ActorControls : MonoBehaviour
 
     public bool m_disabledMovement;
     public bool m_disabledMouse;
+    bool m_isRunning;
+    public bool IsRunning { get { return m_isRunning; } }
 
     public Vector3 CurrentVelocity { get { return new Vector3(m_velocity.x, 0.0f, m_velocity.z); } }
     public bool IsGrounded { get { return m_cc.isGrounded; } }
 
     void Start()
     {
+        m_isRunning = false;
         m_drag = 1.0f / (m_drag + 1.0f);
         Application.runInBackground = true;
         m_cc = GetComponent<CharacterController>();
@@ -42,6 +45,14 @@ public class ActorControls : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            m_isRunning = true;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            m_isRunning = false;
+        }
         DisableMovement();
         Action();
         Look();
@@ -77,6 +88,7 @@ public class ActorControls : MonoBehaviour
     }
     void Move()
     {
+
         m_velocity.y -= 9.8f * Time.fixedDeltaTime;
         m_velocity.x *= m_drag;
         m_velocity.z *= m_drag;
@@ -92,19 +104,19 @@ public class ActorControls : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.A))
             {
-                m_velocity += -transform.right * m_movementSpeed * Time.fixedDeltaTime;
+                m_velocity += -transform.right * (m_isRunning ? m_runSpeed : m_walkSpeed) * Time.fixedDeltaTime;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                m_velocity += transform.right * m_movementSpeed * Time.fixedDeltaTime;
+                m_velocity += transform.right * (m_isRunning ? m_runSpeed : m_walkSpeed) * Time.fixedDeltaTime;
             }
             if (Input.GetKey(KeyCode.W))
             {
-                m_velocity += transform.forward * m_movementSpeed * Time.fixedDeltaTime;
+                m_velocity += transform.forward * (m_isRunning ? m_runSpeed : m_walkSpeed) * Time.fixedDeltaTime;
             }
             if (Input.GetKey(KeyCode.S))
             {
-                m_velocity += -transform.forward * m_movementSpeed * Time.fixedDeltaTime;
+                m_velocity += -transform.forward * (m_isRunning ? m_runSpeed : m_walkSpeed) * Time.fixedDeltaTime;
             }
             if (Input.GetKey(KeyCode.Space) && m_cc.isGrounded)
             {
