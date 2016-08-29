@@ -9,7 +9,7 @@ using System.Collections;
 public class Footsteps : MonoBehaviour
 {
     ActorControls m_actor;
-    public float m_fps;         /* Footsteps per second */
+    public float m_walkSpeed, m_runSpeed;         /* Footsteps per second */
     float m_fpsElapsed;
     float m_currentParamValue;  /* carpet = 1.0f, grass = 2.0f, tile = 3.0f */
 
@@ -38,7 +38,7 @@ public class Footsteps : MonoBehaviour
         |   this way is known as a one shot sound, where we create an instance and release it, no longer        |
         |   in control of that instance.                                                                        |
         =======================================================================================================*/
-        if (m_actor.CurrentVelocity.magnitude > 0.0f && m_actor.IsGrounded && m_fpsElapsed >= m_fps)
+        if (m_actor.CurrentVelocity.magnitude > 0.0f && m_actor.IsGrounded && m_fpsElapsed >= (m_actor.IsRunning ? m_runSpeed : m_walkSpeed))
         {
             if (m_currentParamValue > 0.99f)
             {

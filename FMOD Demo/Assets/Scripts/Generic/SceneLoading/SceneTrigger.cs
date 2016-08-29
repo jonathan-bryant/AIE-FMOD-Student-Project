@@ -92,11 +92,11 @@ public class SceneTrigger : MonoBehaviour
             yield return null;
         }
 
+        Vector3 temp = m_doorDefaultPos;
         while (m_door.transform.position.z > m_doorSizeZ)
         {
-            Vector3 temp = m_doorDefaultPos;
             temp.z = m_doorSizeZ;
-            m_door.transform.position = Vector3.Lerp(m_door.transform.position, temp, 0.1f);
+            m_door.transform.position += m_door.transform.forward * Time.deltaTime;
             // Play door opening sound
             yield return null;
         }
@@ -114,13 +114,12 @@ public class SceneTrigger : MonoBehaviour
     {
         if (m_door != null)
         {
-            while (m_door.transform.position.z < m_doorDefaultPos.z)
+            while (m_door.transform.position.z <= m_doorDefaultPos.z - 0.1f)
             {
-                m_door.transform.position = Vector3.Lerp(m_door.transform.position, m_doorDefaultPos, 0.1f);
+                m_door.transform.position -= m_door.transform.forward * Time.deltaTime;
                 yield return null;
             }
         }
-
         StartCoroutine(UnloadScene());
     }
 
