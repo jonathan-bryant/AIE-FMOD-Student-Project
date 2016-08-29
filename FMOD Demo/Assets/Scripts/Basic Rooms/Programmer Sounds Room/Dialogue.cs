@@ -11,15 +11,9 @@ using UnityEngine;
 public class Dialogue : MonoBehaviour
 {
     FMOD.Studio.EVENT_CALLBACK m_dialogueCallback;
-
-    static bool m_playNextSound;
-    static int m_index;
-
+    
     void Start()
     {
-        m_playNextSound = true;
-        m_index = 0;
-
         /*===============================================Fmod====================================================
         |   Create the delegate and assign it to a member variable, so the garbage collector does not free its  |
         |   memory.                                                                                             |
@@ -27,25 +21,17 @@ public class Dialogue : MonoBehaviour
         m_dialogueCallback = new FMOD.Studio.EVENT_CALLBACK(DialogueEventCallback);
     }
     void Update()
-    {
-        /*===============================================Fmod====================================================
-        |   PlayDialogue's parameter is of type string. What gets passed into here is the "key" value from the  |
-        |   "audio table" that was created inside "Fmod Studio". The key by default is the name of the file     |
-        |   without the extension. To change this simply place a keys.txt inside the same folder as the file(s),|
-        |   and to change the key simply write the key, comma, then the filename(.extenstion). You can look at  |
-        |   the keys.txt that this audio table is using as a reference. By setting the keys to be simple indexs |
-        |   we can simply pass an int(.to_string) into playDialogue as a key and increment the index to iterate |
-        |   through all the sounds inside the audio table.                                                      |
-        =======================================================================================================*/
-        if (m_playNextSound)
-        {
-            PlayDialogue(m_index.ToString());
-        }
-    }
+    {}
 
-    void PlayDialogue(string a_key)
+    /*===============================================Fmod====================================================
+    |   PlayDialogue's parameter is of type string. What gets passed into here is the "key" value from the  |
+    |   "audio table" that was created inside "Fmod Studio". The key by default is the name of the file     |
+    |   without the extension. To change this simply place a keys.txt inside the same folder as the file(s),|
+    |   and to change the key simply write the key, comma, then the filename(.extenstion). You can look at  |
+    |   the keys.txt that this audio table is using as a reference.                                         |
+    =======================================================================================================*/
+    public void PlayDialogue(string a_key)
     {
-        m_playNextSound = false;
         /*===============================================Fmod====================================================
         |   Create an instance of the dialogue event. The same way you would create an editable one shot sound  |
         | from this example:
@@ -90,10 +76,6 @@ public class Dialogue : MonoBehaviour
         |   Get the instance.
         =======================================================================================================*/
         FMOD.Studio.EventInstance instance = new FMOD.Studio.EventInstance(a_instancePtr);
-        //---------------------------------Fmod-------------------------------
-        //
-        //
-        //--------------------------------------------------------------------
         /*===============================================Fmod====================================================
         |   These lines of code convert the string data back from unmanaged code to managed code so that we can |
         |   read the string.                                                                                    |
@@ -158,8 +140,6 @@ public class Dialogue : MonoBehaviour
                     FMOD.Studio.PROGRAMMER_SOUND_PROPERTIES parameter = (FMOD.Studio.PROGRAMMER_SOUND_PROPERTIES)Marshal.PtrToStructure(a_parameterPtr, typeof(FMOD.Studio.PROGRAMMER_SOUND_PROPERTIES));
                     FMOD.Sound sound = new FMOD.Sound(parameter.sound);
                     sound.release();
-                    m_index = (m_index + 1) % 3;
-                    m_playNextSound = true;
                 }
                 break;
             case FMOD.Studio.EVENT_CALLBACK_TYPE.DESTROYED:
