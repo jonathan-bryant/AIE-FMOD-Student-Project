@@ -70,7 +70,7 @@ Shader "Custom/StringVFXShader"
 			float3 color = float3( 0, 0, 0);
 			color = lerp(float3(0.325, 0.431, 0.364), color, abs(uv.x) * 0.25);
 			
-			for(int i = 0; i < 190; ++i)
+			for(int i = 0; i < 10; ++i)
 			{
 				float2 a = float2(hash(i) * 2.0 - 1.0, hash(i + 1) * 2.0 - 1.0);
 				float2 b = float2(hash(10 * i + 1) * 2.0 - 1.0, hash(11 * i + 2) * 2.0 - 1.0);
