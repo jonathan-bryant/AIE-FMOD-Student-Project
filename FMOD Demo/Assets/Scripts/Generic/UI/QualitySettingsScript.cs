@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class QualitySettingsScript : MonoBehaviour 
 {
-#if UNITY_EDITOR || DEVELOPMEN_BUILD
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
     void OnGUI()
     {
         string[] names = QualitySettings.names;
