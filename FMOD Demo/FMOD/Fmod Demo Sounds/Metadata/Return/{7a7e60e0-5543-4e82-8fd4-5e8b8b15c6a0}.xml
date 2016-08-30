@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.08.00">
+    <object class="MixerReturn" id="{7a7e60e0-5543-4e82-8fd4-5e8b8b15c6a0}">
+        <property name="volume">
+            <value>-80</value>
+        </property>
+        <property name="name">
+            <value>ReverbRoom</value>
+        </property>
+        <relationship name="effectChain">
+            <destination>{00c0e559-eff3-44d8-b9a8-12a4a1fe1754}</destination>
+        </relationship>
+        <relationship name="panner">
+            <destination>{4be2c074-fcdd-4b69-9b73-6209b6de7fd3}</destination>
+        </relationship>
+        <relationship name="output">
+            <destination>{b5cf6ad7-cc47-4d3b-b4a2-b63bd79d1f9b}</destination>
+        </relationship>
+    </object>
+    <object class="MixerBusEffectChain" id="{00c0e559-eff3-44d8-b9a8-12a4a1fe1754}">
+        <relationship name="effects">
+            <destination>{6d03c225-b6ac-44f2-9f36-a9e908391e42}</destination>
+            <destination>{33b34653-9ca7-4d22-9b48-5956e60675d5}</destination>
+            <destination>{3be48494-9012-4d6b-9dd9-e8e3d01941d9}</destination>
+        </relationship>
+    </object>
+    <object class="MixerBusPanner" id="{4be2c074-fcdd-4b69-9b73-6209b6de7fd3}"/>
+    <object class="LowpassEffect" id="{6d03c225-b6ac-44f2-9f36-a9e908391e42}"/>
+    <object class="ThreeEQEffect" id="{33b34653-9ca7-4d22-9b48-5956e60675d5}"/>
+    <object class="MixerBusFader" id="{3be48494-9012-4d6b-9dd9-e8e3d01941d9}"/>
+</objects>
