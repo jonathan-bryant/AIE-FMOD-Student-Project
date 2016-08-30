@@ -1,8 +1,8 @@
 ﻿/*=================================================================
-Project:		#PROJECTNAME#
-Developer:		#DEVOLPERNAME#
-Company:		#COMPANY#
-Date:			#CREATIONDATE#
+Project:		AIE FMOR
+Developer:		Cameron Baron
+Company:		FMOD
+Date:			29/08/2016
 ==================================================================*/
 
 using UnityEngine;
@@ -16,6 +16,7 @@ public class InformationPillarText : MonoBehaviour
     Animator anim;
     public string animName;
     public float timeOffset;
+    public float animSpeed = 1;
 
 	void Start () 
 	{
@@ -28,6 +29,11 @@ public class InformationPillarText : MonoBehaviour
 	{
 	
 	}
+
+    public void SetAnimationSpeed()
+    {
+        anim.speed = animSpeed; ;
+    }
 
 	#region Private Functions
 

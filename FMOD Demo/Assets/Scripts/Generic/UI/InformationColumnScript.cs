@@ -35,13 +35,22 @@ public class InformationColumnScript : MonoBehaviour
             Vector3 lookAtPos = new Vector3(m_playerRef.transform.position.x, m_pillarInner.transform.position.y, m_playerRef.transform.position.z);
             m_pillarInner.transform.LookAt(lookAtPos, Vector3.up);
 
-            if (m_defaultAnimPlaying)
+            for (int i = 0; i < m_textAnimators.Length; i++)
+            {
+                m_textAnimators[i].GetComponent<InformationPillarText>().animSpeed = 0;
+            }
+
+                if (m_defaultAnimPlaying)
             {
                 // stop default animation
             }
         }
         else if (m_distanceToPlayer > m_idleRadius && m_defaultAnimPlaying == false)
         {
+            for (int i = 0; i < m_textAnimators.Length; i++)
+            {
+                m_textAnimators[i].GetComponent<InformationPillarText>().animSpeed = 1;
+            }
             // play default animation
         }
 	}
@@ -57,10 +66,12 @@ public class InformationColumnScript : MonoBehaviour
                 if (i < m_textAnimators.Length / 2)
                 {
                     m_textAnimators[i].Play(m_defaultAnimation, 0, i / 10);
+                    m_textAnimators[i].GetComponent<InformationPillarText>().animSpeed = 1;
                 }
                 else
                 {
                     m_textAnimators[i].Play(m_defaultAnimation, 0, (i - m_textAnimators.Length / 2) / 10);
+                    m_textAnimators[i].GetComponent<InformationPillarText>().animSpeed = 1;
                 }
             }
         }
