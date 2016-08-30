@@ -28,8 +28,8 @@ public class CannonController : MonoBehaviour {
     {
         if(m_fireRateElapsed >= m_fireRate)
         {
-            GameObject obj = (GameObject)Instantiate(m_cannonBall, m_cannon.transform.position + (m_cannon.transform.GetChild(0).up * m_cannon.transform.GetChild(0).localScale.y * 3), Quaternion.identity);
-            obj.GetComponent<Rigidbody>().AddForce(m_cannon.transform.GetChild(0).up * m_power, ForceMode.VelocityChange);
+            GameObject obj = (GameObject)Instantiate(m_cannonBall, m_cannon.transform.position + (-m_cannon.transform.GetChild(0).up * 1.75f), Quaternion.identity);
+            obj.GetComponent<Rigidbody>().AddForce(-m_cannon.transform.GetChild(0).up * m_power, ForceMode.VelocityChange);
             obj.transform.SetParent(transform);
             m_fireRateElapsed = 0.0f;
         }
@@ -47,7 +47,6 @@ public class CannonController : MonoBehaviour {
             angle.x = m_angle;
             angle.z = 0.0f;
             m_cannon.transform.eulerAngles = angle;
-            m_power += 0.5f;
         }
     }
     public void RaiseCannon()
@@ -63,7 +62,6 @@ public class CannonController : MonoBehaviour {
             angle.x = m_angle;
             angle.z = 0.0f;
             m_cannon.transform.eulerAngles = angle;
-            m_power -= 0.5f;
         }
     }
 }
