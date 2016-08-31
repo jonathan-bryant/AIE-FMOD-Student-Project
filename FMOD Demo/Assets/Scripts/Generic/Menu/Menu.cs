@@ -53,6 +53,16 @@ public class Menu : MonoBehaviour
             else
                 m_animator.Play("Options Close");
             m_optionsOpen = !m_optionsOpen;
+            if (m_practicalOpen)
+            {
+                m_animator.Play("Practical Room Close");
+                m_practicalOpen = false;
+            }
+            if (m_basicOpen)
+            {
+                m_animator.Play("Basic Room Close");
+                m_basicOpen = false;
+            }
         }
     }
     public void PracticalClick()
@@ -65,6 +75,16 @@ public class Menu : MonoBehaviour
                 m_animator.Play("Practical Room Close");
             m_practicalOpen = !m_practicalOpen;
         }
+        if (m_basicOpen)
+        {
+            m_animator.Play("Basic Room Close");
+            m_basicOpen = false;
+        }
+        if (m_optionsOpen)
+        {
+            m_animator.Play("Options Close");
+            m_optionsOpen = false;
+        }
     }
     public void BasicClick()
     {
@@ -76,13 +96,28 @@ public class Menu : MonoBehaviour
                 m_animator.Play("Basic Room Close");
             m_basicOpen = !m_basicOpen;
         }
+        if (m_optionsOpen)
+        {
+            m_animator.Play("Options Close");
+            m_optionsOpen = false;
+        }
+
+        if (m_practicalOpen)
+        {
+            m_animator.Play("Practical Room Close");
+            m_practicalOpen = false;
+        }
     }
     public void QuitClick()
     {
-
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+            Application.Quit();
+        
     }
     public void LogoClick()
     {
-
+        Application.OpenURL("http://http://www.fmod.org/");
     }
 }
