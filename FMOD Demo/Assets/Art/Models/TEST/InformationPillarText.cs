@@ -6,7 +6,7 @@ Date:			29/08/2016
 ==================================================================*/
 
 using UnityEngine;
-
+using System.Collections;
 
 public class InformationPillarText : MonoBehaviour 
 {
@@ -24,18 +24,38 @@ public class InformationPillarText : MonoBehaviour
 
         anim.Play(animName, 0, timeOffset);
 	}
-	
-	void Update () 
-	{
-	
-	}
 
-    public void SetAnimationSpeed()
+    public void PlayAnim(float a_delayInSeconds = 0.0f)
     {
-        anim.speed = animSpeed; ;
+        if (a_delayInSeconds > 0.0f)
+        {
+            StartCoroutine(PlayAfterDelay(a_delayInSeconds));
+        }
+        else
+        {
+            anim.speed = 1;
+        }
+    }
+
+    public void StopAnimAtEnd()
+    {
+        if (animSpeed == 0)
+            anim.speed = 0;
+    }
+
+    public void SetAnimationSpeed(float a_speed)
+    {
+        animSpeed = a_speed;
     }
 
 	#region Private Functions
+
+    IEnumerator PlayAfterDelay(float a_delay)
+    {
+        yield return new WaitForSeconds(a_delay);
+
+        anim.speed = 1;
+    }
 
 	#endregion
 }

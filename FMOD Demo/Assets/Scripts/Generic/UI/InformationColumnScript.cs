@@ -6,26 +6,31 @@ Date:			30/08/2016
 ==================================================================*/
 
 using UnityEngine;
-using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
-public class InformationColumnScript : MonoBehaviour 
+public class InformationColumnScript : MonoBehaviour
 {
     // Public Vars
     public string m_defaultAnimation = "Take 001";
+    public Material m_defaultTextMat;
+    public Material m_textHighlightedMat;
+    public Material m_textVisitedMat;
 
     // Private Vars
     [SerializeField]    GameObject m_pillarInner;
     [SerializeField]    float m_idleRadius = 20.0f;
     float m_distanceToPlayer;
     GameObject m_playerRef;
-    Animator[] m_textAnimators;
+    InformationPillarText[] m_pillarTexts;
     bool m_defaultAnimPlaying = true;
+
+    int m_currentSelection = 0;
 
 	void Start () 
 	{
         m_playerRef = GameObject.FindGameObjectWithTag("Player");
-        m_textAnimators = GetComponentsInChildren<Animator>();
-	}
+        m_pillarTexts = GetComponentsInChildren<InformationPillarText>();
+    }
 	
 	void Update () 
 	{
@@ -34,47 +39,67 @@ public class InformationColumnScript : MonoBehaviour
         {
             Vector3 lookAtPos = new Vector3(m_playerRef.transform.position.x, m_pillarInner.transform.position.y, m_playerRef.transform.position.z);
             m_pillarInner.transform.LookAt(lookAtPos, Vector3.up);
-
-            for (int i = 0; i < m_textAnimators.Length; i++)
+            m_pillarTexts[m_currentSelection].GetComponentInChildren<Renderer>().material = m_textHighlightedMat;
+            if (m_defaultAnimPlaying)
             {
-                m_textAnimators[i].GetComponent<InformationPillarText>().animSpeed = 0;
+                for (int i = 0; i < m_pillarTexts.Length; i++)
+                {
+                    m_pillarTexts[i].SetAnimationSpeed(0);
+                }
+                m_defaultAnimPlaying = false;
             }
-
-                if (m_defaultAnimPlaying)
+            else
             {
-                // stop default animation
+                if (Input.mouseScrollDelta.y > 0.1f)
+                {
+                    m_pillarTexts[m_currentSelection].GetComponentInChildren<Renderer>().material = m_defaultTextMat;
+                    m_currentSelection += 1;
+                    if (m_currentSelection >= m_pillarTexts.Length)
+                    {
+                        m_currentSelection = 0;
+                    }
+                    
+                    m_pillarTexts[m_currentSelection].GetComponentInChildren<Renderer>().material = m_textHighlightedMat;
+                }
+                else if (Input.mouseScrollDelta.y < -0.1f)
+                {
+                    m_pillarTexts[m_currentSelection].GetComponentInChildren<Renderer>().material = m_defaultTextMat;
+                    m_currentSelection -= 1;
+                    if (m_currentSelection < 0)
+                    {
+                        m_currentSelection = m_pillarTexts.Length - 1;
+                    }
+
+                    m_pillarTexts[m_currentSelection].GetComponentInChildren<Renderer>().material = m_textHighlightedMat;
+                }
             }
         }
         else if (m_distanceToPlayer > m_idleRadius && m_defaultAnimPlaying == false)
         {
-            for (int i = 0; i < m_textAnimators.Length; i++)
-            {
-                m_textAnimators[i].GetComponent<InformationPillarText>().animSpeed = 1;
-            }
-            // play default animation
+            PlayDefaultAnimation();
+            // stop default animation
         }
-	}
+        //Input.mouseScrollDelta.y
+    }
 
 	#region Private Functions
 
     void PlayDefaultAnimation()
     {
-        if (m_distanceToPlayer > m_idleRadius)
+        for (int i = 0; i < m_pillarTexts.Length; i++)
         {
-            for (int i = 0; i < m_textAnimators.Length; i++)
+            if (i < m_pillarTexts.Length / 2)
             {
-                if (i < m_textAnimators.Length / 2)
-                {
-                    m_textAnimators[i].Play(m_defaultAnimation, 0, i / 10);
-                    m_textAnimators[i].GetComponent<InformationPillarText>().animSpeed = 1;
-                }
-                else
-                {
-                    m_textAnimators[i].Play(m_defaultAnimation, 0, (i - m_textAnimators.Length / 2) / 10);
-                    m_textAnimators[i].GetComponent<InformationPillarText>().animSpeed = 1;
-                }
+                m_pillarTexts[i].PlayAnim((float)i / 10.0f);
             }
+            else
+            {
+                m_pillarTexts[i].PlayAnim((float)(i - m_pillarTexts.Length / 2) / 10.0f);
+            }
+
+            m_pillarTexts[i].GetComponent<InformationPillarText>().animSpeed = 1;
         }
+        m_defaultAnimPlaying = true;
     }
 
 	#endregion
