@@ -3,54 +3,56 @@ using System.Collections;
 
 public class Menu : MonoBehaviour
 {
-    bool m_isPaused;
-    enum Selection
-    {
-        Pause,
-        Practical,
-        Basic,
-        Option
-    }
-    Selection m_currentSelection;
+    bool m_menuIsOpen;
     Animator m_animator;
-    bool m_finishedAnimation;
+    bool m_optionsOpen, m_practicalOpen, m_basicOpen;
     void Start()
     {
+        m_menuIsOpen = false;
         m_animator = GetComponent<Animator>();
-        m_finishedAnimation = true;
+        m_optionsOpen = false;
+        m_practicalOpen = false;
+        m_optionsOpen = false;
     }
 
     void Update()
     {
-        if (m_finishedAnimation)
+        if (Input.GetKey(KeyCode.Escape))
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                m_isPaused = !m_isPaused;
-                m_animator.Play("Pause Open", 0, m_isPaused ? 0 : 1);
-                m_currentSelection = Selection.Pause;
-            }
-            if (m_isPaused)
-            {
-                if (Input.GetKeyDown(KeyCode.O))
-                {
-                    if (m_currentSelection == Selection.Options)
-                        m_animator.Play("Options Close");
-                    m_animator.Play("Options Open");
-                }
-                if (Input.GetKeyDown(KeyCode.B))
-                {
-                    m_animator.Play("Basic Room Open");
-                }
-                if (Input.GetKeyDown(KeyCode.P))
-                {
-                    m_animator.Play("Practical Room Open");
-                }
-            }
+            
         }
     }
-    public void Stop()
+
+    public void OptionsClick()
     {
-        m_animator.SetFloat("Speed", 0.0f);
+        if(!m_optionsOpen)
+            m_animator.Play("Options Open");
+        else
+            m_animator.Play("Options Close");
+        m_optionsOpen = !m_optionsOpen;
+    }
+    public void PracticalClick()
+    {
+        if (!m_practicalOpen)
+            m_animator.Play("Practical Room Open");
+        else
+            m_animator.Play("Practical Room Close");
+        m_practicalOpen = !m_practicalOpen;
+    }
+    public void BasicClick()
+    {
+        if (!m_basicOpen)
+            m_animator.Play("Basic Room Open");
+        else
+            m_animator.Play("Basic Room Close");
+        m_basicOpen = !m_basicOpen;
+    }
+    public void QuitClick()
+    {
+
+    }
+    public void LogoClick()
+    {
+
     }
 }
