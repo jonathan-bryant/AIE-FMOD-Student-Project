@@ -17,9 +17,30 @@ public class Menu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             m_menuIsOpen = !m_menuIsOpen;
+            if (m_menuIsOpen)
+                m_animator.Play("Pause Open");
+            else
+            {
+                m_animator.Play("Pause Close");
+                if (m_optionsOpen)
+                {
+                    m_animator.Play("Options Close");
+                    m_optionsOpen = false;
+                }
+                if (m_practicalOpen)
+                {
+                    m_animator.Play("Practical Room Close");
+                    m_practicalOpen = false;
+                }
+                if (m_basicOpen)
+                {
+                    m_animator.Play("Basic Room Close");
+                    m_basicOpen = false;
+                }
+            }
         }
     }
 
@@ -33,26 +54,16 @@ public class Menu : MonoBehaviour
                 m_animator.Play("Options Close");
             m_optionsOpen = !m_optionsOpen;
         }
-        else if(m_optionsOpen)
-        {
-            m_animator.Play("Options Close");
-            m_optionsOpen = false;
-        }
     }
     public void PracticalClick()
     {
         if (m_menuIsOpen)
         {
             if (!m_practicalOpen)
-            m_animator.Play("Practical Room Open");
-        else
-            m_animator.Play("Practical Room Close");
-        m_practicalOpen = !m_practicalOpen;
-        }
-        else if (m_practicalOpen)
-        {
-            m_animator.Play("Practical Room Close");
-            m_practicalOpen = false;
+                m_animator.Play("Practical Room Open");
+            else
+                m_animator.Play("Practical Room Close");
+            m_practicalOpen = !m_practicalOpen;
         }
     }
     public void BasicClick()
@@ -60,15 +71,10 @@ public class Menu : MonoBehaviour
         if (m_menuIsOpen)
         {
             if (!m_basicOpen)
-            m_animator.Play("Basic Room Open");
-        else
-            m_animator.Play("Basic Room Close");
+                m_animator.Play("Basic Room Open");
+            else
+                m_animator.Play("Basic Room Close");
             m_basicOpen = !m_basicOpen;
-        }
-        else if (m_basicOpen)
-        {
-            m_animator.Play("Basic Room Close");
-            m_basicOpen = false;
         }
     }
     public void QuitClick()
