@@ -26,11 +26,25 @@ public class CannonController : MonoBehaviour
             {
                 if (m_selectedAngle < m_currentAngle)
                 {
-                    m_currentAngle -= 0.02f;
+                    m_currentAngle -=  5.0f * Time.fixedDeltaTime;
+                    if (m_currentAngle < m_selectedAngle)
+                    {
+                        m_currentAngle = m_selectedAngle;
+                    }
+                    Vector3 rot = m_cannon.transform.eulerAngles;
+                    rot.x = m_currentAngle;
+                    m_cannon.transform.eulerAngles = rot;
                 }
                 else
                 {
-                    m_currentAngle += 0.02f;
+                    m_currentAngle += 5.0f * Time.fixedDeltaTime;
+                    if(m_currentAngle > m_selectedAngle)
+                    {
+                        m_currentAngle = m_selectedAngle;
+                    }
+                    Vector3 rot = m_cannon.transform.eulerAngles;
+                    rot.x = m_currentAngle;
+                    m_cannon.transform.eulerAngles = rot;
                 }
             }
             else
