@@ -38,8 +38,7 @@ public class ActorControls : MonoBehaviour
         Application.runInBackground = true;
         m_cc = GetComponent<CharacterController>();
         m_camera = Camera.main;
-        m_disabledMovement = true;
-        m_disabledMouse = true;
+        DisableMovementAndMouse(false);
         if (m_gun)
             m_gun.SetActive(false);
     }
@@ -53,7 +52,7 @@ public class ActorControls : MonoBehaviour
         {
             m_isRunning = false;
         }
-        DisableMovement();
+       // CheckDisableMovement();
         Action();
         Look();
     }
@@ -66,7 +65,25 @@ public class ActorControls : MonoBehaviour
     {
         m_gun.SetActive(a_value);
     }
-    void DisableMovement()
+    public void DisableMovementAndMouse(bool a_value)
+    {
+        if (!a_value)
+        {
+            m_disabledMovement = false;
+            m_disabledMouse = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            m_disabledMovement = true;
+            m_disabledMouse = true;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
+
+    void CheckDisableMovement()
     {
         if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
@@ -74,15 +91,15 @@ public class ActorControls : MonoBehaviour
             {
                 m_disabledMovement = false;
                 m_disabledMouse = false;
-                Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
             }
             else
             {
                 m_disabledMovement = true;
                 m_disabledMouse = true;
-                Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
             }
         }
     }
