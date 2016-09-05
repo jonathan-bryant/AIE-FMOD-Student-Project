@@ -32,6 +32,8 @@ public class SceneTrigger : MonoBehaviour
 
 	void Start () 
 	{
+        Application.backgroundLoadingPriority = ThreadPriority.Low;
+
         if (m_door != null)
         {
             m_doorDefaultPos = m_door.transform.position;
@@ -72,13 +74,12 @@ public class SceneTrigger : MonoBehaviour
             //--------------------------------------------------------------------
             while (FMODUnity.RuntimeManager.AnyBankLoading())
             {
-                yield return null;
+                yield return m_async;
             }
         }
         // For some reason Unity has issues with loading a scene the same 
         // frame as a trigger response, so delay a framw with yield return null.
         m_async = SceneManager.LoadSceneAsync(m_sceneToLoad, LoadSceneMode.Additive);
-
         // Not all triggers may have a door attached to it.
         if (m_door != null)
             StartCoroutine(WaitAndOpenDoor());
@@ -87,7 +88,7 @@ public class SceneTrigger : MonoBehaviour
     IEnumerator WaitAndOpenDoor()
     {
         // Put the door opening stuff here!
-        while (!m_async.isDone)
+        while (m_async.progress < 0.9f)
         {
             yield return null;
         }
@@ -98,7 +99,7 @@ public class SceneTrigger : MonoBehaviour
             temp.z = m_doorSizeZ;
             m_door.transform.position += m_door.transform.forward * Time.deltaTime;
             // Play door opening sound
-            yield return null;
+            yield return m_async;
         }
     }
 
@@ -117,7 +118,7 @@ public class SceneTrigger : MonoBehaviour
             while (m_door.transform.position.z <= m_doorDefaultPos.z - 0.1f)
             {
                 m_door.transform.position -= m_door.transform.forward * Time.deltaTime;
-                yield return null;
+                yield return m_async;
             }
         }
         StartCoroutine(UnloadScene());
