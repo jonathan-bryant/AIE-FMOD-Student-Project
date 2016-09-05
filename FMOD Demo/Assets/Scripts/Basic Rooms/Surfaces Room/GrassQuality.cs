@@ -22,7 +22,7 @@ public class GrassQuality : MonoBehaviour {
         Animator anim = GetComponentInParent<Animator>();
         float rng = Random.Range(0.0f, 1.0f);
 
-        anim.SetFloat("Start", rng);
+        //anim.SetFloat("Start", rng);
 	}
 	
 	// Update is called once per frame

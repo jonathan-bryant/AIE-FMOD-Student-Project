@@ -84,7 +84,6 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
         // Loop until the animation has played once.
         while (m_currentAnimationProgress < 0.95f)
         {
-            Debug.Log(m_currentAnimationProgress);
             // If at any point the cursor has left the image before it has completed the animation, 
             if (m_currentState != HELPERSTATE.LOADING)
             {
@@ -92,7 +91,6 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
             }
             yield return null;
         }
-        Debug.Log("BREAK OUT");
         if (m_currentState == HELPERSTATE.LOADING)
             OpenHelper();
     }
