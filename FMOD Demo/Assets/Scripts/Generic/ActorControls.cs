@@ -31,8 +31,12 @@ public class ActorControls : MonoBehaviour
     public Vector3 CurrentVelocity { get { return new Vector3(m_velocity.x, 0.0f, m_velocity.z); } }
     public bool IsGrounded { get { return m_cc.isGrounded; } }
 
+    Footsteps m_footsteps;
+    float m_footstepElapsed;
+
     void Start()
     {
+        m_footsteps = GetComponent<Footsteps>();
         m_isRunning = false;
         m_drag = 1.0f / (m_drag + 1.0f);
         Application.runInBackground = true;
@@ -52,7 +56,9 @@ public class ActorControls : MonoBehaviour
         {
             m_isRunning = false;
         }
-       // CheckDisableMovement();
+#if UNITY_EDITOR
+        CheckDisableMovement();
+#endif
         Action();
         Look();
     }
@@ -105,7 +111,6 @@ public class ActorControls : MonoBehaviour
     }
     void Move()
     {
-
         m_velocity.y -= 9.8f * Time.fixedDeltaTime;
         m_velocity.x *= m_drag;
         m_velocity.z *= m_drag;
@@ -140,7 +145,29 @@ public class ActorControls : MonoBehaviour
                 m_velocity += transform.up * m_jumpPower * Time.fixedDeltaTime;
             }
         }
-        m_cc.Move(m_velocity * Time.fixedDeltaTime);
+        if (m_velocity.sqrMagnitude > 0.0f)
+        {
+            m_cc.Move(m_velocity * Time.fixedDeltaTime);
+            if (m_cc.isGrounded)
+            {
+                Vector3 vel = m_velocity;
+                vel.y = 0.0f;
+                float mag = vel.magnitude;
+                if (mag >= 0.45f)
+                {
+                    m_footstepElapsed += vel.magnitude * 0.015f;
+                    if (m_footstepElapsed > 1.0f)
+                    {
+                        m_footsteps.PlayFootstep();
+                        m_footstepElapsed = 0.0f;
+                    }
+                }
+                else
+                {
+                    m_footstepElapsed = 0.0f;
+                }
+            }
+        }
     }
     void Look()
     {
