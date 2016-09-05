@@ -8,11 +8,12 @@ public class Panning : MonoBehaviour
     bool m_isActive;
     public GameObject m_tv;
     public GameObject m_objects;
-    float m_originalFOV;
+    float m_originalFOV, m_originalNear;
 
     void Start()
     {
         m_originalFOV = Camera.main.fieldOfView;
+        m_originalNear = Camera.main.nearClipPlane;
         m_isActive = false;
         m_elapsed = 0.0f;
         m_is3D = true;
@@ -27,7 +28,8 @@ public class Panning : MonoBehaviour
         if (m_isActive)
         {
             m_elapsed += Time.deltaTime;
-            Camera.main.fieldOfView = m_originalFOV + Mathf.Sin(m_elapsed * 3.0f) * 40.0f;
+            Camera.main.fieldOfView = m_originalFOV + Mathf.Sin(m_elapsed * 3.0f) * 115.0f;
+            Camera.main.nearClipPlane = m_originalNear - Mathf.Sin(m_elapsed * 3.0f) * 0.29f;
             for (int i = 0; i < m_objects.transform.childCount; ++i)
             {
                 FMODUnity.StudioEventEmitter em = m_objects.transform.GetChild(i).gameObject.GetComponent<FMODUnity.StudioEventEmitter>();
@@ -44,6 +46,7 @@ public class Panning : MonoBehaviour
             if (m_elapsed >= 1.0f)
             {
                 Camera.main.fieldOfView = m_originalFOV;
+                Camera.main.nearClipPlane = m_originalNear;
                 m_tv.SetActive(!m_tv.activeSelf);
                 m_elapsed = 0.0f;
                 m_isActive = false;
