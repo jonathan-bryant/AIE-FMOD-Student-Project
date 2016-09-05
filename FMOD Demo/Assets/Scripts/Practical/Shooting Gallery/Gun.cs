@@ -8,8 +8,12 @@ public class Gun : MonoBehaviour {
     // Use this for initialization
     public float m_power = 2.0f;
     public float m_fireRate = 0.1f;
+
+    [FMODUnity.EventRef]    public string m_eventRef;
+
     float m_elapsed;
-	void Start () {
+	void Start ()
+    {
         m_elapsed = 0.0f;
 	}
 	
@@ -23,6 +27,8 @@ public class Gun : MonoBehaviour {
         if(Input.GetMouseButton(0) && m_elapsed >= m_fireRate)
         {
             //TODO: Adding shooting gun sound.
+            FMODUnity.RuntimeManager.PlayOneShot(m_eventRef);
+
             GameObject obj = Instantiate(m_bullet) as GameObject;
             obj.transform.position = m_gunHole.position;
             obj.GetComponent<Rigidbody>().AddForce(transform.forward * m_power);

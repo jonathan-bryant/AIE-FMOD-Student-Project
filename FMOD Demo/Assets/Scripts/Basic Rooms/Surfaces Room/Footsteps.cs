@@ -62,7 +62,7 @@ public class Footsteps : MonoBehaviour
                 |   can be attached, instead of a Vector3 position, to the event, which will allow the sound to follow  |
                 |   that transform.                                                                                     |
                 =======================================================================================================*/
-                instance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position - new Vector3(0,transform.localScale.y,0)));
+                instance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position - new Vector3(0,transform.localScale.y * 3,0)));
                 /*===============================================Fmod====================================================
                 |   The release function will remove control, which means calling functions such as setParamaterValue   |
                 |   will do nothing.                                                                                    |
