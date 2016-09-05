@@ -1,67 +1,75 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CannonController : MonoBehaviour {
+public class CannonController : MonoBehaviour
+{
+
     public GameObject m_cannonBall;
     public GameObject m_cannon;
-    // Use this for initialization
-    float m_angle;
-    float m_speed;
-    float m_fireRate, m_fireRateElapsed;
-    public float m_power;
-	void Start () {
-        m_angle = 30.0f;
-        m_speed = 25.0f;
-        m_fireRate = 3.0f;
-        m_fireRateElapsed = m_fireRate;
-    }
-	
-	// Update is called once per frame
-	void Update ()
+    float m_currentAngle;
+    float m_power;
+    float m_selectedAngle;
+    bool m_isActive;
+
+    void Start()
     {
-        if (m_fireRateElapsed < m_fireRate)
-        {
-            m_fireRateElapsed += Time.deltaTime;
-        }
+        m_currentAngle = 30.0f;
+        m_selectedAngle = 30.0f;
+        m_power = 10.0f;
+        m_isActive = false;
     }
-    public void Fire()
+    void FixedUpdate()
     {
-        if(m_fireRateElapsed >= m_fireRate)
+        if (m_isActive)
         {
-            GameObject obj = (GameObject)Instantiate(m_cannonBall, m_cannon.transform.position + (-m_cannon.transform.GetChild(0).up * 1.75f), Quaternion.identity);
-            obj.GetComponent<Rigidbody>().AddForce(-m_cannon.transform.GetChild(0).up * m_power, ForceMode.VelocityChange);
-            obj.transform.SetParent(transform);
-            m_fireRateElapsed = 0.0f;
-        }
-    }
-    public void LowerCannon()
-    {
-        if (m_angle < 60.0f)
-        {
-            m_angle += m_speed * Time.deltaTime;
-            if (m_angle > 60.0f)
+            if (m_currentAngle != m_selectedAngle)
             {
-                m_angle = 60.0f;
+                if (m_selectedAngle < m_currentAngle)
+                {
+                    m_currentAngle -= 0.02f;
+                }
+                else
+                {
+                    m_currentAngle += 0.02f;
+                }
             }
-            Vector3 angle = m_cannon.transform.eulerAngles;
-            angle.x = m_angle;
-            angle.z = 0.0f;
-            m_cannon.transform.eulerAngles = angle;
+            else
+            {
+                m_isActive = false;
+                GameObject ball = Instantiate(m_cannonBall, m_cannon.transform.GetChild(0).position - (m_cannon.transform.GetChild(0).up), Quaternion.identity) as GameObject;
+                ball.transform.SetParent(transform);
+                ball.GetComponent<Rigidbody>().AddForce(-m_cannon.transform.GetChild(0).up * m_power, ForceMode.Impulse);
+            }
         }
     }
-    public void RaiseCannon()
+    void Update()
     {
-        if (m_angle > 30.0f)
+
+    }
+    public void Fire(int a_index)
+    {
+        if (m_isActive)
+            return;
+
+        switch (a_index)
         {
-            m_angle -= m_speed * Time.deltaTime;
-            if (m_angle < 30.0f)
-            {
-                m_angle = 30.0f;
-            }
-            Vector3 angle = m_cannon.transform.eulerAngles;
-            angle.x = m_angle;
-            angle.z = 0.0f;
-            m_cannon.transform.eulerAngles = angle;
+            case 1:
+                m_selectedAngle = 30.0f;
+                m_power = 10.0f;
+                m_isActive = true;
+                break;
+            case 2:
+                m_selectedAngle = 45.0f;
+                m_power = 12.5f;
+                m_isActive = true;
+                break;
+            case 3:
+                m_selectedAngle = 60.0f;
+                m_power = 15.0f;
+                m_isActive = true;
+                break;
+            default:
+                break;
         }
     }
 }
