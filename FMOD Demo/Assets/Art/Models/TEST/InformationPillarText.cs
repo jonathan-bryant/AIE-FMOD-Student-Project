@@ -11,7 +11,7 @@ using System.Collections;
 public class InformationPillarText : MonoBehaviour 
 {
     // Public Vars
-
+    public Guide m_guide;
     // Private Vars
     Animator anim;
     public string animName;
