@@ -4,7 +4,7 @@ using System.Collections;
 public class O_Elevator : MonoBehaviour
 {
     public O_ElevatorDoor m_leftDoor, m_rightDoor;
-    int m_currentFloor;
+    public int m_currentFloor;
     int m_selectedFloor;
     int m_isActive; //0 off, 1 close, 2 lift, 3 open
     int m_doorsState;
@@ -39,7 +39,7 @@ public class O_Elevator : MonoBehaviour
             if (m_selectedFloor > m_currentFloor)
             {
                 transform.Translate(0.0f, m_speed * Time.deltaTime, 0.0f);
-                if((m_actor.position - transform.position).magnitude < 1.25f)
+                if((m_actor.position - transform.position).magnitude < 1.5f)
                     m_actor.Translate(0.0f, m_speed * Time.deltaTime, 0.0f);
                 if (transform.position.y > m_selectedFloorY)
                 {
@@ -52,7 +52,7 @@ public class O_Elevator : MonoBehaviour
             else
             {
                 transform.Translate(0.0f, -m_speed * Time.deltaTime, 0.0f);
-                if ((m_actor.position - transform.position).magnitude < 1.25f)
+                if ((m_actor.position - transform.position).magnitude < 1.5f)
                     m_actor.Translate(0.0f, -m_speed * Time.deltaTime, 0.0f);
                 if (transform.position.y < m_selectedFloorY)
                 {

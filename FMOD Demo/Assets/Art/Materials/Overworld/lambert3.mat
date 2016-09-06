@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: lambert3
-  m_Shader: {fileID: 4800000, guid: 466466a0175d2e340b26817200194fc0, type: 3}
-  m_ShaderKeywords: _VERTEXCOLOR
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
+  m_Shader: {fileID: 4800000, guid: e2de4b314457106409da8e620a90a7ce, type: 3}
+  m_ShaderKeywords: _EMISSION _VERTEXCOLOR
+  m_LightmapFlags: 1
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -100,15 +100,11 @@ Material:
         second: 0.5
       data:
         first:
-          name: _Shininess
-        second: 0.078125
-      data:
-        first:
-          name: _Glossiness
+          name: _Metallic
         second: 0
       data:
         first:
-          name: _Metallic
+          name: _Glossiness
         second: 0
       data:
         first:
@@ -150,7 +146,7 @@ Material:
       data:
         first:
           name: _EmissionColor
-        second: {r: 0, g: 0, b: 0, a: 0.05}
+        second: {r: 0.05, g: 0.05, b: 0.05, a: 0.05}
       data:
         first:
           name: _Color
