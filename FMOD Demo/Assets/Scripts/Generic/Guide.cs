@@ -42,10 +42,13 @@ public class Guide : MonoBehaviour
                 if (m_currentIndex == m_arrowsContainer.transform.childCount)
                 {
                     m_currentIndex = 0;
-                    m_currentIterations++;
-                    if (m_currentIterations == m_iterations)
+                    if (m_iterations != 0)
                     {
-                        m_isPlaying = false;
+                        m_currentIterations++;
+                        if (m_currentIterations == m_iterations)
+                        {
+                            m_isPlaying = false;
+                        }
                     }
                 }
             }
@@ -58,6 +61,16 @@ public class Guide : MonoBehaviour
         m_currentIndex = 0;
         m_currentIterations = 0;
         m_pulseElapsed = 0;
+        for (int i = 0; i < m_arrowsContainer.transform.childCount; ++i)
+        {
+            Color previousColor = m_arrowsContainer.transform.GetChild(i).gameObject.GetComponent<Renderer>().material.GetColor("_Color");
+            previousColor.a = 0.0f;
+            m_arrowsContainer.transform.GetChild(i).gameObject.GetComponent<Renderer>().material.SetColor("_Color", previousColor);
+        }
+    }
+    public void Stop()
+    {
+        m_isPlaying = false;
         for (int i = 0; i < m_arrowsContainer.transform.childCount; ++i)
         {
             Color previousColor = m_arrowsContainer.transform.GetChild(i).gameObject.GetComponent<Renderer>().material.GetColor("_Color");

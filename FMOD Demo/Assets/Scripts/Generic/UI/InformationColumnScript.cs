@@ -73,6 +73,10 @@ public class InformationColumnScript : MonoBehaviour
                     m_pillarTexts[m_currentSelection].GetComponentInChildren<Renderer>().material = m_textHighlightedMat;
                 }
             }
+            if(Input.GetKeyDown(KeyCode.F))
+            {
+                m_pillarTexts[m_currentSelection].m_guide.Play();
+            }
         }
         else if (m_distanceToPlayer > m_idleRadius && m_defaultAnimPlaying == false)
         {
