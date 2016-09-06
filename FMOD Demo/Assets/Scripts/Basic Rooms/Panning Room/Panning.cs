@@ -24,22 +24,29 @@ public class Panning : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             m_isActive = true;
+            Camera.main.nearClipPlane = 0.02f;
         }
         if (m_isActive)
         {
             m_elapsed += Time.deltaTime;
-            Camera.main.fieldOfView = m_originalFOV + Mathf.Sin(m_elapsed * 3.0f) * 115.0f;
-            Camera.main.nearClipPlane = m_originalNear - Mathf.Sin(m_elapsed * 3.0f) * 0.29f;
+            if (m_elapsed <= 0.9f)
+            {
+                Camera.main.fieldOfView += 125.0f * Time.deltaTime;
+            }
+            else
+            {
+                Camera.main.fieldOfView -= 900.0f * Time.deltaTime;
+            }
             for (int i = 0; i < m_objects.transform.childCount; ++i)
             {
                 FMODUnity.StudioEventEmitter em = m_objects.transform.GetChild(i).gameObject.GetComponent<FMODUnity.StudioEventEmitter>();
                 if (!m_is3D)
                 {
-                    em.SetParameter("Panning", m_elapsed);
+                    em.SetParameter("Panning", m_elapsed / 1.0f);
                 }
                 else
                 {
-                    em.SetParameter("Panning", 1.0f - m_elapsed);
+                    em.SetParameter("Panning", 1.0f - (m_elapsed / 1.0f));
                 }
             }
 
