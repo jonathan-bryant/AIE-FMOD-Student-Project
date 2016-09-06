@@ -39,7 +39,8 @@ public class O_Elevator : MonoBehaviour
             if (m_selectedFloor > m_currentFloor)
             {
                 transform.Translate(0.0f, m_speed * Time.deltaTime, 0.0f);
-                m_actor.Translate(0.0f, m_speed * Time.deltaTime, 0.0f);
+                if((m_actor.position - transform.position).magnitude < 1.25f)
+                    m_actor.Translate(0.0f, m_speed * Time.deltaTime, 0.0f);
                 if (transform.position.y > m_selectedFloorY)
                 {
                     Vector3 pos = transform.position;
@@ -51,7 +52,8 @@ public class O_Elevator : MonoBehaviour
             else
             {
                 transform.Translate(0.0f, -m_speed * Time.deltaTime, 0.0f);
-                m_actor.Translate(0.0f, -m_speed * Time.deltaTime, 0.0f);
+                if ((m_actor.position - transform.position).magnitude < 1.25f)
+                    m_actor.Translate(0.0f, -m_speed * Time.deltaTime, 0.0f);
                 if (transform.position.y < m_selectedFloorY)
                 {
                     Vector3 pos = transform.position;
