@@ -11,7 +11,7 @@ using UnityEngine;
 public class RoomEnterTrigger : MonoBehaviour 
 {
     // Public Vars
-
+    public RoomCompleted m_comp;
     // Private Vars
     SceneTrigger m_triggerScript;
     
@@ -26,6 +26,7 @@ public class RoomEnterTrigger : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             m_triggerScript.LoadRoom();
+            m_comp.CompleteRoom();
         }
     }
 }
