@@ -37,9 +37,11 @@ public class RoomDoor : MonoBehaviour
         Application.backgroundLoadingPriority = ThreadPriority.Low;
         doorClosedPos = m_door.transform.position;
         doorOpenPos = doorClosedPos + new Vector3(0, 0, 2);
+
         m_collider = GetComponent<SphereCollider>();
         m_collider.center = new Vector3(0, 1.5f, -0.8f);
         m_collider.radius = 2.5f;
+        m_collider.isTrigger = true;
     }
 	
 	void Update () 
@@ -47,7 +49,8 @@ public class RoomDoor : MonoBehaviour
         if (Input.GetKeyDown(m_useKey) && m_entering)
         {
             //~~~~~~~~~~~~~~~ Load this room ~~~~~~~~~~~~~~~\\
-            StartCoroutine(LoadSceneOpenDoor());
+            if (!(m_entering && m_entered))
+                StartCoroutine(LoadSceneOpenDoor());
         }
     }
 
@@ -65,6 +68,7 @@ public class RoomDoor : MonoBehaviour
         }
         else
         {
+            m_entering = false;
             StartCoroutine( LoadSceneOpenDoor());
         }
 
@@ -79,6 +83,7 @@ public class RoomDoor : MonoBehaviour
         if (playerDir > 0)
         {
             m_entering = false;
+            m_entered = false;
         }
         else
         {
@@ -141,7 +146,7 @@ public class RoomDoor : MonoBehaviour
             }
         }
 
-        if (!m_entering && m_entered)
+        if (!m_entering && !m_entered)
         {
             SceneManager.UnloadScene(m_sceneToLoad);
             FMODUnity.RuntimeManager.UnloadBank(m_bankToload);
