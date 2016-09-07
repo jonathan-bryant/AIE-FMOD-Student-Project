@@ -28,7 +28,6 @@ GameObject:
   - 143: {fileID: 14383238}
   - 114: {fileID: 11414738}
   - 114: {fileID: 11486714}
-  - 114: {fileID: 11414306}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -158,7 +157,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.614}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 485882}
   m_RootOrder: 0
@@ -171,7 +169,6 @@ Transform:
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
   m_LocalPosition: {x: -10.5, y: 1.56, z: -3.36}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
   m_Children:
   - {fileID: 444852}
   - {fileID: 22440992}
@@ -186,7 +183,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 485882}
   m_Father: {fileID: 437070}
@@ -200,7 +196,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.37999973, y: -0.61999995, z: 0.8800003}
   m_LocalScale: {x: 0.16754359, y: 0.16754359, z: 1.3357141}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 430464}
   m_Father: {fileID: 444852}
@@ -366,17 +361,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11414306
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 132774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f390b1c527b4734b879361b670418d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11414738
@@ -618,6 +602,7 @@ MonoBehaviour:
   m_gunHole: {fileID: 430464}
   m_power: 2
   m_fireRate: 0.1
+  m_eventRef: event:/Shooting Gallery/Laser Gun single
 --- !u!114 &11486714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -757,7 +742,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 22440992}
   m_RootOrder: 2
@@ -775,7 +759,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 22440992}
   m_RootOrder: 1
@@ -793,7 +776,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 22453548}
   - {fileID: 22439112}
@@ -814,7 +796,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.19499001, y: 0.19499001, z: 0.19499001}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 22440992}
   m_RootOrder: 0
