@@ -6,7 +6,7 @@ public class Panning : MonoBehaviour
     bool m_is3D;
     float m_elapsed;
     bool m_isActive;
-    public GameObject m_tv;
+    public GameObject m_tvs;
     public GameObject m_objects;
     float m_originalFOV, m_originalNear;
 
@@ -17,7 +17,10 @@ public class Panning : MonoBehaviour
         m_isActive = false;
         m_elapsed = 0.0f;
         m_is3D = true;
-        m_tv.SetActive(false);
+        for (int i = 0; i < m_tvs.transform.childCount; ++i)
+        {
+            m_tvs.transform.GetChild(i).GetChild(0).GetChild(0).gameObject.SetActive(false);
+        }
     }
     void Update()
     {
@@ -54,13 +57,31 @@ public class Panning : MonoBehaviour
             {
                 Camera.main.fieldOfView = m_originalFOV;
                 Camera.main.nearClipPlane = m_originalNear;
-                m_tv.SetActive(!m_tv.activeSelf);
                 m_elapsed = 0.0f;
                 m_isActive = false;
                 m_is3D = !m_is3D;
-                for (int i = 0; i < m_objects.transform.childCount; ++i)
+
+                for (int i = 0; i < m_tvs.transform.childCount; ++i)
                 {
-                    m_objects.transform.GetChild(i).gameObject.SetActive(m_is3D);
+                    m_tvs.transform.GetChild(i).GetChild(0).GetChild(0).gameObject.SetActive(!m_is3D);
+                }
+
+                Vector3 pos = m_objects.transform.localPosition;
+                if (!m_is3D)
+                {
+                    pos.x = -20.0f;
+                }
+                else
+                {
+                    pos.x = 0.0f;
+                }
+                m_objects.transform.localPosition = pos;
+                if (m_is3D)
+                {
+                    for (int i = 0; i < m_objects.transform.childCount; ++i)
+                    {
+                        m_objects.transform.GetChild(i).GetComponent<Panning_Robot>().FacePlayer();
+                    }
                 }
             }
         }
