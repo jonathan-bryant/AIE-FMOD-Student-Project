@@ -5,7 +5,7 @@ public class ElevatorDoor : MonoBehaviour
 {
     public GameObject m_leftDoor, m_rightDoor;
     int m_isActive;
-    bool m_doorsOpen;
+    public bool m_doorsOpen;
 
     void Start()
     {
@@ -26,7 +26,7 @@ public class ElevatorDoor : MonoBehaviour
             {
                 leftDoorPos.z = -1.4f;
                 rightDoorPos.z = 1.4f;
-                m_doorsOpen = false;
+                m_doorsOpen = true;
                 m_isActive = 0;
             }
             m_leftDoor.transform.localPosition = leftDoorPos;
