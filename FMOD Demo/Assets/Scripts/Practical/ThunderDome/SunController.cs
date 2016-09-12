@@ -38,12 +38,12 @@ public class SunController : ActionObject
         }
     }
 
-    public override void ActionPressed(GameObject sender)
+    public override void ActionPressed(GameObject sender, KeyCode a_key)
     {
         m_actor.m_disabledMouse = true;
         m_inControl = true;
     }
-    public override void ActionReleased(GameObject sender)
+    public override void ActionReleased(GameObject sender, KeyCode a_key)
     {
         m_actor.m_disabledMouse = false;
         m_inControl = false;

@@ -35,7 +35,7 @@ public class ActorControls : MonoBehaviour
     Footsteps m_footsteps;
     float m_footstepElapsed;
 
-    public Text m_pressE;
+    public Text m_pressKeyText;
 
 
     void Start()
@@ -220,8 +220,8 @@ public class ActorControls : MonoBehaviour
                 if (!actionObject)
                 {
                     m_actionObject = null;
-                    if (m_pressE)
-                        m_pressE.gameObject.SetActive(false);
+                    if (m_pressKeyText)
+                        m_pressKeyText.gameObject.SetActive(false);
                     return;
                 }
             }
@@ -249,20 +249,34 @@ public class ActorControls : MonoBehaviour
             }
 
             //If the action key is pressed, call use on the actionObject
-            if (Input.GetKeyDown(KeyCode.E))
+            for (int i = 0; i < m_actionObject.m_actionKeys.Length; ++i)
             {
-                m_actionObject.ActionPressed(gameObject);
+                if (Input.GetKeyDown(m_actionObject.m_actionKeys[i]))
+                {
+                    m_actionObject.ActionPressed(gameObject, m_actionObject.m_actionKeys[i]);
+                    break;
+                }
+                else if (Input.GetKey(m_actionObject.m_actionKeys[i]))
+                {
+                    m_actionObject.ActionDown(gameObject, m_actionObject.m_actionKeys[i]);
+                    break;
+                }
+                else if (Input.GetKeyUp(m_actionObject.m_actionKeys[i]))
+                {
+                    m_actionObject.ActionReleased(gameObject, m_actionObject.m_actionKeys[i]);
+                    break;
+                }
             }
-            else if (Input.GetKey(KeyCode.E))
+            if (m_pressKeyText)
             {
-                m_actionObject.ActionDown(gameObject);
+                string text = m_actionObject.m_actionKeys[0].ToString();
+                for (int i = 1; i < m_actionObject.m_actionKeys.Length; ++i)
+                {
+                    text = text.Insert(text.Length, " \\ " + m_actionObject.m_actionKeys[i].ToString());
+                }
+                m_pressKeyText.text = text;
+                m_pressKeyText.gameObject.SetActive(true);
             }
-            else
-            {
-                m_actionObject.ActionReleased(gameObject);
-            }
-            if (m_pressE)
-                m_pressE.gameObject.SetActive(true);
             return;
         }
         //If there is no raycast and there is an actionObject, disable it's outline, and call use but pass in false(Unuse basically)
@@ -289,8 +303,8 @@ public class ActorControls : MonoBehaviour
                     mat.SetInt("_OutlineEnabled", 0);
                 m_actionObject = null;
             }
-            if (m_pressE)
-                m_pressE.gameObject.SetActive(false);
+            if (m_pressKeyText)
+                m_pressKeyText.gameObject.SetActive(false);
         }
     }
 }

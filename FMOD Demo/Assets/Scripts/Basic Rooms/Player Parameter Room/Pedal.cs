@@ -18,19 +18,9 @@ public class Pedal : ActionObject
 	    
 	}
 
-    public override void ActionPressed(GameObject sender)
+    public override void ActionPressed(GameObject sender, KeyCode a_key)
     {
         m_car.Accelerate();
         m_isAccelerating = !m_isAccelerating;
-        if (m_isAccelerating)
-        {
-            transform.Translate(new Vector3(0.0f, -0.25f, 0.0f));
-            transform.Rotate(new Vector3(0.0f, 0.0f, 1.0f), -25.0f);
-        }
-        else
-        {
-            transform.Rotate(new Vector3(0.0f, 0.0f, 1.0f), 25.0f);
-            transform.Translate(new Vector3(0.0f, 0.25f, 0.0f));
-        }
     }
 }

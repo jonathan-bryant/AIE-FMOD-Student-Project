@@ -12,7 +12,7 @@ public class GuideText : ActionObject
 	
 	}
 
-    public override void ActionPressed(GameObject sender)
+    public override void ActionPressed(GameObject sender, KeyCode a_key)
     {
         m_guide.Play();
     }

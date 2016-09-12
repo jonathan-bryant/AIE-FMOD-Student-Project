@@ -15,7 +15,7 @@ public class UpLoad : ActionObject
 	void Update () {
 	
 	}
-    public override void ActionPressed(GameObject sender)
+    public override void ActionPressed(GameObject sender, KeyCode a_key)
     {
         m_car.UpLoad();
     }

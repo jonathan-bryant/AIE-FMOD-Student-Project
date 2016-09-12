@@ -9,15 +9,16 @@ using System.Collections;
 
 public class ActionObject : MonoBehaviour
 {
-    public virtual void ActionPressed(GameObject sender)
+    public KeyCode[] m_actionKeys;
+    public virtual void ActionPressed(GameObject a_sender, KeyCode a_key)
     {
 
     }
-    public virtual void ActionReleased(GameObject sender)
+    public virtual void ActionReleased(GameObject a_sender, KeyCode a_key)
     {
 
     }
-    public virtual void ActionDown(GameObject sender)
+    public virtual void ActionDown(GameObject a_sender, KeyCode a_key)
     {
 
     }

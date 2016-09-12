@@ -15,7 +15,7 @@ public class CannonSelection : ActionObject
 	
 	}
 
-    public override void ActionPressed(GameObject sender)
+    public override void ActionPressed(GameObject sender, KeyCode a_key)
     {
         m_controller.Fire(m_selection);
     }
