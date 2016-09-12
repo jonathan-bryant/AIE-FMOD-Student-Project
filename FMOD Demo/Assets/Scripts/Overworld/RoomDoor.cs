@@ -39,8 +39,6 @@ public class RoomDoor : MonoBehaviour
         doorOpenPos = doorClosedPos + new Vector3(0, 0, 2);
 
         m_collider = GetComponent<SphereCollider>();
-        m_collider.center = new Vector3(0, 1.5f, -0.8f);
-        m_collider.radius = 2.5f;
         m_collider.isTrigger = true;
     }
 	
@@ -148,8 +146,11 @@ public class RoomDoor : MonoBehaviour
 
         if (!m_entering && !m_entered)
         {
-            SceneManager.UnloadScene(m_sceneToLoad);
-            FMODUnity.RuntimeManager.UnloadBank(m_bankToload);
+            if (SceneManager.GetSceneByName(m_sceneToLoad).isLoaded)
+            {
+                SceneManager.UnloadScene(m_sceneToLoad);
+                FMODUnity.RuntimeManager.UnloadBank(m_bankToload);
+            }
         }
     }
 
