@@ -3,9 +3,9 @@ using System.Collections;
 
 public class O_ElevatorDoor : MonoBehaviour
 {
-    public GameObject m_leftDoor, m_rightDoor;
     int m_isActive;
     bool m_doorsOpen;
+    public bool IsDoorOpen() { return m_doorsOpen; }
 
     void Start()
     {
@@ -17,48 +17,38 @@ public class O_ElevatorDoor : MonoBehaviour
         if (m_isActive == 1)
         {
             //open
-            Vector3 leftDoorRot = m_leftDoor.transform.localEulerAngles;
-            Vector3 rightDoorRot = m_rightDoor.transform.localEulerAngles;
-
-            leftDoorRot.y -= 90.0f * Time.deltaTime;
-            rightDoorRot.y += 90.0f * Time.deltaTime;
-            if (leftDoorRot.z < 0)
+            Vector3 eular = transform.eulerAngles;
+            eular.y -= 180.0f * Time.deltaTime;
+            if (eular.y <= 0.0f)
             {
-                leftDoorRot.y = 0.0f;
-                rightDoorRot.y = 0.0f;
-                m_doorsOpen = false;
+                eular.y = 0.0f;
                 m_isActive = 0;
+                m_doorsOpen = true;
             }
-            m_leftDoor.transform.localEulerAngles = leftDoorRot;
-            m_rightDoor.transform.localEulerAngles = rightDoorRot;
+            transform.eulerAngles = eular;
         }
         else if (m_isActive == -1)
         {
             //close
-            Vector3 leftDoorRot = m_leftDoor.transform.localEulerAngles;
-            Vector3 rightDoorRot = m_rightDoor.transform.localEulerAngles;
-
-            leftDoorRot.y += 90.0f * Time.deltaTime;
-            rightDoorRot.y -= 90.0f * Time.deltaTime;
-            if (leftDoorRot.z > 90.0f)
+            Vector3 eular = transform.eulerAngles;
+            eular.y += 180.0f * Time.deltaTime;
+            if (eular.y >= 180.0f)
             {
-                leftDoorRot.y = 90.0f;
-                rightDoorRot.y = -90.0f;
-                m_doorsOpen = false;
+                eular.y = 180.0f;
                 m_isActive = 0;
+                m_doorsOpen = false;
             }
-            m_leftDoor.transform.localEulerAngles = leftDoorRot;
-            m_rightDoor.transform.localEulerAngles = rightDoorRot;
+            transform.eulerAngles = eular;
         }
     }
 
-    public void OpenDoors()
+    public void OpenDoor()
     {
         if (m_doorsOpen)
             return;
         m_isActive = 1;
     }
-    public void CloseDoors()
+    public void CloseDoor()
     {
         if (!m_doorsOpen)
             return;

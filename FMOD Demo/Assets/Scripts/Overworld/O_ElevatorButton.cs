@@ -5,6 +5,7 @@ public class O_ElevatorButton : ActionObject
 {
     public O_Elevator m_elevator;
     public int m_floor;
+    public float m_floorY;
 
     void Start()
     {
@@ -15,6 +16,6 @@ public class O_ElevatorButton : ActionObject
 
     public override void ActionDown(GameObject sender)
     {
-        m_elevator.ChangeFloor(m_floor);
+        m_elevator.ChangeFloor(m_floor, m_floorY);
     }
 }

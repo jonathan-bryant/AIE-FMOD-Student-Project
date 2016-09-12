@@ -5,6 +5,7 @@
 /* ========================================================================================== */
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
 public class ActorControls : MonoBehaviour
@@ -33,6 +34,9 @@ public class ActorControls : MonoBehaviour
 
     Footsteps m_footsteps;
     float m_footstepElapsed;
+
+    public Text m_pressE;
+
 
     void Start()
     {
@@ -216,6 +220,8 @@ public class ActorControls : MonoBehaviour
                 if (!actionObject)
                 {
                     m_actionObject = null;
+                    if (m_pressE)
+                        m_pressE.gameObject.SetActive(false);
                     return;
                 }
             }
@@ -243,11 +249,11 @@ public class ActorControls : MonoBehaviour
             }
 
             //If the action key is pressed, call use on the actionObject
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 m_actionObject.ActionPressed(gameObject);
             }
-            else if (Input.GetKey(KeyCode.F))
+            else if (Input.GetKey(KeyCode.E))
             {
                 m_actionObject.ActionDown(gameObject);
             }
@@ -255,6 +261,8 @@ public class ActorControls : MonoBehaviour
             {
                 m_actionObject.ActionReleased(gameObject);
             }
+            if (m_pressE)
+                m_pressE.gameObject.SetActive(true);
             return;
         }
         //If there is no raycast and there is an actionObject, disable it's outline, and call use but pass in false(Unuse basically)
@@ -281,6 +289,8 @@ public class ActorControls : MonoBehaviour
                     mat.SetInt("_OutlineEnabled", 0);
                 m_actionObject = null;
             }
+            if (m_pressE)
+                m_pressE.gameObject.SetActive(false);
         }
     }
 }
