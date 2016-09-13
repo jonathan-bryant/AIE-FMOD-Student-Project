@@ -65,7 +65,7 @@ public class TreadmillSpawner : MonoBehaviour
         }
         m_floors.Add(floor);
         floor.transform.SetParent(this.gameObject.transform);
-
+        floor.transform.rotation = Quaternion.FromToRotation(floor.transform.forward, transform.forward);
         m_index++;
         m_index %= 3 * m_numOfRepititions;
     }
@@ -76,11 +76,14 @@ public class TreadmillSpawner : MonoBehaviour
             AddTrack(Vector3.zero);
         }
         else
+        {
             for (int i = 0; i < m_floors.Count; ++i)
             {
                 m_floors[i].transform.position += transform.forward * m_speed * Time.deltaTime;
             }
-        if (m_floors[0].transform.position.z <= -7.072793 + m_floors[0].transform.localScale.z * 0.5f)
+        }
+
+        if ((transform.position - m_floors[0].transform.position).magnitude + (m_floors[0].transform.localScale.z * 0.5f) >= 6.0f)
         {
             if (m_floors[0].tag == "Grass")
             {
@@ -95,15 +98,15 @@ public class TreadmillSpawner : MonoBehaviour
                 m_carpetParticleEmitter.Play();
             }
         }
-        float diff = (transform.position.z - m_floorTextures[0].transform.localScale.z * 2.05f) - (m_floors[m_floors.Count - 1].transform.position.z);
-        if (diff > 0)
+        float diff = (transform.position - m_floors[m_floors.Count - 1].transform.position).magnitude;
+        if (diff >= m_floors[m_floors.Count - 1].transform.localScale.z * 2.0f)
         {
             if (m_floors.Count == m_numOfTiles)
             {
                 Destroy(m_floors[0]);
                 m_floors.RemoveAt(0);
             }
-            AddTrack(transform.position - new Vector3(0.0f, 0.0f, diff));
+            AddTrack(m_floors[m_floors.Count - 1].transform.position - (transform.forward * m_floors[0].transform.localScale.z * 2.0f));
         }
     }
 
