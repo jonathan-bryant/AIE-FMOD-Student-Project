@@ -36,8 +36,8 @@ public class RoomDoor : MonoBehaviour
         Application.backgroundLoadingPriority = ThreadPriority.Low;
         doorClosedPos = m_door.transform.localPosition;
         doorOpenPos = doorClosedPos + (Vector3.forward * m_door.transform.localScale.z);
-        m_collider.radius = 1.2f;
         m_collider = GetComponent<SphereCollider>();
+        m_collider.radius = 1.2f;
         m_collider.isTrigger = true;
     }
 	
