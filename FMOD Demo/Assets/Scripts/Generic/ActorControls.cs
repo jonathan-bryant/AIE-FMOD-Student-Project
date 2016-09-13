@@ -267,7 +267,7 @@ public class ActorControls : MonoBehaviour
                     break;
                 }
             }
-            if (m_pressKeyText)
+            if (m_pressKeyText && m_actionObject.m_actionKeys.Length != 0)
             {
                 string text = m_actionObject.m_actionKeys[0].ToString();
                 for (int i = 1; i < m_actionObject.m_actionKeys.Length; ++i)
@@ -276,6 +276,7 @@ public class ActorControls : MonoBehaviour
                 }
                 m_pressKeyText.text = text;
                 m_pressKeyText.gameObject.SetActive(true);
+
             }
             return;
         }
