@@ -29,10 +29,13 @@ public class Cart : ActionObject
     }
     void FixedUpdate()
     {
-        if (m_playerIsSeated && Input.GetKeyDown(KeyCode.F))
+        for (int i = 0; i < m_actionKeys.Length; ++i)
+        {
+            if (m_playerIsSeated && Input.GetKeyDown(m_actionKeys[i]))
         {
             ActionPressed(this.gameObject, KeyCode.F);
         }
+    }
         if (m_manager.IsActive)
         {
             CalculateHeading();
