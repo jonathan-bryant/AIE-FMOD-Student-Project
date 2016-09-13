@@ -4,70 +4,38 @@ using System.Collections;
 public class GuidePillar : MonoBehaviour
 {
     public float m_hidingY;
-    int m_isActive;
+    bool m_isActive;
     float m_selectionY;
-    int m_direction;
 
-	void Start () {
-        m_selectionY = 3.0f;
-        m_isActive = 0;
-        m_direction = 0;
+    void Start()
+    {
+        m_selectionY = m_hidingY;
+        m_isActive = false;
     }
-	void Update () {
-        if (m_isActive == 1)
+    void Update()
+    {
+        if (m_isActive)
         {
-            if (m_direction == 1)
-            {
-                transform.Translate(0.0f, Time.deltaTime * 2.0f, 0.0f, Space.Self);
-                Vector3 pos = transform.position;
-                if (pos.y >= m_selectionY)
-                {
-                    pos.y = m_selectionY;
-                    transform.position = pos;
-                    m_isActive = 0;
-                }
-            }
-            else
-            {
-                transform.Translate(0.0f, -Time.deltaTime * 2.0f, 0.0f, Space.Self);
-                Vector3 pos = transform.position;
-                if (pos.y <= m_selectionY)
-                {
-                    pos.y = m_selectionY;
-                    transform.position = pos;
-                    m_isActive = 0;
-                }
-            }
-        }
-        else if(m_isActive == -1)
-        {
-            transform.Translate(0.0f, -Time.deltaTime * 2.0f, 0.0f, Space.Self);
             Vector3 pos = transform.position;
-            if(pos.y <= -1.175f)
+            float diff = m_selectionY - pos.y;
+            pos.y += diff * Time.deltaTime * 2.0f;
+            if (Mathf.Abs(diff) <= 0.005f)
             {
-                pos.y = -1.175f;
-                transform.position = pos;
-                m_isActive = 0;
+                pos.y = m_selectionY;
+                m_isActive = false;
             }
+            transform.position = pos;
         }
-	}
+    }
 
     public void Hide()
     {
-        if (m_isActive != 0)
-            return;
-        m_isActive = -1;
-        m_direction = -1;
+        m_isActive = true;
+        m_selectionY = m_hidingY;
     }
     public void Summon(float a_y)
     {
-        if (m_isActive != 0)
-            return;
-        m_isActive = 1;
+        m_isActive = true;
         m_selectionY = a_y;
-        if (m_selectionY > transform.position.y)
-            m_direction = 1;
-        else
-            m_direction = -1;
     }
 }

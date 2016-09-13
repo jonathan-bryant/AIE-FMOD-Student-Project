@@ -13,7 +13,7 @@ public class O_ElevatorGuideController : ActionObject
 
     void Start()
     {
-        m_guideIsCurrent = true;
+        m_guideIsCurrent = false;
     }
     void Update()
     {
