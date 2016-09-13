@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PanningCamera : MonoBehaviour
 {
+    public Transform m_right;
     Camera m_follow;
     public float m_distance;
 
@@ -10,7 +11,7 @@ public class PanningCamera : MonoBehaviour
         m_follow = Camera.main;
 	}
 	void Update () {
-        transform.position = m_follow.transform.position + Vector3.right * -m_distance;
+        transform.position = m_follow.transform.position + m_right.right * -m_distance;
         Camera cam = GetComponent<Camera>();
         cam.fieldOfView = m_follow.fieldOfView;
         cam.nearClipPlane = m_follow.nearClipPlane;

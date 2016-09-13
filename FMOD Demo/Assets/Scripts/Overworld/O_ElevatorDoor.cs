@@ -5,7 +5,7 @@ public class O_ElevatorDoor : MonoBehaviour
 {
     int m_isActive;
     bool m_doorsOpen;
-    public bool IsDoorOpen() { return m_doorsOpen; }
+    public bool IsDoorOpen { get { return m_doorsOpen; } }
 
     void Start()
     {

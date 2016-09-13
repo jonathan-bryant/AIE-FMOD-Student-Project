@@ -51,7 +51,7 @@ public class Elevator : MonoBehaviour
                     transform.position = pos;
                     //Player
                     pos = m_player.transform.position;
-                    pos.y = m_selectedFloorHeight + 0.7f;
+                    pos.y = m_selectedFloorHeight + 0.28f;
                     m_player.transform.position = pos;
 
                     m_isActive = false;

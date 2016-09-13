@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class O_Elevator : MonoBehaviour
+public class O_Elevator2 : MonoBehaviour
 {
     public O_ElevatorDoor m_door;
     public float m_speed;
 
     Transform m_actor;
-    int m_isActive; //0 off, 1 close, 2 lift, 3 open
+    int m_isActive; //0 off, 1 Wait for close, 2 lift,
     int m_currentFloor;
     int m_selectedFloor;
     float m_selectedFloorY;
@@ -62,7 +62,7 @@ public class O_Elevator : MonoBehaviour
             if (finished)
             {
                 m_currentFloor = m_selectedFloor;
-                m_isActive = 3;
+                m_isActive = 0;
                 m_door.OpenDoor();
             }
 
@@ -74,13 +74,6 @@ public class O_Elevator : MonoBehaviour
             {
                 playerPos.y = pos.y - 1.0f + 0.7f;
                 m_actor.transform.position = playerPos;
-            }
-        }
-        else if (m_isActive == 3)
-        {
-            if (m_door.IsDoorOpen)
-            {
-                m_isActive = 0;
             }
         }
     }
