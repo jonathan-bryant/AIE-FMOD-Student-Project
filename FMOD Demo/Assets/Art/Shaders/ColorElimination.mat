@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: SimpleBlur
-  m_Shader: {fileID: 4800000, guid: ee7a40a8c948c7a499e2735238487dac, type: 3}
+  m_Name: ColorElimination
+  m_Shader: {fileID: 4800000, guid: 3a6737bd11aaebd4b8dabcec5e165fb4, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -18,10 +18,18 @@ Material:
     m_Floats:
       data:
         first:
-          name: _Offset
-        second: 0.0029
+          name: _Density
+        second: 0.1
+      data:
+        first:
+          name: _FadePower
+        second: 3
     m_Colors:
       data:
         first:
-          name: _Tint
-        second: {r: 1, g: 1, b: 1, a: 1}
+          name: _node_4243
+        second: {r: 0, g: 0, b: 0, a: -0.1}
+      data:
+        first:
+          name: _node_7887
+        second: {r: 0.8, g: 3.2, b: 7.7, a: 0}

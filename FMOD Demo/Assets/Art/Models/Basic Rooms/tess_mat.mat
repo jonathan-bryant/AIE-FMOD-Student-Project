@@ -27,7 +27,14 @@ Material:
           name: _BumpMap
         second:
           m_Texture: {fileID: 2800000, guid: 90ff426733b42774fa4fb464cc68b2c9, type: 3}
-          m_Scale: {x: 1, y: 1}
+          m_Scale: {x: 2, y: 2}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _NormalMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 90ff426733b42774fa4fb464cc68b2c9, type: 3}
+          m_Scale: {x: 10, y: 10}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -41,7 +48,7 @@ Material:
           name: _normal2
         second:
           m_Texture: {fileID: 2800000, guid: 90ff426733b42774fa4fb464cc68b2c9, type: 3}
-          m_Scale: {x: 1, y: 1}
+          m_Scale: {x: 2, y: 2}
           m_Offset: {x: 0, y: 0}
       data:
         first:
@@ -71,6 +78,13 @@ Material:
           m_Texture: {fileID: 2800000, guid: 15dc43c4d6678ec459767a577050b862, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _NormalMap2
+        second:
+          m_Texture: {fileID: 2800000, guid: 077a10adfe7833347b250d448bf41899, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -79,15 +93,15 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 0
+        second: 0.8
       data:
         first:
           name: _Gloss
-        second: 0.499
+        second: 0.245
       data:
         first:
           name: _Frequency
-        second: 0.033
+        second: 0.022
       data:
         first:
           name: _RefractionIntensity
@@ -95,11 +109,7 @@ Material:
       data:
         first:
           name: _Opacity
-        second: 0.472
-      data:
-        first:
-          name: __speed
-        second: 10.87
+        second: 0.647
       data:
         first:
           name: __scale
@@ -107,11 +117,19 @@ Material:
       data:
         first:
           name: __normalSpeed
-        second: 0.2
+        second: 0.05
       data:
         first:
           name: __heightSpeed
-        second: 0.16
+        second: 0.1
+      data:
+        first:
+          name: _EmissionIntensity
+        second: 0
+      data:
+        first:
+          name: __speed
+        second: 10.87
       data:
         first:
           name: _HeightAmount
@@ -124,16 +142,24 @@ Material:
         first:
           name: _node_3773
         second: 0
+      data:
+        first:
+          name: _TransitionDistance
+        second: 20
+      data:
+        first:
+          name: _Falloff
+        second: 10
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: 0.3187176, g: 0.6698687, b: 0.9632353, a: 1}
+        second: {r: 0.1417604, g: 0.3560732, b: 0.50735295, a: 1}
+      data:
+        first:
+          name: _Color_copy
+        second: {r: 0.019607844, g: 0.30980393, b: 0.5529412, a: 0.5}
       data:
         first:
           name: _node_3701
         second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _Color_copy
-        second: {r: 1, g: 1, b: 1, a: 0.5}
