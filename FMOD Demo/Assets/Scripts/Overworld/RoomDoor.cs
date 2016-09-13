@@ -20,12 +20,11 @@ public class RoomDoor : MonoBehaviour
     //---------------------------------Fmod-------------------------------
     //  Bank reference is the same as and Event, except using BankRef.
     //  Another difference between Events and Banks is loading and 
-    //  unloading is done usig the string and not a class or instance.
+    //  unloading is done using the string and not a class or instance.
     //--------------------------------------------------------------------
     [FMODUnity.BankRef]    public string m_bankToload;
 
     // Private Vars
-
     static AsyncOperation s_async;
 
     bool m_entering = false, m_entered = false;
@@ -35,10 +34,10 @@ public class RoomDoor : MonoBehaviour
 	void Start ()
     {
         Application.backgroundLoadingPriority = ThreadPriority.Low;
-        doorClosedPos = m_door.transform.position;
-        doorOpenPos = doorClosedPos + new Vector3(0, 0, 2);
-
+        doorClosedPos = m_door.transform.localPosition;
+        doorOpenPos = doorClosedPos + (Vector3.forward * m_door.transform.localScale.z);
         m_collider = GetComponent<SphereCollider>();
+        m_collider.radius = 1.2f;
         m_collider.isTrigger = true;
     }
 	
@@ -47,8 +46,8 @@ public class RoomDoor : MonoBehaviour
         if (Input.GetKeyDown(m_useKey) && m_entering)
         {
             //~~~~~~~~~~~~~~~ Load this room ~~~~~~~~~~~~~~~\\
-            if (!(m_entering && m_entered))
-                StartCoroutine(LoadSceneOpenDoor());
+            if (!(m_entering && m_entered) && m_door.transform.localPosition == doorClosedPos)
+                StartCoroutine( LoadSceneOpenDoor() );
         }
     }
 
@@ -67,7 +66,7 @@ public class RoomDoor : MonoBehaviour
         else
         {
             m_entering = false;
-            StartCoroutine( LoadSceneOpenDoor());
+            StartCoroutine( LoadSceneOpenDoor() );
         }
 
     }
@@ -85,9 +84,11 @@ public class RoomDoor : MonoBehaviour
         }
         else
         {
+            m_entering = false;
             m_entered = true;
         }
 
+        StopAllCoroutines();
         StartCoroutine(CloseDoor());
     }
 
@@ -125,11 +126,12 @@ public class RoomDoor : MonoBehaviour
         // When loading is done, open door
         if (m_door != null)
         {
-            while (m_door.transform.localPosition.z < 1.9f)
+            while (m_door.transform.localPosition.z < doorOpenPos.z)
             {
                 m_door.transform.position += m_door.transform.forward * Time.deltaTime;
                 yield return true;
             }
+            m_door.transform.localPosition = doorOpenPos;
         }
     }
     
@@ -137,11 +139,12 @@ public class RoomDoor : MonoBehaviour
     {
         if (m_door != null)
         {
-            while (m_door.transform.localPosition.z > 0.1f)
+            while (m_door.transform.localPosition.z > doorClosedPos.z)
             {
                 m_door.transform.position -= m_door.transform.forward * Time.deltaTime;
                 yield return true;
             }
+            m_door.transform.localPosition = doorClosedPos;
         }
 
         if (!m_entering && !m_entered)
