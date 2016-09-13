@@ -3,6 +3,7 @@ using System.Collections;
 
 public class GuidePillar : MonoBehaviour
 {
+    public float m_hidingY;
     int m_isActive;
     float m_selectionY;
     int m_direction;
