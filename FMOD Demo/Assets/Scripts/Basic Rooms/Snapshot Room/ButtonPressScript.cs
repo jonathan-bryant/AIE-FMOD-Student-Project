@@ -39,7 +39,7 @@ public class ButtonPressScript : ActionObject
 	
 	}
 
-    public override void ActionPressed(GameObject sender)
+    public override void ActionPressed(GameObject sender, KeyCode a_key)
     {
         SpawnObject();
     }

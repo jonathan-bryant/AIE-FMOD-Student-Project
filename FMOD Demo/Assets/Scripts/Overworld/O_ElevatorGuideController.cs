@@ -20,7 +20,7 @@ public class O_ElevatorGuideController : ActionObject
 
     }
 
-    public override void ActionPressed(GameObject sender)
+    public override void ActionPressed(GameObject sender, KeyCode a_key)
     {
         if (m_guideIsCurrent)
         {

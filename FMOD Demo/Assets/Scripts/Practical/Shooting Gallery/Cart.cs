@@ -31,7 +31,7 @@ public class Cart : ActionObject
     {
         if (m_playerIsSeated && Input.GetKeyDown(KeyCode.F))
         {
-            ActionPressed(this.gameObject);
+            ActionPressed(this.gameObject, KeyCode.F);
         }
         if (m_manager.IsActive)
         {
@@ -40,7 +40,7 @@ public class Cart : ActionObject
         }
     }
 
-    public override void ActionPressed(GameObject sender)
+    public override void ActionPressed(GameObject sender, KeyCode a_key)
     {
         if (!m_playerIsSeated)
         {

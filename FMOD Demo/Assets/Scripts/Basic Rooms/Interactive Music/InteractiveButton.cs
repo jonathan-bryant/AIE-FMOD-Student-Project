@@ -25,7 +25,7 @@ public class InteractiveButton : ActionObject
 
     }
 
-    public override void ActionPressed(GameObject sender)
+    public override void ActionPressed(GameObject sender, KeyCode a_key)
     {
         /*===============================================Fmod====================================================
         |   The setParamterValue function takes in the name of the parameter, and the value to give it.         |

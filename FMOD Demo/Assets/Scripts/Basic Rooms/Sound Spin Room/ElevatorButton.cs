@@ -14,7 +14,7 @@ public class ElevatorButton : ActionObject
     {
     }
 
-    public override void ActionDown(GameObject sender)
+    public override void ActionDown(GameObject sender, KeyCode a_key)
     {
         m_elevator.ChangeFloor(m_floor, m_height);
     }

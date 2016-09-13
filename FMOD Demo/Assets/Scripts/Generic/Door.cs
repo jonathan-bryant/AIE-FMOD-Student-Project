@@ -63,7 +63,7 @@ public class Door : ActionObject
         }
     }
 
-    public override void ActionPressed(GameObject sender)
+    public override void ActionPressed(GameObject sender, KeyCode a_key)
     {
         if (!m_doorOpen)
         {

@@ -23,7 +23,7 @@ public class Flag : ActionObject
         }
     }
 
-    public override void ActionPressed(GameObject sender)
+    public override void ActionPressed(GameObject sender, KeyCode a_key)
     {
         m_distance = (transform.position - Camera.main.transform.position).magnitude;
         m_isActive = !m_isActive;
