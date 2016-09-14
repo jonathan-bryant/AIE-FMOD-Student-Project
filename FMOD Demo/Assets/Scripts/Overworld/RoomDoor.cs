@@ -13,6 +13,8 @@ using System.Collections;
 public class RoomDoor : MonoBehaviour 
 {
     // Public Vars
+    public RoomCompleted m_completeSign;
+    bool m_completed;
     public GameObject m_door;
     public string m_sceneToLoad;
     public string m_useKey;
@@ -39,6 +41,7 @@ public class RoomDoor : MonoBehaviour
 		m_collider = GetComponent<SphereCollider>();
         m_collider.radius = 1.2f;
         m_collider.isTrigger = true;
+        m_completed = false;
     }
 	
 	void Update () 
@@ -86,10 +89,14 @@ public class RoomDoor : MonoBehaviour
         {
             m_entering = false;
             m_entered = true;
+            m_completed = true;
         }
 
         StopAllCoroutines();
         StartCoroutine(CloseDoor());
+        if(m_completed)
+            m_completeSign.CompleteRoom();
+
     }
 
     IEnumerator LoadSceneOpenDoor()
@@ -156,6 +163,5 @@ public class RoomDoor : MonoBehaviour
             }
         }
     }
-
 	#endregion
 }
