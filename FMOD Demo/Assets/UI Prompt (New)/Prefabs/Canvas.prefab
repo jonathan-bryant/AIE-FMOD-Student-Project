@@ -129,7 +129,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 22447914}
   - {fileID: 22473544}
@@ -185,8 +184,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sodales,
-    diam sed gravida luctus, augue ipsum lobortis dolor, a varius ipsum metus at tellus.
+  m_Text: "FMOD Studio allows developers to create sounds that lead in and out of
+    other sounds\r."
 --- !u!114 &11418456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -201,10 +200,13 @@ MonoBehaviour:
   m_timeUntilOpen: 2
   m_timeUntilClosed: 0
   m_maxPlayerDistance: 10
-  m_billboard: 0
+  m_billboard: 1
   m_uiLoadAnim: UI Prompt Load
   m_uiOpenAnim: UI Prompt Open
   m_uiCloseAnim: UI Prompt Close
+  m_uiHover: event:/UI/Hover Cycle
+  m_uiOpen: event:/UI/UI Open
+  m_uiClose: event:/UI/UI Close
 --- !u!114 &11431114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -405,17 +407,16 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142696}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0.0000023394823}
-  m_LocalPosition: {x: 0, y: 0, z: -39.62598}
+  m_LocalRotation: {x: 0, y: 0.7071092, z: 0, w: -0.70710444}
+  m_LocalPosition: {x: 0, y: 0, z: -15.29}
   m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
-  m_LocalEulerAnglesHint: {x: 0, y: 179.9997, z: 0}
   m_Children:
   - {fileID: 468320}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -41.985657, y: -1.1572359}
+  m_AnchoredPosition: {x: -14.45, y: 1.47}
   m_SizeDelta: {x: 782, y: 594}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22447914
@@ -427,7 +428,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 22462240}
   m_Father: {fileID: 468320}
@@ -446,7 +446,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 22487822}
   m_Father: {fileID: 468320}
@@ -465,7 +464,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 22447914}
   m_RootOrder: 0
@@ -483,7 +481,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 468320}
   m_RootOrder: 1
@@ -501,7 +498,6 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 43.490704, y: 43.490704, z: 43.490704}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 22461814}
   m_RootOrder: 0
