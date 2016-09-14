@@ -20,20 +20,23 @@ public enum HELPERSTATE
 
 public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [Range(0, 10.0f)]
-    public float m_timeUntilOpen = 2.0f;
-    [Range(0, 10.0f)]
-    public float m_timeUntilClosed = 2.0f;
-    [Range(0, 30.0f)]
-    public float m_maxPlayerDistance = 10.0f;
+    [Range(0, 10.0f)]    public float m_timeUntilOpen = 2.0f;
+    [Range(0, 10.0f)]    public float m_timeUntilClosed = 2.0f;
+    [Range(0, 30.0f)]    public float m_maxPlayerDistance = 10.0f;
     public bool m_billboard = true;
     public string m_uiLoadAnim = "UI Prompt Load";
     public string m_uiOpenAnim = "UI Prompt Open";
     public string m_uiCloseAnim = "UI Prompt Close";
 
+    [FMODUnity.EventRef]    public string m_uiHover;
+    FMOD.Studio.EventInstance m_uiHoverEvent;
+    [FMODUnity.EventRef]    public string m_uiOpen;
+    FMOD.Studio.EventInstance m_uiOpenEvent;
+    [FMODUnity.EventRef]    public string m_uiClose;
+    FMOD.Studio.EventInstance m_uiCloseEvent;
+    
     bool m_updateFacing = false;
     HELPERSTATE m_currentState = HELPERSTATE.IDLE;
-
     float m_currentAnimationProgress;
     GameObject m_playerRef = null;     // Used for getting the players position to billboard the UI.
     Animator m_uiAnimator;
@@ -43,6 +46,10 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
         m_playerRef = GameObject.FindGameObjectWithTag("Player");
         m_uiAnimator = GetComponentInChildren<Animator>();
         StopAnimation();
+
+        m_uiHoverEvent = FMODUnity.RuntimeManager.CreateInstance(m_uiHover);
+        m_uiOpenEvent = FMODUnity.RuntimeManager.CreateInstance(m_uiOpen);
+        m_uiCloseEvent = FMODUnity.RuntimeManager.CreateInstance(m_uiClose);
     }
 
     void Update()
@@ -81,6 +88,7 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     IEnumerator LoadWaitAndOpen()
     {
+        m_uiHoverEvent.start();
         // Loop until the animation has played once.
         while (m_currentAnimationProgress < 0.95f)
         {
@@ -92,11 +100,15 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
             yield return null;
         }
         if (m_currentState == HELPERSTATE.LOADING)
+        {
+            m_uiHoverEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             OpenHelper();
+        }
     }
     public void OpenHelper()
     {
         // Play opening animation
+        FMODUnity.RuntimeManager.PlayOneShot(m_uiOpen);
         m_uiAnimator.Play(m_uiOpenAnim, 0);
         m_currentState = HELPERSTATE.OPENING;
     }
@@ -133,6 +145,7 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
             {
                 m_uiAnimator.Play(m_uiCloseAnim, 0, 0f);
                 PlayForward();
+                FMODUnity.RuntimeManager.PlayOneShot(m_uiClose, GetComponent<RectTransform>().position);
                 while (m_uiAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
                 {
                     yield return null;
@@ -148,7 +161,6 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
         switch (m_currentState)
         {
             case HELPERSTATE.IDLE:
-                //if (m_uiAnimator.GetCurrentAnimatorStateInfo(0).IsName(m_uiCloseAnim))
                     LoadHelper();
                 break;
             case HELPERSTATE.STOPPED:
