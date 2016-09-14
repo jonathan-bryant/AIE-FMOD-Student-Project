@@ -119,7 +119,9 @@ public class MainSound : MonoBehaviour
 	void Update()
 	{
 		//---------------------------------Fmod-------------------------------
-		//  
+		//  Check to make sure the channel group is both assigned and playing
+        //  otherwise trying to get information from a DSP effect will not
+        //  work and we will get errors.
 		//--------------------------------------------------------------------
 		if (m_channelGroup != null)
 			m_channelGroup.isPlaying(out m_isPlaying);
@@ -127,7 +129,9 @@ public class MainSound : MonoBehaviour
 		{
 
 			//---------------------------------Fmod-------------------------------
-			//  
+			//  The data stored in the DSP is stored as an unmanaged block of data,
+            //  we can Marshal from an IntPtr into a predifined struct to hold
+            //  all the data we will need.
 			//--------------------------------------------------------------------
 			IntPtr unmanagedData;
 			uint length;
@@ -135,15 +139,20 @@ public class MainSound : MonoBehaviour
 			m_fftDsp.getParameterData((int)FMOD.DSP_FFT.SPECTRUMDATA, out unmanagedData, out length);
 			FMOD.DSP_PARAMETER_FFT m_fftData = (FMOD.DSP_PARAMETER_FFT)Marshal.PtrToStructure(unmanagedData, typeof(FMOD.DSP_PARAMETER_FFT));
 
-			if (m_fftData.numchannels < 1)
+            //---------------------------------Fmod-------------------------------
+            //  If the number of channels in the data is less than one, either
+            //  there isn't anythign playing or something went wrong.
+            //--------------------------------------------------------------------
+
+            if (m_fftData.numchannels < 1)
 				return;
 
-
-			//---------------------------------Fmod-------------------------------
-			//  
-			//--------------------------------------------------------------------
-			// Spectrum contains 2 channels and 2048 "bins" by default
-			for (int bin = 0; bin < WINDOWSIZE; bin++)
+            //---------------------------------Fmod-------------------------------
+            //  For stereo sounds, there will be 2 channels (left & right) with
+            //  a default of 2048 "bins" containing 
+            //--------------------------------------------------------------------
+            
+            for (int bin = 0; bin < WINDOWSIZE; bin++)
 			{
 				float temp = lin2DB(m_fftData.spectrum[0][bin]);
 				temp = ((temp + 80.0f) * (1 / 80.0f));
@@ -160,7 +169,7 @@ public class MainSound : MonoBehaviour
 	bool PlaySound()
 	{
 		//---------------------------------Fmod-------------------------------
-		//  
+		//  Start the event playing and attach it to this gameobject.
 		//--------------------------------------------------------------------
 		m_eventInstance.start();
 		FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_eventInstance, transform, null);
@@ -186,10 +195,11 @@ public class MainSound : MonoBehaviour
 		}
 
 		//---------------------------------Fmod-------------------------------
-		//  
+		//  Here we create the FFT DSP effect and tell it how much data we
+        //  want to store/access 
 		//--------------------------------------------------------------------
 		FMODUnity.RuntimeManager.LowlevelSystem.createDSPByType(FMOD.DSP_TYPE.FFT, out m_fftDsp);
-		m_fftDsp.setParameterInt((int)FMOD.DSP_FFT.WINDOWTYPE, (int)FMOD.DSP_FFT_WINDOW.HANNING);
+		m_fftDsp.setParameterInt((int)FMOD.DSP_FFT.WINDOWTYPE, (int)FMOD.DSP_FFT_WINDOW.RECT);
 		m_fftDsp.setParameterInt((int)FMOD.DSP_FFT.WINDOWSIZE, WINDOWSIZE * 2);
 
 		//---------------------------------Fmod-------------------------------

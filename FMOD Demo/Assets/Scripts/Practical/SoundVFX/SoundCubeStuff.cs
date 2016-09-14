@@ -11,6 +11,8 @@ public class SoundCubeStuff : MonoBehaviour
 {
     // Public Vars
     public int m_gridWidth = 15;                        // Customisable grid size.
+    public bool flipX;
+    public bool flipZ;
 
     // Private Vars
     [SerializeField]    GameObject m_cubePrefab;        // Prefab to use for visualisation.
@@ -36,10 +38,12 @@ public class SoundCubeStuff : MonoBehaviour
         {
             m_cubes[i] = new GameObject[m_gridWidth];
             for (int j = 0; j < m_gridWidth; j++)
-            {
-                Vector3 pos = transform.position + new Vector3(2.5f - (i * 0.6f), 0, 2.5f - (j * 0.6f));
-                m_cubes[i][j] = Instantiate(m_cubePrefab, pos, Quaternion.identity) as GameObject;
+            {                
+                Vector3 pos = new Vector3(((flipX ? -1 : 1) * i * 0.13f), 0, ((flipZ ? -1 : 1) * j * 0.1f));
+
+                m_cubes[i][j] = Instantiate(m_cubePrefab, transform.position, transform.rotation) as GameObject;
                 m_cubes[i][j].transform.SetParent(transform);
+                m_cubes[i][j].transform.localPosition = pos;
             }
         }		
     }

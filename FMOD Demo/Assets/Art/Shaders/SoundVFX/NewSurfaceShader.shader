@@ -12,7 +12,7 @@
 	}
 	SubShader 
 	{
-		Tags { "RenderType"="Opaque" }
+		Tags { "RenderType"="Transparent" }
 		LOD 200
 		
 		CGPROGRAM
@@ -39,11 +39,12 @@
 
 		void vert (inout appdata_full v)
 		{
-			if (v.vertex.y < 0)
+			if (v.vertex.y < -0.1)
 			{
-				if (_Amount < 0.2)
-					_Amount *= 1.5;
-				v.vertex.y *= (_Amount * 15);
+				//if (_Amount < 0.2)
+					_Amount *= 30;
+				if (_Amount > -v.vertex.y)
+					v.vertex.y -= _Amount;
 			}
 			v.color.rgb = -v.vertex.yyy;
 		}
@@ -51,7 +52,11 @@
 		void surf (Input IN, inout SurfaceOutputStandard o) 
 		{
 			half4 c = tex2D (_MainTex, IN.uv_MainTex);
-			o.Albedo = c.rgb;
+
+			if (_Amount < 0.5)
+				o.Albedo = lerp(float3(0.25, 0.25, 0.25), float3(1, 1, 0), _Amount * 2);
+			else
+				o.Albedo = lerp(float3(1, 1, 0), float3(1, 1, 1), _Amount);
 			// Metallic and smoothness come from slider variables
 			//if (IN.color.rgb == float3(1, 1, 1))
 			//{
@@ -59,7 +64,7 @@
 			//}
 			//else
 			{
-				o.Emission = IN.color * _Emission;
+				o.Emission = o.Albedo * _Emission;
 			}
 
 			o.Metallic = _Metallic;
