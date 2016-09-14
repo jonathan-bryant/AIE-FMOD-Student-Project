@@ -22,11 +22,7 @@ public class Orchestrion : MonoBehaviour
     {
         m_isPlaying = true;
         m_elapsedNote = 0.0f;
-        m_sheetMusic = System.IO.File.ReadAllText(m_sheetPath).Split(' ', '\n', '\r');
-        for (int i = 0; i < m_sheetMusic.Length; i++)
-        {
-            Debug.Log(m_sheetMusic[i]);
-        }
+        m_sheetMusic = System.IO.File.ReadAllText(m_sheetPath).Split(' ', '\n', '\r', '\t');
         m_maxIndex = m_sheetMusic.Length;
         m_noteLength = 0.0f;
     }
@@ -45,19 +41,35 @@ public class Orchestrion : MonoBehaviour
                m_index = (m_index + 1) % m_maxIndex;
                 key = m_sheetMusic[m_index];
             }
-            m_noteLength = GetNoteLength(key[key.Length - 1]);
-            key = key.Substring(0, m_sheetMusic[m_index].Length - 1);
+            Debug.Log(key);
+            char letter = key[0];
+            if(letter == 'R')
+            {
+                m_noteLength = GetNoteLength(key[1]);
+                m_index = (m_index + 1) % m_maxIndex;
+                return;
+            }
+            char sharp = key[1];
+            int octave = key[2] - 50;
+            m_noteLength = GetNoteLength(key[3]);
+
 
             float notePosition = 0;
-
-            int note = GetNote(key);
+            int note = GetNote(letter.ToString() + sharp.ToString());
             if (note != -1)
             {
-                notePosition += note * m_keyDistance;
-                GameObject ball = Instantiate(m_ball);
-                ball.transform.parent = transform;
-                ball.transform.localPosition = Vector3.zero;
-                ball.transform.Translate(0.0f, 0.0f, notePosition);
+                if(note >= 9 && note <= 11)
+                {
+                    octave--;
+                }
+                if (octave >= 0)
+                {
+                    notePosition += (note * m_keyDistance) + ((12 * m_keyDistance) * octave);
+                    GameObject ball = Instantiate(m_ball);
+                    ball.transform.parent = transform;
+                    ball.transform.localPosition = Vector3.zero;
+                    ball.transform.Translate(0.0f, 0.0f, notePosition);
+                }
             }
             m_index = (m_index + 1) % m_maxIndex;
         }
