@@ -11,8 +11,12 @@ public class CannonController : MonoBehaviour
     float m_selectedAngle;
     bool m_isActive;
 
+    public float m_timer;
+    float m_elapsed;
+
     void Start()
     {
+        m_elapsed = 0.0f;
         m_currentAngle = 30.0f;
         m_selectedAngle = 30.0f;
         m_power = 10.0f;
@@ -20,6 +24,7 @@ public class CannonController : MonoBehaviour
     }
     void FixedUpdate()
     {
+        m_elapsed += Time.fixedDeltaTime;
         if (m_isActive)
         {
             if (m_currentAngle != m_selectedAngle)
@@ -49,6 +54,7 @@ public class CannonController : MonoBehaviour
             }
             else
             {
+                m_elapsed = 0.0f;
                 m_isActive = false;
                 GameObject ball = Instantiate(m_cannonBall, m_cannon.transform.GetChild(0).position - (m_cannon.transform.GetChild(0).up), Quaternion.identity) as GameObject;
                 ball.transform.SetParent(transform);
@@ -64,6 +70,9 @@ public class CannonController : MonoBehaviour
     {
         if (m_isActive)
             return;
+        if (m_elapsed < m_timer)
+            return;
+        m_elapsed = 0.0f;
 
         switch (a_index)
         {
