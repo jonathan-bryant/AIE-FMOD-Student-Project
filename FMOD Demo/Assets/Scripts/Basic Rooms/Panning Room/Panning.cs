@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Panning : MonoBehaviour
+public class Panning : ActionObject
 {
     bool m_is3D;
     float m_elapsed;
@@ -24,11 +24,6 @@ public class Panning : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            m_isActive = true;
-            Camera.main.nearClipPlane = 0.02f;
-        }
         if (m_isActive)
         {
             m_elapsed += Time.deltaTime;
@@ -85,5 +80,11 @@ public class Panning : MonoBehaviour
                 }
             }
         }
+    }
+
+    public override void ActionPressed(GameObject a_sender, KeyCode a_key)
+    {
+        m_isActive = true;
+        Camera.main.nearClipPlane = 0.02f;
     }
 }
