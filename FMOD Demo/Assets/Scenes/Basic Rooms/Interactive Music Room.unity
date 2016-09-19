@@ -166,10 +166,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11412428, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_Text
-      value: "To learn more about this feature, refer to the project folder provided
-        alongside this demo. For this example we used scripts from:\r\nScripts/Basic
-        Rooms/Interactive Music/\r\nThe FMOD Studio project file also contains notes
-        and annotations regarding this room."
+      value: FMOD Studio can allow developers to create music in various stages and
+        switch between them depending on variables in the game. For example, a song
+        can become more intense as the level advances.
       objectReference: {fileID: 0}
     - target: {fileID: 142696, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_Name
@@ -177,7 +176,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11418456, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_billboard
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22444650, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -251,7 +250,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 132774, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
@@ -280,6 +279,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0.70710605, z: 0, w: 0.7071075}
   m_LocalPosition: {x: -7.182, y: 0.068, z: -17.989}
   m_LocalScale: {x: 0.49668112, y: 1, z: 0.72939724}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1968329637}
   m_Father: {fileID: 0}
@@ -321,7 +321,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 459304, guid: 5fe5a640305f9814891e39cc04e5beab, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 459304, guid: 5fe5a640305f9814891e39cc04e5beab, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -359,7 +359,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22444650, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -16.17
+      value: -15.449
       objectReference: {fileID: 0}
     - target: {fileID: 22444650, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_LocalRotation.x
@@ -367,7 +367,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22444650, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0.7071091
       objectReference: {fileID: 0}
     - target: {fileID: 22444650, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_LocalRotation.z
@@ -375,7 +375,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22444650, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.0000023394823
+      value: -0.7071045
       objectReference: {fileID: 0}
     - target: {fileID: 22444650, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_RootOrder
@@ -383,7 +383,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22444650, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -2.183
+      value: -0.276
       objectReference: {fileID: 0}
     - target: {fileID: 22444650, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -423,9 +423,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11412428, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_Text
-      value: FMOD Studio can allow developers to create music in various stages and
-        switch between them depending on variables in the game. For example, a song
-        can become more intense as the level advances.
+      value: "To learn more about this feature, refer to the project folder provided
+        alongside this demo. For this example we used scripts from:\r\nScripts/Basic
+        Rooms/Interactive Music/\r\nThe FMOD Studio project file also contains notes
+        and annotations regarding this room."
+      objectReference: {fileID: 0}
+    - target: {fileID: 22444650, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 269.9997
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
@@ -556,6 +561,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0.70710605, z: 0, w: 0.7071075}
   m_LocalPosition: {x: -0.283, y: 0.135, z: -17.965}
   m_LocalScale: {x: 0.4845075, y: 0.4845075, z: 0.4845075}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1526209582}
   m_Father: {fileID: 0}
@@ -588,6 +594,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.38, y: 0.05, z: 3.6}
   m_LocalScale: {x: 5.56539, y: 0.09999999, z: 11.857771}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1701393552}
   m_RootOrder: 0
@@ -682,6 +689,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.000000029802322, z: 0, w: 1}
   m_LocalPosition: {x: -4.4, y: 0.05, z: 4.69}
   m_LocalScale: {x: 10.027739, y: 0.099999994, z: 9.590019}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1313215685}
   m_RootOrder: 0
@@ -817,6 +825,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.000000029802322, z: 0, w: 1}
   m_LocalPosition: {x: -4.44, y: 0.05, z: -4.8}
   m_LocalScale: {x: 10.250734, y: 0.099999994, z: 9.4256525}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 2061010597}
   m_RootOrder: 0
@@ -907,6 +916,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0.70710605, z: 0, w: 0.7071075}
   m_LocalPosition: {x: 4.283, y: 0.046, z: -18.134}
   m_LocalScale: {x: 0.7797122, y: 1, z: 0.47382224}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1440020358}
   m_Father: {fileID: 0}
@@ -939,6 +949,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.12, y: 0.05, z: -5.93}
   m_LocalScale: {x: 8.946558, y: 0.09999999, z: 7.1957917}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 450840516}
   m_RootOrder: 0
@@ -1029,6 +1040,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0.70710605, z: 0, w: 0.7071075}
   m_LocalPosition: {x: -0.275, y: 0.12, z: -18.005}
   m_LocalScale: {x: 0.49156243, y: 0.49156243, z: 0.49156243}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1646227102}
   m_Father: {fileID: 0}
