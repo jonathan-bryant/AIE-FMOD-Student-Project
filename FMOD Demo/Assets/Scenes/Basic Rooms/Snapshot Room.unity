@@ -2171,6 +2171,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 498699858}
   m_Mesh: {fileID: 4300000, guid: a18aafe82b86f8d48a54befe4861b2a0, type: 3}
+--- !u!1 &547226722 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 132774, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
+  m_PrefabInternal: {fileID: 142100195}
+--- !u!114 &547226729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 547226722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1d03929082bfa48b31b5f8d1a7507d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_underwaterUI: {fileID: 1189963034}
 --- !u!1 &547407868
 GameObject:
   m_ObjectHideFlags: 0
@@ -3000,6 +3016,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: bcd60177278deb94189811495952d2a6, type: 2}
+    - target: {fileID: 165318, guid: 670ea73ec4b1249469fe6b7e43c6e779, type: 2}
+      propertyPath: m_TagString
+      value: Water
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 670ea73ec4b1249469fe6b7e43c6e779, type: 2}
   m_IsPrefabParent: 0
@@ -5248,7 +5268,7 @@ GameObject:
   - 222: {fileID: 1189963037}
   - 114: {fileID: 1189963036}
   m_Layer: 0
-  m_Name: Image (1)
+  m_Name: Underwater Color
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5263,7 +5283,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1880264825}
   m_Father: {fileID: 919177753}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
@@ -8679,12 +8700,12 @@ GameObject:
   - 222: {fileID: 1880264827}
   - 114: {fileID: 1880264826}
   m_Layer: 0
-  m_Name: Image (2)
+  m_Name: Blur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1880264825
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8695,12 +8716,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0.0419537}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 919177753}
-  m_RootOrder: 2
+  m_Father: {fileID: 1189963035}
+  m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.000588, y: -6.9744616}
-  m_SizeDelta: {x: 763, y: 593}
+  m_AnchoredPosition: {x: -0.000052452087, y: 0.025722504}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1880264826
 MonoBehaviour:

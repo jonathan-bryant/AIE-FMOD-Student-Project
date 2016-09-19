@@ -149,7 +149,7 @@ public class ActorControls : MonoBehaviour
                 m_velocity += transform.up * m_jumpPower * Time.fixedDeltaTime;
             }
         }
-        if (m_velocity.sqrMagnitude > 0.0f)
+        if (m_velocity.sqrMagnitude > 0.0f && m_cc.enabled)
         {
             m_cc.Move(m_velocity * Time.fixedDeltaTime);
             if (m_cc.isGrounded)
