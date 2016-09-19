@@ -36,7 +36,7 @@ public class CarFmodSound : MonoBehaviour
 
     private CarController m_carController;
 
-    private FMOD.RESULT result;
+    //private FMOD.RESULT result;
 
 	void Start () 
 	{
@@ -60,10 +60,10 @@ public class CarFmodSound : MonoBehaviour
         m_engineInstance = FMODUnity.RuntimeManager.CreateInstance(m_eventPath);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_engineInstance, gameObject.transform, null);
         // Assign parameters
-        result = m_engineInstance.getParameter("RPM", out m_rpmParam);
-        result = m_rpmParam.getDescription(out m_rpmDesc);
-        result = m_engineInstance.getParameter("Load", out m_loadParam);
-        result = m_loadParam.getDescription(out m_loadDesc);
+        m_engineInstance.getParameter("RPM", out m_rpmParam);
+        m_rpmParam.getDescription(out m_rpmDesc);
+        m_engineInstance.getParameter("Load", out m_loadParam);
+        m_loadParam.getDescription(out m_loadDesc);
 
         m_engineInstance.start();
     }

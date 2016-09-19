@@ -19,8 +19,8 @@ public class GrassQuality : MonoBehaviour {
             transform.GetChild(i).gameObject.SetActive(active);
         }
 
-        Animator anim = GetComponentInParent<Animator>();
-        float rng = Random.Range(0.0f, 1.0f);
+        //Animator anim = GetComponentInParent<Animator>();
+        //float rng = Random.Range(0.0f, 1.0f);
 
         //anim.SetFloat("Start", rng);
 	}
