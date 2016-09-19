@@ -3,16 +3,19 @@ using System.Collections;
 
 public class BirdMobile : MonoBehaviour
 {
+    public Transform m_actor;
     public Bird m_bird;
     public float m_xRadius, m_zRadius;
     public float m_heightOffset, m_xOffset, m_zOffset;
     public int m_minBirds, m_maxBirds;
     public float m_minSpeed, m_maxSpeed;
+    public bool m_billboard;
 
     int m_numOfBirds;
 
     void Start()
     {
+        m_actor = Camera.main.transform;
         m_numOfBirds = Random.Range(m_minBirds, m_maxBirds);
         for (int i = 0; i < m_numOfBirds; ++i)
         {
@@ -45,10 +48,17 @@ public class BirdMobile : MonoBehaviour
             localPosition.z = Mathf.Cos(Mathf.PI * (i / (float)m_numOfBirds) * 2.0f + Time.time * bird.m_speed) * m_zRadius + bird.m_zOffset;
             bird.transform.localPosition = localPosition;
 
-            Vector3 diff = bird.transform.localPosition - bird.m_lastLocalPosition;
-            if (diff != Vector3.zero)
+            if (m_billboard)
             {
-                bird.transform.forward = Vector3.Cross(diff, Vector3.up);
+                bird.transform.forward = (m_actor.position - bird.transform.position).normalized;
+            }
+            else
+            {
+                Vector3 diff = bird.transform.localPosition - bird.m_lastLocalPosition;
+                if (diff != Vector3.zero)
+                {
+                    bird.transform.forward = Vector3.Cross(diff, Vector3.up);
+                }
             }
         }
     }
