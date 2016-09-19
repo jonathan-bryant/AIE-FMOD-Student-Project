@@ -20,6 +20,7 @@ public class Menu : MonoBehaviour
 
     void Update()
     {
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.P))
         {
             m_menuIsOpen = !m_menuIsOpen;
@@ -49,6 +50,38 @@ public class Menu : MonoBehaviour
                 }
             }
         }
+#elif UNITY_STANDALONE
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            m_menuIsOpen = !m_menuIsOpen;
+            if (m_menuIsOpen)
+            {
+                m_animator.Play("Pause Open");
+                m_actor.DisableMovementAndMouse(true);
+            }
+            else
+            {
+                m_animator.Play("Pause Close");
+                m_actor.DisableMovementAndMouse(false);
+                if (m_optionsOpen)
+                {
+                    m_animator.Play("Options Close");
+                    m_optionsOpen = false;
+                }
+                if (m_practicalOpen)
+                {
+                    m_animator.Play("Practical Room Close");
+                    m_practicalOpen = false;
+                }
+                if (m_basicOpen)
+                {
+                    m_animator.Play("Basic Room Close");
+                    m_basicOpen = false;
+                }
+            }
+        }
+#endif
+
     }
 
     public void OptionsClick()
@@ -117,9 +150,9 @@ public class Menu : MonoBehaviour
     }
     public void QuitClick()
     {
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
-        #endif
+#endif
             Application.Quit();
         
     }
