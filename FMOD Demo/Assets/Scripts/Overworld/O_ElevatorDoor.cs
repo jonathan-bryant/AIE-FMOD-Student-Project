@@ -10,7 +10,7 @@ public class O_ElevatorDoor : MonoBehaviour
     void Start()
     {
         m_isActive = 0;
-        m_doorsOpen = true;
+        m_doorsOpen = false;
     }
     void Update()
     {
