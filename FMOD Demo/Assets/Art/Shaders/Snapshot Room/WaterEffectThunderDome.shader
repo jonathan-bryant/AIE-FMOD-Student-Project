@@ -1,15 +1,16 @@
 // Shader created with Shader Forge v1.28 
 // Shader Forge (c) Neat Corporation / Joachim Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:1.28;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,lico:1,lgpr:1,limd:1,spmd:0,trmd:1,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:7,dpts:2,wrdp:False,dith:0,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:True,qofs:0,qpre:3,rntp:2,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False;n:type:ShaderForge.SFN_Final,id:2865,x:32748,y:32685,varname:node_2865,prsc:2|diff-171-OUT,spec-358-OUT,gloss-4329-OUT,normal-3096-OUT,emission-6685-OUT,alpha-4098-OUT,refract-4714-OUT,voffset-9622-OUT;n:type:ShaderForge.SFN_Color,id:6665,x:30921,y:32099,ptovrint:False,ptlb:Color,ptin:_Color,varname:_Color,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.01016437,c2:0.3811986,c3:0.6911765,c4:0.5;n:type:ShaderForge.SFN_Tex2d,id:5964,x:30554,y:32707,varname:_BumpMap,prsc:2,tex:077a10adfe7833347b250d448bf41899,ntxv:3,isnm:True|UVIN-4188-OUT,TEX-4128-TEX;n:type:ShaderForge.SFN_Slider,id:358,x:32374,y:32469,ptovrint:False,ptlb:Metallic,ptin:_Metallic,varname:node_358,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.8,max:1;n:type:ShaderForge.SFN_Slider,id:1813,x:31366,y:32497,ptovrint:False,ptlb:Gloss,ptin:_Gloss,varname:_Metallic_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.3279174,max:1;n:type:ShaderForge.SFN_Tex2d,id:2180,x:30668,y:33347,varname:node_2180,prsc:2,tex:b9b0a7505464056409ca5ec7a10c29bc,ntxv:0,isnm:False|UVIN-817-OUT,TEX-9467-TEX;n:type:ShaderForge.SFN_Multiply,id:9622,x:32426,y:33732,varname:node_9622,prsc:2|A-5971-OUT,B-7972-OUT;n:type:ShaderForge.SFN_NormalVector,id:5971,x:32210,y:33581,prsc:2,pt:False;n:type:ShaderForge.SFN_Slider,id:3769,x:31539,y:33689,ptovrint:False,ptlb:Frequency,ptin:_Frequency,varname:node_3769,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:0.2;n:type:ShaderForge.SFN_TexCoord,id:3932,x:30007,y:32627,varname:node_3932,prsc:2,uv:0;n:type:ShaderForge.SFN_Rotator,id:9408,x:30187,y:32707,varname:node_9408,prsc:2|UVIN-3932-UVOUT,SPD-8227-OUT;n:type:ShaderForge.SFN_Rotator,id:807,x:30187,y:32459,varname:node_807,prsc:2|UVIN-3932-UVOUT,SPD-7777-OUT;n:type:ShaderForge.SFN_Multiply,id:1646,x:31336,y:32607,varname:node_1646,prsc:2|A-5643-RGB,B-5964-RGB;n:type:ShaderForge.SFN_Tex2d,id:5643,x:30554,y:32372,varname:node_5643,prsc:2,tex:90ff426733b42774fa4fb464cc68b2c9,ntxv:3,isnm:True|UVIN-2904-OUT,TEX-6220-TEX;n:type:ShaderForge.SFN_Tex2d,id:5100,x:30680,y:33748,varname:node_5100,prsc:2,tex:111d6c7bba262844b9d4f718e8d0198f,ntxv:0,isnm:False|UVIN-9193-OUT,TEX-4943-TEX;n:type:ShaderForge.SFN_Fresnel,id:4329,x:31727,y:32478,varname:node_4329,prsc:2|NRM-3096-OUT,EXP-1813-OUT;n:type:ShaderForge.SFN_NormalVector,id:122,x:33052,y:32561,prsc:2,pt:False;n:type:ShaderForge.SFN_ComponentMask,id:7377,x:33235,y:32561,varname:node_7377,prsc:2,cc1:1,cc2:-1,cc3:-1,cc4:-1|IN-3096-OUT;n:type:ShaderForge.SFN_Slider,id:7148,x:33088,y:32760,ptovrint:False,ptlb:Refraction Intensity,ptin:_RefractionIntensity,varname:node_7148,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:1.33,max:2;n:type:ShaderForge.SFN_Multiply,id:4176,x:33461,y:32605,varname:node_4176,prsc:2|A-7377-OUT,B-7148-OUT;n:type:ShaderForge.SFN_Multiply,id:2904,x:30370,y:32372,varname:node_2904,prsc:2|A-807-UVOUT,B-1373-OUT;n:type:ShaderForge.SFN_Multiply,id:4188,x:30367,y:32707,varname:node_4188,prsc:2|A-9408-UVOUT,B-1373-OUT;n:type:ShaderForge.SFN_Normalize,id:3096,x:31518,y:32607,varname:node_3096,prsc:2|IN-1646-OUT;n:type:ShaderForge.SFN_Sin,id:7809,x:32033,y:33750,varname:node_7809,prsc:2|IN-8919-OUT;n:type:ShaderForge.SFN_Multiply,id:1240,x:31393,y:33619,varname:node_1240,prsc:2|A-2180-RGB,B-5100-RGB;n:type:ShaderForge.SFN_Multiply,id:8919,x:31863,y:33750,varname:node_8919,prsc:2|A-3769-OUT,B-1240-OUT;n:type:ShaderForge.SFN_Multiply,id:7972,x:32210,y:33750,varname:node_7972,prsc:2|A-7809-OUT,B-5197-OUT;n:type:ShaderForge.SFN_Set,id:4091,x:33647,y:32605,varname:__Refraction,prsc:2|IN-4176-OUT;n:type:ShaderForge.SFN_Get,id:4714,x:32535,y:33031,varname:node_4714,prsc:2|IN-4091-OUT;n:type:ShaderForge.SFN_ValueProperty,id:5197,x:32033,y:33899,ptovrint:False,ptlb:_scale,ptin:__scale,varname:node_5197,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:1;n:type:ShaderForge.SFN_Negate,id:7777,x:30007,y:32459,varname:node_7777,prsc:2|IN-8227-OUT;n:type:ShaderForge.SFN_ValueProperty,id:8227,x:29770,y:32695,ptovrint:False,ptlb:_normalSpeed,ptin:__normalSpeed,varname:node_8227,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:0.01;n:type:ShaderForge.SFN_TexCoord,id:4655,x:30047,y:33751,varname:node_4655,prsc:2,uv:0;n:type:ShaderForge.SFN_Rotator,id:5788,x:30234,y:33751,varname:node_5788,prsc:2|UVIN-4655-UVOUT,SPD-5938-OUT;n:type:ShaderForge.SFN_Rotator,id:9980,x:30225,y:33437,varname:node_9980,prsc:2|UVIN-4655-UVOUT,SPD-6638-OUT;n:type:ShaderForge.SFN_Multiply,id:817,x:30496,y:33347,varname:node_817,prsc:2|A-9980-UVOUT,B-8682-OUT;n:type:ShaderForge.SFN_Vector1,id:8682,x:30225,y:33645,varname:node_8682,prsc:2,v1:1;n:type:ShaderForge.SFN_Multiply,id:9193,x:30508,y:33748,varname:node_9193,prsc:2|A-5788-UVOUT,B-8682-OUT;n:type:ShaderForge.SFN_Negate,id:6638,x:30056,y:33437,varname:node_6638,prsc:2|IN-5938-OUT;n:type:ShaderForge.SFN_ValueProperty,id:5938,x:29862,y:33649,ptovrint:False,ptlb:_heightSpeed,ptin:__heightSpeed,varname:__normalSpeed_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:0.01;n:type:ShaderForge.SFN_RemapRange,id:2857,x:31581,y:33498,varname:node_2857,prsc:2,frmn:0.3,frmx:1,tomn:0,tomx:1|IN-1240-OUT;n:type:ShaderForge.SFN_Multiply,id:2310,x:31853,y:33501,varname:node_2310,prsc:2|A-2857-OUT,B-6628-OUT;n:type:ShaderForge.SFN_Vector1,id:6628,x:31694,y:33588,varname:node_6628,prsc:2,v1:5;n:type:ShaderForge.SFN_Lerp,id:171,x:31109,y:32272,varname:node_171,prsc:2|A-6665-RGB,B-1486-RGB,T-2310-OUT;n:type:ShaderForge.SFN_Color,id:1486,x:30921,y:32272,ptovrint:False,ptlb:Color_copy,ptin:_Color_copy,varname:_Color_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.3795415,c2:0.7412449,c3:0.9558824,c4:0.5;n:type:ShaderForge.SFN_Slider,id:4227,x:31082,y:32149,ptovrint:False,ptlb:Emission Intensity,ptin:_EmissionIntensity,varname:node_4227,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:0.5;n:type:ShaderForge.SFN_Multiply,id:6685,x:31487,y:32150,varname:node_6685,prsc:2|A-4227-OUT,B-171-OUT;n:type:ShaderForge.SFN_Tex2dAsset,id:9467,x:30496,y:33499,ptovrint:False,ptlb:Height,ptin:_Height,varname:node_9467,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:b9b0a7505464056409ca5ec7a10c29bc,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2dAsset,id:4943,x:30508,y:33908,ptovrint:False,ptlb:Height2,ptin:_Height2,varname:node_4943,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:111d6c7bba262844b9d4f718e8d0198f,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2dAsset,id:4128,x:30367,y:32860,ptovrint:False,ptlb:Normal Map,ptin:_NormalMap,varname:node_4128,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:077a10adfe7833347b250d448bf41899,ntxv:3,isnm:True;n:type:ShaderForge.SFN_Tex2dAsset,id:6220,x:30367,y:32521,ptovrint:False,ptlb:Normal Map2,ptin:_NormalMap2,varname:node_6220,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:90ff426733b42774fa4fb464cc68b2c9,ntxv:3,isnm:True;n:type:ShaderForge.SFN_Slider,id:1373,x:29948,y:32983,ptovrint:False,ptlb:Normal Tiling,ptin:_NormalTiling,varname:node_1373,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:10,max:50;n:type:ShaderForge.SFN_FragmentPosition,id:27,x:31512,y:32837,varname:node_27,prsc:2;n:type:ShaderForge.SFN_Distance,id:6503,x:31696,y:32837,varname:node_6503,prsc:2|A-27-XYZ,B-2799-XYZ;n:type:ShaderForge.SFN_OneMinus,id:9926,x:32392,y:32954,varname:node_9926,prsc:2|IN-6276-OUT;n:type:ShaderForge.SFN_Clamp01,id:6276,x:32201,y:32837,varname:node_6276,prsc:2|IN-7631-OUT;n:type:ShaderForge.SFN_ViewPosition,id:2799,x:31512,y:32965,varname:node_2799,prsc:2;n:type:ShaderForge.SFN_Slider,id:4098,x:31706,y:32995,ptovrint:False,ptlb:node_4098,ptin:_node_4098,varname:node_4098,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.02564103,max:1;n:type:ShaderForge.SFN_Abs,id:8622,x:31863,y:32837,varname:node_8622,prsc:2|IN-6503-OUT;n:type:ShaderForge.SFN_Multiply,id:7631,x:32030,y:32837,varname:node_7631,prsc:2|A-8622-OUT,B-4098-OUT;proporder:6665-358-1813-3769-7148-5197-8227-5938-1486-4227-9467-4943-4128-6220-1373-4098;pass:END;sub:END;*/
+/*SF_DATA;ver:1.28;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,lico:1,lgpr:1,limd:1,spmd:0,trmd:1,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:7,dpts:2,wrdp:False,dith:0,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:True,qofs:0,qpre:3,rntp:2,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0,fgcg:0,fgcb:0,fgca:1,fgde:0.02,fgrn:36.45,fgrf:49,stcl:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False;n:type:ShaderForge.SFN_Final,id:2865,x:32748,y:32685,varname:node_2865,prsc:2|diff-171-OUT,spec-358-OUT,emission-6685-OUT,alpha-9011-OUT,refract-4714-OUT,voffset-9622-OUT;n:type:ShaderForge.SFN_Color,id:6665,x:30921,y:32099,ptovrint:False,ptlb:Color,ptin:_Color,varname:_Color,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.01016437,c2:0.3811986,c3:0.6911765,c4:0.5;n:type:ShaderForge.SFN_Tex2d,id:5964,x:30554,y:32707,varname:_BumpMap,prsc:2,tex:077a10adfe7833347b250d448bf41899,ntxv:3,isnm:True|UVIN-4188-OUT,TEX-4128-TEX;n:type:ShaderForge.SFN_Slider,id:358,x:32374,y:32469,ptovrint:False,ptlb:Metallic,ptin:_Metallic,varname:node_358,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.8,max:1;n:type:ShaderForge.SFN_Slider,id:1813,x:31366,y:32497,ptovrint:False,ptlb:Gloss,ptin:_Gloss,varname:_Metallic_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.3279174,max:1;n:type:ShaderForge.SFN_Tex2d,id:2180,x:30668,y:33347,varname:node_2180,prsc:2,tex:b9b0a7505464056409ca5ec7a10c29bc,ntxv:0,isnm:False|UVIN-817-OUT,TEX-9467-TEX;n:type:ShaderForge.SFN_Multiply,id:9622,x:32426,y:33732,varname:node_9622,prsc:2|A-5971-OUT,B-7972-OUT;n:type:ShaderForge.SFN_NormalVector,id:5971,x:32210,y:33581,prsc:2,pt:False;n:type:ShaderForge.SFN_Slider,id:3769,x:31539,y:33689,ptovrint:False,ptlb:Frequency,ptin:_Frequency,varname:node_3769,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:0.2;n:type:ShaderForge.SFN_TexCoord,id:3932,x:30007,y:32627,varname:node_3932,prsc:2,uv:0;n:type:ShaderForge.SFN_Rotator,id:9408,x:30187,y:32707,varname:node_9408,prsc:2|UVIN-3932-UVOUT,SPD-8227-OUT;n:type:ShaderForge.SFN_Rotator,id:807,x:30187,y:32459,varname:node_807,prsc:2|UVIN-3932-UVOUT,SPD-7777-OUT;n:type:ShaderForge.SFN_Multiply,id:1646,x:31336,y:32607,varname:node_1646,prsc:2|A-5643-RGB,B-5964-RGB;n:type:ShaderForge.SFN_Tex2d,id:5643,x:30554,y:32372,varname:node_5643,prsc:2,tex:90ff426733b42774fa4fb464cc68b2c9,ntxv:3,isnm:True|UVIN-2904-OUT,TEX-6220-TEX;n:type:ShaderForge.SFN_Tex2d,id:5100,x:30680,y:33748,varname:node_5100,prsc:2,tex:111d6c7bba262844b9d4f718e8d0198f,ntxv:0,isnm:False|UVIN-9193-OUT,TEX-4943-TEX;n:type:ShaderForge.SFN_Fresnel,id:4329,x:31727,y:32478,varname:node_4329,prsc:2|NRM-3096-OUT,EXP-1813-OUT;n:type:ShaderForge.SFN_NormalVector,id:122,x:33052,y:32561,prsc:2,pt:False;n:type:ShaderForge.SFN_ComponentMask,id:7377,x:33235,y:32561,varname:node_7377,prsc:2,cc1:1,cc2:-1,cc3:-1,cc4:-1|IN-3096-OUT;n:type:ShaderForge.SFN_Slider,id:7148,x:33088,y:32760,ptovrint:False,ptlb:Refraction Intensity,ptin:_RefractionIntensity,varname:node_7148,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:1.33,max:2;n:type:ShaderForge.SFN_Multiply,id:4176,x:33461,y:32605,varname:node_4176,prsc:2|A-7377-OUT,B-7148-OUT;n:type:ShaderForge.SFN_Slider,id:9011,x:32399,y:32947,ptovrint:False,ptlb:Opacity,ptin:_Opacity,varname:node_9011,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.6373062,max:1;n:type:ShaderForge.SFN_Multiply,id:2904,x:30370,y:32372,varname:node_2904,prsc:2|A-807-UVOUT,B-1373-OUT;n:type:ShaderForge.SFN_Vector1,id:6432,x:30187,y:32602,varname:node_6432,prsc:2,v1:10;n:type:ShaderForge.SFN_Multiply,id:4188,x:30367,y:32707,varname:node_4188,prsc:2|A-9408-UVOUT,B-1373-OUT;n:type:ShaderForge.SFN_Normalize,id:3096,x:31518,y:32607,varname:node_3096,prsc:2|IN-1646-OUT;n:type:ShaderForge.SFN_Sin,id:7809,x:32033,y:33750,varname:node_7809,prsc:2|IN-8919-OUT;n:type:ShaderForge.SFN_Multiply,id:1240,x:31393,y:33619,varname:node_1240,prsc:2|A-2180-RGB,B-5100-RGB;n:type:ShaderForge.SFN_Multiply,id:8919,x:31863,y:33750,varname:node_8919,prsc:2|A-3769-OUT,B-1240-OUT;n:type:ShaderForge.SFN_Multiply,id:7972,x:32210,y:33750,varname:node_7972,prsc:2|A-7809-OUT,B-5197-OUT;n:type:ShaderForge.SFN_Set,id:4091,x:33647,y:32605,varname:__Refraction,prsc:2|IN-4176-OUT;n:type:ShaderForge.SFN_Get,id:4714,x:32535,y:33031,varname:node_4714,prsc:2|IN-4091-OUT;n:type:ShaderForge.SFN_ValueProperty,id:5197,x:32033,y:33899,ptovrint:False,ptlb:_scale,ptin:__scale,varname:node_5197,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:1;n:type:ShaderForge.SFN_Negate,id:7777,x:30007,y:32459,varname:node_7777,prsc:2|IN-8227-OUT;n:type:ShaderForge.SFN_ValueProperty,id:8227,x:29770,y:32695,ptovrint:False,ptlb:_normalSpeed,ptin:__normalSpeed,varname:node_8227,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:0.01;n:type:ShaderForge.SFN_TexCoord,id:4655,x:30047,y:33751,varname:node_4655,prsc:2,uv:0;n:type:ShaderForge.SFN_Rotator,id:5788,x:30234,y:33751,varname:node_5788,prsc:2|UVIN-4655-UVOUT,SPD-5938-OUT;n:type:ShaderForge.SFN_Rotator,id:9980,x:30225,y:33437,varname:node_9980,prsc:2|UVIN-4655-UVOUT,SPD-6638-OUT;n:type:ShaderForge.SFN_Multiply,id:817,x:30496,y:33347,varname:node_817,prsc:2|A-9980-UVOUT,B-8682-OUT;n:type:ShaderForge.SFN_Vector1,id:8682,x:30225,y:33645,varname:node_8682,prsc:2,v1:1;n:type:ShaderForge.SFN_Multiply,id:9193,x:30508,y:33748,varname:node_9193,prsc:2|A-5788-UVOUT,B-8682-OUT;n:type:ShaderForge.SFN_Negate,id:6638,x:30056,y:33437,varname:node_6638,prsc:2|IN-5938-OUT;n:type:ShaderForge.SFN_ValueProperty,id:5938,x:29862,y:33649,ptovrint:False,ptlb:_heightSpeed,ptin:__heightSpeed,varname:__normalSpeed_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:0.01;n:type:ShaderForge.SFN_RemapRange,id:2857,x:31581,y:33498,varname:node_2857,prsc:2,frmn:0.3,frmx:1,tomn:0,tomx:1|IN-1240-OUT;n:type:ShaderForge.SFN_Multiply,id:2310,x:31853,y:33501,varname:node_2310,prsc:2|A-2857-OUT,B-6628-OUT;n:type:ShaderForge.SFN_Vector1,id:6628,x:31694,y:33588,varname:node_6628,prsc:2,v1:5;n:type:ShaderForge.SFN_Lerp,id:171,x:31109,y:32272,varname:node_171,prsc:2|A-6665-RGB,B-1486-RGB,T-2310-OUT;n:type:ShaderForge.SFN_Color,id:1486,x:30921,y:32272,ptovrint:False,ptlb:Color_copy,ptin:_Color_copy,varname:_Color_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.3795415,c2:0.7412449,c3:0.9558824,c4:0.5;n:type:ShaderForge.SFN_Slider,id:4227,x:31082,y:32149,ptovrint:False,ptlb:Emission Intensity,ptin:_EmissionIntensity,varname:node_4227,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:0.5;n:type:ShaderForge.SFN_Multiply,id:6685,x:31487,y:32150,varname:node_6685,prsc:2|A-4227-OUT,B-171-OUT;n:type:ShaderForge.SFN_Tex2dAsset,id:9467,x:30496,y:33499,ptovrint:False,ptlb:Height,ptin:_Height,varname:node_9467,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:b9b0a7505464056409ca5ec7a10c29bc,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2dAsset,id:4943,x:30508,y:33908,ptovrint:False,ptlb:Height2,ptin:_Height2,varname:node_4943,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:111d6c7bba262844b9d4f718e8d0198f,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Tex2dAsset,id:4128,x:30367,y:32860,ptovrint:False,ptlb:Normal Map,ptin:_NormalMap,varname:node_4128,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:077a10adfe7833347b250d448bf41899,ntxv:3,isnm:True;n:type:ShaderForge.SFN_Tex2dAsset,id:6220,x:30367,y:32521,ptovrint:False,ptlb:Normal Map2,ptin:_NormalMap2,varname:node_6220,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:90ff426733b42774fa4fb464cc68b2c9,ntxv:3,isnm:True;n:type:ShaderForge.SFN_Slider,id:1373,x:29948,y:32983,ptovrint:False,ptlb:node_1373,ptin:_node_1373,varname:node_1373,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:10,max:50;proporder:6665-358-1813-3769-7148-9011-5197-8227-5938-1486-4227-9467-4943-4128-6220-1373;pass:END;sub:END;*/
 
-Shader "Shader Forge/WaterEffect" {
+Shader "Shader Forge/WaterEffectThunderDome" {
     Properties {
         _Color ("Color", Color) = (0.01016437,0.3811986,0.6911765,0.5)
         _Metallic ("Metallic", Range(0, 1)) = 0.8
         _Gloss ("Gloss", Range(0, 1)) = 0.3279174
         _Frequency ("Frequency", Range(0, 0.2)) = 0
         _RefractionIntensity ("Refraction Intensity", Range(0, 2)) = 1.33
+        _Opacity ("Opacity", Range(0, 1)) = 0.6373062
         __scale ("_scale", Float ) = 1
         __normalSpeed ("_normalSpeed", Float ) = 0.01
         __heightSpeed ("_heightSpeed", Float ) = 0.01
@@ -19,8 +20,7 @@ Shader "Shader Forge/WaterEffect" {
         _Height2 ("Height2", 2D) = "white" {}
         _NormalMap ("Normal Map", 2D) = "bump" {}
         _NormalMap2 ("Normal Map2", 2D) = "bump" {}
-        _NormalTiling ("Normal Tiling", Range(0, 50)) = 10
-        _node_4098 ("node_4098", Range(0, 1)) = 0.02564103
+        _node_1373 ("node_1373", Range(0, 50)) = 10
         [HideInInspector]_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5
     }
     SubShader {
@@ -60,9 +60,9 @@ Shader "Shader Forge/WaterEffect" {
             uniform float4 _TimeEditor;
             uniform float4 _Color;
             uniform float _Metallic;
-            uniform float _Gloss;
             uniform float _Frequency;
             uniform float _RefractionIntensity;
+            uniform float _Opacity;
             uniform float __scale;
             uniform float __normalSpeed;
             uniform float __heightSpeed;
@@ -72,8 +72,7 @@ Shader "Shader Forge/WaterEffect" {
             uniform sampler2D _Height2; uniform float4 _Height2_ST;
             uniform sampler2D _NormalMap; uniform float4 _NormalMap_ST;
             uniform sampler2D _NormalMap2; uniform float4 _NormalMap2_ST;
-            uniform float _NormalTiling;
-            uniform float _node_4098;
+            uniform float _node_1373;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -113,8 +112,8 @@ Shader "Shader Forge/WaterEffect" {
                 o.normalDir = UnityObjectToWorldNormal(v.normal);
                 o.tangentDir = normalize( mul( _Object2World, float4( v.tangent.xyz, 0.0 ) ).xyz );
                 o.bitangentDir = normalize(cross(o.normalDir, o.tangentDir) * v.tangent.w);
-                float4 node_2468 = _Time + _TimeEditor;
-                float node_9980_ang = node_2468.g;
+                float4 node_7368 = _Time + _TimeEditor;
+                float node_9980_ang = node_7368.g;
                 float node_9980_spd = (-1*__heightSpeed);
                 float node_9980_cos = cos(node_9980_spd*node_9980_ang);
                 float node_9980_sin = sin(node_9980_spd*node_9980_ang);
@@ -123,7 +122,7 @@ Shader "Shader Forge/WaterEffect" {
                 float node_8682 = 1.0;
                 float2 node_817 = (node_9980*node_8682);
                 float4 node_2180 = tex2Dlod(_Height,float4(TRANSFORM_TEX(node_817, _Height),0.0,0));
-                float node_5788_ang = node_2468.g;
+                float node_5788_ang = node_7368.g;
                 float node_5788_spd = __heightSpeed;
                 float node_5788_cos = cos(node_5788_spd*node_5788_ang);
                 float node_5788_sin = sin(node_5788_spd*node_5788_ang);
@@ -151,27 +150,26 @@ Shader "Shader Forge/WaterEffect" {
                 i.screenPos.y *= _ProjectionParams.x;
                 float3x3 tangentTransform = float3x3( i.tangentDir, i.bitangentDir, i.normalDir);
                 float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
-                float4 node_2468 = _Time + _TimeEditor;
-                float node_807_ang = node_2468.g;
+                float3 normalDirection = i.normalDir;
+                float3 viewReflectDirection = reflect( -viewDirection, normalDirection );
+                float4 node_7368 = _Time + _TimeEditor;
+                float node_807_ang = node_7368.g;
                 float node_807_spd = (-1*__normalSpeed);
                 float node_807_cos = cos(node_807_spd*node_807_ang);
                 float node_807_sin = sin(node_807_spd*node_807_ang);
                 float2 node_807_piv = float2(0.5,0.5);
                 float2 node_807 = (mul(i.uv0-node_807_piv,float2x2( node_807_cos, -node_807_sin, node_807_sin, node_807_cos))+node_807_piv);
-                float2 node_2904 = (node_807*_NormalTiling);
+                float2 node_2904 = (node_807*_node_1373);
                 float3 node_5643 = UnpackNormal(tex2D(_NormalMap2,TRANSFORM_TEX(node_2904, _NormalMap2)));
-                float node_9408_ang = node_2468.g;
+                float node_9408_ang = node_7368.g;
                 float node_9408_spd = __normalSpeed;
                 float node_9408_cos = cos(node_9408_spd*node_9408_ang);
                 float node_9408_sin = sin(node_9408_spd*node_9408_ang);
                 float2 node_9408_piv = float2(0.5,0.5);
                 float2 node_9408 = (mul(i.uv0-node_9408_piv,float2x2( node_9408_cos, -node_9408_sin, node_9408_sin, node_9408_cos))+node_9408_piv);
-                float2 node_4188 = (node_9408*_NormalTiling);
+                float2 node_4188 = (node_9408*_node_1373);
                 float3 _BumpMap = UnpackNormal(tex2D(_NormalMap,TRANSFORM_TEX(node_4188, _NormalMap)));
                 float3 node_3096 = normalize((node_5643.rgb*_BumpMap.rgb));
-                float3 normalLocal = node_3096;
-                float3 normalDirection = normalize(mul( normalLocal, tangentTransform )); // Perturbed normals
-                float3 viewReflectDirection = reflect( -viewDirection, normalDirection );
                 float __Refraction = (node_3096.g*_RefractionIntensity);
                 float node_4714 = __Refraction;
                 float2 sceneUVs = float2(1,grabSign)*i.screenPos.xy*0.5+0.5 + float2(node_4714,node_4714);
@@ -183,7 +181,7 @@ Shader "Shader Forge/WaterEffect" {
                 float attenuation = 1;
                 float3 attenColor = attenuation * _LightColor0.xyz;
 ///////// Gloss:
-                float gloss = pow(1.0-max(0,dot(node_3096, viewDirection)),_Gloss);
+                float gloss = 0.5;
                 float specPow = exp2( gloss * 10.0+1.0);
 /////// GI Data:
                 UnityLight light;
@@ -232,7 +230,7 @@ Shader "Shader Forge/WaterEffect" {
                 float3 directDiffuse = max( 0.0, NdotL) * attenColor;
                 float3 indirectDiffuse = float3(0,0,0);
                 indirectDiffuse += gi.indirect.diffuse;
-                float node_9980_ang = node_2468.g;
+                float node_9980_ang = node_7368.g;
                 float node_9980_spd = (-1*__heightSpeed);
                 float node_9980_cos = cos(node_9980_spd*node_9980_ang);
                 float node_9980_sin = sin(node_9980_spd*node_9980_ang);
@@ -241,7 +239,7 @@ Shader "Shader Forge/WaterEffect" {
                 float node_8682 = 1.0;
                 float2 node_817 = (node_9980*node_8682);
                 float4 node_2180 = tex2D(_Height,TRANSFORM_TEX(node_817, _Height));
-                float node_5788_ang = node_2468.g;
+                float node_5788_ang = node_7368.g;
                 float node_5788_spd = __heightSpeed;
                 float node_5788_cos = cos(node_5788_spd*node_5788_ang);
                 float node_5788_sin = sin(node_5788_spd*node_5788_ang);
@@ -256,8 +254,8 @@ Shader "Shader Forge/WaterEffect" {
 ////// Emissive:
                 float3 emissive = (_EmissionIntensity*node_171);
 /// Final Color:
-                float3 finalColor = diffuse * _node_4098 + specular + emissive;
-                fixed4 finalRGBA = fixed4(lerp(sceneColor.rgb, finalColor,_node_4098),1);
+                float3 finalColor = diffuse * _Opacity + specular + emissive;
+                fixed4 finalRGBA = fixed4(lerp(sceneColor.rgb, finalColor,_Opacity),1);
                 UNITY_APPLY_FOG(i.fogCoord, finalRGBA);
                 return finalRGBA;
             }
@@ -294,9 +292,9 @@ Shader "Shader Forge/WaterEffect" {
             uniform float4 _TimeEditor;
             uniform float4 _Color;
             uniform float _Metallic;
-            uniform float _Gloss;
             uniform float _Frequency;
             uniform float _RefractionIntensity;
+            uniform float _Opacity;
             uniform float __scale;
             uniform float __normalSpeed;
             uniform float __heightSpeed;
@@ -306,8 +304,7 @@ Shader "Shader Forge/WaterEffect" {
             uniform sampler2D _Height2; uniform float4 _Height2_ST;
             uniform sampler2D _NormalMap; uniform float4 _NormalMap_ST;
             uniform sampler2D _NormalMap2; uniform float4 _NormalMap2_ST;
-            uniform float _NormalTiling;
-            uniform float _node_4098;
+            uniform float _node_1373;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -337,8 +334,8 @@ Shader "Shader Forge/WaterEffect" {
                 o.normalDir = UnityObjectToWorldNormal(v.normal);
                 o.tangentDir = normalize( mul( _Object2World, float4( v.tangent.xyz, 0.0 ) ).xyz );
                 o.bitangentDir = normalize(cross(o.normalDir, o.tangentDir) * v.tangent.w);
-                float4 node_5758 = _Time + _TimeEditor;
-                float node_9980_ang = node_5758.g;
+                float4 node_1241 = _Time + _TimeEditor;
+                float node_9980_ang = node_1241.g;
                 float node_9980_spd = (-1*__heightSpeed);
                 float node_9980_cos = cos(node_9980_spd*node_9980_ang);
                 float node_9980_sin = sin(node_9980_spd*node_9980_ang);
@@ -347,7 +344,7 @@ Shader "Shader Forge/WaterEffect" {
                 float node_8682 = 1.0;
                 float2 node_817 = (node_9980*node_8682);
                 float4 node_2180 = tex2Dlod(_Height,float4(TRANSFORM_TEX(node_817, _Height),0.0,0));
-                float node_5788_ang = node_5758.g;
+                float node_5788_ang = node_1241.g;
                 float node_5788_spd = __heightSpeed;
                 float node_5788_cos = cos(node_5788_spd*node_5788_ang);
                 float node_5788_sin = sin(node_5788_spd*node_5788_ang);
@@ -376,26 +373,25 @@ Shader "Shader Forge/WaterEffect" {
                 i.screenPos.y *= _ProjectionParams.x;
                 float3x3 tangentTransform = float3x3( i.tangentDir, i.bitangentDir, i.normalDir);
                 float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
-                float4 node_5758 = _Time + _TimeEditor;
-                float node_807_ang = node_5758.g;
+                float3 normalDirection = i.normalDir;
+                float4 node_1241 = _Time + _TimeEditor;
+                float node_807_ang = node_1241.g;
                 float node_807_spd = (-1*__normalSpeed);
                 float node_807_cos = cos(node_807_spd*node_807_ang);
                 float node_807_sin = sin(node_807_spd*node_807_ang);
                 float2 node_807_piv = float2(0.5,0.5);
                 float2 node_807 = (mul(i.uv0-node_807_piv,float2x2( node_807_cos, -node_807_sin, node_807_sin, node_807_cos))+node_807_piv);
-                float2 node_2904 = (node_807*_NormalTiling);
+                float2 node_2904 = (node_807*_node_1373);
                 float3 node_5643 = UnpackNormal(tex2D(_NormalMap2,TRANSFORM_TEX(node_2904, _NormalMap2)));
-                float node_9408_ang = node_5758.g;
+                float node_9408_ang = node_1241.g;
                 float node_9408_spd = __normalSpeed;
                 float node_9408_cos = cos(node_9408_spd*node_9408_ang);
                 float node_9408_sin = sin(node_9408_spd*node_9408_ang);
                 float2 node_9408_piv = float2(0.5,0.5);
                 float2 node_9408 = (mul(i.uv0-node_9408_piv,float2x2( node_9408_cos, -node_9408_sin, node_9408_sin, node_9408_cos))+node_9408_piv);
-                float2 node_4188 = (node_9408*_NormalTiling);
+                float2 node_4188 = (node_9408*_node_1373);
                 float3 _BumpMap = UnpackNormal(tex2D(_NormalMap,TRANSFORM_TEX(node_4188, _NormalMap)));
                 float3 node_3096 = normalize((node_5643.rgb*_BumpMap.rgb));
-                float3 normalLocal = node_3096;
-                float3 normalDirection = normalize(mul( normalLocal, tangentTransform )); // Perturbed normals
                 float __Refraction = (node_3096.g*_RefractionIntensity);
                 float node_4714 = __Refraction;
                 float2 sceneUVs = float2(1,grabSign)*i.screenPos.xy*0.5+0.5 + float2(node_4714,node_4714);
@@ -407,7 +403,7 @@ Shader "Shader Forge/WaterEffect" {
                 float attenuation = LIGHT_ATTENUATION(i);
                 float3 attenColor = attenuation * _LightColor0.xyz;
 ///////// Gloss:
-                float gloss = pow(1.0-max(0,dot(node_3096, viewDirection)),_Gloss);
+                float gloss = 0.5;
                 float specPow = exp2( gloss * 10.0+1.0);
 ////// Specular:
                 float NdotL = max(0, dot( normalDirection, lightDirection ));
@@ -417,7 +413,7 @@ Shader "Shader Forge/WaterEffect" {
 /////// Diffuse:
                 NdotL = max(0.0,dot( normalDirection, lightDirection ));
                 float3 directDiffuse = max( 0.0, NdotL) * attenColor;
-                float node_9980_ang = node_5758.g;
+                float node_9980_ang = node_1241.g;
                 float node_9980_spd = (-1*__heightSpeed);
                 float node_9980_cos = cos(node_9980_spd*node_9980_ang);
                 float node_9980_sin = sin(node_9980_spd*node_9980_ang);
@@ -426,7 +422,7 @@ Shader "Shader Forge/WaterEffect" {
                 float node_8682 = 1.0;
                 float2 node_817 = (node_9980*node_8682);
                 float4 node_2180 = tex2D(_Height,TRANSFORM_TEX(node_817, _Height));
-                float node_5788_ang = node_5758.g;
+                float node_5788_ang = node_1241.g;
                 float node_5788_spd = __heightSpeed;
                 float node_5788_cos = cos(node_5788_spd*node_5788_ang);
                 float node_5788_sin = sin(node_5788_spd*node_5788_ang);
@@ -439,7 +435,7 @@ Shader "Shader Forge/WaterEffect" {
                 float3 diffuseColor = node_171;
                 float3 diffuse = directDiffuse * diffuseColor;
 /// Final Color:
-                float3 finalColor = diffuse * _node_4098 + specular;
+                float3 finalColor = diffuse * _Opacity + specular;
                 fixed4 finalRGBA = fixed4(finalColor,0);
                 UNITY_APPLY_FOG(i.fogCoord, finalRGBA);
                 return finalRGBA;
@@ -499,8 +495,8 @@ Shader "Shader Forge/WaterEffect" {
                 o.uv1 = v.texcoord1;
                 o.uv2 = v.texcoord2;
                 o.normalDir = UnityObjectToWorldNormal(v.normal);
-                float4 node_8677 = _Time + _TimeEditor;
-                float node_9980_ang = node_8677.g;
+                float4 node_3276 = _Time + _TimeEditor;
+                float node_9980_ang = node_3276.g;
                 float node_9980_spd = (-1*__heightSpeed);
                 float node_9980_cos = cos(node_9980_spd*node_9980_ang);
                 float node_9980_sin = sin(node_9980_spd*node_9980_ang);
@@ -509,7 +505,7 @@ Shader "Shader Forge/WaterEffect" {
                 float node_8682 = 1.0;
                 float2 node_817 = (node_9980*node_8682);
                 float4 node_2180 = tex2Dlod(_Height,float4(TRANSFORM_TEX(node_817, _Height),0.0,0));
-                float node_5788_ang = node_8677.g;
+                float node_5788_ang = node_3276.g;
                 float node_5788_spd = __heightSpeed;
                 float node_5788_cos = cos(node_5788_spd*node_5788_ang);
                 float node_5788_sin = sin(node_5788_spd*node_5788_ang);
@@ -562,18 +558,13 @@ Shader "Shader Forge/WaterEffect" {
             uniform float4 _TimeEditor;
             uniform float4 _Color;
             uniform float _Metallic;
-            uniform float _Gloss;
             uniform float _Frequency;
             uniform float __scale;
-            uniform float __normalSpeed;
             uniform float __heightSpeed;
             uniform float4 _Color_copy;
             uniform float _EmissionIntensity;
             uniform sampler2D _Height; uniform float4 _Height_ST;
             uniform sampler2D _Height2; uniform float4 _Height2_ST;
-            uniform sampler2D _NormalMap; uniform float4 _NormalMap_ST;
-            uniform sampler2D _NormalMap2; uniform float4 _NormalMap2_ST;
-            uniform float _NormalTiling;
             struct VertexInput {
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
@@ -595,8 +586,8 @@ Shader "Shader Forge/WaterEffect" {
                 o.uv1 = v.texcoord1;
                 o.uv2 = v.texcoord2;
                 o.normalDir = UnityObjectToWorldNormal(v.normal);
-                float4 node_4983 = _Time + _TimeEditor;
-                float node_9980_ang = node_4983.g;
+                float4 node_5615 = _Time + _TimeEditor;
+                float node_9980_ang = node_5615.g;
                 float node_9980_spd = (-1*__heightSpeed);
                 float node_9980_cos = cos(node_9980_spd*node_9980_ang);
                 float node_9980_sin = sin(node_9980_spd*node_9980_ang);
@@ -605,7 +596,7 @@ Shader "Shader Forge/WaterEffect" {
                 float node_8682 = 1.0;
                 float2 node_817 = (node_9980*node_8682);
                 float4 node_2180 = tex2Dlod(_Height,float4(TRANSFORM_TEX(node_817, _Height),0.0,0));
-                float node_5788_ang = node_4983.g;
+                float node_5788_ang = node_5615.g;
                 float node_5788_spd = __heightSpeed;
                 float node_5788_cos = cos(node_5788_spd*node_5788_ang);
                 float node_5788_sin = sin(node_5788_spd*node_5788_ang);
@@ -626,8 +617,8 @@ Shader "Shader Forge/WaterEffect" {
                 UnityMetaInput o;
                 UNITY_INITIALIZE_OUTPUT( UnityMetaInput, o );
                 
-                float4 node_4983 = _Time + _TimeEditor;
-                float node_9980_ang = node_4983.g;
+                float4 node_5615 = _Time + _TimeEditor;
+                float node_9980_ang = node_5615.g;
                 float node_9980_spd = (-1*__heightSpeed);
                 float node_9980_cos = cos(node_9980_spd*node_9980_ang);
                 float node_9980_sin = sin(node_9980_spd*node_9980_ang);
@@ -636,7 +627,7 @@ Shader "Shader Forge/WaterEffect" {
                 float node_8682 = 1.0;
                 float2 node_817 = (node_9980*node_8682);
                 float4 node_2180 = tex2D(_Height,TRANSFORM_TEX(node_817, _Height));
-                float node_5788_ang = node_4983.g;
+                float node_5788_ang = node_5615.g;
                 float node_5788_spd = __heightSpeed;
                 float node_5788_cos = cos(node_5788_spd*node_5788_ang);
                 float node_5788_sin = sin(node_5788_spd*node_5788_ang);
@@ -650,25 +641,7 @@ Shader "Shader Forge/WaterEffect" {
                 
                 float3 diffColor = node_171;
                 float3 specColor = float3(_Metallic,_Metallic,_Metallic);
-                float node_807_ang = node_4983.g;
-                float node_807_spd = (-1*__normalSpeed);
-                float node_807_cos = cos(node_807_spd*node_807_ang);
-                float node_807_sin = sin(node_807_spd*node_807_ang);
-                float2 node_807_piv = float2(0.5,0.5);
-                float2 node_807 = (mul(i.uv0-node_807_piv,float2x2( node_807_cos, -node_807_sin, node_807_sin, node_807_cos))+node_807_piv);
-                float2 node_2904 = (node_807*_NormalTiling);
-                float3 node_5643 = UnpackNormal(tex2D(_NormalMap2,TRANSFORM_TEX(node_2904, _NormalMap2)));
-                float node_9408_ang = node_4983.g;
-                float node_9408_spd = __normalSpeed;
-                float node_9408_cos = cos(node_9408_spd*node_9408_ang);
-                float node_9408_sin = sin(node_9408_spd*node_9408_ang);
-                float2 node_9408_piv = float2(0.5,0.5);
-                float2 node_9408 = (mul(i.uv0-node_9408_piv,float2x2( node_9408_cos, -node_9408_sin, node_9408_sin, node_9408_cos))+node_9408_piv);
-                float2 node_4188 = (node_9408*_NormalTiling);
-                float3 _BumpMap = UnpackNormal(tex2D(_NormalMap,TRANSFORM_TEX(node_4188, _NormalMap)));
-                float3 node_3096 = normalize((node_5643.rgb*_BumpMap.rgb));
-                float roughness = 1.0 - pow(1.0-max(0,dot(node_3096, viewDirection)),_Gloss);
-                o.Albedo = diffColor + specColor * roughness * roughness * 0.5;
+                o.Albedo = diffColor + specColor * 0.125; // No gloss connected. Assume it's 0.5
                 
                 return UnityMetaFragment( o );
             }
