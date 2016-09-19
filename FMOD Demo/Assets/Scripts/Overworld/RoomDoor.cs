@@ -10,14 +10,13 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 [RequireComponent(typeof(SphereCollider))]
-public class RoomDoor : MonoBehaviour 
+public class RoomDoor : ActionObject 
 {
     // Public Vars
     public RoomCompleted m_completeSign;
     bool m_completed;
     public GameObject m_door;
     public string m_sceneToLoad;
-    public string m_useKey;
 
     //---------------------------------Fmod-------------------------------
     //  Bank reference is the same as and Event, except using BankRef.
@@ -39,22 +38,26 @@ public class RoomDoor : MonoBehaviour
         doorClosedPos = m_door.transform.localPosition;
         doorOpenPos = doorClosedPos + (Vector3.forward * m_door.transform.localScale.z);
 		m_collider = GetComponent<SphereCollider>();
-        m_collider.radius = 1.2f;
         m_collider.isTrigger = true;
         m_completed = false;
     }
 	
 	void Update () 
 	{
-        if (Input.GetKeyDown(m_useKey) && m_entering)
+        
+    }
+
+    public override void ActionPressed(GameObject a_sender, KeyCode a_key)
+    {
+        if (m_entering)
         {
             //~~~~~~~~~~~~~~~ Load this room ~~~~~~~~~~~~~~~\\
             if (!(m_entering && m_entered) && m_door.transform.localPosition == doorClosedPos)
-                StartCoroutine( LoadSceneOpenDoor() );
+                StartCoroutine(LoadSceneOpenDoor());
         }
     }
 
-	#region Private Functions
+    #region Private Functions
 
     void OnTriggerEnter(Collider col)
     {
