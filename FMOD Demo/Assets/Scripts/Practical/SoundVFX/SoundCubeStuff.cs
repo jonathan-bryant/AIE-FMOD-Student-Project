@@ -48,7 +48,7 @@ public class SoundCubeStuff : MonoBehaviour
         }		
     }
 	
-	void Update () 
+	void  FixedUpdate () 
 	{        
         // Get the update spectrum data from the main sound script;
         m_soundFFTData = m_soundRef.m_fftArray;
