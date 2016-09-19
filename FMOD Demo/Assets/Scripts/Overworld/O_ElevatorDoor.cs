@@ -1,4 +1,11 @@
-﻿using UnityEngine;
+﻿/*===============================================================================================
+|  Project:		FMOD Demo                                                                       |
+|  Developer:	Matthew Zelenko                                                                 |
+|  Company:		FMOD                                                                            |
+|  Date:		20/09/2016                                                                      |
+================================================================================================*/
+
+using UnityEngine;
 using System.Collections;
 
 public class O_ElevatorDoor : MonoBehaviour

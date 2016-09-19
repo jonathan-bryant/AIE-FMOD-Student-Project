@@ -1,8 +1,9 @@
-﻿/* ========================================================================================== */
-/*                                                                                            */
-/* FMOD Studio - C# Wrapper . Copyright (c), Firelight Technologies Pty, Ltd. 2004-2016.      */
-/*                                                                                            */
-/* ========================================================================================== */
+﻿/*===============================================================================================
+|  Project:		FMOD Demo                                                                       |
+|  Developer:	Matthew Zelenko                                                                 |
+|  Company:		FMOD                                                                            |
+|  Date:		20/09/2016                                                                      |
+================================================================================================*/
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
@@ -185,9 +186,7 @@ public class ActorControls : MonoBehaviour
     {
         //Raycast
         RaycastHit ray;
-        int layerMask = 1 << 10;
-        layerMask = ~layerMask;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out ray, m_selectDistance, layerMask))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out ray, m_selectDistance))
         {
             //Disable last actionObject outline
             if (m_actionObject)
