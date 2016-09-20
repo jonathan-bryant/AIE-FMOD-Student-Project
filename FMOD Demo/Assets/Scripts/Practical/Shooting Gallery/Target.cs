@@ -1,9 +1,12 @@
 ﻿/*===============================================================================================
-|  Project:		FMOD Demo                                                                       |
-|  Developer:	Matthew Zelenko                                                                 |
-|  Company:		FMOD                                                                            |
-|  Date:		20/09/2016                                                                      |
-================================================================================================*/
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                20/09/2016                                                      |
+|   Scene:                      Shooting Gallery                                                |
+|   Fmod Related Scripting:     Yes                                                             |
+|   Description:                Base Target class. Plays sound OnCollision.                     |
+===============================================================================================*/
 using UnityEngine;
 using System.Collections;
 

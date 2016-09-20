@@ -1,9 +1,12 @@
 ﻿/*===============================================================================================
-|  Project:		FMOD Demo                                                                       |
-|  Developer:	Matthew Zelenko                                                                 |
-|  Company:		FMOD                                                                            |
-|  Date:		20/09/2016                                                                      |
-================================================================================================*/
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                20/09/2016                                                      |
+|   Scene:                      ThunderDome                                                     |
+|   Fmod Related Scripting:     No                                                              |
+|   Description:                Creates sub branches if needed. The part that renders each line.|
+===============================================================================================*/
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;

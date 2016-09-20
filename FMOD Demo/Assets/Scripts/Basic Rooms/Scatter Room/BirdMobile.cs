@@ -1,15 +1,19 @@
 ﻿/*===============================================================================================
-|  Project:		FMOD Demo                                                                       |
-|  Developer:	Matthew Zelenko                                                                 |
-|  Company:		FMOD                                                                            |
-|  Date:		20/09/2016                                                                      |
-================================================================================================*/
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                20/09/2016                                                      |
+|   Scene:                      Scatter                                                         |
+|   Fmod Related Scripting:     No                                                              |
+|   Description:                Spawn birds with random properties that circle around like a    |
+|   mobile.                                                                                     |
+===============================================================================================*/
 using UnityEngine;
 using System.Collections;
 
 public class BirdMobile : MonoBehaviour
 {
-    public Transform m_actor;
+    Transform m_actor;
     public Bird m_bird;
     public float m_xRadius, m_zRadius;
     public float m_heightOffset, m_xOffset, m_zOffset;
@@ -23,7 +27,7 @@ public class BirdMobile : MonoBehaviour
     {
         m_actor = Camera.main.transform;
         m_numOfBirds = Random.Range(m_minBirds, m_maxBirds);
-        for (int i = 0; i < m_numOfBirds; ++i)
+        for (int i = 0; i < m_numOfBirds; ++i)  //Spawns birds in a cricle pattern with offsets to make it look interesting
         {
             Vector3 localPosition = new Vector3();
 
@@ -45,8 +49,7 @@ public class BirdMobile : MonoBehaviour
     }
     void Update()
     {
-
-        for (int i = 0; i < m_numOfBirds; ++i)
+        for (int i = 0; i < m_numOfBirds; ++i)  //rotate birds
         {
             Bird bird = transform.GetChild(i).gameObject.GetComponent<Bird>();
             Vector3 localPosition = bird.transform.localPosition;

@@ -1,9 +1,13 @@
-﻿/* ==/*===============================================================================================
-|  Project:		FMOD Demo                                                                       |
-|  Developer:	Matthew Zelenko                                                                 |
-|  Company:		FMOD                                                                            |
-|  Date:		20/09/2016                                                                      |
-================================================================================================*/
+﻿/*===============================================================================================
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                20/09/2016                                                      |
+|   Scene:                      All                                                             |
+|   Fmod Related Scripting:     Yes                                                             |
+|   Description:                Create oneshot sounds of footsteps and setting their parameters |
+|   based on the type of floor currently set.                                                   |
+===============================================================================================*/
 using UnityEngine;
 using System.Collections;
 

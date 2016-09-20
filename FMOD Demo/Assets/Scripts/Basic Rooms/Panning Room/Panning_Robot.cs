@@ -1,9 +1,12 @@
 ﻿/*===============================================================================================
-|  Project:		FMOD Demo                                                                       |
-|  Developer:	Matthew Zelenko                                                                 |
-|  Company:		FMOD                                                                            |
-|  Date:		20/09/2016                                                                      |
-================================================================================================*/
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                20/09/2016                                                      |
+|   Scene:                      Panning                                                         |
+|   Fmod Related Scripting:     Yes                                                             |
+|   Description:                Rotates the robot depending on the scene.                       |
+===============================================================================================*/
 using UnityEngine;
 using System.Collections;
 
@@ -11,6 +14,9 @@ public class Panning_Robot : MonoBehaviour
 {
     int m_isActive;
     float m_elapsed;
+    /*===============================================Fmod====================================================
+    |   The Studio Event Emitter is an FMOD script that can play, stop, change parameters.                  |
+    =======================================================================================================*/
     FMODUnity.StudioEventEmitter m_event;
     Transform m_actor;
     Quaternion m_oldRotation;
@@ -39,6 +45,9 @@ public class Panning_Robot : MonoBehaviour
             if (m_elapsed <= 4.0f)
             {
                 m_isActive = 0;
+                /*===============================================Fmod====================================================
+                |   Simply Play the Studio Event Emitter by calling Play.                                               |
+                =======================================================================================================*/
                 m_event.Play();
             }
         }
@@ -50,7 +59,9 @@ public class Panning_Robot : MonoBehaviour
             return;
         m_isActive = 1;
         m_elapsed = 0.0f;
-        m_event.Stop();
-        
+        /*===============================================Fmod====================================================
+        |   Simply Stop the Studio Event Emitter by calling Stop.                                               |
+        =======================================================================================================*/
+        m_event.Stop();        
     }
 }

@@ -1,9 +1,12 @@
 ﻿/*===============================================================================================
-|  Project:		FMOD Demo                                                                       |
-|  Developer:	Matthew Zelenko                                                                 |
-|  Company:		FMOD                                                                            |
-|  Date:		20/09/2016                                                                      |
-================================================================================================*/
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                20/09/2016                                                      |
+|   Scene:                      Player Parameter                                                |
+|   Fmod Related Scripting:     Yes                                                             |
+|   Description:                Controls the Sounds rpm parameter.                              |
+===============================================================================================*/
 using UnityEngine;
 using System.Collections;
 
