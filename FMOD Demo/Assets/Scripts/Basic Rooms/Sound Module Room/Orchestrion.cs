@@ -47,7 +47,6 @@ public class Orchestrion : MonoBehaviour
                m_index = (m_index + 1) % m_maxIndex;
                 key = m_sheetMusic[m_index];
             }
-            Debug.Log(key);
             char letter = key[0];
             if(letter == 'R')
             {
