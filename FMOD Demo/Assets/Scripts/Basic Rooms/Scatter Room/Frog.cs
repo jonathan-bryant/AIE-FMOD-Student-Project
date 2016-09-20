@@ -5,35 +5,36 @@ public class Frog : MonoBehaviour
 {
     public float m_turningPower;
     public float m_jumpInterval;
-    public float m_jumpDistance;
-    public float m_jumpHeight;
+    public float m_jumpPower;
 
     float m_elapsed;
 
     bool m_isJumping;
     Vector3 m_newPosition;
-    Vector3 m_oldPosition;
+    Vector3 m_forceDirection;
 
     void Start()
     {
-
+        m_isJumping = false;
+        m_forceDirection = transform.forward;
+        m_forceDirection = Quaternion.Euler(transform.right * -45.0f) * m_forceDirection;
     }
     void Update()
     {
         if (m_isJumping)
         {
-            transform.forward = Quaternion.Euler(0.0f, m_turningPower, 0.0f) * transform.forward;
-            transform.position += transform.forward * m_jumpDistance * Time.deltaTime / m_jumpHeight;
-            Vector3 pos = transform.position;
-            //pos.y = Mathf.Sin(m_elapsedInterval / m_jumpHeight) * m_jumpHeight;
+            transform.forward = GetComponent<Rigidbody>().velocity.normalized;
         }
         else
         {
             m_elapsed += Time.deltaTime;
             if (m_elapsed >= m_jumpInterval)
             {
+                m_forceDirection = Quaternion.Euler(0.0f, m_turningPower, 0.0f) * m_forceDirection;
                 m_isJumping = true;
-                //m_oldPosition = 
+                GetComponent<Rigidbody>().AddForce(m_forceDirection * m_jumpPower);
+                transform.forward = m_forceDirection;
+                m_elapsed = 0.0f;
             }
         }
     }
@@ -43,8 +44,8 @@ public class Frog : MonoBehaviour
         {
             if (a_col.gameObject.tag == "Ground")
             {
-                m_elapsed = 0.0f;
                 m_isJumping = false;
+                transform.forward = Vector3.Cross(a_col.contacts[0].normal, -transform.right);
             }
         }
     }
