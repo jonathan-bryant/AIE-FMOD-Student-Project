@@ -1,9 +1,14 @@
 ﻿/*===============================================================================================
-|  Project:		FMOD Demo                                                                       |
-|  Developer:	Matthew Zelenko                                                                 |
-|  Company:		FMOD                                                                            |
-|  Date:		20/09/2016                                                                      |
-================================================================================================*/
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                20/09/2016                                                      |
+|   Scene:                      Programmer Sounds                                               |
+|   Fmod Related Scripting:     No                                                              |
+|   Description:                When the flag has been acted upon. It will follow the actors    |
+|   line of sight until action key is pressed again or until the actor has picked up another    |
+|   flag.                                                                                       |
+===============================================================================================*/
 using UnityEngine;
 using System.Collections;
 
@@ -25,12 +30,12 @@ public class Flag : ActionObject
     {
         if(m_isActive)
         {
+            //Raycast past flag to see if theres obstruction forcing the flag to be closer to the player
             RaycastHit rh;
-            int layerMask = 1 << 10;
+            int layerMask = 1 << LayerMask.NameToLayer("PlayerIgnore");
             layerMask = ~layerMask;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rh, m_distance, layerMask))
             {
-
                 transform.position = Camera.main.transform.position + (Camera.main.transform.forward * rh.distance);
             }
             else
@@ -42,6 +47,7 @@ public class Flag : ActionObject
 
     public override void ActionPressed(GameObject sender, KeyCode a_key)
     {
+        //Handling picking up another flag while alreay flag.
         Flag[] flags = (Flag[])GameObject.FindObjectsOfType(typeof(Flag));
         foreach (Flag f in flags)
         {
@@ -77,6 +83,7 @@ public class Flag : ActionObject
 
     void OnCollisionStay(Collision a_col)
     {
+        //When a collisoin happens with the flag and the dialogue box, play the dialogue from the dialogue script.
         if (m_canCollide)
         {
             if (a_col.gameObject.name == "DialogueBox")

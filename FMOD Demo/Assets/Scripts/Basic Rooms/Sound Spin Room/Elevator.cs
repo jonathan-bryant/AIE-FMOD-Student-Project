@@ -1,15 +1,22 @@
 ﻿/*===============================================================================================
-|  Project:		FMOD Demo                                                                       |
-|  Developer:	Matthew Zelenko                                                                 |
-|  Company:		FMOD                                                                            |
-|  Date:		20/09/2016                                                                      |
-================================================================================================*/
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                20/09/2016                                                      |
+|   Scene:                      Sound Spin                                                      |
+|   Fmod Related Scripting:     Yes                                                             |
+|   Description:                Sound Spinning is when a sound has a start, then a loop, than an|
+|   end sound. So the sound will play the intro into a looping segment, then when it's told to  |
+|   exit, it will play the exit segment. e.g. elevator, machine gun.                            |
+===============================================================================================*/
 using UnityEngine;
 using System.Collections;
 
 public class Elevator : MonoBehaviour
 {
-    /////////////////////////fmod//////////////////////////////
+    /*===============================================Fmod====================================================
+    |   This line is a way to get an existing eventEmitter and control it from script                       |
+    =======================================================================================================*/
     public FMODUnity.StudioEventEmitter m_event;
 
     GameObject m_player;
@@ -41,7 +48,9 @@ public class Elevator : MonoBehaviour
                 {
                     m_isOpen = false;
                     m_elapsed = 0.0f;
-                    /////////////////////////fmod//////////////////////////////
+                    /*===============================================Fmod====================================================
+                    |   This is how you would go about setting parameters of an external eventEmitter.                      |
+                    =======================================================================================================*/
                     m_event.SetParameter("Intensity", 0);
                     m_event.Play();
                 }
@@ -85,7 +94,9 @@ public class Elevator : MonoBehaviour
                     Vector3 pos = transform.position;
                     pos.z = Mathf.Sin(Time.time * 10.0f) * 0.05f + m_originalZ;
                     transform.position = pos;
-                    /////////////////////////fmod//////////////////////////////
+                    /*===============================================Fmod====================================================
+                    |   This is how you would go about setting parameters of an external eventEmitter.                      |
+                    =======================================================================================================*/
                     m_event.SetParameter("Intensity", 1);
                 }
             }

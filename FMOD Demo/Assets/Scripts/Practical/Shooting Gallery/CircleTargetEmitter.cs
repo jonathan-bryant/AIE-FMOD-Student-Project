@@ -1,9 +1,13 @@
 ﻿/*===============================================================================================
-|  Project:		FMOD Demo                                                                       |
-|  Developer:	Matthew Zelenko                                                                 |
-|  Company:		FMOD                                                                            |
-|  Date:		20/09/2016                                                                      |
-================================================================================================*/
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                20/09/2016                                                      |
+|   Scene:                      Shooting Gallery                                                |
+|   Fmod Related Scripting:     No                                                              |
+|   Description:                Spawns target and rotates them around the position of the       |
+|   emitter. Also adds score if a target had been hit                                           |
+===============================================================================================*/
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;

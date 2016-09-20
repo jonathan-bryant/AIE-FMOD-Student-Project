@@ -1,9 +1,13 @@
 ﻿/*===============================================================================================
-|  Project:		FMOD Demo                                                                       |
-|  Developer:	Matthew Zelenko                                                                 |
-|  Company:		FMOD                                                                            |
-|  Date:		20/09/2016                                                                      |
-================================================================================================*/
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                20/09/2016                                                      |
+|   Scene:                      Panning                                                         |
+|   Fmod Related Scripting:     Yes                                                             |
+|   Description:                Warps the scene when active. Also sets the panning to 2D to 3D  |
+|   or vice versa.                                                                              |
+===============================================================================================*/
 using UnityEngine;
 using System.Collections;
 
@@ -43,13 +47,24 @@ public class Panning : ActionObject
             }
             for (int i = 0; i < m_objects.transform.childCount; ++i)
             {
+                /*===============================================Fmod====================================================
+                |   The Studio Event Emitter is an FMOD script that can play, stop, change parameters.                  |
+                =======================================================================================================*/
                 FMODUnity.StudioEventEmitter em = m_objects.transform.GetChild(i).gameObject.GetComponent<FMODUnity.StudioEventEmitter>();
                 if (!m_is3D)
                 {
+                    /*===============================================Fmod====================================================
+                    |   The setParamterValue function takes in the name of the parameter, and the value to give it.         |
+                    |   Parameters can be used to change volumes, or to jump to sections in the sound.                      |
+                    =======================================================================================================*/
                     em.SetParameter("Panning", m_elapsed / 1.0f);
                 }
                 else
                 {
+                    /*===============================================Fmod====================================================
+                    |   The setParamterValue function takes in the name of the parameter, and the value to give it.         |
+                    |   Parameters can be used to change volumes, or to jump to sections in the sound.                      |
+                    =======================================================================================================*/
                     em.SetParameter("Panning", 1.0f - (m_elapsed / 1.0f));
                 }
             }

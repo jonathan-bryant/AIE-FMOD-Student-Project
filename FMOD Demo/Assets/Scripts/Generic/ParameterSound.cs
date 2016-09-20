@@ -3,36 +3,31 @@
 |   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
 |   Company:		            Firelight Technologies                                          |
 |   Date:		                20/09/2016                                                      |
-|   Scene:                      Transceiver                                                     |
+|   Scene:                      All                                                             |
 |   Fmod Related Scripting:     Yes                                                             |
-|   Description:                                                                                |
+|   Description:                A script that creates an EventInstance and can set parameters.  |
 ===============================================================================================*/
 using UnityEngine;
 using System.Collections;
 
-public class DoorTransceiver : MonoBehaviour
+public class ParameterSound : MonoBehaviour
 {
-    public Door m_door;
-
     /*===============================================Fmod====================================================
-    |   This piece of code will allow the string m_footstepSurfaceName to use the event browser to select   |
+    |   This piece of code will allow the string to use the event browser to select                         |
     |   the event, in the inspector.                                                                        |
     =======================================================================================================*/
     [FMODUnity.EventRef]
     /*===============================================Fmod====================================================
-    |   Name of Event. Used in conjunction with EventInstance.                                              |
+    |   Name of Event. Used in creation of the EventInstance.                                               |
     =======================================================================================================*/
-    public string m_transceiverPath;
+    public string m_eventPath;
     /*===============================================Fmod====================================================
     |   EventInstance. Used to play or stop the sound, etc.                                                 |
     =======================================================================================================*/
-    FMOD.Studio.EventInstance m_transceiverEvent;
-    /*===============================================Fmod====================================================
-    |   Parameter. Used to adjust EventInstances tracks. Such as: changing                                  |
-    |   from wood to a carpet floor inside the same Event.                                                  |
-    =======================================================================================================*/
-    FMOD.Studio.ParameterInstance m_transceiverEnabledParameter;
-    
+    FMOD.Studio.EventInstance m_event;
+
+    public bool m_startEventOnCreation;
+
     void Start()
     {
         /*===============================================Fmod====================================================
@@ -40,32 +35,40 @@ public class DoorTransceiver : MonoBehaviour
         |   e.g. "event:/Basic Rooms/Footsteps".                                                                |
         |   This will simply create an instance.                                                                |
         =======================================================================================================*/
-        m_transceiverEvent = FMODUnity.RuntimeManager.CreateInstance(m_transceiverPath);
-        /*===============================================Fmod====================================================
-        |   Get a reference to the surface paramater and store it in                                            |
-        |   ParamaterInstance.                                                                                  |
-        =======================================================================================================*/
-        m_transceiverEvent.getParameter("Enabled", out m_transceiverEnabledParameter);
+        m_event = FMODUnity.RuntimeManager.CreateInstance(m_eventPath);
+
+        if(m_startEventOnCreation)
+            Start();
+    }
+    void Update()
+    {
+
+    }
+
+    //Starts the event, then attaches it to the gameObject
+    public void StartEvent()
+    {
         /*===============================================Fmod====================================================
         |   The start function will simply run the event.                                                       |
         =======================================================================================================*/
-        m_transceiverEvent.start();
+        m_event.start();
         /*===============================================Fmod====================================================
-        |   The AttachInstanceToGameObject function is used to set the position of the audio.                   |                                                           |
+        |   The AttachInstanceToGameObject function is used to set the position of the audio.                   |
         =======================================================================================================*/
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_transceiverEvent, transform, null);
-        /*===============================================Fmod====================================================
-        |   The setParamterValue function takes in the name of the parameter, and the value to give it.         |
-        |   Parameters can be used to change volumes, or to jump to sections in the sound.                      |
-        =======================================================================================================*/
-        m_transceiverEnabledParameter.setValue(0.0f);
-    }    
-    void Update()
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_event, transform, null);
+    }
+    //Stops the event and takes in a STOP_MODE as a parameter, which controls the way the sound event stops
+    public void StopEvent(FMOD.Studio.STOP_MODE a_stopMode)
+    {
+        m_event.stop(a_stopMode);
+    }
+    //Sets a parameter of the event, takes in the parameter to set and the value to set it at
+    public void SetParameter(string a_parameter, float a_value)
     {
         /*===============================================Fmod====================================================
         |   The setParamterValue function takes in the name of the parameter, and the value to give it.         |
-        |   Parameters can be used to change volumes, or to jump to sections in the sound.                      |
+        |   Parameters can be used to change volumes, or to jump to sections in the sound, etc.                 |
         =======================================================================================================*/
-        m_transceiverEnabledParameter.setValue(m_door.DoorElapsed);
+        m_event.setParameterValue(a_parameter, a_value);
     }
 }

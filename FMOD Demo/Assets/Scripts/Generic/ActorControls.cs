@@ -1,9 +1,13 @@
 ﻿/*===============================================================================================
-|  Project:		FMOD Demo                                                                       |
-|  Developer:	Matthew Zelenko                                                                 |
-|  Company:		FMOD                                                                            |
-|  Date:		20/09/2016                                                                      |
-================================================================================================*/
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                20/09/2016                                                      |
+|   Scene:                      All                                                             |
+|   Fmod Related Scripting:     No                                                              |
+|   Description:                The heart of the main actor in the scene. Controls movement,    |
+|   interactivity, key UI and playing of footsteps                                              |
+===============================================================================================*/
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
@@ -14,8 +18,8 @@ public class ActorControls : MonoBehaviour
     public float m_lookSensitivity;
     public float m_walkSpeed, m_runSpeed;
     public float m_jumpPower;
-    public float m_selectDistance = 4.0f;
-    public GameObject m_gun;
+    public float m_selectDistance = 4.0f;   //The max distance the actor can interact with an ActionObject in the scene
+    public GameObject m_gun;    //Used in the shooting gallery only
 
     CharacterController m_cc;
     Camera m_camera;
@@ -30,13 +34,13 @@ public class ActorControls : MonoBehaviour
     bool m_isRunning;
     public bool IsRunning { get { return m_isRunning; } }
 
-    public Vector3 CurrentVelocity { get { return new Vector3(m_velocity.x, 0.0f, m_velocity.z); } }
+    public Vector3 CurrentVelocity { get { return new Vector3(m_velocity.x, 0.0f, m_velocity.z); } } //Get velocity returns velocity on the x and z plane, no y.
     public bool IsGrounded { get { return m_cc.isGrounded; } }
 
     Footsteps m_footsteps;
     float m_footstepElapsed;
 
-    public Text m_pressKeyText;
+    public Text m_pressKeyText; //Ui for showing to the user what keys to press to activate object
 
 
     void Start()
@@ -80,6 +84,7 @@ public class ActorControls : MonoBehaviour
     {
         if (!a_value)
         {
+            //Remove mouse visibility, lock it in the middle of the screen and enable movement and mouse functionality
             m_disabledMovement = false;
             m_disabledMouse = false;
             Cursor.visible = false;
@@ -87,6 +92,7 @@ public class ActorControls : MonoBehaviour
         }
         else
         {
+            //Give back mouse visibility, unlock it in the middle of the screen and disable movement and mouse functionality
             m_disabledMovement = true;
             m_disabledMouse = true;
             Cursor.visible = true;
@@ -100,23 +106,18 @@ public class ActorControls : MonoBehaviour
         {
             if (Cursor.lockState != CursorLockMode.Locked)
             {
-                m_disabledMovement = false;
-                m_disabledMouse = false;
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
+                DisableMovementAndMouse(false);
             }
             else
             {
-                m_disabledMovement = true;
-                m_disabledMouse = true;
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
+                DisableMovementAndMouse(true);
             }
         }
     }
     void Move()
     {
-        m_velocity.y -= 9.8f * Time.fixedDeltaTime;
+        //Homemade physics
+        m_velocity.y -= 9.8f * Time.fixedDeltaTime; //gravity
         m_velocity.x *= m_drag;
         m_velocity.z *= m_drag;
         if (Mathf.Abs(m_velocity.x) <= m_minThreshold)
@@ -145,7 +146,7 @@ public class ActorControls : MonoBehaviour
             {
                 m_velocity += -transform.forward * (m_isRunning ? m_runSpeed : m_walkSpeed) * Time.fixedDeltaTime;
             }
-            if (Input.GetKey(KeyCode.Space) && m_cc.isGrounded)
+            if (Input.GetKey(KeyCode.Space) && m_cc.isGrounded) //Jump only when on the ground
             {
                 m_velocity += transform.up * m_jumpPower * Time.fixedDeltaTime;
             }
@@ -160,7 +161,7 @@ public class ActorControls : MonoBehaviour
                 float mag = vel.magnitude;
                 if (mag >= 0.45f)
                 {
-                    m_footstepElapsed += vel.magnitude * 0.015f;
+                    m_footstepElapsed += vel.magnitude * 0.015f;    //Timing of footsteps tweaked with a magic number
                     if (m_footstepElapsed > 1.0f)
                     {
                         m_footsteps.PlayFootstep();
@@ -178,8 +179,8 @@ public class ActorControls : MonoBehaviour
     {
         if (!m_disabledMouse && m_camera)
         {
-            transform.rotation = transform.rotation * Quaternion.Euler(0.0f, Input.GetAxis("Mouse X") * m_lookSensitivity, 0.0f);
-            m_camera.transform.rotation = m_camera.transform.rotation * Quaternion.Euler(-Input.GetAxis("Mouse Y") * m_lookSensitivity, 0.0f, 0.0f);
+            transform.rotation = transform.rotation * Quaternion.Euler(0.0f, Input.GetAxis("Mouse X") * m_lookSensitivity, 0.0f);   //rotate the body left and right
+            m_camera.transform.rotation = m_camera.transform.rotation * Quaternion.Euler(-Input.GetAxis("Mouse Y") * m_lookSensitivity, 0.0f, 0.0f);    //rotate  the camera up and down
         }
     }
     void Action()
@@ -191,7 +192,7 @@ public class ActorControls : MonoBehaviour
             //Disable last actionObject outline
             if (m_actionObject)
             {
-                for (int i = 0; i < m_actionObject.transform.childCount; ++i)
+                for (int i = 0; i < m_actionObject.transform.childCount; ++i)   //children
                 {
                     Renderer childRenderer = m_actionObject.transform.GetChild(i).gameObject.GetComponent<Renderer>();
                     if (childRenderer)
@@ -203,7 +204,7 @@ public class ActorControls : MonoBehaviour
                         }
                     }
                 }
-                Renderer actionRenderer = m_actionObject.GetComponent<Renderer>();
+                Renderer actionRenderer = m_actionObject.GetComponent<Renderer>();  //parent
                 if (actionRenderer)
                 {
                     Material actionMat = actionRenderer.material;
@@ -229,7 +230,7 @@ public class ActorControls : MonoBehaviour
             m_actionObject = actionObject;
 
             //Enable the objects outline
-            for (int i = 0; i < newObj.transform.childCount; ++i)
+            for (int i = 0; i < newObj.transform.childCount; ++i)   //children
             {
                 Renderer childRenderer = newObj.transform.GetChild(i).gameObject.GetComponent<Renderer>();
                 if (childRenderer)
@@ -241,7 +242,7 @@ public class ActorControls : MonoBehaviour
                     }
                 }
             }
-            Renderer renderer = newObj.GetComponent<Renderer>();
+            Renderer renderer = newObj.GetComponent<Renderer>();    //parent
             if (renderer)
             {
                 Material mat = renderer.material;
@@ -249,7 +250,7 @@ public class ActorControls : MonoBehaviour
                     mat.SetInt("_OutlineEnabled", 1);
             }
 
-            //If the action key is pressed, call use on the actionObject
+            //If any of the action keys are pressed, call use on the actionObject
             for (int i = 0; i < m_actionObject.m_actionKeys.Length; ++i)
             {
                 if (Input.GetKeyDown(m_actionObject.m_actionKeys[i]))
@@ -268,6 +269,7 @@ public class ActorControls : MonoBehaviour
                     break;
                 }
             }
+            //Compile the string to display to the user on which keys to press to activate ActionObject
             if (m_pressKeyText && m_actionObject.m_actionKeys.Length != 0)
             {
                 string text = m_actionObject.m_actionKeys[0].ToString();
@@ -281,10 +283,10 @@ public class ActorControls : MonoBehaviour
             }
             return;
         }
-        //If there is no raycast and there is an actionObject, disable it's outline, and call use but pass in false(Unuse basically)
+        //If there is no raycast and there is an actionObject, disable it's outline
         if (m_actionObject)
         {
-            for (int i = 0; i < m_actionObject.transform.childCount; ++i)
+            for (int i = 0; i < m_actionObject.transform.childCount; ++i)   //children
             {
                 Renderer childRenderer = m_actionObject.transform.GetChild(i).gameObject.GetComponent<Renderer>();
                 if (childRenderer)
@@ -297,7 +299,7 @@ public class ActorControls : MonoBehaviour
                 }
             }
 
-            Renderer renderer = m_actionObject.GetComponent<Renderer>();
+            Renderer renderer = m_actionObject.GetComponent<Renderer>();    //parent
             if (renderer)
             {
                 Material mat = renderer.material;

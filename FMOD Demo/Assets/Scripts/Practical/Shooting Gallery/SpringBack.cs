@@ -1,4 +1,13 @@
-﻿using UnityEngine;
+﻿/*===============================================================================================
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                20/09/2016                                                      |
+|   Scene:                      Shooting Gallery                                                |
+|   Fmod Related Scripting:     Yes                                                             |
+|   Description:                A target that, when shot, spring back up.                       |
+===============================================================================================*/
+using UnityEngine;
 using System.Collections;
 
 public class SpringBack : BaseTarget

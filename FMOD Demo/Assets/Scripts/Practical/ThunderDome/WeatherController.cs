@@ -1,9 +1,13 @@
 ﻿/*===============================================================================================
-|  Project:		FMOD Demo                                                                       |
-|  Developer:	Matthew Zelenko                                                                 |
-|  Company:		FMOD                                                                            |
-|  Date:		20/09/2016                                                                      |
-================================================================================================*/
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                20/09/2016                                                      |
+|   Scene:                      Thunder Dome                                                    |
+|   Fmod Related Scripting:     Yes                                                             |
+|   Description:                Sets the parameters of the Event Instance from the individual   |
+|   controllers.                                                                                |
+===============================================================================================*/
 using UnityEngine;
 using System.Collections;
 

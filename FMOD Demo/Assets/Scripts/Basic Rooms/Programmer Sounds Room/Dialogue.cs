@@ -1,9 +1,15 @@
 ﻿/*===============================================================================================
-|  Project:		FMOD Demo                                                                       |
-|  Developer:	Matthew Zelenko                                                                 |
-|  Company:		FMOD                                                                            |
-|  Date:		20/09/2016                                                                      |
-================================================================================================*/
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                20/09/2016                                                      |
+|   Scene:                      Programmer Sound                                                |
+|   Fmod Related Scripting:     Yes                                                             |
+|   Description:                Programmer sounds give the ability to select a sound from an    |
+|   audio table. In order to use programmer sounds a callback is required which will occur      |
+|   eveytime an event is created, destroyed, etc. This however uses Marshalling and is quite an |
+|   advanced topic.                                                                             |
+===============================================================================================*/
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
