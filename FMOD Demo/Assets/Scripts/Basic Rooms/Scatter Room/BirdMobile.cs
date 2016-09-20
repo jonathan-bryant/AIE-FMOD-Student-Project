@@ -13,7 +13,7 @@ using System.Collections;
 
 public class BirdMobile : MonoBehaviour
 {
-    public Transform m_actor;
+    Transform m_actor;
     public Bird m_bird;
     public float m_xRadius, m_zRadius;
     public float m_heightOffset, m_xOffset, m_zOffset;
