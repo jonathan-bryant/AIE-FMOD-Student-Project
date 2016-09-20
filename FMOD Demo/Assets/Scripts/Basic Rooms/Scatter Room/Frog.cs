@@ -25,7 +25,7 @@ public class Frog : MonoBehaviour
             transform.forward = Quaternion.Euler(0.0f, m_turningPower, 0.0f) * transform.forward;
             transform.position += transform.forward * m_jumpDistance * Time.deltaTime / m_jumpHeight;
             Vector3 pos = transform.position;
-            pos.y = Mathf.Sin(m_elapsedInterval / m_jumpHeight) * m_jumpHeight;
+            //pos.y = Mathf.Sin(m_elapsedInterval / m_jumpHeight) * m_jumpHeight;
         }
         else
         {
@@ -33,7 +33,7 @@ public class Frog : MonoBehaviour
             if (m_elapsed >= m_jumpInterval)
             {
                 m_isJumping = true;
-                m_oldPosition = 
+                //m_oldPosition = 
             }
         }
     }
