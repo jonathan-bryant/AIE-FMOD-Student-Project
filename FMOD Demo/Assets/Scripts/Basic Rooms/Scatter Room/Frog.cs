@@ -13,6 +13,8 @@ public class Frog : MonoBehaviour
     Vector3 m_newPosition;
     Vector3 m_forceDirection;
 
+    Animator m_animator;
+
     void Start()
     {
         m_isJumping = false;

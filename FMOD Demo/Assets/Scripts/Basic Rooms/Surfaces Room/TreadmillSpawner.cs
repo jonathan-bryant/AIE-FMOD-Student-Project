@@ -15,8 +15,6 @@ using System.Collections.Generic;
 public class TreadmillSpawner : MonoBehaviour
 {
     public ParticleSystem m_grassParticleEmitter;
-    public ParticleSystem m_tileParticleEmitter;
-    public ParticleSystem m_carpetParticleEmitter;
     public GameObject[] m_floorTextures;
     public float m_speed;
     public int m_numOfTiles;
@@ -98,14 +96,6 @@ public class TreadmillSpawner : MonoBehaviour
             {
                 m_grassParticleEmitter.Play();
             }
-            else if (m_floors[0].tag == "Tile")
-            {
-                m_tileParticleEmitter.Play();
-            }
-            else if (m_floors[0].tag == "Carpet")
-            {
-                m_carpetParticleEmitter.Play();
-            }
         }
         float diff = (transform.position - m_floors[m_floors.Count - 1].transform.position).magnitude;
         if (diff >= m_floors[m_floors.Count - 1].transform.localScale.z * 2.0f)
@@ -123,8 +113,7 @@ public class TreadmillSpawner : MonoBehaviour
     {
         if (a_col.gameObject.tag == "Player")
         {
-            a_col.gameObject.transform.position += transform.forward * m_speed * Time.deltaTime;
+            a_col.gameObject.GetComponent<CharacterController>().Move(transform.forward * m_speed * Time.deltaTime);
         }
     }
-
 }
