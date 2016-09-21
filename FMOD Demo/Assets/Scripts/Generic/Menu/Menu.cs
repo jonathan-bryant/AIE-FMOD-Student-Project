@@ -174,15 +174,15 @@ public class Menu : MonoBehaviour
         Application.OpenURL("http://http://www.fmod.org/");
     }
 
-    public void TeleportToRoom(string a_room)
+    public void TeleportToRoom(GameObject a_door)
     {
-        GameObject obj = GameObject.Find(a_room);
-        if(obj)
+        if(a_door)
         {
-            m_actor.transform.position = obj.transform.position + (-obj.transform.right * 10.0f) + (-obj.transform.forward * 1.266646f) + Vector3.up * 0.7f;
-            Vector3 doorCenter = obj.transform.position + (-obj.transform.forward * 1.266646f);
+            Vector3 pos = m_actor.transform.position;
+            pos = a_door.transform.position + (a_door.transform.right * 2.0f);
+            m_actor.transform.position = pos;
 
-            m_actor.transform.LookAt(new Vector3(doorCenter.x, 0.0f, doorCenter.z));
+            m_actor.transform.LookAt(new Vector3(a_door.transform.position.x, 0.0f, a_door.transform.position.z));
             m_actor.transform.localEulerAngles = new Vector3(0.0f,m_actor.transform.localEulerAngles.y, 0.0f);
             Camera.main.transform.localEulerAngles = Vector3.zero;
         }
