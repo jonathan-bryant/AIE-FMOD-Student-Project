@@ -65,8 +65,8 @@ public class DoorController : ActionObject
 
     void OnTriggerEnter(Collider other)
     {
-        float dotToCamera = Vector3.Dot(-transform.forward.normalized, other.transform.position.normalized);
-        if (dotToCamera > 0)
+        float dotToCamera = Vector3.Dot(transform.right, (other.transform.position - transform.position).normalized);
+        if (dotToCamera < 0)
         {
             m_opening = true;
         }
@@ -117,35 +117,38 @@ public class DoorController : ActionObject
         {
             yield return false;
         }
-
+        Debug.Log("Past while loop");
         m_opening = false;
-
-        float dotToCamera = Vector3.Dot(-transform.forward.normalized, Camera.main.transform.position.normalized);
-        Debug.Log(dotToCamera);
-        while (dotToCamera > 0)
+        //
+        float dotToCamera = Vector3.Dot(transform.right, (Camera.main.transform.position - transform.position).normalized);
+        
+        if (dotToCamera > 0)
         {
+            //dotToCamera = Vector3.Dot(transform.right, (Camera.main.transform.position - transform.position).normalized);
+
             // Check to see if door is closed
+            Debug.Log(m_distToNewPos);
             if (m_distToNewPos > 0.3f)
             {
                 Debug.Log("Door not fully closed");
-                yield return false;
+                //yield return false;
             }
-
-            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-            //Add timer before unloading bank and add lowpass effect to imitate occlusion through closed door//
-            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-
-            // unload bank
-            //if (m_bankToLoad != "")
-            //
-
-            // Then unload scene
-            Debug.Log("Unload scene");
+        
+        //    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+        //    //Add timer before unloading bank and add lowpass effect to imitate occlusion through closed door//
+        //    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+        //
+        //    // unload bank
+        //    //if (m_bankToLoad != "")
+        //    //
+        //
+        //    // Then unload scene
+        //    Debug.Log("Unload scene");
             if (SceneManager.GetSceneByName(m_sceneToLoad).isLoaded)
             {
                 SceneManager.UnloadScene(m_sceneToLoad);
-                FMODUnity.RuntimeManager.UnloadBank(m_bankToLoad);
-                break;
+                //FMODUnity.RuntimeManager.UnloadBank(m_bankToLoad);
+                
             }
         }
     }
