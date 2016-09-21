@@ -272,10 +272,10 @@ public class ActorControls : MonoBehaviour
             //Compile the string to display to the user on which keys to press to activate ActionObject
             if (m_pressKeyText && m_actionObject.m_actionKeys.Length != 0)
             {
-                string text = m_actionObject.m_actionKeys[0].ToString();
+                string text = "Press " + GetKey(m_actionObject.m_actionKeys[0]);
                 for (int i = 1; i < m_actionObject.m_actionKeys.Length; ++i)
                 {
-                    text = text.Insert(text.Length, " \\ " + m_actionObject.m_actionKeys[i].ToString());
+                    text = text.Insert(text.Length, " or " + GetKey(m_actionObject.m_actionKeys[i]));
                 }
                 m_pressKeyText.text = text;
                 m_pressKeyText.gameObject.SetActive(true);
@@ -309,6 +309,19 @@ public class ActorControls : MonoBehaviour
             }
             if (m_pressKeyText)
                 m_pressKeyText.gameObject.SetActive(false);
+        }
+    }
+
+    string GetKey(KeyCode a_code)
+    {
+        switch (a_code)
+        {
+            case KeyCode.Mouse0:
+                return "Left Mouse Button";
+            case KeyCode.Mouse1:
+                return "Right Mouse Button";
+            default:
+                return a_code.ToString();
         }
     }
 }
