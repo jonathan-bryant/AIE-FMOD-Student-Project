@@ -33,21 +33,22 @@ public class O_Elevator : MonoBehaviour
         m_currentFloor = -1;
         m_selectedFloor = -1;
         m_selectedFloorY = m_startFloorY;
-        m_actor.DisableMovementAndMouse(true);
+        m_actor.m_disabledMovement = true;
     }
     void Update()
     {
-        if(m_selectedFloor == -1)
+        if (m_selectedFloor == -1)
         {
-            if(Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 m_selectedFloor = 0;
                 m_isActive = 1;
-                m_actor.DisableMovementAndMouse(false);
+                m_actor.m_disabledMovement = false;
             }
         }
         if (m_isActive == 1)
         {
+            m_actor.m_disabledMovement = true;
             if (!m_door.IsDoorOpen)
             {
                 m_isActive = 2;
@@ -56,6 +57,14 @@ public class O_Elevator : MonoBehaviour
                 else
                     m_direction = 1;
             }
+            Vector3 elevatorMiddleDirection = transform.position - m_actor.transform.position;
+            elevatorMiddleDirection.y = 0;
+            if (elevatorMiddleDirection.magnitude > 1.0f)
+            {
+                elevatorMiddleDirection.Normalize();
+            }
+            if(elevatorMiddleDirection.magnitude != 0.0f)
+                m_actor.GetComponent<CharacterController>().Move(elevatorMiddleDirection * 0.05f);
         }
         else if (m_isActive == 2)
         {
@@ -96,10 +105,12 @@ public class O_Elevator : MonoBehaviour
             {
                 playerPos.y = pos.y - 1.0f + 0.7f;
                 m_actor.transform.position = playerPos;
+                m_actor.m_disabledMovement = true;
             }
         }
         else if (m_isActive == 3)
         {
+            m_actor.m_disabledMovement = false;
             if (m_door.IsDoorOpen)
             {
                 m_isActive = 0;
@@ -117,5 +128,9 @@ public class O_Elevator : MonoBehaviour
         m_selectedFloorY = a_floorY;
         m_door.CloseDoor();
         m_outerDoorHolder.transform.GetChild(m_currentFloor).GetComponent<O_ElevatorDoor>().CloseDoor();
+        if (m_actor.transform.position.y - 0.7f >= transform.position.y - 1.459 && m_actor.transform.position.y - 0.7f <= transform.position.y + 1.459)
+        {
+            m_actor.m_disabledMovement = true;
+        }
     }
 }

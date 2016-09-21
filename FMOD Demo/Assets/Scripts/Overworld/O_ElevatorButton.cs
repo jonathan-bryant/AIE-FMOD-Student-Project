@@ -23,6 +23,10 @@ public class O_ElevatorButton : ActionObject
     {
     }
 
+    public override void ActionPressed(GameObject sender, KeyCode a_key)
+    {
+        m_elevator.ChangeFloor(m_floor, m_floorY);
+    }
     public override void ActionDown(GameObject sender, KeyCode a_key)
     {
         m_elevator.ChangeFloor(m_floor, m_floorY);

@@ -51,7 +51,7 @@ public class ActorControls : MonoBehaviour
         Application.runInBackground = true;
         m_cc = GetComponent<CharacterController>();
         m_camera = Camera.main;
-        DisableMovementAndMouse(false);
+        DisableMovementAndMouse = false;
         if (m_gun)
             m_gun.SetActive(false);
     }
@@ -80,23 +80,28 @@ public class ActorControls : MonoBehaviour
     {
         m_gun.SetActive(a_value);
     }
-    public void DisableMovementAndMouse(bool a_value)
+    public bool DisableMovementAndMouse
     {
-        if (!a_value)
-        {
-            //Remove mouse visibility, lock it in the middle of the screen and enable movement and mouse functionality
-            m_disabledMovement = false;
-            m_disabledMouse = false;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+        get {
+            return m_disabledMouse && m_disabledMovement;
         }
-        else
-        {
-            //Give back mouse visibility, unlock it in the middle of the screen and disable movement and mouse functionality
-            m_disabledMovement = true;
-            m_disabledMouse = true;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+        set {
+            if (!value)
+            {
+                //Remove mouse visibility, lock it in the middle of the screen and enable movement and mouse functionality
+                m_disabledMovement = false;
+                m_disabledMouse = false;
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                //Give back mouse visibility, unlock it in the middle of the screen and disable movement and mouse functionality
+                m_disabledMovement = true;
+                m_disabledMouse = true;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
         }
     }
 
@@ -106,11 +111,11 @@ public class ActorControls : MonoBehaviour
         {
             if (Cursor.lockState != CursorLockMode.Locked)
             {
-                DisableMovementAndMouse(false);
+                DisableMovementAndMouse = false;
             }
             else
             {
-                DisableMovementAndMouse(true);
+                DisableMovementAndMouse = true;
             }
         }
     }

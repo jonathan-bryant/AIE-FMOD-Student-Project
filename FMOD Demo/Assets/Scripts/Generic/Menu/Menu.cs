@@ -16,6 +16,7 @@ public class Menu : MonoBehaviour
     Animator m_animator;
     bool m_optionsOpen, m_practicalOpen, m_basicOpen;
     ActorControls m_actor;
+    bool m_alreadyDisabled;
 
     void Start()
     {
@@ -36,12 +37,15 @@ public class Menu : MonoBehaviour
             if (m_menuIsOpen)
             {
                 m_animator.Play("Pause Open");
-                m_actor.DisableMovementAndMouse(true);
+                m_alreadyDisabled = m_actor.DisableMovementAndMouse;
+                if(!m_alreadyDisabled)
+                    m_actor.DisableMovementAndMouse = true;
             }
             else
             {
                 m_animator.Play("Pause Close");
-                m_actor.DisableMovementAndMouse(false);
+                if(!m_alreadyDisabled)
+                    m_actor.DisableMovementAndMouse = false;
                 if (m_optionsOpen)
                 {
                     m_animator.Play("Options Close");
