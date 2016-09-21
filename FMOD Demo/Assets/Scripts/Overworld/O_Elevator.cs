@@ -12,6 +12,7 @@ using System.Collections;
 
 public class O_Elevator : MonoBehaviour
 {
+    public GameObject m_outerDoorHolder;
     public O_ElevatorDoor m_door;
     public float m_speed;
 
@@ -74,6 +75,7 @@ public class O_Elevator : MonoBehaviour
                 m_currentFloor = m_selectedFloor;
                 m_isActive = 3;
                 m_door.OpenDoor();
+                m_outerDoorHolder.transform.GetChild(m_currentFloor).GetComponent<O_ElevatorDoor>().OpenDoor();
             }
 
             Vector3 playerPos = m_actor.transform.position;
@@ -104,5 +106,6 @@ public class O_Elevator : MonoBehaviour
         m_selectedFloor = a_floor;
         m_selectedFloorY = a_floorY;
         m_door.CloseDoor();
+        m_outerDoorHolder.transform.GetChild(m_currentFloor).GetComponent<O_ElevatorDoor>().CloseDoor();
     }
 }
