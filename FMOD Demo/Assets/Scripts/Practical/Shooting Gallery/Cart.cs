@@ -43,7 +43,7 @@ public class Cart : ActionObject
         {
             if (m_playerIsSeated && Input.GetKeyDown(m_actionKeys[i]))
         {
-            ActionPressed(this.gameObject, KeyCode.F);
+            ActionPressed(this.gameObject, m_actionKeys[i]);
         }
     }
         if (m_manager.IsActive)

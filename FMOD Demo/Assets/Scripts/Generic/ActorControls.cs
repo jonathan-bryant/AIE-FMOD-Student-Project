@@ -42,7 +42,6 @@ public class ActorControls : MonoBehaviour
 
     public Text m_pressKeyText; //Ui for showing to the user what keys to press to activate object
 
-
     void Start()
     {
         m_footsteps = GetComponent<Footsteps>();
@@ -51,9 +50,11 @@ public class ActorControls : MonoBehaviour
         Application.runInBackground = true;
         m_cc = GetComponent<CharacterController>();
         m_camera = Camera.main;
-        DisableMovementAndMouse = false;
         if (m_gun)
             m_gun.SetActive(false);
+
+        DisableMouse = m_disabledMouse;
+        DisableMovement = m_disabledMovement;
     }
     void Update()
     {
@@ -65,9 +66,6 @@ public class ActorControls : MonoBehaviour
         {
             m_isRunning = false;
         }
-#if UNITY_EDITOR
-        CheckDisableMovement();
-#endif
         Action();
         Look();
     }
@@ -80,16 +78,38 @@ public class ActorControls : MonoBehaviour
     {
         m_gun.SetActive(a_value);
     }
-    public bool DisableMovementAndMouse
+    public bool DisableMovement
     {
-        get {
-            return m_disabledMouse && m_disabledMovement;
+        get
+        {
+            return m_disabledMovement;
         }
-        set {
+        set
+        {
             if (!value)
             {
                 //Remove mouse visibility, lock it in the middle of the screen and enable movement and mouse functionality
                 m_disabledMovement = false;
+            }
+            else
+            {
+                //Give back mouse visibility, unlock it in the middle of the screen and disable movement and mouse functionality
+                m_disabledMovement = true;
+            }
+        }
+
+    }
+    public bool DisableMouse
+    {
+        get
+        {
+            return m_disabledMouse;
+        }
+        set
+        {
+            if (!value)
+            {
+                //Remove mouse visibility, lock it in the middle of the screen and enable movement and mouse functionality
                 m_disabledMouse = false;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
@@ -97,25 +117,9 @@ public class ActorControls : MonoBehaviour
             else
             {
                 //Give back mouse visibility, unlock it in the middle of the screen and disable movement and mouse functionality
-                m_disabledMovement = true;
                 m_disabledMouse = true;
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
-            }
-        }
-    }
-
-    void CheckDisableMovement()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftAlt))
-        {
-            if (Cursor.lockState != CursorLockMode.Locked)
-            {
-                DisableMovementAndMouse = false;
-            }
-            else
-            {
-                DisableMovementAndMouse = true;
             }
         }
     }
