@@ -16,7 +16,7 @@ public class O_Elevator : MonoBehaviour
     public O_ElevatorDoor m_door;
     public float m_speed;
 
-    Transform m_actor;
+    ActorControls m_actor;
     int m_isActive; //0 off, 1 close, 2 lift, 3 open
     int m_currentFloor;
     int m_selectedFloor;
@@ -28,14 +28,24 @@ public class O_Elevator : MonoBehaviour
 
     void Start()
     {
-        m_actor = Camera.main.transform.parent;
-        m_isActive = 1;
+        m_actor = Camera.main.transform.parent.gameObject.GetComponent<ActorControls>();
+        m_isActive = 0;
         m_currentFloor = -1;
-        m_selectedFloor = 0;
+        m_selectedFloor = -1;
         m_selectedFloorY = m_startFloorY;
+        m_actor.DisableMovementAndMouse(true);
     }
     void Update()
     {
+        if(m_selectedFloor == -1)
+        {
+            if(Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                m_selectedFloor = 0;
+                m_isActive = 1;
+                m_actor.DisableMovementAndMouse(false);
+            }
+        }
         if (m_isActive == 1)
         {
             if (!m_door.IsDoorOpen)
