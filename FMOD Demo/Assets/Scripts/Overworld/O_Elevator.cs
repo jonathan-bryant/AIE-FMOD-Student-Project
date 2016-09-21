@@ -48,6 +48,7 @@ public class O_Elevator : MonoBehaviour
         }
         if (m_isActive == 1)
         {
+            CenterActor();
             m_actor.m_disabledMovement = true;
             if (!m_door.IsDoorOpen)
             {
@@ -57,17 +58,10 @@ public class O_Elevator : MonoBehaviour
                 else
                     m_direction = 1;
             }
-            Vector3 elevatorMiddleDirection = transform.position - m_actor.transform.position;
-            elevatorMiddleDirection.y = 0;
-            if (elevatorMiddleDirection.magnitude > 1.0f)
-            {
-                elevatorMiddleDirection.Normalize();
-            }
-            if(elevatorMiddleDirection.magnitude != 0.0f)
-                m_actor.GetComponent<CharacterController>().Move(elevatorMiddleDirection * 0.05f);
         }
         else if (m_isActive == 2)
         {
+            CenterActor();
             transform.Translate(0.0f, m_direction * m_speed * Time.deltaTime, 0.0f);
             Vector3 pos = transform.position;
             bool finished = false;
@@ -132,5 +126,16 @@ public class O_Elevator : MonoBehaviour
         {
             m_actor.m_disabledMovement = true;
         }
+    }
+    void CenterActor()
+    {
+        Vector3 elevatorMiddleDirection = transform.position - m_actor.transform.position;
+        elevatorMiddleDirection.y = 0;
+        if (elevatorMiddleDirection.magnitude > 1.0f)
+        {
+            elevatorMiddleDirection.Normalize();
+        }
+        if (elevatorMiddleDirection.magnitude != 0.0f)
+            m_actor.GetComponent<CharacterController>().Move(elevatorMiddleDirection * 0.05f);
     }
 }

@@ -52,6 +52,7 @@ public class ActorControls : MonoBehaviour
         m_cc = GetComponent<CharacterController>();
         m_camera = Camera.main;
         DisableMovementAndMouse = false;
+        m_disabledMovement = true;
         if (m_gun)
             m_gun.SetActive(false);
     }
@@ -65,9 +66,6 @@ public class ActorControls : MonoBehaviour
         {
             m_isRunning = false;
         }
-#if UNITY_EDITOR
-        CheckDisableMovement();
-#endif
         Action();
         Look();
     }
@@ -101,21 +99,6 @@ public class ActorControls : MonoBehaviour
                 m_disabledMouse = true;
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
-            }
-        }
-    }
-
-    void CheckDisableMovement()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftAlt))
-        {
-            if (Cursor.lockState != CursorLockMode.Locked)
-            {
-                DisableMovementAndMouse = false;
-            }
-            else
-            {
-                DisableMovementAndMouse = true;
             }
         }
     }
