@@ -20,17 +20,12 @@ public class Frog : MonoBehaviour
         m_isJumping = false;
         m_forceDirection = transform.forward;
         m_forceDirection = Quaternion.Euler(transform.right * -45.0f) * m_forceDirection;
-        m_animator = GetComponent<Animator>();
     }
     void Update()
     {
         if (m_isJumping)
         {
             transform.forward = GetComponent<Rigidbody>().velocity.normalized;
-            if (GetComponent<Rigidbody>().velocity.y < 0)
-            {
-                m_animator.SetBool("Jump", false);
-            }
         }
         else
         {
@@ -41,7 +36,6 @@ public class Frog : MonoBehaviour
                 m_isJumping = true;
                 GetComponent<Rigidbody>().AddForce(m_forceDirection * m_jumpPower);
                 transform.forward = m_forceDirection;
-                m_animator.SetBool("Jump", true);
                 m_elapsed = 0.0f;
             }
         }
