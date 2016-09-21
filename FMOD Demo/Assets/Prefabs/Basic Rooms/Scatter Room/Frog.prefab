@@ -71,6 +71,8 @@ GameObject:
   - 4: {fileID: 423132}
   - 95: {fileID: 9575238}
   - 114: {fileID: 11406432}
+  - 54: {fileID: 5437098}
+  - 65: {fileID: 6503890}
   m_Layer: 0
   m_Name: Frog
   m_TagString: Untagged
@@ -114,10 +116,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164974}
-  m_LocalRotation: {x: 0, y: 0, z: 0.10690479, w: 0.99426925}
-  m_LocalPosition: {x: 0.004036218, y: 0.009685263, z: 0}
+  m_LocalRotation: {x: -0.07559286, y: -0.7030546, z: 0.075592846, w: 0.7030545}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.9510174, y: 1.8058138, z: 1.845634}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 12.2738}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 12.2738}
   m_Children: []
   m_Father: {fileID: 423132}
   m_RootOrder: 0
@@ -128,7 +130,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3171597, y: 0.103, z: 16.536491}
+  m_LocalPosition: {x: -0.305, y: 0.175, z: 16.536491}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -156,10 +158,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178328}
-  m_LocalRotation: {x: -0.46653834, y: 0.884501, z: -8.27273e-17, w: -2.5592831e-17}
-  m_LocalPosition: {x: -0.017800217, y: -0.00012653234, z: 0}
+  m_LocalRotation: {x: 0.3298926, y: -0.62543637, z: 0.32989278, w: -0.62543666}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: -55.619698}
+  m_LocalEulerAnglesHint: {x: 0, y: -270, z: -55.619698}
   m_Children:
   - {fileID: 426952}
   - {fileID: 486928}
@@ -205,6 +207,33 @@ Transform:
   - {fileID: 461158}
   m_Father: {fileID: 442228}
   m_RootOrder: 1
+--- !u!54 &5437098
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171862}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!65 &6503890
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171862}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.05, y: 0.025, z: 0.05}
+  m_Center: {x: 0, y: 0.0125, z: 0}
 --- !u!95 &9575238
 Animator:
   serializedVersion: 3
@@ -214,7 +243,7 @@ Animator:
   m_GameObject: {fileID: 171862}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f0659f0ae52566f459bf375b10ddd182, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 92b6e869615d01f4e9eb313f271656a1, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -233,12 +262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58c757ea281be24e832a30bdbc49a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_xRadius: 0
-  m_zRadius: 0
-  m_minJumpInterval: 0
-  m_maxJumpInterval: 0
-  m_minJumpDistance: 0
-  m_maxJumpDistance: 0
+  m_turningPower: 45
+  m_jumpInterval: 0.5
+  m_jumpPower: 200
 --- !u!137 &13719150
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
