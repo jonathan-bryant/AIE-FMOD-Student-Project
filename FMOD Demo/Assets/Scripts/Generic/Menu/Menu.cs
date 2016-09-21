@@ -37,15 +37,15 @@ public class Menu : MonoBehaviour
             if (m_menuIsOpen)
             {
                 m_animator.Play("Pause Open");
-                m_alreadyDisabled = m_actor.DisableMovementAndMouse;
+                m_alreadyDisabled = m_actor.DisableMouse;
                 if(!m_alreadyDisabled)
-                    m_actor.DisableMovementAndMouse = true;
+                    m_actor.DisableMouse = true;
             }
             else
             {
                 m_animator.Play("Pause Close");
                 if(!m_alreadyDisabled)
-                    m_actor.DisableMovementAndMouse = false;
+                    m_actor.DisableMouse = false;
                 if (m_optionsOpen)
                 {
                     m_animator.Play("Options Close");

@@ -10,7 +10,7 @@
 All Sounds where recorded and Edited by Oliver Richardson</value>
         </property>
         <property name="outputFormat">
-            <value>2</value>
+            <value>1</value>
         </property>
         <relationship name="mixer">
             <destination>{d7b856f0-a541-4d80-8dcc-c8eaa54a6a0a}</destination>
@@ -36,10 +36,8 @@ All Sounds where recorded and Edited by Oliver Richardson</value>
             <destination>{12f95771-cdd4-4799-857f-46dd1c60c896}</destination>
         </relationship>
         <relationship name="parameters">
-            <destination>{4ded2dec-4448-474f-970b-8eb950168321}</destination>
-            <destination>{9ea74bc8-ab19-4349-a13b-869654b236c4}</destination>
-            <destination>{c2721fac-3bf2-4254-ae07-e6da43059949}</destination>
-            <destination>{f2c148c6-dcb0-4009-b424-082846c3dc69}</destination>
+            <destination>{0677dcbb-c123-442e-8744-0289d3aabe51}</destination>
+            <destination>{ca77fea3-bd72-4d33-a26d-5135204ff533}</destination>
         </relationship>
         <relationship name="banks">
             <destination>{638061b8-4493-4c94-8332-c91d95dfbe94}</destination>
@@ -54,6 +52,9 @@ All Sounds where recorded and Edited by Oliver Richardson</value>
         </relationship>
     </object>
     <object class="MasterTrack" id="{91142e02-24bc-463d-bfb4-a2404a3aaace}">
+        <relationship name="automationTracks">
+            <destination>{488ac520-7a00-4798-ac21-729f439ed82f}</destination>
+        </relationship>
         <relationship name="mixerGroup">
             <destination>{b1fd2913-4785-4ef5-ba5a-c2e609c93c56}</destination>
         </relationship>
@@ -73,7 +74,7 @@ All Sounds where recorded and Edited by Oliver Richardson</value>
     <object class="MarkerTrack" id="{b6f97721-da63-4946-964e-e7abe6728abf}"/>
     <object class="GroupTrack" id="{13604af3-3442-4998-bb54-80904a48b911}">
         <relationship name="automationTracks">
-            <destination>{70cee8a8-bb6a-46cf-ac22-ca7dc48f8972}</destination>
+            <destination>{bb9029af-17ce-4510-801b-29f1a6950f22}</destination>
         </relationship>
         <relationship name="modules">
             <destination>{bc34720e-59d5-47db-aee4-efcaf9ed3988}</destination>
@@ -83,9 +84,6 @@ All Sounds where recorded and Edited by Oliver Richardson</value>
         </relationship>
     </object>
     <object class="GroupTrack" id="{3cc924c1-cafd-4f35-b70e-38862f7878e7}">
-        <relationship name="automationTracks">
-            <destination>{9549b19a-f8fa-4eee-a885-54335d1d1534}</destination>
-        </relationship>
         <relationship name="modules">
             <destination>{f2ff5cfe-bcf7-42b0-a700-f33b9b3a8bf1}</destination>
         </relationship>
@@ -94,9 +92,6 @@ All Sounds where recorded and Edited by Oliver Richardson</value>
         </relationship>
     </object>
     <object class="GroupTrack" id="{5b497fbc-5c07-4b16-9fec-5f181c8c728f}">
-        <relationship name="automationTracks">
-            <destination>{08be6798-59b3-43e9-8efe-d9794bb5e8bb}</destination>
-        </relationship>
         <relationship name="modules">
             <destination>{7c265229-1149-4543-b7d9-30c7b9099c66}</destination>
             <destination>{f7a3e3bc-ccf4-4f8e-9c30-4aa4f475b02c}</destination>
@@ -116,40 +111,24 @@ All Sounds where recorded and Edited by Oliver Richardson</value>
             <destination>{17ff8a9e-a570-4460-b027-3555819f54eb}</destination>
         </relationship>
     </object>
-    <object class="DistanceParameter" id="{4ded2dec-4448-474f-970b-8eb950168321}">
-        <property name="maximum">
-            <value>20</value>
-        </property>
-        <relationship name="automationCurves">
-            <destination>{01ac335b-cf50-4328-b702-57028cc729f7}</destination>
-            <destination>{4bb54a34-838b-40a8-9564-95446e3b4c80}</destination>
-            <destination>{527baea1-6be5-4ba6-83fe-9caf59370051}</destination>
-        </relationship>
-    </object>
-    <object class="DirectionParameter" id="{9ea74bc8-ab19-4349-a13b-869654b236c4}">
+    <object class="EventOrientationParameter" id="{0677dcbb-c123-442e-8744-0289d3aabe51}">
         <property name="minimum">
             <value>-180</value>
         </property>
         <property name="maximum">
             <value>180</value>
         </property>
+        <relationship name="automationCurves">
+            <destination>{22799446-6685-4654-bb99-7bc308d56341}</destination>
+        </relationship>
     </object>
-    <object class="AngleParameter" id="{c2721fac-3bf2-4254-ae07-e6da43059949}">
+    <object class="AngleParameter" id="{ca77fea3-bd72-4d33-a26d-5135204ff533}">
         <property name="maximum">
             <value>180</value>
         </property>
         <relationship name="automationCurves">
-            <destination>{875ff5d7-5ffd-418b-b5af-4138b2808d26}</destination>
-            <destination>{4577b6fc-8958-4506-98d4-a590be30782b}</destination>
+            <destination>{cb2bffad-474d-4318-ae3b-32a63710eeaa}</destination>
         </relationship>
-    </object>
-    <object class="EventOrientationParameter" id="{f2c148c6-dcb0-4009-b424-082846c3dc69}">
-        <property name="minimum">
-            <value>-180</value>
-        </property>
-        <property name="maximum">
-            <value>180</value>
-        </property>
     </object>
     <object class="EventMixerMaster" id="{b1fd2913-4785-4ef5-ba5a-c2e609c93c56}">
         <relationship name="effectChain">
@@ -162,18 +141,29 @@ All Sounds where recorded and Edited by Oliver Richardson</value>
             <destination>{d7b856f0-a541-4d80-8dcc-c8eaa54a6a0a}</destination>
         </relationship>
     </object>
+    <object class="AutomationTrack" id="{488ac520-7a00-4798-ac21-729f439ed82f}">
+        <property name="nameOfPropertyBeingAutomated">
+            <value>volume</value>
+        </property>
+        <relationship name="automationCurves">
+            <destination>{cb2bffad-474d-4318-ae3b-32a63710eeaa}</destination>
+        </relationship>
+        <relationship name="objectBeingAutomated">
+            <destination>{b1fd2913-4785-4ef5-ba5a-c2e609c93c56}</destination>
+        </relationship>
+    </object>
     <object class="MixerBusEffectChain" id="{2dc582e4-db37-4d99-ae48-8518f7d8d80a}">
         <relationship name="effects">
             <destination>{4457a9bb-d3d1-4abd-b4fd-a745cad649c0}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{ca0d6808-9610-4e6a-bebd-f4b1288ca685}"/>
-    <object class="AutomationTrack" id="{70cee8a8-bb6a-46cf-ac22-ca7dc48f8972}">
+    <object class="AutomationTrack" id="{bb9029af-17ce-4510-801b-29f1a6950f22}">
         <property name="nameOfPropertyBeingAutomated">
             <value>volume</value>
         </property>
         <relationship name="automationCurves">
-            <destination>{01ac335b-cf50-4328-b702-57028cc729f7}</destination>
+            <destination>{22799446-6685-4654-bb99-7bc308d56341}</destination>
         </relationship>
         <relationship name="objectBeingAutomated">
             <destination>{c64e9987-a370-4928-a2f5-5679616857d1}</destination>
@@ -204,18 +194,6 @@ All Sounds where recorded and Edited by Oliver Richardson</value>
             <destination>{b1fd2913-4785-4ef5-ba5a-c2e609c93c56}</destination>
         </relationship>
     </object>
-    <object class="AutomationTrack" id="{9549b19a-f8fa-4eee-a885-54335d1d1534}">
-        <property name="nameOfPropertyBeingAutomated">
-            <value>volume</value>
-        </property>
-        <relationship name="automationCurves">
-            <destination>{4bb54a34-838b-40a8-9564-95446e3b4c80}</destination>
-            <destination>{4577b6fc-8958-4506-98d4-a590be30782b}</destination>
-        </relationship>
-        <relationship name="objectBeingAutomated">
-            <destination>{1ff1c400-6de3-4ccc-af73-7d88a3d0398b}</destination>
-        </relationship>
-    </object>
     <object class="SingleSound" id="{f2ff5cfe-bcf7-42b0-a700-f33b9b3a8bf1}">
         <property name="start">
             <value>0</value>
@@ -239,18 +217,6 @@ All Sounds where recorded and Edited by Oliver Richardson</value>
         </relationship>
         <relationship name="output">
             <destination>{b1fd2913-4785-4ef5-ba5a-c2e609c93c56}</destination>
-        </relationship>
-    </object>
-    <object class="AutomationTrack" id="{08be6798-59b3-43e9-8efe-d9794bb5e8bb}">
-        <property name="nameOfPropertyBeingAutomated">
-            <value>volume</value>
-        </property>
-        <relationship name="automationCurves">
-            <destination>{527baea1-6be5-4ba6-83fe-9caf59370051}</destination>
-            <destination>{875ff5d7-5ffd-418b-b5af-4138b2808d26}</destination>
-        </relationship>
-        <relationship name="objectBeingAutomated">
-            <destination>{b0291ce8-b6d6-4ba1-b068-fac2bd5e2254}</destination>
         </relationship>
     </object>
     <object class="SingleSound" id="{7c265229-1149-4543-b7d9-30c7b9099c66}">
@@ -312,41 +278,25 @@ All Sounds where recorded and Edited by Oliver Richardson</value>
             <destination>{b6f97721-da63-4946-964e-e7abe6728abf}</destination>
         </relationship>
     </object>
-    <object class="AutomationCurve" id="{01ac335b-cf50-4328-b702-57028cc729f7}">
+    <object class="AutomationCurve" id="{22799446-6685-4654-bb99-7bc308d56341}">
         <relationship name="automationPoints">
-            <destination>{fc582f53-de75-4bed-b9db-a2708f6ded4b}</destination>
-            <destination>{9f7d5bf6-8540-4a48-9f69-fda6f5f107b8}</destination>
+            <destination>{2fbb8793-de4d-4899-8740-ab15651c2342}</destination>
+            <destination>{a355961e-5adf-4248-83e1-edb08bca3021}</destination>
+            <destination>{e0a9a21a-4eaf-454b-ba17-072e6b8fdfbd}</destination>
+            <destination>{3d022d65-7639-45eb-98b6-cef7adf85630}</destination>
+            <destination>{1acd0ad1-01fc-4cd4-915a-699c2b5c4d23}</destination>
         </relationship>
     </object>
-    <object class="AutomationCurve" id="{4bb54a34-838b-40a8-9564-95446e3b4c80}">
+    <object class="AutomationCurve" id="{cb2bffad-474d-4318-ae3b-32a63710eeaa}">
         <relationship name="automationPoints">
-            <destination>{075226c4-3a16-4d8e-89ba-99813412325d}</destination>
-            <destination>{78167883-5a4a-4f76-98e9-dc1f19f42e3a}</destination>
-        </relationship>
-    </object>
-    <object class="AutomationCurve" id="{527baea1-6be5-4ba6-83fe-9caf59370051}">
-        <relationship name="automationPoints">
-            <destination>{4f573d5d-966f-40c9-9461-55cc45626b64}</destination>
-            <destination>{28519cb2-db64-411e-bd1c-5f045a86446d}</destination>
-        </relationship>
-    </object>
-    <object class="AutomationCurve" id="{875ff5d7-5ffd-418b-b5af-4138b2808d26}">
-        <relationship name="automationPoints">
-            <destination>{77502fb5-45d5-49b4-8b1e-a41b9edc338a}</destination>
-            <destination>{0856881e-0e42-463c-8387-ed235fed5fb2}</destination>
-        </relationship>
-    </object>
-    <object class="AutomationCurve" id="{4577b6fc-8958-4506-98d4-a590be30782b}">
-        <relationship name="automationPoints">
-            <destination>{75d2be51-d71f-44b7-b688-79e6a4ee35ca}</destination>
-            <destination>{084f1e44-02bb-4821-aa41-8bc42b3808da}</destination>
-            <destination>{7fdd3aaf-f056-45f8-885a-86fd7e3c335a}</destination>
+            <destination>{bf0576ff-fc4a-48ad-8c08-c55b34d22fdc}</destination>
+            <destination>{ae789383-f685-47ab-bde6-3dc67b03f34f}</destination>
+            <destination>{998e7641-dc73-4763-8aa6-4987ac7ad599}</destination>
         </relationship>
     </object>
     <object class="MixerBusEffectChain" id="{43f50225-c4d5-49ab-9a65-a8b69c46d76b}">
         <relationship name="effects">
             <destination>{b8185715-c52b-4328-84ae-8831304c09ff}</destination>
-            <destination>{f14b3845-92c1-483a-aa51-cdd42fed2168}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{0b9dd08c-4eea-4966-8a16-737c25c9751f}"/>
@@ -394,102 +344,89 @@ All Sounds where recorded and Edited by Oliver Richardson</value>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{d7718227-b68b-41d6-9228-a5933529a8b2}"/>
-    <object class="AutomationPoint" id="{fc582f53-de75-4bed-b9db-a2708f6ded4b}">
+    <object class="AutomationPoint" id="{2fbb8793-de4d-4899-8740-ab15651c2342}">
         <property name="position">
-            <value>0</value>
-        </property>
-        <property name="value">
-            <value>4.00869656</value>
-        </property>
-        <property name="curveShape">
-            <value>0.321633607</value>
-        </property>
-    </object>
-    <object class="AutomationPoint" id="{9f7d5bf6-8540-4a48-9f69-fda6f5f107b8}">
-        <property name="position">
-            <value>20</value>
-        </property>
-        <property name="value">
-            <value>-80</value>
-        </property>
-    </object>
-    <object class="AutomationPoint" id="{075226c4-3a16-4d8e-89ba-99813412325d}">
-        <property name="position">
-            <value>0</value>
+            <value>-59.803117309269894</value>
         </property>
         <property name="value">
             <value>0</value>
         </property>
         <property name="curveShape">
-            <value>0.209184855</value>
+            <value>-0.0552029535</value>
         </property>
     </object>
-    <object class="AutomationPoint" id="{78167883-5a4a-4f76-98e9-dc1f19f42e3a}">
+    <object class="AutomationPoint" id="{a355961e-5adf-4248-83e1-edb08bca3021}">
         <property name="position">
-            <value>10.12539184952978</value>
+            <value>59.803117309269879</value>
         </property>
         <property name="value">
-            <value>6.40521908</value>
+            <value>0.413912773</value>
+        </property>
+        <property name="curveShape">
+            <value>-0.0552029535</value>
         </property>
     </object>
-    <object class="AutomationPoint" id="{4f573d5d-966f-40c9-9461-55cc45626b64}">
+    <object class="AutomationPoint" id="{e0a9a21a-4eaf-454b-ba17-072e6b8fdfbd}">
         <property name="position">
-            <value>0</value>
-        </property>
-        <property name="value">
-            <value>0</value>
-        </property>
-    </object>
-    <object class="AutomationPoint" id="{28519cb2-db64-411e-bd1c-5f045a86446d}">
-        <property name="position">
-            <value>20</value>
+            <value>180</value>
         </property>
         <property name="value">
             <value>10</value>
         </property>
     </object>
-    <object class="AutomationPoint" id="{77502fb5-45d5-49b4-8b1e-a41b9edc338a}">
+    <object class="AutomationPoint" id="{3d022d65-7639-45eb-98b6-cef7adf85630}">
         <property name="position">
-            <value>45.000665830720997</value>
+            <value>-0.14766201804758339</value>
         </property>
         <property name="value">
             <value>0</value>
         </property>
+        <property name="curveShape">
+            <value>-0.0959386155</value>
+        </property>
     </object>
-    <object class="AutomationPoint" id="{0856881e-0e42-463c-8387-ed235fed5fb2}">
+    <object class="AutomationPoint" id="{1acd0ad1-01fc-4cd4-915a-699c2b5c4d23}">
         <property name="position">
-            <value>83.978873239436624</value>
+            <value>-180</value>
         </property>
         <property name="value">
-            <value>-80</value>
+            <value>10</value>
+        </property>
+        <property name="curveShape">
+            <value>0.0552029423</value>
         </property>
     </object>
-    <object class="AutomationPoint" id="{75d2be51-d71f-44b7-b688-79e6a4ee35ca}">
+    <object class="AutomationPoint" id="{bf0576ff-fc4a-48ad-8c08-c55b34d22fdc}">
         <property name="position">
+            <value>89.926168990976208</value>
+        </property>
+        <property name="value">
+            <value>-7.25043488</value>
+        </property>
+        <property name="curveShape">
+            <value>0.175101429</value>
+        </property>
+    </object>
+    <object class="AutomationPoint" id="{ae789383-f685-47ab-bde6-3dc67b03f34f}">
+        <property name="position">
+            <value>24.942575881870397</value>
+        </property>
+        <property name="value">
             <value>0</value>
         </property>
-        <property name="value">
-            <value>0</value>
+        <property name="curveShape">
+            <value>-0.405233443</value>
         </property>
     </object>
-    <object class="AutomationPoint" id="{084f1e44-02bb-4821-aa41-8bc42b3808da}">
+    <object class="AutomationPoint" id="{998e7641-dc73-4763-8aa6-4987ac7ad599}">
         <property name="position">
-            <value>87.781690140845072</value>
-        </property>
-        <property name="value">
-            <value>-80</value>
-        </property>
-    </object>
-    <object class="AutomationPoint" id="{7fdd3aaf-f056-45f8-885a-86fd7e3c335a}">
-        <property name="position">
-            <value>45.000000000000007</value>
+            <value>154.61443806398688</value>
         </property>
         <property name="value">
             <value>0</value>
         </property>
     </object>
     <object class="MixerBusFader" id="{b8185715-c52b-4328-84ae-8831304c09ff}"/>
-    <object class="SpatialiserEffect" id="{f14b3845-92c1-483a-aa51-cdd42fed2168}"/>
     <object class="MixerBusFader" id="{d10eda2a-2d8b-476d-a333-a63c10f5fb1d}"/>
     <object class="MixerBusFader" id="{90d5d0b8-963e-467a-b0d7-ee9445808dfb}"/>
     <object class="ThreeEQEffect" id="{5aeb507e-c177-4af9-b6db-03b72af402c7}">
