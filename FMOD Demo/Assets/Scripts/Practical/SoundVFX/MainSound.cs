@@ -19,8 +19,7 @@ public class MainSound : MonoBehaviour
 	public Texture2D m_soundTex;
 
 	// Private Vars
-	[FMODUnity.EventRef]
-	public string m_eventRef;
+	[FMODUnity.EventRef]	public string m_eventRef;
 	FMOD.Studio.EventInstance m_eventInstance;
 	
 	FMOD.ChannelGroup m_channelGroup;
@@ -67,7 +66,7 @@ public class MainSound : MonoBehaviour
 	//		Used for error checking large number of FMOD functions.
 	//
 	//--------------------------------------------------------------------
-	FMOD.RESULT result;              
+	//FMOD.RESULT result;              
 
 	void Awake()
 	{
@@ -80,9 +79,9 @@ public class MainSound : MonoBehaviour
 		m_soundTex.wrapMode = TextureWrapMode.Clamp;
 
 		//---------------------------------Fmod-------------------------------
-		//  
+		//		Start by creating/initialising the sound, channel group and 
+		//		dsp effect's required.
 		//--------------------------------------------------------------------
-		// Start by creating/initialising the sound, channel group and dsp effect's required.
 		m_eventInstance = FMODUnity.RuntimeManager.CreateInstance(m_eventRef);
 
 		//---------------------------------Fmod-------------------------------
@@ -98,9 +97,9 @@ public class MainSound : MonoBehaviour
 		// Pin the class that will store the data modified during the callback.
 		m_timelineHandle = GCHandle.Alloc(m_timelineInfo, GCHandleType.Pinned);
 		// Pass the object through the userdata of the instance.
-		result = m_eventInstance.setUserData(GCHandle.ToIntPtr(m_timelineHandle));
+		m_eventInstance.setUserData(GCHandle.ToIntPtr(m_timelineHandle));
 		// Assign the callback to the studio event.
-		result = m_eventInstance.setCallback(m_beatCallback, FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT | FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER);
+		m_eventInstance.setCallback(m_beatCallback, FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT | FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER);
 
 		//---------------------------------Fmod-------------------------------
 		//  
@@ -190,7 +189,7 @@ public class MainSound : MonoBehaviour
 		//--------------------------------------------------------------------
 		while (m_channelGroup == null)
 		{
-			result = m_eventInstance.getChannelGroup(out m_channelGroup);
+			m_eventInstance.getChannelGroup(out m_channelGroup);
 			yield return null;
 		}
 

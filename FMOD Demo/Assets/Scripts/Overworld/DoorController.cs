@@ -125,6 +125,9 @@ public class DoorController : ActionObject
             {
                 yield return false;
             }
+			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+			//Add lowpass filter effect here, while door closes//
+			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
 			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 			//Add timer before unloading bank and add lowpass effect to imitate occlusion through closed door//
