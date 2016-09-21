@@ -95,7 +95,7 @@ public class O_Elevator : MonoBehaviour
             //Unity's Cylinder Collider
             Vector3 playerXZ = playerPos; playerXZ.y = 0.0f;
             Vector3 elevatorXZ = transform.position; elevatorXZ.y = 0.0f;
-            if (m_currentFloor == -1 || (playerXZ - elevatorXZ).magnitude < 0.8f && playerPos.y - 0.7f >= transform.position.y - 1.459 && playerPos.y - 0.7f <= transform.position.y + 1.459)
+            if ((playerXZ - elevatorXZ).magnitude < 0.8f && playerPos.y - 0.7f >= transform.position.y - 1.459 && playerPos.y - 0.7f <= transform.position.y + 1.459)
             {
                 playerPos.y = pos.y - 1.0f + 0.7f;
                 m_actor.transform.position = playerPos;
@@ -122,20 +122,30 @@ public class O_Elevator : MonoBehaviour
         m_selectedFloorY = a_floorY;
         m_door.CloseDoor();
         m_outerDoorHolder.transform.GetChild(m_currentFloor).GetComponent<O_ElevatorDoor>().CloseDoor();
-        if (m_actor.transform.position.y - 0.7f >= transform.position.y - 1.459 && m_actor.transform.position.y - 0.7f <= transform.position.y + 1.459)
+
+        Vector3 playerPos = m_actor.transform.position;
+        Vector3 playerXZ = playerPos; playerXZ.y = 0.0f;
+        Vector3 elevatorXZ = transform.position; elevatorXZ.y = 0.0f;
+        if ((playerXZ - elevatorXZ).magnitude < 0.8f && playerPos.y - 0.7f >= transform.position.y - 1.459 && playerPos.y - 0.7f <= transform.position.y + 1.459)
         {
             m_actor.m_disabledMovement = true;
         }
     }
     void CenterActor()
     {
-        Vector3 elevatorMiddleDirection = transform.position - m_actor.transform.position;
-        elevatorMiddleDirection.y = 0;
-        if (elevatorMiddleDirection.magnitude > 1.0f)
+        Vector3 playerPos = m_actor.transform.position;
+        Vector3 playerXZ = playerPos; playerXZ.y = 0.0f;
+        Vector3 elevatorXZ = transform.position; elevatorXZ.y = 0.0f;
+        if ((playerXZ - elevatorXZ).magnitude < 0.8f && playerPos.y - 0.7f >= transform.position.y - 1.459 && playerPos.y - 0.7f <= transform.position.y + 1.459)
         {
-            elevatorMiddleDirection.Normalize();
+            Vector3 elevatorMiddleDirection = transform.position - m_actor.transform.position;
+            elevatorMiddleDirection.y = 0;
+            if (elevatorMiddleDirection.magnitude > 1.0f)
+            {
+                elevatorMiddleDirection.Normalize();
+            }
+            if (elevatorMiddleDirection.magnitude != 0.0f)
+                m_actor.GetComponent<CharacterController>().Move(elevatorMiddleDirection * 0.05f);
         }
-        if (elevatorMiddleDirection.magnitude != 0.0f)
-            m_actor.GetComponent<CharacterController>().Move(elevatorMiddleDirection * 0.05f);
     }
 }
