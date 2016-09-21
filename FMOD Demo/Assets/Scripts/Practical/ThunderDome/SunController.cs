@@ -16,7 +16,7 @@ public class SunController : ActionObject
     public Light m_sun;
 
     bool m_inControl;
-    public float m_sunValue;
+    float m_sunValue;
     public float SunValue { get { return m_sunValue; } }
 
     void Start()
