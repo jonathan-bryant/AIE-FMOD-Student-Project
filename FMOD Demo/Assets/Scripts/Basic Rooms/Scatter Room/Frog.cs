@@ -25,7 +25,8 @@ public class Frog : MonoBehaviour
     {
         if (m_isJumping)
         {
-            transform.forward = GetComponent<Rigidbody>().velocity.normalized;
+            if (GetComponent<Rigidbody>().velocity.magnitude > 0)
+                transform.forward = GetComponent<Rigidbody>().velocity.normalized;
         }
         else
         {
