@@ -128,14 +128,10 @@ public class O_Elevator : MonoBehaviour
             }
 
             Vector3 playerPos = m_actor.transform.position;
-            //Unity's Cylinder Collider
-            Vector3 playerXZ = playerPos; playerXZ.y = 0.0f;
-            Vector3 elevatorXZ = transform.position; elevatorXZ.y = 0.0f;
-            if ((playerXZ - elevatorXZ).magnitude < 0.8f && playerPos.y - 0.7f >= transform.position.y - 1.459 && playerPos.y - 0.7f <= transform.position.y + 1.459)
+            if (m_actor.m_disabledMovement)
             {
                 playerPos.y = pos.y - 1.0f + 0.7f;
                 m_actor.transform.position = playerPos;
-                m_actor.m_disabledMovement = true;
             }
 
         }
