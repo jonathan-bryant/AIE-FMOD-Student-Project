@@ -47,35 +47,21 @@ public class Menu : MonoBehaviour
             }
         }
 #elif UNITY_STANDALONE
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            m_menuIsOpen = !m_menuIsOpen;
-            if (m_menuIsOpen)
-            {
-                m_animator.Play("Pause Open");
-                m_actor.DisableMovementAndMouse(true);
-            }
-            else
-            {
-                m_animator.Play("Pause Close");
-                m_actor.DisableMovementAndMouse(false);
-                if (m_optionsOpen)
-                {
-                    m_animator.Play("Options Close");
-                    m_optionsOpen = false;
-                }
-                if (m_practicalOpen)
-                {
-                    m_animator.Play("Practical Room Close");
-                    m_practicalOpen = false;
-                }
-                if (m_basicOpen)
-                {
-                    m_animator.Play("Basic Room Close");
-                    m_basicOpen = false;
-                }
-            }
-        }
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			if (!m_menuIsOpen)
+			{
+				m_menuIsOpen = true;
+				m_animator.Play("Pause Open");
+				m_alreadyDisabled = m_actor.DisableMouse;
+				if(!m_alreadyDisabled)
+				m_actor.DisableMouse = true;
+			}
+			else
+			{
+				CloseMenu();
+			}
+		}
 #endif
 
     }
