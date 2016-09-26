@@ -36,7 +36,7 @@
             <destination>{a139cc16-1f97-498e-918e-2a89ada920ad}</destination>
         </relationship>
         <relationship name="folder">
-            <destination>{47286b6d-16b5-4312-a40c-e55204ef6030}</destination>
+            <destination>{5f3ceb10-2e11-4403-bb4c-1327120ba8b6}</destination>
         </relationship>
     </object>
     <object class="EventMixer" id="{a175f66c-ada8-493d-86b0-034a774b7f03}">
@@ -76,9 +76,9 @@
             <destination>{12204184-5488-4fd2-8fcc-b013e180ca93}</destination>
         </relationship>
         <relationship name="markers">
-            <destination>{6f1a5e85-7b1d-47df-a20e-bb89f5466b80}</destination>
-            <destination>{1df2cab3-aa39-4b0d-9772-42de86c38abb}</destination>
             <destination>{3f92bdc3-e268-4cc9-b91d-3b5e2d44ed1c}</destination>
+            <destination>{1df2cab3-aa39-4b0d-9772-42de86c38abb}</destination>
+            <destination>{6f1a5e85-7b1d-47df-a20e-bb89f5466b80}</destination>
         </relationship>
     </object>
     <object class="GameParameter" id="{c58dd299-a740-4ded-ad87-a2a35d22a1d8}">
@@ -134,18 +134,24 @@
             <destination>{e2a5906e-9bb8-4997-ab97-10a39135a70f}</destination>
         </relationship>
     </object>
-    <object class="LoopRegion" id="{6f1a5e85-7b1d-47df-a20e-bb89f5466b80}">
+    <object class="TransitionRegion" id="{3f92bdc3-e268-4cc9-b91d-3b5e2d44ed1c}">
         <property name="position">
             <value>1.1000000000000001</value>
         </property>
         <property name="length">
             <value>3.1140000000000003</value>
         </property>
+        <relationship name="destination">
+            <destination>{1df2cab3-aa39-4b0d-9772-42de86c38abb}</destination>
+        </relationship>
         <relationship name="timeline">
             <destination>{e5fdfd47-898b-4c3e-a753-6afa6d39ef7e}</destination>
         </relationship>
         <relationship name="markerTrack">
-            <destination>{be00280e-fa7d-4627-a60b-758f265370eb}</destination>
+            <destination>{10382ece-7614-44e2-9d4d-becb0668a827}</destination>
+        </relationship>
+        <relationship name="triggerConditions">
+            <destination>{f4816f69-4c6b-4a54-bd13-cc7ef8ac3999}</destination>
         </relationship>
     </object>
     <object class="NamedMarker" id="{1df2cab3-aa39-4b0d-9772-42de86c38abb}">
@@ -162,7 +168,7 @@
             <destination>{be00280e-fa7d-4627-a60b-758f265370eb}</destination>
         </relationship>
     </object>
-    <object class="TransitionRegion" id="{3f92bdc3-e268-4cc9-b91d-3b5e2d44ed1c}">
+    <object class="LoopRegion" id="{6f1a5e85-7b1d-47df-a20e-bb89f5466b80}">
         <property name="position">
             <value>1.1000000000000001</value>
         </property>
@@ -173,13 +179,7 @@
             <destination>{e5fdfd47-898b-4c3e-a753-6afa6d39ef7e}</destination>
         </relationship>
         <relationship name="markerTrack">
-            <destination>{10382ece-7614-44e2-9d4d-becb0668a827}</destination>
-        </relationship>
-        <relationship name="triggerConditions">
-            <destination>{f4816f69-4c6b-4a54-bd13-cc7ef8ac3999}</destination>
-        </relationship>
-        <relationship name="destination">
-            <destination>{1df2cab3-aa39-4b0d-9772-42de86c38abb}</destination>
+            <destination>{be00280e-fa7d-4627-a60b-758f265370eb}</destination>
         </relationship>
     </object>
     <object class="MixerBusEffectChain" id="{8294c6f5-1ba5-4100-87f3-60300312a36e}">
