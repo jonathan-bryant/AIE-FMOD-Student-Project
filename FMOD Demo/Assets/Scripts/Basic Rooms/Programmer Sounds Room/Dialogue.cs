@@ -17,7 +17,7 @@ using UnityEngine;
 
 public class Dialogue : MonoBehaviour
 {
-    FMOD.Studio.EVENT_CALLBACK m_dialogueCallback;
+    static FMOD.Studio.EVENT_CALLBACK m_dialogueCallback;
 
     [FMODUnity.EventRef]
     public string m_dialogueName;
