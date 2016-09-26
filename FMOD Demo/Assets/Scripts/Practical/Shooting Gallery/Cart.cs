@@ -22,7 +22,7 @@ public class Cart : ActionObject
     public float m_acceleration = 10.0f;
     public float m_turningPower = 0.1f;
     public float m_nearThreshold = 0.5f;
-    
+
     Vector3 m_currentVelocity;
     public Vector3 CurrentVelocity { set { m_currentVelocity = value; } }
 
@@ -35,18 +35,18 @@ public class Cart : ActionObject
     }
     void Update()
     {
-       
+
     }
     void FixedUpdate()
     {
         for (int i = 0; i < m_actionKeys.Length; ++i)
         {
             if (m_playerIsSeated && Input.GetKeyDown(m_actionKeys[i]))
-        {
-            ActionPressed(this.gameObject, m_actionKeys[i]);
+            {
+                ActionPressed(this.gameObject, m_actionKeys[i]);
+            }
         }
-    }
-        if (m_manager.IsActive)
+        if (m_manager.IsActive && !m_manager.IsPaused)
         {
             CalculateHeading();
             Move();

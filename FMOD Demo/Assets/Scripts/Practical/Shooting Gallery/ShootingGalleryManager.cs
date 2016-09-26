@@ -16,33 +16,30 @@ using UnityEngine.UI;
 public class ShootingGalleryManager : MonoBehaviour
 {
     public Cart m_cart;
-    public int m_rounds;
-    public int m_currentRound;
 
-    public int m_maxScore;
+    public int m_winScore;
     int m_currentScore;
 
     public Track m_trackHolder;
     List<Transform> m_tracks;
     int m_currentTrackIndex;
-    public int CurrentTrackIndex { get { return m_currentTrackIndex; } }
-    public int StartingTrackIndex { get { return m_trackHolder.m_startingIndex; } }
-    public int TrackCount { get { return m_tracks.Count; } }
+    int m_nextRoomStartIndex;
 
     public SG_MainSpeaker m_mainSpeaker;
     public BaseTarget[] m_targets;
     public Text[] m_scores;
 
-    bool m_active;
-    bool m_finished;
-    public bool IsActive { get { return m_active; } }
+    int m_active;
+    bool m_isPaused;
+    public bool IsPaused { get { return m_isPaused; } }
+    public bool IsActive { get { return m_active > 0; } }
 
     void Start()
     {
-        m_finished = false;
         m_currentScore = 0;
-        m_currentRound = 0;
-        m_active = false;
+        m_active = 0;
+        m_nextRoomStartIndex = 0;
+        m_isPaused = false;
 
         //store tracks
         m_tracks = new List<Transform>();
@@ -63,22 +60,17 @@ public class ShootingGalleryManager : MonoBehaviour
 
     public void Play()
     {
-        if (m_currentRound >= m_rounds)
+        if (m_active == 0)
+        {
             Reset();
-        m_active = true;
-
-        m_mainSpeaker.IsActive(true);
-        m_mainSpeaker.Pause(false);
-        if (m_currentRound == m_rounds - 1)
-        {
-            m_mainSpeaker.SetRound(2);
+            m_mainSpeaker.Play();
+            m_active = 1;
         }
-        else if (m_currentRound > 0 || m_rounds == 2)
+        else
         {
-            m_mainSpeaker.SetRound(1);
+            m_isPaused = false;
+            m_mainSpeaker.Pause(m_isPaused);
         }
-
-
         foreach (BaseTarget t in m_targets)
         {
             t.Play();
@@ -86,10 +78,8 @@ public class ShootingGalleryManager : MonoBehaviour
     }
     public void Pause()
     {
-        m_active = false;
-        if (!m_finished)
-            m_mainSpeaker.Pause(true);
-        m_mainSpeaker.IsActive(false);
+        m_isPaused = true;
+        m_mainSpeaker.Pause(m_isPaused);
         foreach (BaseTarget t in m_targets)
         {
             t.Stop();
@@ -97,18 +87,19 @@ public class ShootingGalleryManager : MonoBehaviour
     }
     void Reset()
     {
-        m_finished = false;
-        //Set round
-        m_currentRound = 0;
+        m_active = 0;
         //Clear score
         ClearScore();
 
         ResetTargets();
+        m_isPaused = false;
+        m_mainSpeaker.Pause(m_isPaused);
 
         //Reset game result
         m_mainSpeaker.SetGameResult(0);
         //Reset round
         m_mainSpeaker.SetRound(0);
+        m_mainSpeaker.Stop();
     }
     void ResetTargets()
     {
@@ -152,29 +143,21 @@ public class ShootingGalleryManager : MonoBehaviour
 
         if (m_currentTrackIndex - m_trackHolder.m_startingIndex == 1)
         {
-            //You have reached the start again increment rounds, if last round then check if you win or not
-            m_currentRound++;
-            if (m_currentRound >= m_rounds)
+            m_mainSpeaker.SetGameResult(m_currentScore >= m_winScore ? 1 : -1);
+            Pause();
+            ResetCart();
+            m_active = 0;
+        }
+        else
+        {
+            if (m_currentTrackIndex == m_trackHolder.m_roomStartIndices[m_nextRoomStartIndex])
             {
-                m_mainSpeaker.SetGameResult(m_currentScore >= m_maxScore ? 1 : -1);
-                m_finished = true;
-                Pause();
-                ResetCart();
-            }
-            else
-            {
-                ResetTargets();
-                if (m_currentRound == m_rounds - 1)
-                {
-                    m_mainSpeaker.SetRound(2);
-                }
-                else if (m_currentRound > 0)
-                {
-                    m_mainSpeaker.SetRound(1);
-                }
+                m_nextRoomStartIndex = (++m_nextRoomStartIndex) % m_trackHolder.m_roomStartIndices.Length;
+                m_mainSpeaker.SetRound(m_nextRoomStartIndex + 1);
             }
         }
     }
+
     public Transform GetCurrentTrack()
     {
         return m_tracks[m_currentTrackIndex];

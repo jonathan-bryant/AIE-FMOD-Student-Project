@@ -45,13 +45,7 @@ public class SG_MainSpeaker : MonoBehaviour {
         //EventInstance and store it in ParameterInstance.
         //--------------------------------------------------------------------
         m_music.getParameter("Result", out m_resultParam);
-        m_music.getParameter("Active", out m_activeParam);
         m_music.getParameter("Round", out m_roundsParam);
-
-        //---------------------------------Fmod-------------------------------
-        //Calling this function will start the EventInstance.
-        //--------------------------------------------------------------------
-        m_music.start();
     }
 	
 	void Update () {
@@ -67,9 +61,19 @@ public class SG_MainSpeaker : MonoBehaviour {
     {
         m_resultParam.setValue(a_value);
     }
-    public void IsActive(bool a_value)
+    public void Play()
     {
-        m_activeParam.setValue(a_value ? 1 : 0);
+        //---------------------------------Fmod-------------------------------
+        //Calling this function will start the EventInstance.
+        //--------------------------------------------------------------------
+        m_music.start();
+    }
+    public void Stop()
+    {
+        //---------------------------------Fmod-------------------------------
+        //Calling this function will stop the EventInstance.
+        //--------------------------------------------------------------------
+        m_music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
     public void Pause(bool a_value)
     {
