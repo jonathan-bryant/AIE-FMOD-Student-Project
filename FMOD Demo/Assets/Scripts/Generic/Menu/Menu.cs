@@ -33,9 +33,9 @@ public class Menu : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.P))
         {
-            m_menuIsOpen = !m_menuIsOpen;
-            if (m_menuIsOpen)
+            if (!m_menuIsOpen)
             {
+                m_menuIsOpen = true;
                 m_animator.Play("Pause Open");
                 m_alreadyDisabled = m_actor.DisableMouse;
                 if(!m_alreadyDisabled)
@@ -43,24 +43,7 @@ public class Menu : MonoBehaviour
             }
             else
             {
-                m_animator.Play("Pause Close");
-                if(!m_alreadyDisabled)
-                    m_actor.DisableMouse = false;
-                if (m_optionsOpen)
-                {
-                    m_animator.Play("Options Close");
-                    m_optionsOpen = false;
-                }
-                if (m_practicalOpen)
-                {
-                    m_animator.Play("Practical Room Close");
-                    m_practicalOpen = false;
-                }
-                if (m_basicOpen)
-                {
-                    m_animator.Play("Basic Room Close");
-                    m_basicOpen = false;
-                }
+                CloseMenu();
             }
         }
 #elif UNITY_STANDALONE
@@ -174,10 +157,34 @@ public class Menu : MonoBehaviour
         Application.OpenURL("http://http://www.fmod.org/");
     }
 
+    public void CloseMenu()
+    {
+        m_menuIsOpen = false;
+        m_animator.Play("Pause Close");
+        if (!m_alreadyDisabled)
+            m_actor.DisableMouse = false;
+        if (m_optionsOpen)
+        {
+            m_animator.Play("Options Close");
+            m_optionsOpen = false;
+        }
+        if (m_practicalOpen)
+        {
+            m_animator.Play("Practical Room Close");
+            m_practicalOpen = false;
+        }
+        if (m_basicOpen)
+        {
+            m_animator.Play("Basic Room Close");
+            m_basicOpen = false;
+        }
+    }
+
     public void TeleportToRoom(GameObject a_door)
     {
         if(a_door)
         {
+            CloseMenu();
             Vector3 pos = m_actor.transform.position;
             pos = a_door.transform.position + (a_door.transform.right * 2.0f);
             m_actor.transform.position = pos;
@@ -185,6 +192,7 @@ public class Menu : MonoBehaviour
             m_actor.transform.LookAt(new Vector3(a_door.transform.position.x, 0.0f, a_door.transform.position.z));
             m_actor.transform.localEulerAngles = new Vector3(0.0f,m_actor.transform.localEulerAngles.y, 0.0f);
             Camera.main.transform.localEulerAngles = Vector3.zero;
+            Camera.main.transform.Rotate(Vector3.right * -10.0f);
         }
     }
 }
