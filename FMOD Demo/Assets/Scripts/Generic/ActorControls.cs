@@ -42,6 +42,8 @@ public class ActorControls : MonoBehaviour
 
     public Text m_pressKeyText; //Ui for showing to the user what keys to press to activate object
 
+    Quaternion m_cameraBaseRotation;
+
     void Start()
     {
         m_footsteps = GetComponent<Footsteps>();
@@ -55,6 +57,8 @@ public class ActorControls : MonoBehaviour
 
         DisableMouse = m_disabledMouse;
         DisableMovement = m_disabledMovement;
+
+        m_cameraBaseRotation = Camera.main.transform.localRotation;
     }
     void Update()
     {
@@ -170,7 +174,14 @@ public class ActorControls : MonoBehaviour
                 float mag = vel.magnitude;
                 if (mag >= 0.45f)
                 {
-                    m_footstepElapsed += vel.magnitude * 0.015f;    //Timing of footsteps tweaked with a magic number
+                    if (m_isRunning)
+                    {
+                        m_footstepElapsed += vel.magnitude * 0.02f;
+                    }
+                    else
+                    {
+                        m_footstepElapsed += vel.magnitude * 0.03f;    //Timing of footsteps tweaked with a magic number
+                    }
                     if (m_footstepElapsed > 1.0f)
                     {
                         m_footsteps.PlayFootstep();
@@ -188,8 +199,22 @@ public class ActorControls : MonoBehaviour
     {
         if (!m_disabledMouse && m_camera)
         {
+            float rotation = -Input.GetAxis("Mouse Y") * m_lookSensitivity;
             transform.rotation = transform.rotation * Quaternion.Euler(0.0f, Input.GetAxis("Mouse X") * m_lookSensitivity, 0.0f);   //rotate the body left and right
-            m_camera.transform.rotation = m_camera.transform.rotation * Quaternion.Euler(-Input.GetAxis("Mouse Y") * m_lookSensitivity, 0.0f, 0.0f);    //rotate  the camera up and down
+            Quaternion temp = m_camera.transform.localRotation * Quaternion.AngleAxis(rotation, Vector3.right);    //rotate  the camera up and down
+            //Lock the camera to not flip
+            if (Quaternion.Angle(temp, m_cameraBaseRotation) >= 85.0f)
+            {
+                if (rotation < 0)
+                {
+                    temp = m_cameraBaseRotation * Quaternion.AngleAxis(85.0f, -Vector3.right);
+                }
+                else if (rotation > 0)
+                {
+                    temp = m_cameraBaseRotation * Quaternion.AngleAxis(85.0f, Vector3.right);
+                }
+            }
+            m_camera.transform.localRotation = temp;
         }
     }
     void Action()
