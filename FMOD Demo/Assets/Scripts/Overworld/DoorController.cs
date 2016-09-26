@@ -35,13 +35,13 @@ public class DoorController : ActionObject
         m_openPos = m_closedPos + (Vector3.forward * m_door.transform.localScale.z);
     }
 	
-	void Update () 
+	void FixedUpdate () 
 	{
         m_distToNewPos = Vector3.Distance(m_door.transform.localPosition, (m_opening ? m_openPos : m_closedPos));
         
         if (m_distToNewPos > 0.1f)
         {
-            m_door.transform.localPosition -= m_door.transform.right * Time.deltaTime * (m_opening ? 1 : -1);
+            m_door.transform.localPosition += Vector3.forward * Time.deltaTime * (m_opening ? 1 : -1);
         }
         else
         {
