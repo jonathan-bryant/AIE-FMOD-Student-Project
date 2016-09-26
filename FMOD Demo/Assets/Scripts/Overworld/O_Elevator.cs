@@ -48,8 +48,16 @@ public class O_Elevator : MonoBehaviour
         }
         if (m_isActive == 1)
         {
-            CenterActor();
-            m_actor.m_disabledMovement = true;
+
+            Vector3 playerPos = m_actor.transform.position;
+            //Unity's Cylinder Collider
+            Vector3 playerXZ = playerPos; playerXZ.y = 0.0f;
+            Vector3 elevatorXZ = transform.position; elevatorXZ.y = 0.0f;
+            if ((playerXZ - elevatorXZ).magnitude < 0.8f && playerPos.y - 0.7f >= transform.position.y - 1.459 && playerPos.y - 0.7f <= transform.position.y + 1.459)
+            {
+                CenterActor();
+                m_actor.m_disabledMovement = true;
+            }
             if (!m_door.IsDoorOpen)
             {
                 m_isActive = 2;
