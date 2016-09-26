@@ -6,7 +6,6 @@ Date:			22/08/2016
 ==================================================================*/
 
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
 
@@ -28,12 +27,13 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public string m_uiOpenAnim = "UI Prompt Open";
     public string m_uiCloseAnim = "UI Prompt Close";
 
+    /*===============================================Fmod====================================================
+    |           Variables for creating and storing events to play during the UI animations.                 |
+    =======================================================================================================*/
     [FMODUnity.EventRef]    public string m_uiHover;
-    FMOD.Studio.EventInstance m_uiHoverEvent;
     [FMODUnity.EventRef]    public string m_uiOpen;
-    FMOD.Studio.EventInstance m_uiOpenEvent;
     [FMODUnity.EventRef]    public string m_uiClose;
-    FMOD.Studio.EventInstance m_uiCloseEvent;
+    FMOD.Studio.EventInstance m_currentEvent;
     
     bool m_updateFacing = false;
     HELPERSTATE m_currentState = HELPERSTATE.IDLE;
@@ -48,9 +48,12 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
         m_uiAnimator = GetComponentInChildren<Animator>();
         StopAnimation();
 
-        m_uiHoverEvent = FMODUnity.RuntimeManager.CreateInstance(m_uiHover);
-        m_uiOpenEvent = FMODUnity.RuntimeManager.CreateInstance(m_uiOpen);
-        m_uiCloseEvent = FMODUnity.RuntimeManager.CreateInstance(m_uiClose);
+        /*===============================================Fmod====================================================
+        |                           Create instanes of the sound events to use later.                           |
+        =======================================================================================================*/
+        //m_uiHoverEvent = FMODUnity.RuntimeManager.CreateInstance(m_uiHover);
+        //m_uiOpenEvent = FMODUnity.RuntimeManager.CreateInstance(m_uiOpen);
+        //m_uiCloseEvent = FMODUnity.RuntimeManager.CreateInstance(m_uiClose);
     }
 
     void Update()
@@ -89,7 +92,8 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     IEnumerator LoadWaitAndOpen()
     {
-        m_uiHoverEvent.start();
+        m_currentEvent = FMODUnity.RuntimeManager.CreateInstance(m_uiHover);
+        m_currentEvent.start();
         // Loop until the animation has played once.
         while (m_currentAnimationProgress < 0.95f)
         {
@@ -102,12 +106,15 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
         }
         if (m_currentState == HELPERSTATE.LOADING)
         {
-            m_uiHoverEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            m_currentEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             OpenHelper();
         }
     }
     public void OpenHelper()
     {
+        m_currentEvent = FMODUnity.RuntimeManager.CreateInstance(m_uiOpen);
+        m_currentEvent.start();
+
         // Play opening animation
         FMODUnity.RuntimeManager.PlayOneShot(m_uiOpen);
         m_uiAnimator.Play(m_uiOpenAnim, 0);
@@ -121,6 +128,7 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
             (m_uiAnimator.GetCurrentAnimatorStateInfo(0).IsName(m_uiOpenAnim) && m_uiAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1))
         {
             StopAnimation();
+            m_currentEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             m_currentState = HELPERSTATE.STOPPED;
             StartCoroutine(WaitAndCloseHelper());
         }

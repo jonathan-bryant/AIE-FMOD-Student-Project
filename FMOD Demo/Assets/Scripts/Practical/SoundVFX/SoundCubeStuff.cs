@@ -3,6 +3,9 @@ Project:		AIE FMOD
 Developer:		Cameron Baron  
 Company:		FMOD
 Date:			01/08/2016
+Scene:          Sound VFX
+FMOD Related:   No
+Description:    
 ==================================================================*/
 
 using UnityEngine;
