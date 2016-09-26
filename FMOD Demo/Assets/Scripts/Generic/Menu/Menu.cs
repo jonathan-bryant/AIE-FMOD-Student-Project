@@ -38,7 +38,7 @@ public class Menu : MonoBehaviour
                 m_menuIsOpen = true;
                 m_animator.Play("Pause Open");
                 m_alreadyDisabled = m_actor.DisableMouse;
-                if(!m_alreadyDisabled)
+                if (!m_alreadyDisabled)
                     m_actor.DisableMouse = true;
             }
             else
@@ -133,10 +133,10 @@ public class Menu : MonoBehaviour
     public void QuitClick()
     {
 #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
+        UnityEditor.EditorApplication.isPlaying = false;
 #endif
-            Application.Quit();
-        
+        Application.Quit();
+
     }
     public void LogoClick()
     {
@@ -145,30 +145,33 @@ public class Menu : MonoBehaviour
 
     public void CloseMenu()
     {
-        m_menuIsOpen = false;
-        m_animator.Play("Pause Close");
         if (!m_alreadyDisabled)
             m_actor.DisableMouse = false;
-        if (m_optionsOpen)
+        if (m_menuIsOpen)
         {
-            m_animator.Play("Options Close");
-            m_optionsOpen = false;
+            m_animator.Play("Pause Close");
+            if (m_optionsOpen)
+            {
+                m_animator.Play("Options Close");
+                m_optionsOpen = false;
+            }
+            if (m_practicalOpen)
+            {
+                m_animator.Play("Practical Room Close");
+                m_practicalOpen = false;
+            }
+            if (m_basicOpen)
+            {
+                m_animator.Play("Basic Room Close");
+                m_basicOpen = false;
+            }
         }
-        if (m_practicalOpen)
-        {
-            m_animator.Play("Practical Room Close");
-            m_practicalOpen = false;
-        }
-        if (m_basicOpen)
-        {
-            m_animator.Play("Basic Room Close");
-            m_basicOpen = false;
-        }
+        m_menuIsOpen = false;
     }
 
     public void TeleportToRoom(GameObject a_door)
     {
-        if(a_door)
+        if (a_door)
         {
             CloseMenu();
             Vector3 pos = m_actor.transform.position;
@@ -176,7 +179,7 @@ public class Menu : MonoBehaviour
             m_actor.transform.position = pos;
 
             m_actor.transform.LookAt(new Vector3(a_door.transform.position.x, 0.0f, a_door.transform.position.z));
-            m_actor.transform.localEulerAngles = new Vector3(0.0f,m_actor.transform.localEulerAngles.y, 0.0f);
+            m_actor.transform.localEulerAngles = new Vector3(0.0f, m_actor.transform.localEulerAngles.y, 0.0f);
             Camera.main.transform.localEulerAngles = Vector3.zero;
             Camera.main.transform.Rotate(Vector3.right * -10.0f);
         }
