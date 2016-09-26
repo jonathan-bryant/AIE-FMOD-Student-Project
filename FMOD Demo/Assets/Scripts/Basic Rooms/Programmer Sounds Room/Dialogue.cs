@@ -18,6 +18,9 @@ using UnityEngine;
 public class Dialogue : MonoBehaviour
 {
     FMOD.Studio.EVENT_CALLBACK m_dialogueCallback;
+
+    [FMODUnity.EventRef]
+    public string m_dialogueName;
     
     void Start()
     {
@@ -44,8 +47,7 @@ public class Dialogue : MonoBehaviour
         | from this example:
         | http://www.fmod.org/documentation/#content/generated/engine_new_unity/script_example_basic.html.      |
         =======================================================================================================*/
-        FMOD.Studio.EventInstance dialogueInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Basic Rooms/Programmer Sounds Room/Dialogue");
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(dialogueInstance, transform, null);
+        FMOD.Studio.EventInstance dialogueInstance = FMODUnity.RuntimeManager.CreateInstance(m_dialogueName);
 
         /*===============================================Fmod====================================================
         |   The reason why, in C#, that all the GCHandling and marshalling is used is because C# is a managed   |
@@ -65,6 +67,7 @@ public class Dialogue : MonoBehaviour
         =======================================================================================================*/
         dialogueInstance.setCallback(m_dialogueCallback);
         dialogueInstance.start();
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(dialogueInstance, transform, null);
         dialogueInstance.release();
     }
     /*===============================================Fmod====================================================
