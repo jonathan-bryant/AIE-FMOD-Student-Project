@@ -4,7 +4,7 @@
 |   Company:		            Firelight Technologies                                          |
 |   Date:		                20/09/2016                                                      |
 |   Scene:                      Overworld                                                       |
-|   Fmod Related Scripting:     No                                                              |
+|   Fmod Related Scripting:     Yes                                                             |
 |   Description:                Controls the elevator.                                          |
 ===============================================================================================*/
 using UnityEngine;
@@ -12,6 +12,14 @@ using System.Collections;
 
 public class O_Elevator : MonoBehaviour
 {
+    //---------------------------------Fmod-------------------------------
+    [FMODUnity.EventRef]    public string m_event = "event:/Elevator";
+    FMOD.Studio.EventInstance m_eventInstance;
+    string m_eventParamString = "End of journey";
+    FMOD.Studio.ParameterInstance m_eventParam;
+    public float m_eventVolume = 0.1f;
+    //--------------------------------------------------------------------
+
     public GameObject m_outerDoorHolder;
     public O_ElevatorDoor m_door;
     public float m_speed;
@@ -28,6 +36,14 @@ public class O_Elevator : MonoBehaviour
 
     void Start()
     {
+        //---------------------------------Fmod-------------------------------
+        //  Create an instance, get the parameter to control the "outro" and
+        //  adjust the volume.
+        //--------------------------------------------------------------------
+        m_eventInstance = FMODUnity.RuntimeManager.CreateInstance(m_event);
+        m_eventInstance.getParameter(m_eventParamString, out m_eventParam);
+        m_eventInstance.setVolume(m_eventVolume);
+
         m_actor = Camera.main.transform.parent.gameObject.GetComponent<ActorControls>();
         m_isActive = 0;
         m_currentFloor = -1;
@@ -44,11 +60,13 @@ public class O_Elevator : MonoBehaviour
                 m_selectedFloor = 0;
                 m_isActive = 1;
                 m_actor.m_disabledMovement = false;
+
+                StartSoundEvent();
             }
         }
+
         if (m_isActive == 1)
         {
-
             Vector3 playerPos = m_actor.transform.position;
             //Unity's Cylinder Collider
             Vector3 playerXZ = playerPos; playerXZ.y = 0.0f;
@@ -60,6 +78,7 @@ public class O_Elevator : MonoBehaviour
             }
             if (!m_door.IsDoorOpen)
             {
+                StartSoundEvent();
                 m_isActive = 2;
                 if (m_selectedFloor < m_currentFloor)
                     m_direction = -1;
@@ -81,6 +100,10 @@ public class O_Elevator : MonoBehaviour
                     transform.position = pos;
                     finished = true;
                 }
+                else if (pos.y <= m_selectedFloorY + 2.0f)
+                {
+                    m_eventParam.setValue(1.0f);
+                }
             }
             else
             {
@@ -90,6 +113,10 @@ public class O_Elevator : MonoBehaviour
                     transform.position = pos;
                     finished = true;
                 }
+                else if (pos.y >= m_selectedFloorY - 2.0f)
+                {
+                    m_eventParam.setValue(1.0f);
+                }
             }
             if (finished)
             {
@@ -97,6 +124,7 @@ public class O_Elevator : MonoBehaviour
                 m_isActive = 3;
                 m_door.OpenDoor();
                 m_outerDoorHolder.transform.GetChild(m_currentFloor).GetComponent<O_ElevatorDoor>().OpenDoor();
+
             }
 
             Vector3 playerPos = m_actor.transform.position;
@@ -109,6 +137,7 @@ public class O_Elevator : MonoBehaviour
                 m_actor.transform.position = playerPos;
                 m_actor.m_disabledMovement = true;
             }
+
         }
         else if (m_isActive == 3)
         {
@@ -155,5 +184,12 @@ public class O_Elevator : MonoBehaviour
             if (elevatorMiddleDirection.magnitude != 0.0f)
                 m_actor.GetComponent<CharacterController>().Move(elevatorMiddleDirection * 0.05f);
         }
+    }
+
+    void StartSoundEvent()
+    {
+        m_eventParam.setValue(0.0f);
+        m_eventInstance.start();
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_eventInstance, transform, null);
     }
 }
