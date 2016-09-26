@@ -43,6 +43,7 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     void Start()
     {
+        GetComponent<Canvas>().worldCamera = Camera.main;
         m_playerRef = GameObject.FindGameObjectWithTag("Player");
         m_uiAnimator = GetComponentInChildren<Animator>();
         StopAnimation();
