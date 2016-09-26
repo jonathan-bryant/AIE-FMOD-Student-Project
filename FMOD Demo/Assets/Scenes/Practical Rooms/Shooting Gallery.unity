@@ -1812,9 +1812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_cart: {fileID: 1861555845}
-  m_rounds: 3
-  m_currentRound: 0
-  m_maxScore: 10
+  m_winScore: 0
   m_trackHolder: {fileID: 1791608369}
   m_mainSpeaker: {fileID: 1547460199}
   m_targets:
@@ -8119,7 +8117,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 132774, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11486186, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
       propertyPath: m_eventRef
@@ -13484,7 +13482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4428d8e7632f144fa820f9ebcc28fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_musicPath: event:/Shooting Gallery/Main Speaker
+  m_musicPath: event:/Shooting Gallery/S. Gallery Music
 --- !u!1001 &1547543641
 Prefab:
   m_ObjectHideFlags: 0
@@ -15524,7 +15522,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab44c07d7ed9a6c4888bd0a93011340f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_startingIndex: 0
+  m_startingIndex: 2
+  m_roomStartIndices: 050000001800000022000000
 --- !u!1 &1792338291
 GameObject:
   m_ObjectHideFlags: 0
