@@ -51,6 +51,7 @@ public class TwoDoorController : ActionObject
             Renderer rend = m_lowerDoor.GetComponent<Renderer>();
             rend.materials[2].SetColor("_EmissionColor", Color.red);
             DynamicGI.SetEmissive(rend, Color.red);
+			Destroy (this);
         }
 
         Application.backgroundLoadingPriority = ThreadPriority.Low;		// Setting the thread priority to low forces the async operations to use less cpu.
