@@ -6,11 +6,11 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Cylindrical floor tileable
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _EMISSION _VERTEXCOLOR
-  m_LightmapFlags: 2
-  m_CustomRenderQueue: -1
+  m_Name: CustomSkybox
+  m_Shader: {fileID: 106, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _SUNDISK_NONE
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: 1000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -32,6 +32,13 @@ Material:
       data:
         first:
           name: _DetailNormalMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Tex
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -93,8 +100,24 @@ Material:
         second: 0.5
       data:
         first:
+          name: _Exposure
+        second: 1
+      data:
+        first:
+          name: _SunDisk
+        second: 0
+      data:
+        first:
+          name: _SunSize
+        second: 0
+      data:
+        first:
+          name: _AtmosphereThickness
+        second: 0.69
+      data:
+        first:
           name: _Parallax
-        second: 0.005
+        second: 0.02
       data:
         first:
           name: _ZWrite
@@ -102,11 +125,11 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0
+        second: 0.5
       data:
         first:
           name: _BumpScale
-        second: 2
+        second: 1
       data:
         first:
           name: _OcclusionStrength
@@ -129,22 +152,26 @@ Material:
         second: 0
       data:
         first:
-          name: _EmissionScaleUI
+          name: _Rotation
         second: 0
-      data:
-        first:
-          name: _IntensityVC
-        second: 1
     m_Colors:
       data:
         first:
           name: _EmissionColor
-        second: {r: 0.05, g: 0.05, b: 0.05, a: 1}
+        second: {r: 0, g: 0, b: 0, a: 1}
       data:
         first:
           name: _Color
-        second: {r: 0.08088237, g: 0.08088237, b: 0.08088237, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
-          name: _EmissionColorUI
-        second: {r: 1, g: 1, b: 1, a: 1}
+          name: _SkyTint
+        second: {r: 0.63235295, g: 0.63235295, b: 0.63235295, a: 1}
+      data:
+        first:
+          name: _GroundColor
+        second: {r: 0.369, g: 0.349, b: 0.341, a: 1}
+      data:
+        first:
+          name: _Tint
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}

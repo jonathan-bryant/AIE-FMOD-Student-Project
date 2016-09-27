@@ -79,7 +79,7 @@ public class TwoDoorController : ActionObject
 
         if (m_completed)
         {
-            Renderer rend = GetComponent<Renderer>();
+            Renderer rend = m_lowerDoor.GetComponent<Renderer>();
             rend.materials[2].SetColor("_EmissionColor", Color.green);
             DynamicGI.SetEmissive(rend, Color.green);
             m_completeSign.CompleteRoom();
