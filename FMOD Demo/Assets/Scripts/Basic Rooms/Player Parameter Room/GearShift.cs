@@ -20,7 +20,7 @@ public class GearShift : ActionObject
         m_gear = 1;
         m_startRotation = transform.eulerAngles;
         Vector3 rot = transform.eulerAngles;
-        rot.x = m_startRotation.x + (Mathf.Cos((m_gear * Mathf.PI) + Mathf.PI) * 4.0f);
+        rot.x = m_startRotation.x + (Mathf.Cos((m_gear * Mathf.PI) + Mathf.PI) * 8.0f);
         transform.eulerAngles = rot;
     }
 	void Update ()
@@ -41,16 +41,16 @@ public class GearShift : ActionObject
             m_gear = Mathf.Max(--m_gear, 1);
         }
         Vector3 rot = transform.eulerAngles;
-        rot.x = m_startRotation.x + (Mathf.Cos((m_gear * Mathf.PI) + Mathf.PI) * 4.0f);
-        rot.z = m_startRotation.z - Mathf.FloorToInt((m_gear - 1) * 0.5f) * 4.0f;
+        rot.x = m_startRotation.x + (Mathf.Cos((m_gear * Mathf.PI) + Mathf.PI) * 8.0f);
+        rot.z = m_startRotation.z - Mathf.FloorToInt((m_gear - 1) * 0.5f) * 8.0f;
         transform.eulerAngles = rot;
     }
     public void Reset()
     {
         m_gear = 1;
         Vector3 rot = transform.eulerAngles;
-        rot.x = m_startRotation.x + (Mathf.Cos((m_gear * Mathf.PI) + Mathf.PI) * 4.0f);
-        rot.z = m_startRotation.z - Mathf.FloorToInt((m_gear - 1) * 0.5f) * 4.0f;
+        rot.x = m_startRotation.x + (Mathf.Cos((m_gear * Mathf.PI) + Mathf.PI) * 8.0f);
+        rot.z = m_startRotation.z - Mathf.FloorToInt((m_gear - 1) * 0.5f) * 8.0f;
         transform.eulerAngles = rot;
     }
 }
