@@ -285,6 +285,7 @@ GameObject:
   - 95: {fileID: 28208419}
   - 23: {fileID: 28208421}
   - 33: {fileID: 28208420}
+  - 65: {fileID: 28208422}
   m_Layer: 0
   m_Name: OV Door Bot (19)
   m_TagString: Untagged
@@ -358,6 +359,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &28208422
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 28208417}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348027, y: 1.2328131, z: 1.6169217}
+  m_Center: {x: 0, y: 0, z: -0.0000000018626451}
 --- !u!1 &32432479
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,6 +458,7 @@ GameObject:
   - 95: {fileID: 34674332}
   - 23: {fileID: 34674334}
   - 33: {fileID: 34674333}
+  - 65: {fileID: 34674335}
   m_Layer: 0
   m_Name: OV Door Bot (3)
   m_TagString: Untagged
@@ -518,6 +532,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &34674335
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 34674330}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348036, y: 1.2328131, z: 1.6169219}
+  m_Center: {x: 0, y: 0, z: 0.0000000949949}
 --- !u!1 &44952330
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,6 +761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_actionKeys: 
+  m_actionVerbs: []
   m_completeSign: {fileID: 0}
   m_door: {fileID: 0}
   m_sceneToLoad: 
@@ -1097,16 +1124,15 @@ Transform:
 --- !u!65 &99632421
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6533578, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 99632419}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398157, y: 1.56329, z: 1.6169217}
+  m_Center: {x: -9.094727, y: 1.795721, z: 0.00000019330764}
 --- !u!23 &99632422
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1285,6 +1311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_actionKeys: 6500000066000000
+  m_actionVerbs: []
   m_pillar: {fileID: 1927747163}
   m_elevator: {fileID: 1498329022}
   m_floor: 1
@@ -1476,12 +1503,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 138351473}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe1c9df886c31a043aef42da6c9be350, type: 3}
+  m_Script: {fileID: 11500000, guid: 06fa090b993317f4a8305fe7547641ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actionKeys: 65000000
+  m_actionKeys: 43010000
+  m_actionVerbs: []
   m_bankToLoad: Scatter Room
-  m_door: {fileID: 0}
+  m_upperDoor: {fileID: 1225676502}
+  m_lowerDoor: {fileID: 1537954054}
   m_sceneToLoad: Scatter Room
   m_doorHoldTime: 0
   m_unloadDelay: 0
@@ -1784,6 +1813,7 @@ GameObject:
   - 95: {fileID: 174028392}
   - 23: {fileID: 174028391}
   - 33: {fileID: 174028390}
+  - 65: {fileID: 174028393}
   m_Layer: 0
   m_Name: OV Door Bot (7)
   m_TagString: Untagged
@@ -1857,6 +1887,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!65 &174028393
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 174028388}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348045, y: 1.2328131, z: 1.6169215}
+  m_Center: {x: -0.0000009536743, y: 0, z: -0.00000027753413}
 --- !u!1 &174034160
 GameObject:
   m_ObjectHideFlags: 0
@@ -3048,6 +3090,7 @@ GameObject:
   - 95: {fileID: 300782297}
   - 23: {fileID: 300782299}
   - 33: {fileID: 300782298}
+  - 65: {fileID: 300782300}
   m_Layer: 0
   m_Name: OV Door Bot (8)
   m_TagString: Untagged
@@ -3121,6 +3164,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &300782300
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 300782295}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348022, y: 1.2328131, z: 1.6169213}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &305902891
 GameObject:
   m_ObjectHideFlags: 0
@@ -3305,6 +3360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_actionKeys: 
+  m_actionVerbs: []
   m_completeSign: {fileID: 0}
   m_door: {fileID: 0}
   m_sceneToLoad: 
@@ -3829,6 +3885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_actionKeys: 
+  m_actionVerbs: []
   m_completeSign: {fileID: 0}
   m_door: {fileID: 0}
   m_sceneToLoad: 
@@ -3879,16 +3936,15 @@ Transform:
 --- !u!65 &389338787
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6514482, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 389338785}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398144, y: 1.56329, z: 1.6169213}
+  m_Center: {x: -9.094727, y: 1.7957217, z: 0}
 --- !u!23 &389338788
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4180,16 +4236,15 @@ Transform:
 --- !u!65 &406993831
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6588338, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 406993829}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398157, y: 1.56329, z: 1.6169219}
+  m_Center: {x: -9.094727, y: 1.7957215, z: 0.00000030829688}
 --- !u!23 &406993832
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4507,16 +4562,15 @@ Transform:
 --- !u!65 &428969415
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6569348, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 428969413}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398144, y: 1.56329, z: 1.6169213}
+  m_Center: {x: -9.094727, y: 1.7957215, z: -0.0000000018626451}
 --- !u!23 &428969416
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5028,6 +5082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_actionKeys: 6500000066000000
+  m_actionVerbs: []
   m_elevator: {fileID: 1498329022}
   m_floor: 2
   m_floorY: 12.359
@@ -5565,6 +5620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_actionKeys: 6500000066000000
+  m_actionVerbs: []
   m_elevator: {fileID: 1498329022}
   m_floor: 0
   m_floorY: 1.459
@@ -5902,6 +5958,7 @@ GameObject:
   - 95: {fileID: 539656173}
   - 23: {fileID: 539656175}
   - 33: {fileID: 539656174}
+  - 65: {fileID: 539656176}
   m_Layer: 0
   m_Name: OV Door Bot (21)
   m_TagString: Untagged
@@ -5975,6 +6032,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &539656176
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 539656171}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348036, y: 1.2328131, z: 1.6169219}
+  m_Center: {x: 0, y: 0, z: 0.0000000949949}
 --- !u!1 &542790071
 GameObject:
   m_ObjectHideFlags: 0
@@ -6009,16 +6078,15 @@ Transform:
 --- !u!65 &542790073
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6593200, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 542790071}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398148, y: 1.56329, z: 1.6169217}
+  m_Center: {x: -9.094727, y: 1.7957215, z: -0.0000000023200348}
 --- !u!23 &542790074
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6088,16 +6156,15 @@ Transform:
 --- !u!65 &547556090
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6553628, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 547556088}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398145, y: 1.56329, z: 1.6169215}
+  m_Center: {x: -9.0947275, y: 1.7957215, z: 0.00000074788113}
 --- !u!23 &547556091
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6421,16 +6488,15 @@ Transform:
 --- !u!65 &555819390
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6588692, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 555819388}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398144, y: 1.56329, z: 1.6169213}
+  m_Center: {x: -9.094727, y: 1.7957215, z: 0}
 --- !u!23 &555819391
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6791,7 +6857,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.9238796, z: 0, w: 0.38268343}
   m_LocalPosition: {x: -5.693, y: 3.098, z: 6.938}
   m_LocalScale: {x: -1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 135, z: 0}
   m_Children: []
   m_Father: {fileID: 1060643789}
   m_RootOrder: 3
@@ -6877,12 +6943,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 581021713}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe1c9df886c31a043aef42da6c9be350, type: 3}
+  m_Script: {fileID: 11500000, guid: 06fa090b993317f4a8305fe7547641ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actionKeys: 65000000
+  m_actionKeys: 43010000
+  m_actionVerbs: []
   m_bankToLoad: Sound Spin Room
-  m_door: {fileID: 0}
+  m_upperDoor: {fileID: 915044147}
+  m_lowerDoor: {fileID: 174028388}
   m_sceneToLoad: Sound Spin Room
   m_doorHoldTime: 0
   m_unloadDelay: 0
@@ -7020,6 +7088,7 @@ GameObject:
   - 95: {fileID: 588557788}
   - 23: {fileID: 588557790}
   - 33: {fileID: 588557789}
+  - 65: {fileID: 588557791}
   m_Layer: 0
   m_Name: OV Door Bot (9)
   m_TagString: Untagged
@@ -7093,6 +7162,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &588557791
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 588557786}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348045, y: 1.2328131, z: 1.6169215}
+  m_Center: {x: -0.0000009536743, y: -0.00000047683716, z: -0.00000027753413}
 --- !u!1 &589538616
 GameObject:
   m_ObjectHideFlags: 0
@@ -7276,16 +7357,15 @@ Transform:
 --- !u!65 &618953069
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6584524, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 618953067}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398144, y: 1.56329, z: 1.6169213}
+  m_Center: {x: -9.094727, y: 1.795721, z: -0.0000000018626451}
 --- !u!23 &618953070
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7627,6 +7707,7 @@ GameObject:
   - 95: {fileID: 627392434}
   - 23: {fileID: 627392436}
   - 33: {fileID: 627392435}
+  - 65: {fileID: 627392437}
   m_Layer: 0
   m_Name: OV Door Bot (14)
   m_TagString: Untagged
@@ -7700,6 +7781,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &627392437
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 627392432}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348036, y: 1.2328131, z: 1.6169217}
+  m_Center: {x: 0, y: -0.00000047683716, z: -0.00000008428469}
 --- !u!4 &628862094
 Transform:
   m_ObjectHideFlags: 0
@@ -7883,12 +7976,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 641048025}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe1c9df886c31a043aef42da6c9be350, type: 3}
+  m_Script: {fileID: 11500000, guid: 06fa090b993317f4a8305fe7547641ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actionKeys: 65000000
+  m_actionKeys: 43010000
+  m_actionVerbs: []
   m_bankToLoad: Event Cone Room
-  m_door: {fileID: 0}
+  m_upperDoor: {fileID: 1055278981}
+  m_lowerDoor: {fileID: 1091987270}
   m_sceneToLoad: Event Cone Angle-Orientation Room
   m_doorHoldTime: 0
   m_unloadDelay: 0
@@ -8066,14 +8161,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 654346339}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d12009a77b613408a675ca2b7902e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06fa090b993317f4a8305fe7547641ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actionKeys: 6500000066000000
-  m_completeSign: {fileID: 405642175}
-  m_door: {fileID: 0}
+  m_actionKeys: 43010000
+  m_actionVerbs: []
+  m_bankToLoad: SoundVFX
+  m_upperDoor: {fileID: 1016581858}
+  m_lowerDoor: {fileID: 1527734303}
   m_sceneToLoad: SoundVFX
-  m_bankToload: SoundVFX
+  m_doorHoldTime: 0
+  m_unloadDelay: 0
+  m_completeSign: {fileID: 405642175}
 --- !u!135 &654346342
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8469,6 +8568,7 @@ GameObject:
   - 95: {fileID: 687206615}
   - 23: {fileID: 687206617}
   - 33: {fileID: 687206616}
+  - 65: {fileID: 687206618}
   m_Layer: 0
   m_Name: OV Door Bot (12)
   m_TagString: Untagged
@@ -8542,6 +8642,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &687206618
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 687206613}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348027, y: 1.2328131, z: 1.6169217}
+  m_Center: {x: 0, y: -0.00000047683716, z: -0.0000000018626451}
 --- !u!1 &701327294
 GameObject:
   m_ObjectHideFlags: 0
@@ -8596,7 +8708,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.9238791, z: 0, w: 0.3826846}
   m_LocalPosition: {x: 6.478, y: 1.191, z: 6.504}
   m_LocalScale: {x: 0.39999995, y: 2.2, z: 1.75}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 134.9999, z: 0}
   m_Children:
   - {fileID: 740299086}
   - {fileID: 929920274}
@@ -8610,14 +8722,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 702365062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d12009a77b613408a675ca2b7902e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06fa090b993317f4a8305fe7547641ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actionKeys: 6600000065000000
+  m_actionKeys: 43010000
+  m_actionVerbs: []
+  m_bankToLoad: Transceiver Room
+  m_upperDoor: {fileID: 929920273}
+  m_lowerDoor: {fileID: 740299085}
+  m_sceneToLoad: Transceiver
+  m_doorHoldTime: 0
+  m_unloadDelay: 0
   m_completeSign: {fileID: 479177574}
-  m_door: {fileID: 0}
-  m_sceneToLoad: Transceiver Room
-  m_bankToload: Transceiver Room
 --- !u!135 &702365065
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8884,6 +9000,7 @@ GameObject:
   - 95: {fileID: 740299087}
   - 23: {fileID: 740299089}
   - 33: {fileID: 740299088}
+  - 65: {fileID: 740299090}
   m_Layer: 0
   m_Name: OV Door Bot (10)
   m_TagString: Untagged
@@ -8957,6 +9074,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &740299090
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 740299085}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348036, y: 1.2328131, z: 1.6169219}
+  m_Center: {x: 0, y: -0.00000047683716, z: 0.0000000949949}
 --- !u!1 &746113997
 GameObject:
   m_ObjectHideFlags: 0
@@ -9224,6 +9353,7 @@ GameObject:
   - 95: {fileID: 756417915}
   - 23: {fileID: 756417917}
   - 33: {fileID: 756417916}
+  - 65: {fileID: 756417918}
   m_Layer: 0
   m_Name: OV Door Bot (13)
   m_TagString: Untagged
@@ -9297,6 +9427,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &756417918
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 756417913}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348025, y: 1.2328131, z: 1.6169215}
+  m_Center: {x: -0.0000009536743, y: -0.00000047683716, z: 0.0000005662441}
 --- !u!1 &760302631
 GameObject:
   m_ObjectHideFlags: 0
@@ -9400,7 +9542,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.9238791, z: 0, w: 0.3826846}
   m_LocalPosition: {x: 6.478, y: 1.191, z: 6.504}
   m_LocalScale: {x: 0.39999995, y: 2.2, z: 1.75}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 134.9999, z: 0}
   m_Children:
   - {fileID: 1054075559}
   - {fileID: 34674331}
@@ -9414,12 +9556,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 763031737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe1c9df886c31a043aef42da6c9be350, type: 3}
+  m_Script: {fileID: 11500000, guid: 06fa090b993317f4a8305fe7547641ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actionKeys: 65000000
+  m_actionKeys: 43010000
+  m_actionVerbs: []
   m_bankToLoad: Custom Distance Atten Room
-  m_door: {fileID: 0}
+  m_upperDoor: {fileID: 1054075558}
+  m_lowerDoor: {fileID: 34674330}
   m_sceneToLoad: Custom Distance Attenuation Room
   m_doorHoldTime: 0
   m_unloadDelay: 0
@@ -9617,14 +9761,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 782771049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d12009a77b613408a675ca2b7902e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06fa090b993317f4a8305fe7547641ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actionKeys: 6600000065000000
-  m_completeSign: {fileID: 881109160}
-  m_door: {fileID: 0}
+  m_actionKeys: 43010000
+  m_actionVerbs: []
+  m_bankToLoad: Volume Control Room
+  m_upperDoor: {fileID: 555819388}
+  m_lowerDoor: {fileID: 1705899017}
   m_sceneToLoad: Volume Control Room
-  m_bankToload: Volume Control Room
+  m_doorHoldTime: 0
+  m_unloadDelay: 0
+  m_completeSign: {fileID: 881109160}
 --- !u!135 &782771052
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9705,12 +9853,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 790646191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe1c9df886c31a043aef42da6c9be350, type: 3}
+  m_Script: {fileID: 11500000, guid: 06fa090b993317f4a8305fe7547641ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actionKeys: 65000000
+  m_actionKeys: 43010000
+  m_actionVerbs: []
   m_bankToLoad: Surfaces Room
-  m_door: {fileID: 0}
+  m_upperDoor: {fileID: 1914007279}
+  m_lowerDoor: {fileID: 1425949220}
   m_sceneToLoad: Surfaces Room
   m_doorHoldTime: 0
   m_unloadDelay: 0
@@ -9919,16 +10069,15 @@ Transform:
 --- !u!65 &809860437
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6575096, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 809860435}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398148, y: 1.56329, z: 1.6169217}
+  m_Center: {x: -9.094727, y: 1.795721, z: -0.0000000018626451}
 --- !u!23 &809860438
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10281,6 +10430,7 @@ GameObject:
   - 95: {fileID: 830638756}
   - 23: {fileID: 830638758}
   - 33: {fileID: 830638757}
+  - 65: {fileID: 830638759}
   m_Layer: 0
   m_Name: OV Door Bot (20)
   m_TagString: Untagged
@@ -10354,6 +10504,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &830638759
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 830638754}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348022, y: 1.2328131, z: 1.6169213}
+  m_Center: {x: 0, y: 0.0000009536743, z: 0.0000000018626451}
 --- !u!1 &834321916
 GameObject:
   m_ObjectHideFlags: 0
@@ -10383,6 +10545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_actionKeys: 43010000
+  m_actionVerbs: []
   m_bankToLoad: Player Parameter Room
   m_upperDoor: {fileID: 389338785}
   m_lowerDoor: {fileID: 1389728388}
@@ -10674,6 +10837,7 @@ GameObject:
   - 95: {fileID: 877538132}
   - 23: {fileID: 877538134}
   - 33: {fileID: 877538133}
+  - 65: {fileID: 877538135}
   m_Layer: 0
   m_Name: OV Door Bot (7)
   m_TagString: Untagged
@@ -10747,6 +10911,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &877538135
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 877538130}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348022, y: 1.2328131, z: 1.6169213}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &878175914
 GameObject:
   m_ObjectHideFlags: 0
@@ -11150,16 +11326,15 @@ Transform:
 --- !u!65 &915044149
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6589704, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 915044147}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398165, y: 1.56329, z: 1.6169215}
+  m_Center: {x: -9.0947275, y: 1.7957215, z: -0.00000037439167}
 --- !u!23 &915044150
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11294,16 +11469,15 @@ Transform:
 --- !u!65 &924577744
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6520142, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 924577742}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398165, y: 1.56329, z: 1.6169215}
+  m_Center: {x: -9.0947275, y: 1.795721, z: -0.00000037439167}
 --- !u!23 &924577745
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11373,16 +11547,15 @@ Transform:
 --- !u!65 &929920275
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6504168, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 929920273}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398157, y: 1.56329, z: 1.6169219}
+  m_Center: {x: -9.094727, y: 1.795721, z: 0.00000030829688}
 --- !u!23 &929920276
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11480,16 +11653,15 @@ Transform:
 --- !u!65 &944299772
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6562856, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 944299770}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398148, y: 1.56329, z: 1.6169217}
+  m_Center: {x: -9.094727, y: 1.795721, z: -0.0000000023200348}
 --- !u!23 &944299773
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11733,7 +11905,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: -0.130526, z: 0, w: 0.9914449}
   m_LocalPosition: {x: 0, y: 0, z: 8.603}
   m_LocalScale: {x: 0.018587818, y: 0.018587815, z: 0.018587815}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -15, z: 0}
   m_Children:
   - {fileID: 198465099}
   m_Father: {fileID: 260883664}
@@ -12069,6 +12241,7 @@ GameObject:
   - 95: {fileID: 1013132465}
   - 23: {fileID: 1013132467}
   - 33: {fileID: 1013132466}
+  - 65: {fileID: 1013132468}
   m_Layer: 0
   m_Name: OV Door Bot (17)
   m_TagString: Untagged
@@ -12142,6 +12315,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &1013132468
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1013132463}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348036, y: 1.2328131, z: 1.6169217}
+  m_Center: {x: 0, y: 0, z: -0.00000008428469}
 --- !u!1 &1014433938
 GameObject:
   m_ObjectHideFlags: 0
@@ -12207,16 +12392,15 @@ Transform:
 --- !u!65 &1016581860
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6574358, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1016581858}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398148, y: 1.56329, z: 1.6169217}
+  m_Center: {x: -9.094727, y: 1.7957215, z: -0.0000000018626451}
 --- !u!23 &1016581861
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12292,14 +12476,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1027601305}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d12009a77b613408a675ca2b7902e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06fa090b993317f4a8305fe7547641ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actionKeys: 6500000066000000
-  m_completeSign: {fileID: 1328804439}
-  m_door: {fileID: 0}
+  m_actionKeys: 43010000
+  m_actionVerbs: []
+  m_bankToLoad: Shooting Gallery
+  m_upperDoor: {fileID: 547556088}
+  m_lowerDoor: {fileID: 1133575706}
   m_sceneToLoad: Shooting Gallery
-  m_bankToload: Shooting Gallery
+  m_doorHoldTime: 0
+  m_unloadDelay: 0
+  m_completeSign: {fileID: 1328804439}
 --- !u!135 &1027601308
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -12758,16 +12946,15 @@ Transform:
 --- !u!65 &1054075560
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6525692, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1054075558}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398157, y: 1.56329, z: 1.6169219}
+  m_Center: {x: -9.094727, y: 1.7957215, z: 0.00000030829688}
 --- !u!23 &1054075561
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12837,16 +13024,15 @@ Transform:
 --- !u!65 &1055278983
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6583984, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1055278981}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398145, y: 1.56329, z: 1.6169215}
+  m_Center: {x: -9.0947275, y: 1.7957215, z: 0.00000074788113}
 --- !u!23 &1055278984
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13359,6 +13545,7 @@ GameObject:
   - 95: {fileID: 1077751064}
   - 23: {fileID: 1077751066}
   - 33: {fileID: 1077751065}
+  - 65: {fileID: 1077751067}
   m_Layer: 0
   m_Name: OV Door Bot (4)
   m_TagString: Untagged
@@ -13432,6 +13619,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &1077751067
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1077751062}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348022, y: 1.2328131, z: 1.6169213}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1079153724
 GameObject:
   m_ObjectHideFlags: 0
@@ -13573,6 +13772,7 @@ GameObject:
   - 95: {fileID: 1091987272}
   - 23: {fileID: 1091987274}
   - 33: {fileID: 1091987273}
+  - 65: {fileID: 1091987275}
   m_Layer: 0
   m_Name: OV Door Bot (1)
   m_TagString: Untagged
@@ -13646,6 +13846,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &1091987275
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1091987270}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348025, y: 1.2328131, z: 1.6169215}
+  m_Center: {x: -0.0000009536743, y: 0, z: 0.0000005662441}
 --- !u!1 &1110829664
 GameObject:
   m_ObjectHideFlags: 0
@@ -13872,6 +14084,7 @@ GameObject:
   - 95: {fileID: 1133575708}
   - 23: {fileID: 1133575710}
   - 33: {fileID: 1133575709}
+  - 65: {fileID: 1133575711}
   m_Layer: 0
   m_Name: OV Door Bot (18)
   m_TagString: Untagged
@@ -13945,6 +14158,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &1133575711
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1133575706}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348025, y: 1.2328131, z: 1.6169215}
+  m_Center: {x: -0.0000009536743, y: 0, z: 0.0000005662441}
 --- !u!1 &1134259425
 GameObject:
   m_ObjectHideFlags: 0
@@ -14086,6 +14311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_actionKeys: 
+  m_actionVerbs: []
   m_completeSign: {fileID: 0}
   m_door: {fileID: 0}
   m_sceneToLoad: 
@@ -14686,6 +14912,7 @@ GameObject:
   - 95: {fileID: 1202740177}
   - 23: {fileID: 1202740176}
   - 33: {fileID: 1202740175}
+  - 65: {fileID: 1202740178}
   m_Layer: 0
   m_Name: OV Door Bot (11)
   m_TagString: Untagged
@@ -14759,6 +14986,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!65 &1202740178
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1202740173}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348022, y: 1.2328131, z: 1.6169213}
+  m_Center: {x: 0, y: -0.00000047683716, z: 0}
 --- !u!1 &1206930564
 GameObject:
   m_ObjectHideFlags: 0
@@ -15001,6 +15240,7 @@ GameObject:
   - 95: {fileID: 1212512842}
   - 23: {fileID: 1212512841}
   - 33: {fileID: 1212512840}
+  - 65: {fileID: 1212512843}
   m_Layer: 0
   m_Name: OV Door Bot (12)
   m_TagString: Untagged
@@ -15074,6 +15314,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!65 &1212512843
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1212512838}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348027, y: 1.2328131, z: 1.6169217}
+  m_Center: {x: 0, y: -0.00000047683716, z: -9.313226e-10}
 --- !u!1 &1225676502
 GameObject:
   m_ObjectHideFlags: 0
@@ -15108,16 +15360,15 @@ Transform:
 --- !u!65 &1225676504
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6571290, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1225676502}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398148, y: 1.56329, z: 1.6169217}
+  m_Center: {x: -9.094727, y: 1.7957215, z: -0.0000000018626451}
 --- !u!23 &1225676505
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15187,16 +15438,15 @@ Transform:
 --- !u!65 &1227670026
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6555064, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1227670024}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398145, y: 1.56329, z: 1.6169215}
+  m_Center: {x: -9.0947275, y: 1.795721, z: 0.00000074788113}
 --- !u!23 &1227670027
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15776,6 +16026,7 @@ GameObject:
   - 95: {fileID: 1262828306}
   - 23: {fileID: 1262828308}
   - 33: {fileID: 1262828307}
+  - 65: {fileID: 1262828309}
   m_Layer: 0
   m_Name: OV Door Bot (15)
   m_TagString: Untagged
@@ -15849,6 +16100,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &1262828309
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1262828304}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348022, y: 1.2328131, z: 1.6169213}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1263222245
 GameObject:
   m_ObjectHideFlags: 0
@@ -16225,9 +16488,9 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1307504559}
   m_LocalRotation: {x: 0, y: 0.92387944, z: 0, w: -0.38268372}
-  m_LocalPosition: {x: 7.055, y: 3.098, z: 5.549}
+  m_LocalPosition: {x: 6.766, y: 3.098, z: 5.842}
   m_LocalScale: {x: -1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -135, z: 0}
   m_Children: []
   m_Father: {fileID: 1060643789}
   m_RootOrder: 5
@@ -16422,16 +16685,15 @@ Transform:
 --- !u!65 &1316410885
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6566654, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1316410883}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398165, y: 1.56329, z: 1.6169215}
+  m_Center: {x: -9.0947275, y: 1.7957215, z: -0.00000037439167}
 --- !u!23 &1316410886
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16506,6 +16768,7 @@ GameObject:
   - 95: {fileID: 1321132039}
   - 23: {fileID: 1321132041}
   - 33: {fileID: 1321132040}
+  - 65: {fileID: 1321132042}
   m_Layer: 0
   m_Name: OV Door Bot (6)
   m_TagString: Untagged
@@ -16579,6 +16842,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &1321132042
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1321132037}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348027, y: 1.2328131, z: 1.6169217}
+  m_Center: {x: 0, y: 0, z: -0.0000000018626451}
 --- !u!1 &1328804437
 GameObject:
   m_ObjectHideFlags: 0
@@ -16861,14 +17136,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1353612383}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d12009a77b613408a675ca2b7902e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06fa090b993317f4a8305fe7547641ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actionKeys: 6600000065000000
-  m_completeSign: {fileID: 1540660360}
-  m_door: {fileID: 0}
+  m_actionKeys: 43010000
+  m_actionVerbs: []
+  m_bankToLoad: Snapshot Room
+  m_upperDoor: {fileID: 618953067}
+  m_lowerDoor: {fileID: 1202740173}
   m_sceneToLoad: Snapshot Room
-  m_bankToload: Snapshot Room
+  m_doorHoldTime: 0
+  m_unloadDelay: 0
+  m_completeSign: {fileID: 1540660360}
 --- !u!135 &1353612386
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -17252,6 +17531,7 @@ GameObject:
   - 95: {fileID: 1389728390}
   - 23: {fileID: 1389728392}
   - 33: {fileID: 1389728391}
+  - 65: {fileID: 1389728393}
   m_Layer: 0
   m_Name: OV Door Bot
   m_TagString: Untagged
@@ -17325,6 +17605,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &1389728393
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1389728388}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348022, y: 1.2328131, z: 1.6169213}
+  m_Center: {x: 0, y: 0.00000011920929, z: 0.0000000018626451}
 --- !u!1 &1393611573
 GameObject:
   m_ObjectHideFlags: 0
@@ -17511,6 +17803,7 @@ GameObject:
   - 95: {fileID: 1425949222}
   - 23: {fileID: 1425949224}
   - 33: {fileID: 1425949223}
+  - 65: {fileID: 1425949225}
   m_Layer: 0
   m_Name: OV Door Bot (5)
   m_TagString: Untagged
@@ -17584,6 +17877,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &1425949225
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1425949220}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348036, y: 1.2328131, z: 1.6169217}
+  m_Center: {x: 0, y: 0, z: -0.00000008428469}
 --- !u!1 &1437721049
 GameObject:
   m_ObjectHideFlags: 0
@@ -18336,6 +18641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_actionKeys: 6500000066000000
+  m_actionVerbs: []
   m_elevator: {fileID: 1498329022}
   m_floor: 2
   m_floorY: 12.359
@@ -18475,6 +18781,7 @@ GameObject:
   - 95: {fileID: 1527734305}
   - 23: {fileID: 1527734307}
   - 33: {fileID: 1527734306}
+  - 65: {fileID: 1527734308}
   m_Layer: 0
   m_Name: OV Door Bot (23)
   m_TagString: Untagged
@@ -18548,6 +18855,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &1527734308
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1527734303}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348027, y: 1.2328131, z: 1.6169217}
+  m_Center: {x: 0, y: 0, z: -9.313226e-10}
 --- !u!1 &1529337104
 GameObject:
   m_ObjectHideFlags: 0
@@ -18679,12 +18998,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1536430746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe1c9df886c31a043aef42da6c9be350, type: 3}
+  m_Script: {fileID: 11500000, guid: 06fa090b993317f4a8305fe7547641ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actionKeys: 65000000
+  m_actionKeys: 43010000
+  m_actionVerbs: []
   m_bankToLoad: Interactive Music Room
-  m_door: {fileID: 0}
+  m_upperDoor: {fileID: 542790071}
+  m_lowerDoor: {fileID: 1321132037}
   m_sceneToLoad: Interactive Music Room
   m_doorHoldTime: 0
   m_unloadDelay: 0
@@ -18712,6 +19033,7 @@ GameObject:
   - 95: {fileID: 1537954056}
   - 23: {fileID: 1537954058}
   - 33: {fileID: 1537954057}
+  - 65: {fileID: 1537954059}
   m_Layer: 0
   m_Name: OV Door Bot (2)
   m_TagString: Untagged
@@ -18785,6 +19107,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &1537954059
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1537954054}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348027, y: 1.2328131, z: 1.6169217}
+  m_Center: {x: 0, y: 0, z: -9.313226e-10}
 --- !u!1 &1540660358
 GameObject:
   m_ObjectHideFlags: 0
@@ -18958,6 +19292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_actionKeys: 
+  m_actionVerbs: []
   m_completeSign: {fileID: 0}
   m_door: {fileID: 0}
   m_sceneToLoad: 
@@ -19515,14 +19850,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1596469994}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d12009a77b613408a675ca2b7902e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06fa090b993317f4a8305fe7547641ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actionKeys: 6500000066000000
-  m_completeSign: {fileID: 902979506}
-  m_door: {fileID: 0}
+  m_actionKeys: 43010000
+  m_actionVerbs: []
+  m_bankToLoad: Thunder Dome
+  m_upperDoor: {fileID: 406993829}
+  m_lowerDoor: {fileID: 539656171}
   m_sceneToLoad: Thunder Dome
-  m_bankToload: Thunder Dome
+  m_doorHoldTime: 0
+  m_unloadDelay: 0
+  m_completeSign: {fileID: 902979506}
 --- !u!135 &1596469997
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -20309,14 +20648,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1664823921}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d12009a77b613408a675ca2b7902e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06fa090b993317f4a8305fe7547641ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actionKeys: 6600000065000000
-  m_completeSign: {fileID: 1863381708}
-  m_door: {fileID: 0}
+  m_actionKeys: 43010000
+  m_actionVerbs: []
+  m_bankToLoad: Sound Module Room
+  m_upperDoor: {fileID: 809860435}
+  m_lowerDoor: {fileID: 1212512838}
   m_sceneToLoad: Sound Module Room
-  m_bankToload: Sound Module Room
+  m_doorHoldTime: 0
+  m_unloadDelay: 0
+  m_completeSign: {fileID: 1863381708}
 --- !u!135 &1664823924
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -20717,6 +21060,7 @@ GameObject:
   - 95: {fileID: 1705899019}
   - 23: {fileID: 1705899021}
   - 33: {fileID: 1705899020}
+  - 65: {fileID: 1705899022}
   m_Layer: 0
   m_Name: OV Door Bot (11)
   m_TagString: Untagged
@@ -20790,6 +21134,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &1705899022
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1705899017}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348022, y: 1.2328131, z: 1.6169213}
+  m_Center: {x: 0, y: 0, z: 0.0000000018626451}
 --- !u!1 &1706639815
 GameObject:
   m_ObjectHideFlags: 0
@@ -20861,6 +21217,7 @@ GameObject:
   - 95: {fileID: 1711553261}
   - 23: {fileID: 1711553263}
   - 33: {fileID: 1711553262}
+  - 65: {fileID: 1711553264}
   m_Layer: 0
   m_Name: OV Door Bot (22)
   m_TagString: Untagged
@@ -20934,6 +21291,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &1711553264
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1711553259}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348045, y: 1.2328131, z: 1.6169215}
+  m_Center: {x: -0.0000009536743, y: 0, z: -0.00000027753413}
 --- !u!1 &1725990176
 GameObject:
   m_ObjectHideFlags: 0
@@ -21095,6 +21464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_actionKeys: 6500000066000000
+  m_actionVerbs: []
   m_pillar: {fileID: 1927747163}
   m_elevator: {fileID: 1498329022}
   m_floor: 2
@@ -21236,6 +21606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_actionKeys: 6500000066000000
+  m_actionVerbs: []
   m_elevator: {fileID: 1498329022}
   m_floor: 1
   m_floorY: 6.76
@@ -22522,7 +22893,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.3826858, z: 0, w: -0.9238786}
   m_LocalPosition: {x: -6.486, y: 1.191, z: -6.506}
   m_LocalScale: {x: 0.4, y: 2.2, z: 1.75}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -45.000298, z: 0}
   m_Children:
   - {fileID: 588557787}
   - {fileID: 924577743}
@@ -22540,6 +22911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_actionKeys: 
+  m_actionVerbs: []
   m_completeSign: {fileID: 0}
   m_door: {fileID: 0}
   m_sceneToLoad: 
@@ -23143,16 +23515,15 @@ Transform:
 --- !u!65 &1914007281
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6584012, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1914007279}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398157, y: 1.56329, z: 1.6169217}
+  m_Center: {x: -9.094727, y: 1.7957215, z: 0.00000019330764}
 --- !u!23 &1914007282
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23214,7 +23585,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0.0000018179414}
   m_LocalPosition: {x: 9.18, y: 1.191, z: 0.008}
   m_LocalScale: {x: 0.4, y: 2.2, z: 1.75}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 179.9998, z: 0}
   m_Children:
   - {fileID: 1077751063}
   - {fileID: 428969414}
@@ -23228,12 +23599,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1919074339}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe1c9df886c31a043aef42da6c9be350, type: 3}
+  m_Script: {fileID: 11500000, guid: 06fa090b993317f4a8305fe7547641ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actionKeys: 65000000
+  m_actionKeys: 43010000
+  m_actionVerbs: []
   m_bankToLoad: Panner Room
-  m_door: {fileID: 0}
+  m_upperDoor: {fileID: 428969413}
+  m_lowerDoor: {fileID: 1077751062}
   m_sceneToLoad: Panning Room
   m_doorHoldTime: 0
   m_unloadDelay: 0
@@ -23440,7 +23813,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.38268292, z: 0, w: 0.9238798}
   m_LocalPosition: {x: -6.509, y: 1.2030001, z: 6.472}
   m_LocalScale: {x: 0.39999992, y: 2.2, z: 1.7499998}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 44.999897, z: 0}
   m_Children:
   - {fileID: 756417914}
   - {fileID: 1227670025}
@@ -23454,14 +23827,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1931255300}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d12009a77b613408a675ca2b7902e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06fa090b993317f4a8305fe7547641ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actionKeys: 6600000065000000
-  m_completeSign: {fileID: 1263222247}
-  m_door: {fileID: 0}
+  m_actionKeys: 43010000
+  m_actionVerbs: []
+  m_bankToLoad: Programmer Sounds Room
+  m_upperDoor: {fileID: 389338785}
+  m_lowerDoor: {fileID: 1389728388}
   m_sceneToLoad: Programmer Sound Room
-  m_bankToload: Programmer Sounds Room
+  m_doorHoldTime: 0
+  m_unloadDelay: 0
+  m_completeSign: {fileID: 1263222247}
 --- !u!135 &1931255303
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -23720,16 +24097,15 @@ Transform:
 --- !u!65 &1974531201
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6517760, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1974531199}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398144, y: 1.56329, z: 1.6169213}
+  m_Center: {x: -9.094727, y: 1.7957225, z: 0}
 --- !u!23 &1974531202
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24032,16 +24408,15 @@ Transform:
 --- !u!65 &1991963137
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6596532, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1991963135}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398148, y: 1.56329, z: 1.6169217}
+  m_Center: {x: -9.094727, y: 1.7957215, z: -0.0000000023200348}
 --- !u!23 &1991963138
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24121,6 +24496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_actionKeys: 
+  m_actionVerbs: []
   m_completeSign: {fileID: 0}
   m_door: {fileID: 0}
   m_sceneToLoad: 
@@ -25033,6 +25409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_actionKeys: 6500000066000000
+  m_actionVerbs: []
   m_pillar: {fileID: 1927747163}
   m_elevator: {fileID: 1498329022}
   m_floor: 0
@@ -25549,16 +25926,15 @@ Transform:
 --- !u!65 &2102280777
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6509162, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2102280775}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398157, y: 1.56329, z: 1.6169217}
+  m_Center: {x: -9.094727, y: 1.7957215, z: 0.00000019330764}
 --- !u!23 &2102280778
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25666,6 +26042,7 @@ GameObject:
   - 95: {fileID: 2127251274}
   - 23: {fileID: 2127251276}
   - 33: {fileID: 2127251275}
+  - 65: {fileID: 2127251277}
   m_Layer: 0
   m_Name: OV Door Bot (16)
   m_TagString: Untagged
@@ -25739,6 +26116,18 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!65 &2127251277
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2127251272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19348022, y: 1.2328131, z: 1.6169213}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2129219130
 GameObject:
   m_ObjectHideFlags: 0
@@ -25858,16 +26247,15 @@ Transform:
 --- !u!65 &2133615520
 BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6544404, guid: 784668a93491bf1428484a78b1962b31,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2133615518}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00089097023, y: 0.0084939245, z: 0.008785318}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.16398144, y: 1.56329, z: 1.6169213}
+  m_Center: {x: -9.094727, y: 1.7957215, z: -0.0000000018626451}
 --- !u!23 &2133615521
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26090,6 +26478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_actionKeys: 
+  m_actionVerbs: []
   m_completeSign: {fileID: 0}
   m_door: {fileID: 0}
   m_sceneToLoad: 
