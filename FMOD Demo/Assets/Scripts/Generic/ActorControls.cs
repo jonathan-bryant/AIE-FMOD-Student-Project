@@ -221,7 +221,8 @@ public class ActorControls : MonoBehaviour
     {
         //Raycast
         RaycastHit ray;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out ray, m_selectDistance))
+        int layerMask = (1 << 2) | (1 << 11);
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out ray, m_selectDistance, ~layerMask))
         {
             //Disable last actionObject outline
             if (m_actionObject)
@@ -365,5 +366,19 @@ public class ActorControls : MonoBehaviour
             default:
                 return a_code.ToString();
         }
+    }
+    public void SetRotation(Quaternion a_rotation)
+    {
+        Vector3 rotation = transform.eulerAngles;
+        rotation = a_rotation.eulerAngles;
+        rotation.x = 0.0f;
+        rotation.z = 0.0f;
+        transform.eulerAngles = rotation;
+
+        rotation = Camera.main.transform.eulerAngles;
+        rotation = a_rotation.eulerAngles;
+        rotation.y = 0.0f;
+        rotation.z = 0.0f;
+        Camera.main.transform.localEulerAngles = rotation;
     }
 }
