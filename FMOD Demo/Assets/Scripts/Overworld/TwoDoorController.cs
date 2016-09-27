@@ -46,13 +46,20 @@ public class TwoDoorController : ActionObject
 
     void Start()
     {
+        if (m_sceneToLoad == "")
+        {
+            Renderer rend = m_lowerDoor.GetComponent<Renderer>();
+            rend.materials[2].SetColor("_EmissionColor", Color.red);
+            DynamicGI.SetEmissive(rend, Color.red);
+        }
+
         Application.backgroundLoadingPriority = ThreadPriority.Low;		// Setting the thread priority to low forces the async operations to use less cpu.
 
         m_upperClosedPos = m_upperDoor.transform.localPosition;
-        m_upperOpenPos = m_upperClosedPos + (Vector3.up * m_upperDoor.transform.localScale.y);
+        m_upperOpenPos = m_upperClosedPos + (Vector3.up * (m_upperDoor.transform.localScale.y + 0.2f));
 
         m_lowerClosedPos = m_lowerDoor.transform.localPosition;
-        m_lowerOpenPos = m_lowerClosedPos - (Vector3.up * m_lowerDoor.transform.localScale.y);
+        m_lowerOpenPos = m_lowerClosedPos - (Vector3.up * (m_lowerDoor.transform.localScale.y + 0.2f));
     }
 
     void FixedUpdate()
@@ -89,7 +96,10 @@ public class TwoDoorController : ActionObject
     public override void ActionPressed(GameObject a_sender, KeyCode a_key)
     {
         //Start loading scene
-        StartCoroutine(LoadBankThenScene());
+        if (Vector3.Distance(transform.position, Camera.main.transform.position) < 3)
+        {
+            StartCoroutine(LoadBankThenScene());
+        }
     }
 
     #region Private Functions
