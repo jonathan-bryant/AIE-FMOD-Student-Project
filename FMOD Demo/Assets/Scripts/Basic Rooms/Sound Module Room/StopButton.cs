@@ -10,7 +10,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class StopButton : MonoBehaviour
+public class StopButton : ActionObject
 {
     public Orchestrion m_orchestrion;
     void Start()
@@ -21,8 +21,7 @@ public class StopButton : MonoBehaviour
     {
 
     }
-
-    void OnTriggerEnter(Collider a_col)
+    public override void ActionPressed(GameObject a_sender, KeyCode a_key)
     {
         m_orchestrion.Stop();
     }

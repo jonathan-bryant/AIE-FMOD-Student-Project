@@ -10,7 +10,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class PlayButton : MonoBehaviour
+public class PlayButton : ActionObject
 {
     public Orchestrion m_orchestrion;
 	void Start()
@@ -22,7 +22,7 @@ public class PlayButton : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider a_col)
+    public override void ActionPressed(GameObject a_sender, KeyCode a_key)
     {
         m_orchestrion.Play();
     }

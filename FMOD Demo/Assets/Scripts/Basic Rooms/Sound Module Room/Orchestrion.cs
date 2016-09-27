@@ -17,11 +17,10 @@ public class Orchestrion : MonoBehaviour
     public GameObject m_ball;
     public string m_sheetPath;
     string[] m_sheetMusic;
+    public Transform[] m_keyPositions;
 
-    public float m_noteLength;
+    float m_noteLength;
     float m_elapsedNote;
-
-    public float m_keyDistance;
 
     int m_maxIndex;
     int m_index;
@@ -63,7 +62,7 @@ public class Orchestrion : MonoBehaviour
             m_noteLength = GetNoteLength(key[3]);
 
 
-            float notePosition = 0;
+            int noteIndex = 0;
             int note = GetNote(letter.ToString() + sharp.ToString());
             if (note != -1)
             {
@@ -73,11 +72,12 @@ public class Orchestrion : MonoBehaviour
                 }
                 if (octave >= 0)
                 {
-                    notePosition += (note * m_keyDistance) + ((12 * m_keyDistance) * octave);
+                    noteIndex += note + (12 * octave);
                     GameObject ball = Instantiate(m_ball);
                     ball.transform.parent = transform;
                     ball.transform.localPosition = Vector3.zero;
-                    ball.transform.Translate(0.0f, 0.0f, notePosition);
+                    Vector3 pos = m_keyPositions[noteIndex].position;
+                    ball.transform.position = new Vector3(pos.x, transform.position.y, pos.z);
                 }
             }
             m_index = (m_index + 1) % m_maxIndex;
