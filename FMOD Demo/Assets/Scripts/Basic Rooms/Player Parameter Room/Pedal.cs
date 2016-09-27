@@ -34,14 +34,14 @@ public class Pedal : ActionObject
         }
         m_car.Accelerate(m_acceleration);
         Vector3 rot = transform.eulerAngles;
-        rot.x = (m_acceleration / 5.0f) * 40.0f;
+        rot.x = 20.0f - (m_acceleration / 5.0f) * 30.0f;
         transform.eulerAngles = rot;
     }
     public void Reset()
     {
         m_acceleration = 1.0f;
         Vector3 rot = transform.eulerAngles;
-        rot.x = (m_acceleration / 5.0f) * 40.0f;
+        rot.x = 20.0f - (m_acceleration / 5.0f) * 30.0f;
         transform.eulerAngles = rot;
     }
 }

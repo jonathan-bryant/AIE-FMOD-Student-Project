@@ -38,12 +38,12 @@
 			o.color = _OutlineColor;
 		else
 			o.color = float4(0.0f, 0.0f, 0.0f, 0.0f);
-			return o;
+		return o;
 	}
 	ENDCG
 
 		SubShader{
-		Tags{  "Queue" = "Transparent" }
+		Tags{  "Queue" = "Transparent" "RenderType" = "Transparent" }
 
 		// note that a vertex shader is specified here but its using the one above
 		Pass{
@@ -72,16 +72,17 @@
 
 
 		CGPROGRAM
-#pragma surface surf Lambert
+#pragma surface surf Lambert alpha
 		struct Input {
 		float2 uv_MainTex;
 		float2 uv_BumpMap;
 	};
 	sampler2D _MainTex;
 	sampler2D _BumpMap;
-	uniform float3 _Color;
+	uniform float4 _Color;
 	void surf(Input IN, inout SurfaceOutput o) {
 		o.Albedo = tex2D(_MainTex, IN.uv_MainTex).rgb * _Color;
+		o.Alpha = _Color.a;
 		o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));
 	}
 	ENDCG
@@ -89,7 +90,7 @@
 	}
 
 		SubShader{
-		Tags{  "Queue" = "Transparent" }
+		Tags{  "Queue" = "Transparent" "RenderType" = "Transparent"}
 
 		Pass{
 		Name "OUTLINE"
@@ -114,16 +115,17 @@
 	}
 
 		CGPROGRAM
-#pragma surface surf Lambert
+#pragma surface surf Lambert alpha
 		struct Input {
 		float2 uv_MainTex;
 		float2 uv_BumpMap;
 	};
 	sampler2D _MainTex;
 	sampler2D _BumpMap;
-	uniform float3 _Color;
+	uniform float4 _Color;
 	void surf(Input IN, inout SurfaceOutput o) {
 		o.Albedo = tex2D(_MainTex, IN.uv_MainTex).rgb * _Color;
+		o.Alpha = _Color.a;
 		o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));
 	}
 	ENDCG

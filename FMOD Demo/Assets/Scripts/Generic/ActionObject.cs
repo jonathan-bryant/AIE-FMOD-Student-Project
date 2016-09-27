@@ -15,7 +15,11 @@ using System.Collections;
 public class ActionObject : MonoBehaviour
 {
     public KeyCode[] m_actionKeys; //List of all keys that can be pressed to activate the ActionObject
+    public string[] m_actionVerbs; //List of corresponding keys strings that will be displayed on the UI
 
+    void Start()
+    {
+    }
     //When the key has been pressed that frame
     public virtual void ActionPressed(GameObject a_sender, KeyCode a_key)
     {
