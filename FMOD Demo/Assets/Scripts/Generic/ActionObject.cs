@@ -36,6 +36,7 @@ public class ActionObject : MonoBehaviour
         }
     }
     float m_elapsed;
+    public float m_ClickTimer;
 
     protected void InitGlow()
     {
@@ -63,9 +64,9 @@ public class ActionObject : MonoBehaviour
         else if(m_inQuestion == 2)
         {
             m_elapsed += Time.deltaTime;
-            Color col = Color.Lerp(m_baseColor, m_newColor, 1.0f - (m_elapsed * 5.0f));
+            Color col = Color.Lerp(m_baseColor, m_newColor, 1.0f - (m_elapsed / m_ClickTimer));
             m_newMaterial.SetColor("_EmissionColor", col);
-            if(m_elapsed > 0.2f)
+            if(m_elapsed > m_ClickTimer)
             {
                 m_elapsed = 0.0f;
                 m_inQuestion = 0;
