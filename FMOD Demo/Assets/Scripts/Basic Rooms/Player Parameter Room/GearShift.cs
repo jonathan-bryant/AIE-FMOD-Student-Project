@@ -17,16 +17,18 @@ public class GearShift : ActionObject
     Vector3 m_startRotation;
     void Start ()
     {
+        InitGlow();
+
         m_gear = 1;
         m_startRotation = transform.eulerAngles;
         Vector3 rot = transform.eulerAngles;
         rot.x = m_startRotation.x + (Mathf.Cos((m_gear * Mathf.PI) + Mathf.PI) * 8.0f);
         transform.eulerAngles = rot;
     }
-	void Update ()
+    void Update()
     {
-
-	}
+        UpdateGlow();
+    }
 
     public override void ActionPressed(GameObject sender, KeyCode a_key)
     {

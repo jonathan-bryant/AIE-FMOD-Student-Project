@@ -85,6 +85,11 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!23 &97102959 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 2334140, guid: 0ca1311c7c895594c93e79ff0d005775,
+    type: 2}
+  m_PrefabInternal: {fileID: 762202500}
 --- !u!1 &119282086
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +146,11 @@ MonoBehaviour:
   m_actionKeys: 65000000
   m_actionVerbs:
   - To Sit
+  m_renderer: {fileID: 0}
+  m_glowSpeed: 4
+  m_hoverSpeed: 8
+  m_clickSpeed: 0.5
+  m_newColor: {r: 0, g: 0, b: 0, a: 0}
   m_exitSeat: {fileID: 1146866777}
 --- !u!1001 &142100195
 Prefab:
@@ -357,12 +367,109 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -5.999
       objectReference: {fileID: 0}
+    - target: {fileID: 11463842, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_renderer
+      value: 
+      objectReference: {fileID: 762202502}
+    - target: {fileID: 11463842, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_newColor.r
+      value: 0.17254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 11463842, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_newColor.g
+      value: 0.9254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 11463842, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_newColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11463842, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_newColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11463842, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_ClickTimer
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425228, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_renderer
+      value: 
+      objectReference: {fileID: 1861765959}
+    - target: {fileID: 11425228, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_newColor.r
+      value: 0.17254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425228, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_newColor.g
+      value: 0.9254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425228, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_newColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425228, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_newColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425228, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_ClickTimer
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11427830, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_newColor.r
+      value: 0.17254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 11427830, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_newColor.g
+      value: 0.9254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 11427830, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_newColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11427830, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_newColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11427830, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_renderer
+      value: 
+      objectReference: {fileID: 97102959}
+    - target: {fileID: 11427830, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_ClickTimer
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11463842, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_glowSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11463842, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_hoverSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11427830, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_hoverSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11425228, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_hoverSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 13581582, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: m_Radius
+      value: 0.125
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &762202501 stripped
 Transform:
   m_PrefabParentObject: {fileID: 488144, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+  m_PrefabInternal: {fileID: 762202500}
+--- !u!23 &762202502 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 2347942, guid: 0ca1311c7c895594c93e79ff0d005775,
+    type: 2}
   m_PrefabInternal: {fileID: 762202500}
 --- !u!1001 &1143025286
 Prefab:
@@ -615,3 +722,8 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 492966358}
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!23 &1861765959 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 2356712, guid: 0ca1311c7c895594c93e79ff0d005775,
+    type: 2}
+  m_PrefabInternal: {fileID: 762202500}
