@@ -46,15 +46,23 @@ public class ActionObject : MonoBehaviour
         }
         set
         {
-            m_elapsed = 0.0f;
+            m_clickElapsed = 0.0f;
             m_inQuestion = value;
         }
     }
-    float m_elapsed;
+    float m_clickElapsed;
 
+    void Start()
+    {
+        InitGlow();
+    }
+    void Update()
+    {
+        UpdateGlow();
+    }
     protected void InitGlow()
     {
-        m_elapsed = 0.0f;
+        m_clickElapsed = 0.0f;
         m_inQuestion = 0;
         
         Material[] m_materials = new Material[m_renderer.materials.Length];
@@ -102,12 +110,12 @@ public class ActionObject : MonoBehaviour
         }
         else if(m_inQuestion == 2)
         {
-            m_elapsed += Time.deltaTime;
-            Color col = Color.Lerp(m_baseColor, m_newColor, (1.0f - (m_elapsed / m_clickSpeed)) * m_clickStrength);
+            m_clickElapsed += Time.deltaTime;
+            Color col = Color.Lerp(m_baseColor, m_newColor, (1.0f - (m_clickElapsed / m_clickSpeed)) * m_clickStrength);
             m_newMaterial.SetColor("_EmissionColor", col);
-            if(m_elapsed > m_clickSpeed)
+            if(m_clickElapsed > m_clickSpeed)
             {
-                m_elapsed = 0.0f;
+                m_clickElapsed = 0.0f;
                 m_inQuestion = 0;
             }
         }
