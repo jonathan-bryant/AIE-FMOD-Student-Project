@@ -18,9 +18,11 @@ public class ElevatorButton : ActionObject
 
     void Start()
     {
+        InitGlow();
     }
     void Update()
     {
+        UpdateGlow();
     }
 
     public override void ActionDown(GameObject sender, KeyCode a_key)

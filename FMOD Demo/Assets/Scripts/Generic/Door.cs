@@ -23,6 +23,7 @@ public class Door : ActionObject
 
     void Start()
     {
+        InitGlow();
         m_openingDoor = false;
         m_closingDoor = false;
         m_elapsed = 0.0f;
@@ -31,6 +32,7 @@ public class Door : ActionObject
 
     void Update()
     {
+        UpdateGlow();
         if (m_openingDoor)
         {
             m_elapsed += Time.deltaTime;
