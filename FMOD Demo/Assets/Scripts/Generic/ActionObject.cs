@@ -37,6 +37,10 @@ public class ActionObject : MonoBehaviour
     public Color m_newColor;
     int m_inQuestion;
 
+    public Vector3 m_localClickDirection;
+    Vector3 m_originalLocalPosition;
+    Vector3 m_clickLocalPosition;
+
     public int InQuestion
     {
         get
@@ -61,11 +65,13 @@ public class ActionObject : MonoBehaviour
     }
     protected void InitGlow()
     {
+        m_originalLocalPosition = transform.localPosition;
+        m_clickLocalPosition = m_originalLocalPosition + m_localClickDirection;
         if (!m_renderer)
             return;
         m_clickElapsed = 0.0f;
         m_inQuestion = 0;
-
+        m_baseColor = m_renderer.materials[m_materialIndex].GetColor("_EmissionColor");
     }
     protected void UpdateGlow()
     {
@@ -93,13 +99,23 @@ public class ActionObject : MonoBehaviour
         else if(m_inQuestion == 2)
         {
             m_clickElapsed += Time.deltaTime;
-            Color col = Color.Lerp(m_baseColor, m_newColor, (1.0f - (m_clickElapsed / m_clickSpeed)) * m_clickStrength);
+            float clickValue = (1.0f - (m_clickElapsed / m_clickSpeed));
+            Color col = Color.Lerp(m_baseColor, m_newColor, clickValue * m_clickStrength);
             m_renderer.materials[m_materialIndex].SetColor("_EmissionColor", col);
-            if(m_clickElapsed > m_clickSpeed)
+
+            if (transform.position != m_clickLocalPosition)
+            {
+                float lerpValue = Mathf.Sin((Mathf.PI) * clickValue);
+                transform.localPosition = Vector3.Lerp(m_originalLocalPosition, m_clickLocalPosition, lerpValue);
+            }
+
+            if (m_clickElapsed > m_clickSpeed)
             {
                 m_clickElapsed = 0.0f;
                 m_inQuestion = 0;
             }
+
+           
         }
     }
     //When the key has been pressed that frame

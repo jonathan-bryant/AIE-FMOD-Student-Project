@@ -1460,7 +1460,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 132774, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 437070, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1491,7 +1491,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &152123739
 Transform:
@@ -1522,10 +1522,14 @@ MonoBehaviour:
   - To Play
   m_renderer: {fileID: 164261620}
   m_materialIndex: 0
-  m_glowSpeed: 4
-  m_hoverSpeed: 8
+  m_glowSpeed: 2
+  m_glowStrength: 0.2
+  m_hoverSpeed: 4
+  m_hoverStrength: 0.4
   m_clickSpeed: 0.5
-  m_newColor: {r: 0.17586207, g: 0.92728186, b: 1, a: 1}
+  m_clickStrength: 1
+  m_newColor: {r: 0, g: 1, b: 1, a: 1}
+  m_localClickDirection: {x: 0, y: 0, z: -0.02}
   m_orchestrion: {fileID: 1066291562}
 --- !u!95 &152123741
 Animator:
@@ -2344,7 +2348,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &329890735
 Transform:
@@ -2375,10 +2379,14 @@ MonoBehaviour:
   - To Stop
   m_renderer: {fileID: 799808102}
   m_materialIndex: 0
-  m_glowSpeed: 4
-  m_hoverSpeed: 8
+  m_glowSpeed: 2
+  m_glowStrength: 0.2
+  m_hoverSpeed: 4
+  m_hoverStrength: 0.4
   m_clickSpeed: 0.5
+  m_clickStrength: 1
   m_newColor: {r: 0.17254902, g: 0.9254902, b: 1, a: 1}
+  m_localClickDirection: {x: 0, y: 0, z: -0.02}
   m_orchestrion: {fileID: 1066291562}
 --- !u!95 &329890737
 Animator:
@@ -9591,7 +9599,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1545192635
 Transform:
@@ -9622,10 +9630,14 @@ MonoBehaviour:
   - To Pause
   m_renderer: {fileID: 117343281}
   m_materialIndex: 0
-  m_glowSpeed: 4
-  m_hoverSpeed: 8
+  m_glowSpeed: 2
+  m_glowStrength: 0.2
+  m_hoverSpeed: 4
+  m_hoverStrength: 0.4
   m_clickSpeed: 0.5
+  m_clickStrength: 1
   m_newColor: {r: 0.17254902, g: 0.9254902, b: 1, a: 1}
+  m_localClickDirection: {x: 0, y: 0, z: -0.02}
   m_orchestrion: {fileID: 1066291562}
 --- !u!95 &1545192637
 Animator:
