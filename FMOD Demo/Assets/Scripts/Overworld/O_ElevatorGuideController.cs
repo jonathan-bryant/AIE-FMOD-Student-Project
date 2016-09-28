@@ -22,11 +22,12 @@ public class O_ElevatorGuideController : ActionObject
 
     void Start()
     {
+        InitGlow();
         //m_guideIsCurrent = false;
     }
     void Update()
     {
-
+        UpdateGlow();
     }
 
     public override void ActionPressed(GameObject sender, KeyCode a_key)
