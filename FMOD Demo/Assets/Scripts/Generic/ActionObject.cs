@@ -81,13 +81,13 @@ public class ActionObject : MonoBehaviour
     }
     protected void UpdateGlow()
     {
+        if (!m_renderer)
+            return;
         Material[] m_materials = new Material[m_renderer.materials.Length];
         for (int i = 0; i < m_renderer.materials.Length; ++i)
         {
             m_materials[i] = m_renderer.materials[i];
         }
-        if (!m_renderer)
-            return;
         if (m_inQuestion == 0)
         {
             Color col;
