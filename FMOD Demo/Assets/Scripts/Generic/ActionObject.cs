@@ -17,8 +17,60 @@ public class ActionObject : MonoBehaviour
     public KeyCode[] m_actionKeys; //List of all keys that can be pressed to activate the ActionObject
     public string[] m_actionVerbs; //List of corresponding keys strings that will be displayed on the UI
 
-    void Start()
+    public Renderer m_renderer;
+    Material m_original;
+    Material m_newMaterial;
+    Color m_baseColor;
+    public Color m_newColor;
+    int m_inQuestion;
+    public int InQuestion
     {
+        get
+        {
+            return m_inQuestion;
+        }
+        set
+        {
+            m_elapsed = 0.0f;
+            m_inQuestion = value;
+        }
+    }
+    float m_elapsed;
+
+    protected void InitGlow()
+    {
+        m_elapsed = 0.0f;
+        m_inQuestion = 0;
+        m_original = m_renderer.material;
+        m_newMaterial = new Material(m_original);
+        m_renderer.material = m_newMaterial;
+        m_newMaterial.EnableKeyword("_EMISSION");
+        m_baseColor = m_newMaterial.GetColor("_EmissionColor");
+        m_newMaterial.SetColor("_EmissionColor", m_newColor);
+    }
+    protected void UpdateGlow()
+    {
+        if (m_inQuestion == 0)
+        {
+            Color col = Color.Lerp(m_baseColor, m_newColor, Mathf.Sin(Time.time * 4.0f) * (m_newColor.a * 0.5f) + (m_newColor.a * 0.5f));
+            m_newMaterial.SetColor("_EmissionColor", col);
+        }
+        else if (m_inQuestion == 1)
+        {
+            Color col = Color.Lerp(m_baseColor, m_newColor, Mathf.Sin(Time.time * 8.0f) * (m_newColor.a * 0.5f) + (m_newColor.a * 0.5f));
+            m_newMaterial.SetColor("_EmissionColor", col);
+        }
+        else if(m_inQuestion == 2)
+        {
+            m_elapsed += Time.deltaTime;
+            Color col = Color.Lerp(m_baseColor, m_newColor, 1.0f - (m_elapsed * 5.0f));
+            m_newMaterial.SetColor("_EmissionColor", col);
+            if(m_elapsed > 0.2f)
+            {
+                m_elapsed = 0.0f;
+                m_inQuestion = 0;
+            }
+        }
     }
     //When the key has been pressed that frame
     public virtual void ActionPressed(GameObject a_sender, KeyCode a_key)

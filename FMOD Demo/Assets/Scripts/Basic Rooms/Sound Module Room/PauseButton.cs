@@ -15,11 +15,11 @@ public class PauseButton : ActionObject
     public Orchestrion m_orchestrion;
     void Start()
     {
-
+        InitGlow();
     }
     void Update()
     {
-
+        UpdateGlow();
     }
 
     public override void ActionPressed(GameObject a_sender, KeyCode a_key)
