@@ -76,8 +76,6 @@ public class ActionObject : MonoBehaviour
         m_renderer.materials[m_materialIndex] = new Material(m_original);
         m_renderer.materials[m_materialIndex].EnableKeyword("_EMISSION");
         m_baseColor = m_renderer.materials[m_materialIndex].GetColor("_EmissionColor");
-        m_renderer.materials[m_materialIndex].SetColor("_EmissionColor", m_newColor);
-        m_materials[m_materialIndex] = m_renderer.materials[m_materialIndex];
 
         m_renderer.materials = m_materials;
     }
