@@ -29,7 +29,7 @@ public class Orchestrion : MonoBehaviour
 
     void Start()
     {
-        m_isPlaying = true;
+        m_isPlaying = false;
         m_elapsedNote = 0.0f;
         m_sheetMusic = System.IO.File.ReadAllText(m_sheetPath).Split(' ', '\n', '\r', '\t');
         m_maxIndex = m_sheetMusic.Length;
@@ -77,7 +77,7 @@ public class Orchestrion : MonoBehaviour
                     ball.transform.parent = transform;
                     ball.transform.localPosition = Vector3.zero;
                     Vector3 pos = m_keyPositions[noteIndex].position;
-                    ball.transform.position = new Vector3(pos.x, transform.position.y, pos.z);
+                    ball.transform.position = pos;
                 }
             }
             m_index = (m_index + 1) % m_maxIndex;
