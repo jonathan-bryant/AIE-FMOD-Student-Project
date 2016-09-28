@@ -15,12 +15,16 @@ public class Ignition : ActionObject
     public Car m_car;
     bool m_active;
 
-	void Start () {
+	void Start ()
+    {
+        InitGlow();
         m_active = false;
-	}
-	void Update () {
-	    
-	}
+    }
+	void Update ()
+    {
+        UpdateGlow();
+
+    }
 
     public override void ActionPressed(GameObject sender, KeyCode a_key)
     {

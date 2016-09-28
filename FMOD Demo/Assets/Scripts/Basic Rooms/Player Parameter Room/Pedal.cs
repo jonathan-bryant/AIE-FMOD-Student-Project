@@ -15,12 +15,16 @@ public class Pedal : ActionObject
     public Car m_car;
     float m_acceleration;
 
-    void Start () {
+    void Start()
+    {
+        InitGlow();
         m_acceleration = 1.0f;
-	}
-	void Update () {
-	    
-	}
+    }
+    void Update()
+    {
+        UpdateGlow();
+
+    }
 
     public override void ActionDown(GameObject sender, KeyCode a_key)
     {
@@ -28,7 +32,7 @@ public class Pedal : ActionObject
         {
             m_acceleration = Mathf.Min(m_acceleration + m_acceleration * Time.deltaTime * 5.0f, 5.0f);
         }
-        else if(a_key == m_actionKeys[1])
+        else if (a_key == m_actionKeys[1])
         {
             m_acceleration = Mathf.Max(m_acceleration - m_acceleration * Time.deltaTime * 5.0f, 1.0f);
         }

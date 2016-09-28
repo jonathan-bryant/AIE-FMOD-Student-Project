@@ -18,6 +18,9 @@ public class ActionObject : MonoBehaviour
     public string[] m_actionVerbs; //List of corresponding keys strings that will be displayed on the UI
 
     public Renderer m_renderer;
+    public float m_glowSpeed = 4.0f;
+    public float m_hoverSpeed = 8.0f;
+    public float m_clickSpeed = 0.5f;
     Material m_original;
     Material m_newMaterial;
     Color m_baseColor;
@@ -36,7 +39,6 @@ public class ActionObject : MonoBehaviour
         }
     }
     float m_elapsed;
-    public float m_ClickTimer;
 
     protected void InitGlow()
     {
@@ -53,20 +55,36 @@ public class ActionObject : MonoBehaviour
     {
         if (m_inQuestion == 0)
         {
-            Color col = Color.Lerp(m_baseColor, m_newColor, Mathf.Sin(Time.time * 4.0f) * (m_newColor.a * 0.5f) + (m_newColor.a * 0.5f));
+            Color col;
+            if (m_glowSpeed == 0.0f)
+            {
+                col = m_baseColor;
+            }
+            else
+            {
+                col = Color.Lerp(m_baseColor, m_newColor, Mathf.Sin(Time.time * m_glowSpeed) * (m_newColor.a * 0.5f) + (m_newColor.a * 0.5f));
+            }
             m_newMaterial.SetColor("_EmissionColor", col);
         }
         else if (m_inQuestion == 1)
         {
-            Color col = Color.Lerp(m_baseColor, m_newColor, Mathf.Sin(Time.time * 8.0f) * (m_newColor.a * 0.5f) + (m_newColor.a * 0.5f));
+            Color col;
+            if (m_hoverSpeed == 0.0f)
+            {
+                col = m_baseColor;
+            }
+            else
+            {
+                col = Color.Lerp(m_baseColor, m_newColor, Mathf.Sin(Time.time * m_hoverSpeed) * (m_newColor.a * 0.5f) + (m_newColor.a * 0.5f));
+            }
             m_newMaterial.SetColor("_EmissionColor", col);
         }
         else if(m_inQuestion == 2)
         {
             m_elapsed += Time.deltaTime;
-            Color col = Color.Lerp(m_baseColor, m_newColor, 1.0f - (m_elapsed / m_ClickTimer));
+            Color col = Color.Lerp(m_baseColor, m_newColor, 1.0f - (m_elapsed / m_clickSpeed));
             m_newMaterial.SetColor("_EmissionColor", col);
-            if(m_elapsed > m_ClickTimer)
+            if(m_elapsed > m_clickSpeed)
             {
                 m_elapsed = 0.0f;
                 m_inQuestion = 0;
