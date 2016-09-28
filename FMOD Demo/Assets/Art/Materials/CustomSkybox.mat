@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: CustomSkybox
-  m_Shader: {fileID: 106, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 7a4cccac36511c94fa5c2c7f0b86e522, type: 3}
   m_ShaderKeywords: _SUNDISK_NONE
   m_LightmapFlags: 5
   m_CustomRenderQueue: 1000
@@ -85,6 +85,27 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _CubeMapTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Skybox1
+        second:
+          m_Texture: {fileID: 8900000, guid: d84c038490570c44c9fd5f4aa55e5a08, type: 2}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Skybox2
+        second:
+          m_Texture: {fileID: 8900000, guid: ecc4839676249bf44bf3fece1dc75213, type: 2}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -154,6 +175,10 @@ Material:
         first:
           name: _Rotation
         second: 0
+      data:
+        first:
+          name: _Blend
+        second: 0
     m_Colors:
       data:
         first:
@@ -174,4 +199,16 @@ Material:
       data:
         first:
           name: _Tint
+        second: {r: 0, g: 0, b: 0, a: 0.5}
+      data:
+        first:
+          name: _CubeMapTint
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+      data:
+        first:
+          name: _Tint1
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+      data:
+        first:
+          name: _Tint2
         second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
