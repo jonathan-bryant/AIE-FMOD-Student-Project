@@ -18,17 +18,21 @@ public class Flag : ActionObject
     bool m_canCollide, m_isActive;
     float m_distance;
     Rigidbody m_rb;
+    int m_index;
 
     void Start()
     {
+        m_index = 1;
+        InitGlow();
         m_rb = GetComponent<Rigidbody>();
         m_distance = 0.0f;
-        m_canCollide = true;
+        m_canCollide = false;
         m_isActive = false;
     }
     void Update()
     {
-        if(m_isActive)
+        UpdateGlow();
+        if (m_isActive)
         {
             //Raycast past flag to see if theres obstruction forcing the flag to be closer to the player
             RaycastHit rh;
@@ -45,39 +49,23 @@ public class Flag : ActionObject
         }
     }
 
-    public override void ActionPressed(GameObject sender, KeyCode a_key)
+    public override void ActionPressed(GameObject a_sender, KeyCode a_key)
     {
-        //Handling picking up another flag while alreay flag.
-        Flag[] flags = (Flag[])GameObject.FindObjectsOfType(typeof(Flag));
-        foreach (Flag f in flags)
-        {
-            if (f.m_isActive && f != this)
-            {
-                Vector3 pos = f.transform.position;
-                if (pos.y <= sender.transform.position.y - sender.transform.localScale.y)
-                {
-                    pos.y = sender.transform.position.y - sender.transform.localScale.y;
-                    f.transform.position = pos;
-                }
-
-                f.m_isActive = false;
-                f.m_rb.useGravity = true;
-                f.m_canCollide = true;
-                break;
-            }
-        }
         m_distance = (transform.position - Camera.main.transform.position).magnitude;
-        m_isActive = !m_isActive;
-        m_rb.useGravity = !m_rb.useGravity;
-        if (!m_isActive)
+        m_isActive = true;
+        m_rb.useGravity = false;
+        m_canCollide = false;
+    }
+    public override void ActionReleased(GameObject a_sender, KeyCode a_key)
+    {
+        m_isActive = false;
+        m_canCollide = true;
+        m_rb.useGravity = true;
+        Vector3 pos = transform.position;
+        if (pos.y <= a_sender.transform.position.y - a_sender.transform.localScale.y)
         {
-            m_canCollide = true;
-            Vector3 pos = transform.position;
-            if (pos.y <= sender.transform.position.y - sender.transform.localScale.y)
-            {
-                pos.y = sender.transform.position.y - sender.transform.localScale.y;
-                transform.position = pos;
-            }
+            pos.y = a_sender.transform.position.y - a_sender.transform.localScale.y;
+            transform.position = pos;
         }
     }
 
@@ -91,8 +79,9 @@ public class Flag : ActionObject
                 Dialogue dialogue = a_col.gameObject.GetComponent<Dialogue>();
                 if (dialogue)
                 {
-                    dialogue.PlayDialogue(m_sound);
+                    dialogue.PlayDialogue(m_sound + m_index.ToString());
                     m_canCollide = false;
+                    m_index = (m_index + 1) % 3 + 1;
                 }
             }
         }

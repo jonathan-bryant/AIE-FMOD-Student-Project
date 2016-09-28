@@ -18,6 +18,7 @@ public class ActionObject : MonoBehaviour
     public string[] m_actionVerbs; //List of corresponding keys strings that will be displayed on the UI
 
     public Renderer m_renderer;
+    public int m_materialIndex = 0;
     public float m_glowSpeed = 4.0f;
     public float m_hoverSpeed = 8.0f;
     public float m_clickSpeed = 0.5f;
@@ -26,6 +27,7 @@ public class ActionObject : MonoBehaviour
     Color m_baseColor;
     public Color m_newColor;
     int m_inQuestion;
+
     public int InQuestion
     {
         get
@@ -44,12 +46,21 @@ public class ActionObject : MonoBehaviour
     {
         m_elapsed = 0.0f;
         m_inQuestion = 0;
-        m_original = m_renderer.material;
+        
+        Material[] m_materials = new Material[m_renderer.materials.Length];
+        for(int i = 0; i < m_renderer.materials.Length; ++i)
+        {
+            m_materials[i] = m_renderer.materials[i];
+        }
+
+        m_original = m_renderer.materials[m_materialIndex];
         m_newMaterial = new Material(m_original);
-        m_renderer.material = m_newMaterial;
         m_newMaterial.EnableKeyword("_EMISSION");
         m_baseColor = m_newMaterial.GetColor("_EmissionColor");
         m_newMaterial.SetColor("_EmissionColor", m_newColor);
+        m_materials[m_materialIndex] = m_newMaterial;
+
+        m_renderer.materials = m_materials;
     }
     protected void UpdateGlow()
     {
