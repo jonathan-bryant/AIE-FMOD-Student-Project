@@ -19,9 +19,19 @@ public class ActionObject : MonoBehaviour
 
     public Renderer m_renderer;
     public int m_materialIndex = 0;
+
     public float m_glowSpeed = 4.0f;
+    [Range(0.0f, 1.0f)]
+    public float m_glowStrength = 0.5f;
+
     public float m_hoverSpeed = 8.0f;
+    [Range(0.0f, 1.0f)]
+    public float m_hoverStrength = 0.5f;
+
     public float m_clickSpeed = 0.5f;
+    [Range(0.0f, 1.0f)]
+    public float m_clickStrength = 1.0f;
+
     Material m_original;
     Material m_newMaterial;
     Color m_baseColor;
@@ -73,7 +83,7 @@ public class ActionObject : MonoBehaviour
             }
             else
             {
-                col = Color.Lerp(m_baseColor, m_newColor, Mathf.Sin(Time.time * m_glowSpeed) * (m_newColor.a * 0.5f) + (m_newColor.a * 0.5f));
+                col = Color.Lerp(m_baseColor, m_newColor, Mathf.Sin(Time.time * m_glowSpeed) * (m_glowStrength * 0.5f) + (m_glowStrength * 0.5f));
             }
             m_newMaterial.SetColor("_EmissionColor", col);
         }
@@ -86,14 +96,14 @@ public class ActionObject : MonoBehaviour
             }
             else
             {
-                col = Color.Lerp(m_baseColor, m_newColor, Mathf.Sin(Time.time * m_hoverSpeed) * (m_newColor.a * 0.5f) + (m_newColor.a * 0.5f));
+                col = Color.Lerp(m_baseColor, m_newColor, Mathf.Sin(Time.time * m_hoverSpeed) * (m_hoverStrength * 0.5f) + (m_hoverStrength * 0.5f));
             }
             m_newMaterial.SetColor("_EmissionColor", col);
         }
         else if(m_inQuestion == 2)
         {
             m_elapsed += Time.deltaTime;
-            Color col = Color.Lerp(m_baseColor, m_newColor, 1.0f - (m_elapsed / m_clickSpeed));
+            Color col = Color.Lerp(m_baseColor, m_newColor, (1.0f - (m_elapsed / m_clickSpeed)) * m_clickStrength);
             m_newMaterial.SetColor("_EmissionColor", col);
             if(m_elapsed > m_clickSpeed)
             {
