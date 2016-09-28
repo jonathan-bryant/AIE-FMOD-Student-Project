@@ -62,6 +62,8 @@ public class ActionObject : MonoBehaviour
     }
     protected void InitGlow()
     {
+        if (!m_renderer)
+            return;
         m_clickElapsed = 0.0f;
         m_inQuestion = 0;
         
@@ -82,6 +84,8 @@ public class ActionObject : MonoBehaviour
     }
     protected void UpdateGlow()
     {
+        if (!m_renderer)
+            return;
         if (m_inQuestion == 0)
         {
             Color col;
