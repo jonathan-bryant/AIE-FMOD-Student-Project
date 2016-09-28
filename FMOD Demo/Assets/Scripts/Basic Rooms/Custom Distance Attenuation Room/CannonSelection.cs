@@ -14,15 +14,15 @@ public class CannonSelection : ActionObject
 {
     public int m_selection;
     public CannonController m_controller;
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    void Start()
+    {
+        InitGlow();
+    }
+    void Update()
+    {
+        UpdateGlow();
+    }
 
     public override void ActionPressed(GameObject sender, KeyCode a_key)
     {

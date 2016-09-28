@@ -228,25 +228,8 @@ public class ActorControls : MonoBehaviour
             //Disable last actionObject outline
             if (m_actionObject)
             {
-                for (int i = 0; i < m_actionObject.transform.childCount; ++i)   //children
-                {
-                    Renderer childRenderer = m_actionObject.transform.GetChild(i).gameObject.GetComponent<Renderer>();
-                    if (childRenderer)
-                    {
-                        Material childMat = childRenderer.material;
-                        if (childMat)
-                        {
-                            childMat.SetInt("_OutlineEnabled", 0);
-                        }
-                    }
-                }
-                Renderer actionRenderer = m_actionObject.GetComponent<Renderer>();  //parent
-                if (actionRenderer)
-                {
-                    Material actionMat = actionRenderer.material;
-                    if (actionMat)
-                        actionMat.SetInt("_OutlineEnabled", 0);
-                }
+                if (m_actionObject.InQuestion == 1)
+                    m_actionObject.InQuestion = 0;
             }
 
             //Check if the new object is has actionObject, if so set the current m_actionObject to new object
@@ -264,43 +247,27 @@ public class ActorControls : MonoBehaviour
                 }
             }
             m_actionObject = actionObject;
-
-            //Enable the objects outline
-            for (int i = 0; i < newObj.transform.childCount; ++i)   //children
-            {
-                Renderer childRenderer = newObj.transform.GetChild(i).gameObject.GetComponent<Renderer>();
-                if (childRenderer)
-                {
-                    Material childMat = childRenderer.material;
-                    if (childMat)
-                    {
-                        childMat.SetInt("_OutlineEnabled", 1);
-                    }
-                }
-            }
-            Renderer renderer = newObj.GetComponent<Renderer>();    //parent
-            if (renderer)
-            {
-                Material mat = renderer.material;
-                if (mat)
-                    mat.SetInt("_OutlineEnabled", 1);
-            }
+            if (m_actionObject.InQuestion == 0)
+                m_actionObject.InQuestion = 1;
 
             //If any of the action keys are pressed, call use on the actionObject
             for (int i = 0; i < m_actionObject.m_actionKeys.Length; ++i)
             {
                 if (Input.GetKeyDown(m_actionObject.m_actionKeys[i]))
                 {
+                        m_actionObject.InQuestion = 2;
                     m_actionObject.ActionPressed(gameObject, m_actionObject.m_actionKeys[i]);
                     break;
                 }
                 else if (Input.GetKey(m_actionObject.m_actionKeys[i]))
                 {
+                        m_actionObject.InQuestion = 2;
                     m_actionObject.ActionDown(gameObject, m_actionObject.m_actionKeys[i]);
                     break;
                 }
                 else if (Input.GetKeyUp(m_actionObject.m_actionKeys[i]))
                 {
+                        m_actionObject.InQuestion = 2;
                     m_actionObject.ActionReleased(gameObject, m_actionObject.m_actionKeys[i]);
                     break;
                 }
@@ -330,27 +297,9 @@ public class ActorControls : MonoBehaviour
         //If there is no raycast and there is an actionObject, disable it's outline
         if (m_actionObject)
         {
-            for (int i = 0; i < m_actionObject.transform.childCount; ++i)   //children
-            {
-                Renderer childRenderer = m_actionObject.transform.GetChild(i).gameObject.GetComponent<Renderer>();
-                if (childRenderer)
-                {
-                    Material childMat = childRenderer.material;
-                    if (childMat)
-                    {
-                        childMat.SetInt("_OutlineEnabled", 0);
-                    }
-                }
-            }
-
-            Renderer renderer = m_actionObject.GetComponent<Renderer>();    //parent
-            if (renderer)
-            {
-                Material mat = renderer.material;
-                if (mat)
-                    mat.SetInt("_OutlineEnabled", 0);
-                m_actionObject = null;
-            }
+            if (m_actionObject.InQuestion == 1)
+                m_actionObject.InQuestion = 0;
+            m_actionObject = null;
             if (m_pressKeyText)
                 m_pressKeyText.gameObject.SetActive(false);
         }

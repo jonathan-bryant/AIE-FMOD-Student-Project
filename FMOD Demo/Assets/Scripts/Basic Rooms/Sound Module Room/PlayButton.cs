@@ -13,13 +13,13 @@ using System.Collections;
 public class PlayButton : ActionObject
 {
     public Orchestrion m_orchestrion;
-	void Start()
+    void Start()
     {
-	
-	}
-	void Update()
+        InitGlow();
+    }
+    void Update()
     {
-
+        UpdateGlow();
     }
 
     public override void ActionPressed(GameObject a_sender, KeyCode a_key)
