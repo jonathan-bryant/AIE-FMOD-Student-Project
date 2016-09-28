@@ -81,6 +81,11 @@ public class ActionObject : MonoBehaviour
     }
     protected void UpdateGlow()
     {
+        Material[] m_materials = new Material[m_renderer.materials.Length];
+        for (int i = 0; i < m_renderer.materials.Length; ++i)
+        {
+            m_materials[i] = m_renderer.materials[i];
+        }
         if (!m_renderer)
             return;
         if (m_inQuestion == 0)
@@ -94,7 +99,7 @@ public class ActionObject : MonoBehaviour
             {
                 col = Color.Lerp(m_baseColor, m_newColor, Mathf.Sin(Time.time * m_glowSpeed) * (m_glowStrength * 0.5f) + (m_glowStrength * 0.5f));
             }
-            m_renderer.materials[m_materialIndex].SetColor("_EmissionColor", col);
+            m_materials[m_materialIndex].SetColor("_EmissionColor", col);
         }
         else if (m_inQuestion == 1)
         {
@@ -107,19 +112,20 @@ public class ActionObject : MonoBehaviour
             {
                 col = Color.Lerp(m_baseColor, m_newColor, Mathf.Sin(Time.time * m_hoverSpeed) * (m_hoverStrength * 0.5f) + (m_hoverStrength * 0.5f));
             }
-            m_renderer.materials[m_materialIndex].SetColor("_EmissionColor", col);
+            m_materials[m_materialIndex].SetColor("_EmissionColor", col);
         }
         else if(m_inQuestion == 2)
         {
             m_clickElapsed += Time.deltaTime;
             Color col = Color.Lerp(m_baseColor, m_newColor, (1.0f - (m_clickElapsed / m_clickSpeed)) * m_clickStrength);
-            m_renderer.materials[m_materialIndex].SetColor("_EmissionColor", col);
+            m_materials[m_materialIndex].SetColor("_EmissionColor", col);
             if(m_clickElapsed > m_clickSpeed)
             {
                 m_clickElapsed = 0.0f;
                 m_inQuestion = 0;
             }
         }
+        m_renderer.materials = m_materials;
     }
     //When the key has been pressed that frame
     public virtual void ActionPressed(GameObject a_sender, KeyCode a_key)
