@@ -30,12 +30,13 @@ public class Cart : ActionObject
 
     void Start()
     {
+        InitGlow();
         m_playerIsSeated = false;
         m_player = Camera.main.GetComponentInParent<ActorControls>();
     }
     void Update()
     {
-
+        UpdateGlow();
     }
     void FixedUpdate()
     {
