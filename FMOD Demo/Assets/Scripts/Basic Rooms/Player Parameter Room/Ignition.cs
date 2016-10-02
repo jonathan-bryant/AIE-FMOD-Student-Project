@@ -22,8 +22,8 @@ public class Ignition : ActionObject
     }
 	void Update ()
     {
+        InitButton();
         UpdateGlow();
-
     }
 
     public override void ActionPressed(GameObject sender, KeyCode a_key)

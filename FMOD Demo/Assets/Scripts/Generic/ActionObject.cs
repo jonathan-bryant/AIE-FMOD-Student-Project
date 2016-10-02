@@ -63,10 +63,13 @@ public class ActionObject : MonoBehaviour
     {
         UpdateGlow();
     }
-    protected void InitGlow()
+    protected void InitButton()
     {
         m_originalLocalPosition = transform.localPosition;
         m_clickLocalPosition = m_originalLocalPosition + m_localClickDirection;
+    }
+    protected void InitGlow()
+    {
         if (!m_renderer)
             return;
         m_clickElapsed = 0.0f;
@@ -103,19 +106,20 @@ public class ActionObject : MonoBehaviour
             Color col = Color.Lerp(m_baseColor, m_newColor, clickValue * m_clickStrength);
             m_renderer.materials[m_materialIndex].SetColor("_EmissionColor", col);
 
-            if (transform.position != m_clickLocalPosition)
+            if (m_localClickDirection != Vector3.zero)
             {
-                float lerpValue = Mathf.Sin((Mathf.PI) * clickValue);
-                transform.localPosition = Vector3.Lerp(m_originalLocalPosition, m_clickLocalPosition, lerpValue);
-            }
+                if (transform.localPosition != m_clickLocalPosition)
+                {
+                    float lerpValue = Mathf.Sin((Mathf.PI) * clickValue);
+                    transform.localPosition = Vector3.Lerp(m_originalLocalPosition, m_clickLocalPosition, lerpValue);
+                }
 
-            if (m_clickElapsed > m_clickSpeed)
-            {
-                m_clickElapsed = 0.0f;
-                m_inQuestion = 0;
-            }
-
-           
+                if (m_clickElapsed > m_clickSpeed)
+                {
+                    m_clickElapsed = 0.0f;
+                    m_inQuestion = 0;
+                }
+            }           
         }
     }
     //When the key has been pressed that frame

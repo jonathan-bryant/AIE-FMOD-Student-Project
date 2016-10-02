@@ -22,6 +22,7 @@ public class O_ElevatorGuideController : ActionObject
 
     void Start()
     {
+        InitButton();
         InitGlow();
         //m_guideIsCurrent = false;
     }

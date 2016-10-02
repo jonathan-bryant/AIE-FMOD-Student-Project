@@ -18,6 +18,7 @@ public class ElevatorButton : ActionObject
 
     void Start()
     {
+        InitButton();
         InitGlow();
     }
     void Update()
