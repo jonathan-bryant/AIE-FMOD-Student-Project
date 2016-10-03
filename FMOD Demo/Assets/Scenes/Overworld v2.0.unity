@@ -8148,7 +8148,7 @@ GameObject:
   - 64: {fileID: 732302860}
   m_Layer: 0
   m_Name: polySurface217
-  m_TagString: Tile
+  m_TagString: TileReverb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -13395,9 +13395,10 @@ GameObject:
   - 33: {fileID: 1146187713}
   - 23: {fileID: 1146187712}
   - 64: {fileID: 1146187711}
+  - 114: {fileID: 1146187714}
   m_Layer: 0
   m_Name: polySurface348
-  m_TagString: Tile
+  m_TagString: TileReverb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -13464,6 +13465,25 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1146187709}
   m_Mesh: {fileID: 4300000, guid: c2c90bf454f986f4f8fe92b17a571382, type: 3}
+--- !u!114 &1146187714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1146187709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Footsteps
+  PlayEvent: 0
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
 --- !u!1 &1155180546
 GameObject:
   m_ObjectHideFlags: 0
@@ -17248,7 +17268,7 @@ GameObject:
   - 64: {fileID: 1454753302}
   m_Layer: 0
   m_Name: polySurface217
-  m_TagString: Tile
+  m_TagString: TileReverb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -23078,6 +23098,29 @@ Transform:
   - {fileID: 581077220}
   m_Father: {fileID: 1663646834}
   m_RootOrder: 0
+--- !u!1 &1980224742 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 132774, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
+  m_PrefabInternal: {fileID: 1793713804}
+--- !u!114 &1980224750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1980224742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Footsteps
+  PlayEvent: 0
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
 --- !u!1 &1981119771
 GameObject:
   m_ObjectHideFlags: 0
