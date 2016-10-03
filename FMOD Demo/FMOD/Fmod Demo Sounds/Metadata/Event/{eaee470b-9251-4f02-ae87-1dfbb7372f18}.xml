@@ -103,6 +103,9 @@
         </relationship>
     </object>
     <object class="EventMixerGroup" id="{0b7665c9-8e82-4e1d-9303-e550864e187c}">
+        <property name="volume">
+            <value>-9</value>
+        </property>
         <property name="name">
             <value>Audio 1</value>
         </property>
@@ -134,6 +137,8 @@
         <relationship name="effects">
             <destination>{5d67a3a9-276a-4161-83a2-37cbc4f027ff}</destination>
             <destination>{d3718df9-21ad-4977-8111-d2817cb53724}</destination>
+            <destination>{049ab81d-01dc-4c7f-83b5-019caa812205}</destination>
+            <destination>{9766767d-e81d-4386-80f8-29bbc4e8d917}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{c9787c8f-b512-42e6-b5e2-81bf9e49d03c}"/>
@@ -146,5 +151,34 @@
     <object class="MixerBusPanner" id="{d323a643-3523-4a84-a583-8df0bb953de5}"/>
     <object class="MixerBusFader" id="{5d67a3a9-276a-4161-83a2-37cbc4f027ff}"/>
     <object class="SpatialiserEffect" id="{d3718df9-21ad-4977-8111-d2817cb53724}"/>
+    <object class="LowpassEffect" id="{049ab81d-01dc-4c7f-83b5-019caa812205}">
+        <property name="cutoff">
+            <value>2500</value>
+        </property>
+    </object>
+    <object class="PluginEffect" id="{9766767d-e81d-4386-80f8-29bbc4e8d917}">
+        <relationship name="plugin">
+            <destination>{e6814ede-29e3-4bca-8746-15672cde9bd5}</destination>
+        </relationship>
+    </object>
     <object class="MixerBusFader" id="{4cffe161-23a5-4bf9-8ead-e54ee3575543}"/>
+    <object class="Plugin" id="{e6814ede-29e3-4bca-8746-15672cde9bd5}">
+        <property name="identifier">
+            <value>FMOD Distortion</value>
+        </property>
+        <relationship name="pluginParameters">
+            <destination>{96f8af9e-eae0-450b-be9e-8f7ba415ea13}</destination>
+        </relationship>
+    </object>
+    <object class="FloatPluginParameter" id="{96f8af9e-eae0-450b-be9e-8f7ba415ea13}">
+        <property name="name">
+            <value>Level</value>
+        </property>
+        <property name="curve">
+            <value>LinearCurveStrategy{(0.000000,0.000000)(1.000000,1.000000)}</value>
+        </property>
+        <property name="value">
+            <value>0.63500005</value>
+        </property>
+    </object>
 </objects>

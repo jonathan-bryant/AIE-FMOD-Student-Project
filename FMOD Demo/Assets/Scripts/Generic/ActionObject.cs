@@ -90,7 +90,38 @@ public class ActionObject : MonoBehaviour
             }
             m_renderer.materials[m_materialIndex].SetColor("_EmissionColor", col);
         }
-        else if (m_inQuestion == 1)
+        else if(m_inQuestion == 2)
+        {
+            if (m_clickSpeed != 0.0f && m_clickStrength != 0.0f)
+            {
+                //Glow
+                float clickValue = (1.0f - (m_clickElapsed / m_clickSpeed));
+                Color col = Color.Lerp(m_baseColor, m_newColor, clickValue * m_clickStrength);
+                m_renderer.materials[m_materialIndex].SetColor("_EmissionColor", col);
+                m_clickElapsed += Time.deltaTime;
+
+                //Click
+                if (m_localClickDirection != Vector3.zero)
+                {
+                    if (transform.localPosition != m_clickLocalPosition)
+                    {
+                        float lerpValue = Mathf.Sin((Mathf.PI) * clickValue);
+                        transform.localPosition = Vector3.Lerp(m_originalLocalPosition, m_clickLocalPosition, lerpValue);
+                    }
+
+                    if (m_clickElapsed > m_clickSpeed)
+                    {
+                        m_clickElapsed = 0.0f;
+                        m_inQuestion = 0;
+                    }
+                }
+            }
+            else
+            {
+                m_inQuestion = 1;
+            }
+        }
+        if (m_inQuestion == 1)
         {
             Color col = m_renderer.materials[m_materialIndex].GetColor("_EmissionColor");
             if (m_hoverSpeed != 0.0f)
@@ -98,28 +129,6 @@ public class ActionObject : MonoBehaviour
                 col = Color.Lerp(m_baseColor, m_newColor, Mathf.Sin(Time.time * m_hoverSpeed) * (m_hoverStrength * 0.5f) + (m_hoverStrength * 0.5f));
             }
             m_renderer.materials[m_materialIndex].SetColor("_EmissionColor", col);
-        }
-        else if(m_inQuestion == 2)
-        {
-            m_clickElapsed += Time.deltaTime;
-            float clickValue = (1.0f - (m_clickElapsed / m_clickSpeed));
-            Color col = Color.Lerp(m_baseColor, m_newColor, clickValue * m_clickStrength);
-            m_renderer.materials[m_materialIndex].SetColor("_EmissionColor", col);
-
-            if (m_localClickDirection != Vector3.zero)
-            {
-                if (transform.localPosition != m_clickLocalPosition)
-                {
-                    float lerpValue = Mathf.Sin((Mathf.PI) * clickValue);
-                    transform.localPosition = Vector3.Lerp(m_originalLocalPosition, m_clickLocalPosition, lerpValue);
-                }
-
-                if (m_clickElapsed > m_clickSpeed)
-                {
-                    m_clickElapsed = 0.0f;
-                    m_inQuestion = 0;
-                }
-            }           
         }
     }
     //When the key has been pressed that frame
