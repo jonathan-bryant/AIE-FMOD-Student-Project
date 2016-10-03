@@ -289,7 +289,9 @@ GameObject:
   - 4: {fileID: 412444}
   - 33: {fileID: 3321562}
   - 23: {fileID: 2301338}
-  m_Layer: 0
+  - 135: {fileID: 13526464}
+  - 114: {fileID: 11455468}
+  m_Layer: 10
   m_Name: Radio slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1585,7 +1587,7 @@ GameObject:
   - 33: {fileID: 3335100}
   - 23: {fileID: 2327676}
   - 65: {fileID: 6577698}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: pCube93
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2339,7 +2341,7 @@ GameObject:
   - 4: {fileID: 462650}
   - 33: {fileID: 3370930}
   - 23: {fileID: 2364910}
-  - 114: {fileID: 11495684}
+  - 65: {fileID: 6588478}
   m_Layer: 0
   m_Name: Radio
   m_TagString: Untagged
@@ -2658,8 +2660,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111488}
-  m_LocalRotation: {x: -0.7071068, y: 0.00000038443494, z: 0.0000003248303, w: 0.7071068}
-  m_LocalPosition: {x: 0.098999865, y: -0.04129994, z: -0.072000064}
+  m_LocalRotation: {x: -0.70710677, y: 0.00000038443494, z: 0.00000029502795, w: 0.7071069}
+  m_LocalPosition: {x: 0.0526, y: -0.045300126, z: -0.058}
   m_LocalScale: {x: 0.92696875, y: 0.92696863, z: 0.92696863}
   m_LocalEulerAnglesHint: {x: -90, y: 0.0001, z: 0}
   m_Children: []
@@ -3099,7 +3101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142290}
   m_LocalRotation: {x: 0, y: 0.70710665, z: 0, w: 0.70710695}
-  m_LocalPosition: {x: -9.564, y: 5.73, z: -0.272}
+  m_LocalPosition: {x: -9.192, y: 5.677, z: -0.318}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children:
@@ -6085,8 +6087,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5194957, y: 0.6976055, z: 1.2900984}
-  m_Center: {x: 0.052100427, y: 0, z: -0.000000067055225}
+  m_Size: {x: 0.5194957, y: 1.1893553, z: 1.2900984}
+  m_Center: {x: 0.052100487, y: 0.2458747, z: -0.00000048428774}
 --- !u!65 &6582516
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -6099,6 +6101,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.25435525, y: 1.1906483, z: 0.2138004}
   m_Center: {x: 0.0012636185, y: 0.2711677, z: -0.014773846}
+--- !u!65 &6588478
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197194}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.28823623, y: 0.17826606, z: 0.109818116}
+  m_Center: {x: 0.0000009536743, y: 0, z: 0.000000059604645}
 --- !u!65 &6594070
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -6530,20 +6544,45 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
---- !u!114 &11495684
+--- !u!114 &11455468
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 197194}
+  m_GameObject: {fileID: 111488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed01333501a25dd458fcfdd2ffeb5bc4, type: 3}
+  m_Script: {fileID: 11500000, guid: 62296a3aa223bf94ab53c1743afda89a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_soundString: event:/Basic Rooms/VolumeControl Room/music
-  m_volumeSlider: {fileID: 0}
-  m_volumeText: {fileID: 0}
+  m_actionKeys: 43010000
+  m_actionVerbs:
+  - To Adjust Volume
+  m_renderer: {fileID: 2364910}
+  m_materialIndex: 0
+  m_glowSpeed: 4
+  m_glowStrength: 0.4
+  m_hoverSpeed: 2
+  m_hoverStrength: 0.3
+  m_clickSpeed: 0.5
+  m_clickStrength: 0
+  m_newColor: {r: 0, g: 1, b: 1, a: 1}
+  m_localClickDirection: {x: 0, y: 0, z: 0}
+  m_startPosition: {x: -9.4754, y: 6.363, z: -0.7581071}
+  m_endPosition: {x: -9.6757, y: 6.363, z: -0.7581071}
+  m_eventPath: event:/Basic Rooms/VolumeControl Room/music
+--- !u!135 &13526464
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111488}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.075
+  m_Center: {x: 0.0000009550713, y: -0.000000059604645, z: -0.0000000018626456}
 --- !u!215 &21588978
 ReflectionProbe:
   m_ObjectHideFlags: 1

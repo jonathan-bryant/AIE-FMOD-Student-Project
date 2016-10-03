@@ -16,6 +16,7 @@ public class VolumeSlider : ActionObject
 
     void Start()
     {
+        InitGlow();
         m_slideValue = 0.0f;
         m_event = FMODUnity.RuntimeManager.CreateInstance(m_eventPath);
         m_event.start();
@@ -27,6 +28,7 @@ public class VolumeSlider : ActionObject
     }
     void Update()
     {
+        UpdateGlow();
         if (Input.GetKeyUp(m_actionKeys[0]))
         {
             m_isActive = false;
@@ -34,8 +36,9 @@ public class VolumeSlider : ActionObject
         if (m_isActive)
         {
             RaycastHit rh;
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rh, Mathf.Infinity, ~(1 << 10)))
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rh, Mathf.Infinity, ~(1 << 10 | 1 << 2)))
             {
+                Debug.Log(rh.collider.gameObject.name);
                 if (rh.collider.gameObject.name == "Radio")
                 {
                     float diff = 0.0f;
