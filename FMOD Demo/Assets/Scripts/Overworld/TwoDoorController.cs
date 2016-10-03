@@ -16,14 +16,6 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(SphereCollider))]
 public class TwoDoorController : ActionObject
 {
-    //---------------------------------Fmod-------------------------------
-    //  Bank reference is the same as and Event, except using BankRef.
-    //  Another difference between Events and Banks is loading and 
-    //  unloading is done using the string and not a class or instance.
-    //--------------------------------------------------------------------
-    [FMODUnity.BankRef]
-    public string m_bankToLoad;
-
     // Public Vars
     public GameObject m_upperDoor;      // Ref to upper door object that gets moved.
     public GameObject m_lowerDoor;      // Ref to lower door object that gets moved.
@@ -33,12 +25,28 @@ public class TwoDoorController : ActionObject
     public float m_unloadDelay;         // Time until scene is unloaded once door has fully closed.
     public RoomCompleted m_completeSign;
 
+    //---------------------------------Fmod-------------------------------
+    //  Bank reference is the same as and Event, except using BankRef.
+    //  Another difference between Events and Banks is loading and 
+    //  unloading is done using the string and not a class or instance.
+    //--------------------------------------------------------------------
+    [FMODUnity.BankRef]
+    public string m_bankToLoad;
+
+    [FMODUnity.EventRef]
+    public string m_doorSound;
+    [Range(0, 4)]    public float m_doorReverb = 2.0f;
+
     // Private Vars
-    float m_upperDistToNewPos;				// Distance between upper door and the current target position.
-    float m_lowerDistToNewPos;				// Distance between lower door and the current target position.
-    bool m_opening = false;				// Bool used to determine which way the door will move (open/close).
-    Vector3 m_upperOpenPos, m_upperClosedPos;     // Positions of upper door (in local space) when open/closed.
-    Vector3 m_lowerOpenPos, m_lowerClosedPos;     // Positions of lower door (in local space) when open/closed.
+    FMOD.Studio.EventInstance m_doorEvent;
+    FMOD.Studio.ParameterInstance m_reverbAmount;
+    FMOD.Studio.ParameterInstance m_direction;
+
+    float m_upperDistToNewPos;				        // Distance between upper door and the current target position.
+    float m_lowerDistToNewPos;				        // Distance between lower door and the current target position.
+    bool m_opening = false;				            // Bool used to determine which way the door will move (open/close).
+    Vector3 m_upperOpenPos, m_upperClosedPos;       // Positions of upper door (in local space) when open/closed.
+    Vector3 m_lowerOpenPos, m_lowerClosedPos;       // Positions of lower door (in local space) when open/closed.
 
     bool m_completed = false;
 
@@ -54,6 +62,13 @@ public class TwoDoorController : ActionObject
 			Destroy (this);
         }
 
+        if (m_doorSound != "")
+        {
+            m_doorEvent = FMODUnity.RuntimeManager.CreateInstance(m_doorSound);
+            m_doorEvent.getParameter("Reverb", out m_reverbAmount);
+            m_doorEvent.getParameter("Direction", out m_direction);
+        }
+        
         Application.backgroundLoadingPriority = ThreadPriority.Low;		// Setting the thread priority to low forces the async operations to use less cpu.
 
         m_upperClosedPos = m_upperDoor.transform.localPosition;
@@ -76,6 +91,7 @@ public class TwoDoorController : ActionObject
         }
 
         m_lowerDistToNewPos = Vector3.Distance(m_lowerDoor.transform.localPosition, (m_opening ? m_lowerOpenPos : m_lowerClosedPos));
+
         if (m_lowerDistToNewPos > 0.1f)
         {
             m_lowerDoor.transform.localPosition -= Vector3.up * Time.deltaTime * (m_opening ? 1 : -1);
@@ -112,6 +128,7 @@ public class TwoDoorController : ActionObject
         if (dotToCamera < 0)
         {
             m_opening = true;
+            PlayDoorSound();
         }
     }
 
@@ -119,6 +136,20 @@ public class TwoDoorController : ActionObject
     {
         //Wait for door to close then unload
         StartCoroutine(WaitForDoorToOpenThenClose());
+    }
+
+    void PlayDoorSound()
+    {
+        FMOD.Studio.PLAYBACK_STATE playState;
+        m_doorEvent.getPlaybackState(out playState);
+        if (playState == FMOD.Studio.PLAYBACK_STATE.PLAYING)
+        {
+            return;
+        }
+        m_doorEvent.start();
+        m_reverbAmount.setValue(m_doorReverb);
+        m_direction.setValue((m_opening ? 180 : -180));
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_doorEvent, transform, null);
     }
 
     IEnumerator LoadBankThenScene()
@@ -149,6 +180,7 @@ public class TwoDoorController : ActionObject
         }
 
         m_opening = true;
+        PlayDoorSound();
     }
 
     IEnumerator WaitForDoorToOpenThenClose()
@@ -161,6 +193,8 @@ public class TwoDoorController : ActionObject
         m_opening = false;
 
         float dotToCamera = Vector3.Dot(transform.right, (Camera.main.transform.position - transform.position).normalized);
+        PlayDoorSound();
+        Debug.Log("Playing sound");
 
         if (dotToCamera > 0)
         {
