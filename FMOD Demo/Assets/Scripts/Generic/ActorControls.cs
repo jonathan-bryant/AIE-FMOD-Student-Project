@@ -177,15 +177,15 @@ public class ActorControls : MonoBehaviour
                 {
                     if (m_isRunning)
                     {
-                        m_footstepElapsed += vel.magnitude * 0.02f;
+                        m_footstepElapsed += vel.magnitude * 0.015f;
                     }
                     else
                     {
-                        m_footstepElapsed += vel.magnitude * 0.03f;    //Timing of footsteps tweaked with a magic number
+                        m_footstepElapsed += vel.magnitude * 0.02f;    //Timing of footsteps tweaked with a magic number
                     }
                     if (m_footstepElapsed > 1.0f)
                     {
-                        m_footsteps.PlayFootstep();
+                        m_footsteps.PlayFootstep(m_isRunning);
                         m_footstepElapsed = 0.0f;
                     }
                 }

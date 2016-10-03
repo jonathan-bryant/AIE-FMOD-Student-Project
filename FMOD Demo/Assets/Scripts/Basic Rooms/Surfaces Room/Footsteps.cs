@@ -14,6 +14,7 @@ using System.Collections;
 public class Footsteps : MonoBehaviour
 {
     float m_currentParamValue;  /* carpet = 1.0f, grass = 2.0f, tile = 3.0f */
+    float m_reverbValue;
 
     /*===============================================Fmod====================================================
     |   This piece of code will allow the string m_footstepSurfaceName to use the event browser to select   |
@@ -35,7 +36,7 @@ public class Footsteps : MonoBehaviour
 
     }
 
-    public void PlayFootstep()
+    public void PlayFootstep(bool a_isRunning)
     {
         /*===============================================Fmod====================================================
         |   When the actors walking, create an instance of the footstep sound at every step. Creating a sound   |
@@ -55,6 +56,8 @@ public class Footsteps : MonoBehaviour
             |   Parameters can be used to change volumes, or to jump to sections in the sound.                      |
             =======================================================================================================*/
             instance.setParameterValue("Surface", m_currentParamValue);
+            instance.setParameterValue("Room Verb", m_reverbValue);
+            instance.setParameterValue("Running", a_isRunning ? 0.0f : 1.0f);
             /*===============================================Fmod====================================================
             |   The start function will simply run the event.                                                       |
             =======================================================================================================*/
@@ -79,6 +82,7 @@ public class Footsteps : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit a_hit)
     {
+        m_reverbValue = 0.0f;
         string name = a_hit.gameObject.name;
         string tag = a_hit.gameObject.tag;
         /*===============================================Fmod====================================================
@@ -95,6 +99,11 @@ public class Footsteps : MonoBehaviour
         else if (name.Contains("Tile") || tag == "Tile")
         {
             m_currentParamValue = 3.0f;
+        }
+        else if (tag == "TileReverb")
+        {
+            m_currentParamValue = 3.0f;
+            m_reverbValue = 1.0f;
         }
         else
         {
