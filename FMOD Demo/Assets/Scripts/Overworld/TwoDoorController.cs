@@ -51,6 +51,7 @@ public class TwoDoorController : ActionObject
     bool m_completed = false;
 
     static AsyncOperation s_async;
+    bool m_loading = false;
 
     void Start()
     {
@@ -170,9 +171,10 @@ public class TwoDoorController : ActionObject
                 yield return true;
             }
         }
-        if (!SceneManager.GetSceneByName(m_sceneToLoad).isLoaded)
+        if (!SceneManager.GetSceneByName(m_sceneToLoad).isLoaded && !m_loading)
         {
             s_async = SceneManager.LoadSceneAsync(m_sceneToLoad, LoadSceneMode.Additive);
+            m_loading = true;
             while (!s_async.isDone)
             {
                 yield return true;
@@ -218,6 +220,7 @@ public class TwoDoorController : ActionObject
                 SceneManager.UnloadScene(m_sceneToLoad);
                 if (m_bankToLoad != "")
                     FMODUnity.RuntimeManager.UnloadBank(m_bankToLoad);
+                m_loading = false;
             }
         }
     }
