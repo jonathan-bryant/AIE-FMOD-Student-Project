@@ -15,7 +15,7 @@ public class O_Elevator : MonoBehaviour
     //---------------------------------Fmod-------------------------------
     [FMODUnity.EventRef]    public string m_event = "event:/Elevator";
     FMOD.Studio.EventInstance m_eventInstance;
-    string m_eventParamString = "End of journey";
+    string m_eventParamString = "End";
     FMOD.Studio.ParameterInstance m_eventParam;
     public float m_eventVolume = 0.1f;
     //--------------------------------------------------------------------
