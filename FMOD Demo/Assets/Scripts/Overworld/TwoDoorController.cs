@@ -104,8 +104,8 @@ public class TwoDoorController : ActionObject
         if (m_completed)
         {
             Renderer rend = m_lowerDoor.GetComponent<Renderer>();
-            rend.materials[2].SetColor("_EmissionColor", Color.green);
-            DynamicGI.SetEmissive(rend, Color.green);
+			rend.materials[2].SetColor("_EmissionColor", new Color(2f,0.70f,0f));
+			DynamicGI.SetEmissive(rend, new Color(2f,0.70f,0f));
             m_completeSign.CompleteRoom();
         }
     }
