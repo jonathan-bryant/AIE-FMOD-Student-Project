@@ -90,6 +90,41 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 2334140, guid: 0ca1311c7c895594c93e79ff0d005775,
     type: 2}
   m_PrefabInternal: {fileID: 762202500}
+--- !u!1 &109427844 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 126672, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+  m_PrefabInternal: {fileID: 762202500}
+--- !u!23 &109427849 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 2392566, guid: 0ca1311c7c895594c93e79ff0d005775,
+    type: 2}
+  m_PrefabInternal: {fileID: 762202500}
+--- !u!114 &109427851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 109427844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7865d0268055914a8191832dd082925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_actionKeys: 65000000
+  m_actionVerbs:
+  - To Sit
+  m_renderer: {fileID: 109427849}
+  m_materialIndex: 0
+  m_idleGlowSpeed: 2
+  m_idleGlowStrength: 0.15
+  m_hoverGlowSpeed: 4
+  m_hoverGlowStrength: 0.2
+  m_clickGlowSpeed: 0.5
+  m_clickGlowStrength: 0.1
+  m_newColor: {r: 0, g: 1, b: 1, a: 0}
+  m_localClickDirection: {x: 0, y: 0, z: 0}
+  m_entrySeat: {fileID: 119282087}
+  m_exitSeat: {fileID: 1146866777}
 --- !u!1 &119282086
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,8 +133,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 119282087}
-  - 65: {fileID: 119282088}
-  - 114: {fileID: 119282089}
   m_Layer: 0
   m_Name: Seat
   m_TagString: Untagged
@@ -120,43 +153,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
---- !u!65 &119282088
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 119282086}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.2}
---- !u!114 &119282089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 119282086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7865d0268055914a8191832dd082925, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_actionKeys: 65000000
-  m_actionVerbs:
-  - To Sit
-  m_renderer: {fileID: 0}
-  m_materialIndex: 0
-  m_idleGlowSpeed: 4
-  m_idleGlowStrength: 0.5
-  m_hoverGlowSpeed: 8
-  m_hoverGlowStrength: 0.5
-  m_clickGlowSpeed: 0.5
-  m_clickGlowStrength: 1
-  m_newColor: {r: 0, g: 0, b: 0, a: 0}
-  m_localClickDirection: {x: 0, y: 0, z: 0}
-  m_exitSeat: {fileID: 1146866777}
 --- !u!1001 &142100195
 Prefab:
   m_ObjectHideFlags: 0
@@ -479,6 +475,14 @@ Prefab:
     - target: {fileID: 126672, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
       propertyPath: m_TagString
       value: Carpet
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421636, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: PlayEvent
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421636, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: StopEvent
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}

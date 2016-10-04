@@ -137,6 +137,14 @@ public class ActionObject : MonoBehaviour
             }
         }
     }
+    protected void ResetGlow()
+    {
+        Color col = m_baseColor;
+        m_renderer.materials[m_materialIndex].SetColor("_EmissionColor", col);
+        m_inQuestion = 0;
+        m_clickElapsed = 0.0f;
+        m_clickGlowElapsed = 0.0f;
+    }
     //When the key has been pressed that frame
     public virtual void ActionPressed(GameObject a_sender, KeyCode a_key)
     {
