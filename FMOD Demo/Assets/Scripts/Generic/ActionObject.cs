@@ -131,11 +131,19 @@ public class ActionObject : MonoBehaviour
         if (m_clickElapsed < m_clickSpeed)
         {
             m_clickElapsed = Mathf.Clamp(m_clickElapsed + Time.deltaTime, 0.0f, m_clickSpeed);
-            if (m_localClickDirection != Vector3.zero)
+            if (m_localClickDirection != Vector3.zero && m_originalLocalPosition != m_clickLocalPosition)
             {
                 transform.localPosition = Vector3.Lerp(m_originalLocalPosition, m_clickLocalPosition, Mathf.Clamp(Mathf.Sin((Mathf.PI) * ((m_clickElapsed / m_clickSpeed))), 0.0f, 1.0f));
             }
         }
+    }
+    protected void ResetGlow()
+    {
+        Color col = m_baseColor;
+        m_renderer.materials[m_materialIndex].SetColor("_EmissionColor", col);
+        m_inQuestion = 0;
+        m_clickElapsed = 0.0f;
+        m_clickGlowElapsed = 0.0f;
     }
     //When the key has been pressed that frame
     public virtual void ActionPressed(GameObject a_sender, KeyCode a_key)

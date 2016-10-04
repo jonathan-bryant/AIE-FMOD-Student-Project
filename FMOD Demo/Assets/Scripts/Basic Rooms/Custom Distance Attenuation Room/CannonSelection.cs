@@ -17,6 +17,7 @@ public class CannonSelection : ActionObject
 
     void Start()
     {
+        InitButton();
         InitGlow();
     }
     void Update()

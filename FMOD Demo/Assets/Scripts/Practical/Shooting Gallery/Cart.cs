@@ -36,7 +36,8 @@ public class Cart : ActionObject
     }
     void Update()
     {
-        UpdateGlow();
+        if(!m_playerIsSeated)
+            UpdateGlow();
     }
     void FixedUpdate()
     {
@@ -56,6 +57,7 @@ public class Cart : ActionObject
 
     public override void ActionPressed(GameObject sender, KeyCode a_key)
     {
+        ResetGlow();
         if (!m_playerIsSeated)
         {
             m_manager.Play();

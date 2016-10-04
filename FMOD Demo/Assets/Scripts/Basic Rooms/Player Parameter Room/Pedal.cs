@@ -26,15 +26,32 @@ public class Pedal : ActionObject
 
     }
 
+    public override void ActionPressed(GameObject sender, KeyCode a_key)
+    {
+        if (a_key == m_actionKeys[0])
+        {
+            m_acceleration = Mathf.Min(m_acceleration + (Time.deltaTime * 4.0f), 4.0f);
+            Debug.Log(m_acceleration);
+        }
+        else if (a_key == m_actionKeys[1])
+        {
+            m_acceleration = Mathf.Max(m_acceleration - (Time.deltaTime * 4.0f), 0.0f);
+        }
+        m_car.Accelerate(m_acceleration);
+        Vector3 rot = transform.eulerAngles;
+        rot.x = 20.0f - (m_acceleration / 5.0f) * 30.0f;
+        transform.eulerAngles = rot;
+    }
     public override void ActionDown(GameObject sender, KeyCode a_key)
     {
         if (a_key == m_actionKeys[0])
         {
-            m_acceleration = Mathf.Min(m_acceleration + m_acceleration * Time.deltaTime * 5.0f, 5.0f);
+            m_acceleration = Mathf.Min(m_acceleration + (Time.deltaTime * 4.0f), 4.0f);
+            Debug.Log(m_acceleration);
         }
         else if (a_key == m_actionKeys[1])
         {
-            m_acceleration = Mathf.Max(m_acceleration - m_acceleration * Time.deltaTime * 5.0f, 1.0f);
+            m_acceleration = Mathf.Max(m_acceleration - (Time.deltaTime * 4.0f), 0.0f);
         }
         m_car.Accelerate(m_acceleration);
         Vector3 rot = transform.eulerAngles;

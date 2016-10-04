@@ -29,7 +29,7 @@ public class Car : MonoBehaviour
     {
         m_gear = 1;
         m_isActive = false;
-        m_acceleration = 1.0f;
+        m_acceleration = 0.0f;
         m_rpm = 0.0f;
         /*===============================================Fmod====================================================
         |   This is simply getting the attached StudioEventEmitter component.                                   |
@@ -40,10 +40,7 @@ public class Car : MonoBehaviour
     {
         if (m_isActive)
         {
-            if (m_acceleration > 0.0f)
-            {
-                m_rpm += (m_acceleration - m_rpm) * Time.deltaTime * (1 / (float)m_gear);
-            }
+            m_rpm += (m_acceleration - m_rpm) * Time.deltaTime * (1 / ((float)m_gear * 2.0f));
         }
         else
         {
@@ -55,12 +52,13 @@ public class Car : MonoBehaviour
         |   To see what parameters looks like in studio, open the file:                                         |
         |   FMOD\Fmod Demo Sounds\Fmod Demo Sounds.fspro                                                        |
         =======================================================================================================*/
-        m_sound.SetParameter("RPM", m_rpm * 400.0f);
+        m_sound.SetParameter("RPM", m_rpm * 2500.0f);
     }
 
     public void IgnitionOn()
     {
         m_isActive = true;
+        m_sound.Play();
     }
     public void IgnitionOff()
     {
@@ -69,6 +67,7 @@ public class Car : MonoBehaviour
         m_acceleration = 1.0f;
         m_gearShift.Reset();
         m_pedal.Reset();
+        m_sound.Stop();
     }
     public void UpGear()
     {
@@ -77,7 +76,7 @@ public class Car : MonoBehaviour
             m_gear++;
             if (m_isActive)
             {
-                m_rpm -= 0.8f;
+                m_rpm -= m_rpm * 0.25f;
                 m_rpm = Mathf.Max(m_rpm, 0.0f);
             }
         }
@@ -89,7 +88,7 @@ public class Car : MonoBehaviour
             if (m_isActive)
             {
                 m_gear--;
-                m_rpm += 0.8f;
+                m_rpm += m_rpm * 0.25f;
                 m_rpm = Mathf.Min(5.0f, m_rpm);
             }
         }
