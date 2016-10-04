@@ -62,7 +62,8 @@ public class ActorControls : MonoBehaviour
     }
     void Update()
     {
-        m_cc.Move(Vector3.zero);
+        if(m_cc.enabled)
+            m_cc.Move(Vector3.zero);
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             m_isRunning = true;
