@@ -38,7 +38,6 @@ public class VolumeSlider : ActionObject
             RaycastHit rh;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rh, Mathf.Infinity, ~(1 << 10 | 1 << 2)))
             {
-                Debug.Log(rh.collider.gameObject.name);
                 if (rh.collider.gameObject.name == "Radio")
                 {
                     float diff = 0.0f;
