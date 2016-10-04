@@ -29,13 +29,14 @@ GameObject:
   - 114: {fileID: 11414738}
   - 114: {fileID: 11486714}
   - 114: {fileID: 11407042}
+  - 114: {fileID: 11468688}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &160306
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,10 +199,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132774}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: -10.723, y: 0.677, z: 0.028}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.00000052336134, y: -1.992, z: -0.04}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 444852}
   - {fileID: 22440992}
@@ -214,10 +215,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160306}
-  m_LocalRotation: {x: 0.119368315, y: 6.9845124e-14, z: 1.1549598e-14, w: 0.99285007}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 13.7113, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 485882}
   m_Father: {fileID: 437070}
@@ -257,7 +258,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -597,6 +598,25 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &11468688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Footsteps
+  PlayEvent: 0
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
 --- !u!114 &11475310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -683,7 +703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5154dabaa61264a8bb4b3740d7b2e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_footstepSurfaceName: event:/Basic Rooms/Surfaces Room/Footsteps
+  m_footstepSurfaceName: event:/Footsteps
 --- !u!114 &11487804
 MonoBehaviour:
   m_ObjectHideFlags: 1
