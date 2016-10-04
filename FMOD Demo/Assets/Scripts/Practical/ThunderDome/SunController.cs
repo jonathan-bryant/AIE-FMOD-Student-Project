@@ -21,7 +21,7 @@ public class SunController : ActionObject
 
     void Start()
     {
-        m_sunValue = 0.0f;
+        m_sunValue = 180.0f;
         m_actor = Camera.main.GetComponentInParent<ActorControls>();
     }
 
@@ -29,7 +29,7 @@ public class SunController : ActionObject
     {
         if(m_inControl)
         {
-            float mouseX = Input.GetAxis("Mouse X");
+            float mouseX = Input.GetAxis("Mouse X") * 4.0f;
             if (mouseX != 0.0f)
             {
                 transform.Rotate(new Vector3(0.0f, -mouseX, 0.0f));
