@@ -585,6 +585,7 @@ GameObject:
   - 4: {fileID: 45989572}
   - 33: {fileID: 45989574}
   - 23: {fileID: 45989573}
+  - 64: {fileID: 45989575}
   m_Layer: 0
   m_Name: OV Elevator Ring (3)
   m_TagString: Untagged
@@ -640,6 +641,18 @@ MeshFilter:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 45989571}
+  m_Mesh: {fileID: 4300000, guid: 6e8de822a23f9d24b875a0d9047ff653, type: 3}
+--- !u!64 &45989575
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 45989571}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 6e8de822a23f9d24b875a0d9047ff653, type: 3}
 --- !u!1 &55545568
 GameObject:
@@ -8023,7 +8036,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.70710695, z: 0, w: 0.70710665}
   m_LocalPosition: {x: -8.926, y: 3.098, z: 0.878}
   m_LocalScale: {x: -1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children: []
   m_Father: {fileID: 1060643789}
   m_RootOrder: 2
@@ -16685,7 +16698,7 @@ GameObject:
   - 64: {fileID: 1403526507}
   m_Layer: 0
   m_Name: polySurface348
-  m_TagString: Untagged
+  m_TagString: TileReverb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -20893,6 +20906,10 @@ Prefab:
     - target: {fileID: 2075872, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
       propertyPath: m_RenderingPath
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 132774, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
