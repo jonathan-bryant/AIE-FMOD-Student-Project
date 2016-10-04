@@ -62,7 +62,8 @@ public class ActorControls : MonoBehaviour
     }
     void Update()
     {
-        m_cc.Move(Vector3.zero);
+        if(m_cc.enabled)
+            m_cc.Move(Vector3.zero);
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             m_isRunning = true;
@@ -255,19 +256,17 @@ public class ActorControls : MonoBehaviour
             {
                 if (Input.GetKeyDown(m_actionObject.m_actionKeys[i]))
                 {
-                        m_actionObject.InQuestion = 2;
+                    m_actionObject.InQuestion = 2;
                     m_actionObject.ActionPressed(gameObject, m_actionObject.m_actionKeys[i]);
                     break;
                 }
                 else if (Input.GetKey(m_actionObject.m_actionKeys[i]))
                 {
-                        m_actionObject.InQuestion = 2;
                     m_actionObject.ActionDown(gameObject, m_actionObject.m_actionKeys[i]);
                     break;
                 }
                 else if (Input.GetKeyUp(m_actionObject.m_actionKeys[i]))
                 {
-                        m_actionObject.InQuestion = 2;
                     m_actionObject.ActionReleased(gameObject, m_actionObject.m_actionKeys[i]);
                     break;
                 }
@@ -290,7 +289,6 @@ public class ActorControls : MonoBehaviour
                 }
                 m_pressKeyText.text = text;
                 m_pressKeyText.gameObject.SetActive(true);
-
             }
             return;
         }

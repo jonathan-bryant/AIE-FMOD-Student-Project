@@ -147,10 +147,15 @@ MonoBehaviour:
   m_actionVerbs:
   - To Sit
   m_renderer: {fileID: 0}
-  m_glowSpeed: 4
-  m_hoverSpeed: 8
-  m_clickSpeed: 0.5
+  m_materialIndex: 0
+  m_idleGlowSpeed: 4
+  m_idleGlowStrength: 0.5
+  m_hoverGlowSpeed: 8
+  m_hoverGlowStrength: 0.5
+  m_clickGlowSpeed: 0.5
+  m_clickGlowStrength: 1
   m_newColor: {r: 0, g: 0, b: 0, a: 0}
+  m_localClickDirection: {x: 0, y: 0, z: 0}
   m_exitSeat: {fileID: 1146866777}
 --- !u!1001 &142100195
 Prefab:
@@ -197,7 +202,7 @@ Prefab:
       objectReference: {fileID: 1433933986}
     - target: {fileID: 132774, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
@@ -458,6 +463,10 @@ Prefab:
     - target: {fileID: 13581582, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
       propertyPath: m_Radius
       value: 0.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421636, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}
+      propertyPath: Event
+      value: event:/Basic Rooms/Player Parameter Room/Car Engine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ca1311c7c895594c93e79ff0d005775, type: 2}

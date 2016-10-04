@@ -13,6 +13,7 @@ using System.Collections;
 
 public class WeatherController : MonoBehaviour
 {
+    public FMODUnity.StudioEventEmitter m_event;
     public WindController m_windController;
     public RainController m_rainController;
     public SunController m_sunController;
@@ -36,6 +37,7 @@ public class WeatherController : MonoBehaviour
     FMOD.Studio.ParameterInstance m_windParam;
     FMOD.Studio.ParameterInstance m_rainParam;
     FMOD.Studio.ParameterInstance m_sunParam;
+    FMOD.Studio.ParameterInstance m_waterParam;
     public float Rain { get { return m_rainController.RainValue; } }
     
     void Start () {
@@ -46,23 +48,25 @@ public class WeatherController : MonoBehaviour
         m_ambience = FMODUnity.RuntimeManager.CreateInstance(m_ambiencePath);
 
         //---------------------------------Fmod-------------------------------
+        //Calling this function will start the EventInstance.
+        //--------------------------------------------------------------------
+        m_ambience.start();
+        m_ambience.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform, null));
+
+        //---------------------------------Fmod-------------------------------
         //Calling this function will return a reference to a parameter inside
         //EventInstance and store it in ParameterInstance.
         //--------------------------------------------------------------------
         m_ambience.getParameter("Wind", out m_windParam);
         m_ambience.getParameter("Rain", out m_rainParam);
-        m_ambience.getParameter("Sun", out m_sunParam);
-
-        //---------------------------------Fmod-------------------------------
-        //Calling this function will start the EventInstance.
-        //--------------------------------------------------------------------
-        m_ambience.start();
-        m_ambience.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform, null));
+        m_ambience.getParameter("Time", out m_sunParam);
+        m_ambience.getParameter("Water", out m_waterParam);
     }
 	
 	void Update () {
         m_windParam.setValue(m_windController.WindValue);
         m_rainParam.setValue(m_rainController.RainValue);
+        m_waterParam.setValue(m_rainController.WaterValue);
         m_sunParam.setValue(m_sunController.SunValue);
     }
 

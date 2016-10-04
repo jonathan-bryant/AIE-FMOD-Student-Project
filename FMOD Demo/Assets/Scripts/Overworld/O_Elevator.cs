@@ -123,7 +123,8 @@ public class O_Elevator : MonoBehaviour
                 m_currentFloor = m_selectedFloor;
                 m_isActive = 3;
                 m_door.OpenDoor();
-                m_outerDoorHolder.transform.GetChild(m_currentFloor).GetComponent<O_ElevatorDoor>().OpenDoor();
+                if (m_currentFloor >= 0)
+                    m_outerDoorHolder.transform.GetChild(m_currentFloor).GetComponent<O_ElevatorDoor>().OpenDoor();
 
             }
 
@@ -154,7 +155,8 @@ public class O_Elevator : MonoBehaviour
         m_selectedFloor = a_floor;
         m_selectedFloorY = a_floorY;
         m_door.CloseDoor();
-        m_outerDoorHolder.transform.GetChild(m_currentFloor).GetComponent<O_ElevatorDoor>().CloseDoor();
+        if(m_currentFloor >= 0)
+            m_outerDoorHolder.transform.GetChild(m_currentFloor).GetComponent<O_ElevatorDoor>().CloseDoor();
 
         Vector3 playerPos = m_actor.transform.position;
         Vector3 playerXZ = playerPos; playerXZ.y = 0.0f;
