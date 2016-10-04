@@ -45,7 +45,7 @@ public class Frog : MonoBehaviour
     {
         if (m_isJumping)
         {
-            if (a_col.gameObject.tag == "Ground")
+            if (a_col.gameObject.tag == "Mud")
             {
                 m_isJumping = false;
                 transform.forward = Vector3.Cross(a_col.contacts[0].normal, -transform.right);
