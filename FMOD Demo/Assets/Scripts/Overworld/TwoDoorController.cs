@@ -194,7 +194,6 @@ public class TwoDoorController : ActionObject
 
         float dotToCamera = Vector3.Dot(transform.right, (Camera.main.transform.position - transform.position).normalized);
         PlayDoorSound();
-        Debug.Log("Playing sound");
 
         if (dotToCamera > 0)
         {
