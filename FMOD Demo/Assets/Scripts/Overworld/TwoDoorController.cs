@@ -35,7 +35,7 @@ public class TwoDoorController : ActionObject
 
     [FMODUnity.EventRef]
     public string m_doorSound;
-    [Range(0, 4)]    public float m_doorReverb = 2.0f;
+    [Range(0, 4)]    public float m_doorReverb = 0.4f;
 
     // Private Vars
     FMOD.Studio.EventInstance m_doorEvent;
