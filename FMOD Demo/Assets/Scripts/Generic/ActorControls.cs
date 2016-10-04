@@ -257,6 +257,8 @@ public class ActorControls : MonoBehaviour
                 if (Input.GetKeyDown(m_actionObject.m_actionKeys[i]))
                 {
                     m_actionObject.InQuestion = 2;
+                    if (m_actionObject.m_glowOnce)
+                        m_actionObject.StopGlow();
                     m_actionObject.ActionPressed(gameObject, m_actionObject.m_actionKeys[i]);
                     break;
                 }
