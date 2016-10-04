@@ -22,6 +22,8 @@ public class Panning : ActionObject
 
     void Start()
     {
+        InitGlow();
+        InitButton();
         m_originalFOV = Camera.main.fieldOfView;
         m_originalNear = Camera.main.nearClipPlane;
         m_isActive = false;
@@ -34,6 +36,7 @@ public class Panning : ActionObject
     }
     void Update()
     {
+        UpdateGlow();
         if (m_isActive)
         {
             m_elapsed += Time.deltaTime;
