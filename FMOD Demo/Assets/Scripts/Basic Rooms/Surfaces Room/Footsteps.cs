@@ -100,6 +100,14 @@ public class Footsteps : MonoBehaviour
         {
             m_currentParamValue = 3.0f;
         }
+        else if (name.Contains("Mud") || tag == "Mud")
+        {
+            m_currentParamValue = 4.0f;
+        }
+        else if (name.Contains("Wood") || tag == "Wood")
+        {
+            m_currentParamValue = 5.0f;
+        }
         else if (tag == "TileReverb")
         {
             m_currentParamValue = 3.0f;

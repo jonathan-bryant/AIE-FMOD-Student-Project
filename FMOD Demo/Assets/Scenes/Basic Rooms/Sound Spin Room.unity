@@ -1202,13 +1202,14 @@ MonoBehaviour:
   - To go to level 2
   m_renderer: {fileID: 82098351}
   m_materialIndex: 0
-  m_glowSpeed: 2
-  m_glowStrength: 0.2
-  m_hoverSpeed: 4
-  m_hoverStrength: 0.4
-  m_clickSpeed: 0.5
-  m_clickStrength: 1
+  m_idleGlowSpeed: 4
+  m_idleGlowStrength: 0.5
+  m_hoverGlowSpeed: 8
+  m_hoverGlowStrength: 0.5
+  m_clickGlowSpeed: 0.5
+  m_clickGlowStrength: 1
   m_newColor: {r: 0, g: 1, b: 1, a: 0}
+  m_localClickDirection: {x: 0, y: 0, z: 0}
   m_elevator: {fileID: 636015168}
   m_floor: 1
   m_height: 3.6
@@ -17910,6 +17911,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1318412543}
   - 114: {fileID: 1318412542}
+  - 114: {fileID: 1318412541}
   m_Layer: 0
   m_Name: Elevator noise
   m_TagString: Untagged
@@ -17917,6 +17919,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1318412541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1318412540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Basic Rooms/Sound Spin Room/Elevator Music
+  PlayEvent: 1
+  StopEvent: 2
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
 --- !u!114 &1318412542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17928,16 +17949,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: event:/Basic Rooms/Sound Spin Room/Sound Spin
+  Event: event:/Elevator
   PlayEvent: 0
   StopEvent: 2
   CollisionTag: Player
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
-  Params:
-  - Name: Intensity
-    Value: 0
+  Params: []
 --- !u!4 &1318412543
 Transform:
   m_ObjectHideFlags: 0
@@ -18615,13 +18634,14 @@ MonoBehaviour:
   - To go to level 1
   m_renderer: {fileID: 1372883841}
   m_materialIndex: 0
-  m_glowSpeed: 2
-  m_glowStrength: 0.2
-  m_hoverSpeed: 4
-  m_hoverStrength: 0.4
-  m_clickSpeed: 0.5
-  m_clickStrength: 1
+  m_idleGlowSpeed: 4
+  m_idleGlowStrength: 0.5
+  m_hoverGlowSpeed: 8
+  m_hoverGlowStrength: 0.5
+  m_clickGlowSpeed: 0.5
+  m_clickGlowStrength: 1
   m_newColor: {r: 0, g: 1, b: 1, a: 0}
+  m_localClickDirection: {x: 0, y: 0, z: 0}
   m_elevator: {fileID: 636015168}
   m_floor: 0
   m_height: 0.598
@@ -19607,7 +19627,7 @@ GameObject:
   - 65: {fileID: 1438986481}
   m_Layer: 0
   m_Name: Quad
-  m_TagString: Untagged
+  m_TagString: Wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23053,13 +23073,14 @@ MonoBehaviour:
   - To go to level 3
   m_renderer: {fileID: 1660309602}
   m_materialIndex: 0
-  m_glowSpeed: 2
-  m_glowStrength: 0.2
-  m_hoverSpeed: 4
-  m_hoverStrength: 0.4
-  m_clickSpeed: 0.5
-  m_clickStrength: 1
+  m_idleGlowSpeed: 4
+  m_idleGlowStrength: 0.5
+  m_hoverGlowSpeed: 8
+  m_hoverGlowStrength: 0.5
+  m_clickGlowSpeed: 0.5
+  m_clickGlowStrength: 1
   m_newColor: {r: 0, g: 1, b: 1, a: 0}
+  m_localClickDirection: {x: 0, y: 0, z: 0}
   m_elevator: {fileID: 636015168}
   m_floor: 2
   m_height: 6.65
@@ -26992,7 +27013,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 132774, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
