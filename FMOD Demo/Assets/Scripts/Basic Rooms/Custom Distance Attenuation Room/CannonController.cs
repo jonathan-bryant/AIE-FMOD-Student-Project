@@ -4,7 +4,7 @@
 |   Company:		            Firelight Technologies                                          |
 |   Date:		                20/09/2016                                                      |
 |   Scene:                      Custom Distance Attenuation                                     |
-|   Fmod Related Scripting:     No                                                              |
+|   Fmod Related Scripting:     Yes                                                              |
 |   Description:                Angles the cannon to the selected angle then fires at the given |
 |   fire rate.                                                                                  |
 ===============================================================================================*/
@@ -13,6 +13,13 @@ using System.Collections;
 
 public class CannonController : MonoBehaviour
 {
+    [FMODUnity.EventRef]    public string m_cannonUpSound;
+    FMOD.Studio.EventInstance m_cannonUpEvent;
+    FMOD.Studio.ParameterInstance m_cannonUpStop;
+    [FMODUnity.EventRef]    public string m_cannonDownSound;
+    FMOD.Studio.EventInstance m_cannonDownEvent;
+    FMOD.Studio.ParameterInstance m_cannonDownStop;
+    FMOD.Studio.PLAYBACK_STATE m_playState;
 
     public GameObject m_cannonBall;
     public GameObject m_cannon;
@@ -26,6 +33,13 @@ public class CannonController : MonoBehaviour
 
     void Start()
     {
+        m_cannonUpEvent = FMODUnity.RuntimeManager.CreateInstance(m_cannonUpSound);
+        m_cannonUpEvent.getParameter("Stop Point", out m_cannonUpStop);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_cannonUpEvent, transform, null);
+        m_cannonDownEvent = FMODUnity.RuntimeManager.CreateInstance(m_cannonDownSound);
+        m_cannonDownEvent.getParameter("Stop Point", out m_cannonDownStop);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_cannonDownEvent, transform, null);
+
         m_elapsed = 0.0f;
         m_currentAngle = 30.0f;
         m_selectedAngle = 30.0f;
@@ -41,6 +55,13 @@ public class CannonController : MonoBehaviour
             {
                 if (m_selectedAngle < m_currentAngle)
                 {
+                    m_cannonUpEvent.getPlaybackState(out m_playState);
+                    if (m_playState != FMOD.Studio.PLAYBACK_STATE.PLAYING)
+                    {
+                        m_cannonUpStop.setValue(0.0f);
+                        m_cannonUpEvent.start();
+                    }
+
                     m_currentAngle -=  5.0f * Time.fixedDeltaTime;
                     if (m_currentAngle < m_selectedAngle)
                     {
@@ -52,6 +73,13 @@ public class CannonController : MonoBehaviour
                 }
                 else
                 {
+                    m_cannonDownEvent.getPlaybackState(out m_playState);
+                    if (m_playState != FMOD.Studio.PLAYBACK_STATE.PLAYING)
+                    {
+                        m_cannonDownStop.setValue(0.0f);
+                        m_cannonDownEvent.start();
+                    }
+
                     m_currentAngle += 5.0f * Time.fixedDeltaTime;
                     if(m_currentAngle > m_selectedAngle)
                     {
@@ -64,6 +92,8 @@ public class CannonController : MonoBehaviour
             }
             else
             {
+                m_cannonDownStop.setValue(1.0f);
+                m_cannonUpStop.setValue(1.0f);
                 m_elapsed = 0.0f;
                 m_isActive = false;
                 GameObject ball = Instantiate(m_cannonBall, m_cannon.transform.GetChild(0).position - (m_cannon.transform.GetChild(0).up), Quaternion.identity) as GameObject;
@@ -72,10 +102,7 @@ public class CannonController : MonoBehaviour
             }
         }
     }
-    void Update()
-    {
 
-    }
     public void Fire(int a_index)
     {
         if (m_isActive)
@@ -88,17 +115,17 @@ public class CannonController : MonoBehaviour
         {
             case 1:
                 m_selectedAngle = 30.0f;
-                m_power = 10.0f;
+                m_power = 15.0f;
                 m_isActive = true;
                 break;
             case 2:
                 m_selectedAngle = 45.0f;
-                m_power = 12.5f;
+                m_power = 20.0f;
                 m_isActive = true;
                 break;
             case 3:
                 m_selectedAngle = 60.0f;
-                m_power = 15.0f;
+                m_power = 10.0f;
                 m_isActive = true;
                 break;
             default:
