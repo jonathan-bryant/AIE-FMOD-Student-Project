@@ -15,6 +15,7 @@ public class PlayButton : ActionObject
     public Orchestrion m_orchestrion;
     void Start()
     {
+        InitButton();
         InitGlow();
     }
     void Update()
