@@ -58,6 +58,7 @@ public class MainSound : MonoBehaviour
 
 	bool m_isPlaying = false;
 	bool m_dspAdded = false;
+    Light m_bassLight;
 
 	int WINDOWSIZE = 1024;
 
@@ -106,6 +107,7 @@ public class MainSound : MonoBehaviour
 		//--------------------------------------------------------------------
 		PlaySound();
 		StartCoroutine(AddDspToChannel());
+        m_bassLight = GetComponent<Light>();
 	}
 
 	void OnDestroy()
@@ -159,8 +161,13 @@ public class MainSound : MonoBehaviour
 				m_soundTex.SetPixel(bin, 1, new Color(m_fftArray[bin], m_fftArray[bin], m_fftArray[bin]));
 			}
 			m_soundTex.Apply();
+            
+            float newValue = m_fftArray[1] * 10;
+            if (newValue > m_bassLight.intensity)
+                m_bassLight.intensity = newValue;
+            m_bassLight.intensity -= Time.deltaTime * 2;
 
-		}
+        }
 	}
 
 	#region Private Functions
