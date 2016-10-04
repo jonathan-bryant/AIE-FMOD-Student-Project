@@ -51,7 +51,7 @@ public class Elevator : MonoBehaviour
                     /*===============================================Fmod====================================================
                     |   This is how you would go about setting parameters of an external eventEmitter.                      |
                     =======================================================================================================*/
-                    m_event.SetParameter("Intensity", 0);
+                    m_event.SetParameter("End", 0);
                     m_event.Play();
                 }
             }
@@ -97,7 +97,7 @@ public class Elevator : MonoBehaviour
                     /*===============================================Fmod====================================================
                     |   This is how you would go about setting parameters of an external eventEmitter.                      |
                     =======================================================================================================*/
-                    m_event.SetParameter("Intensity", 1);
+                    m_event.SetParameter("End", 1);
                 }
             }
         }
