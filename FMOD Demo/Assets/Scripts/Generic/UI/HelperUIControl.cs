@@ -56,7 +56,7 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
         //m_uiCloseEvent = FMODUnity.RuntimeManager.CreateInstance(m_uiClose);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (m_billboard && m_updateFacing)
         {

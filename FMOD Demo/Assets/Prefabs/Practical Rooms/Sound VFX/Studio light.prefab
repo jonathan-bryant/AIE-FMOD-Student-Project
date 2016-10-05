@@ -8,24 +8,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 486208}
+  - 108: {fileID: 10890008}
   m_Layer: 0
   m_Name: Studio light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &177318
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 450614}
-  - 108: {fileID: 10817918}
-  m_Layer: 0
-  m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,18 +33,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &450614
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 177318}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 486208}
-  m_RootOrder: 1
 --- !u!4 &484510
 Transform:
   m_ObjectHideFlags: 1
@@ -79,11 +52,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113806}
   m_LocalRotation: {x: 0.17439899, y: 0, z: 0, w: 0.9846751}
-  m_LocalPosition: {x: 0.16, y: 17.547, z: 9.567}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: -0.37404034, y: -1.3026518, z: 3.532149}
+  m_LocalScale: {x: 0.16521215, y: 14.926172, z: 14.061287}
   m_Children:
   - {fileID: 484510}
-  - {fileID: 450614}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!23 &2397264
@@ -120,22 +92,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185468}
   m_Mesh: {fileID: 4300000, guid: 55dbdb848aaf5c04994e11758f3a6f99, type: 3}
---- !u!108 &10817918
+--- !u!108 &10890008
 Light:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 177318}
+  m_GameObject: {fileID: 113806}
   m_Enabled: 1
   serializedVersion: 6
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1
   m_Range: 30
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_Strength: 1
     m_Bias: 0.05
@@ -148,8 +120,8 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 1
-  m_BounceIntensity: 1
+  m_Lightmapping: 4
+  m_BounceIntensity: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}

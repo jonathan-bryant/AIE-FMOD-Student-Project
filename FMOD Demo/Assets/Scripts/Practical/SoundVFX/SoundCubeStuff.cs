@@ -42,7 +42,7 @@ public class SoundCubeStuff : MonoBehaviour
             m_cubes[i] = new GameObject[m_gridWidth];
             for (int j = 0; j < m_gridWidth; j++)
             {                
-                Vector3 pos = new Vector3(((flipX ? -1 : 1) * i * 0.13f), 0, ((flipZ ? -1 : 1) * j * 0.1f));
+                Vector3 pos = new Vector3(((flipX ? -1 : 1) * i * transform.lossyScale.x) - (0.5f * m_gridWidth * m_cubePrefab.transform.lossyScale.x), 0, ((flipZ ? -1 : 1) * j * transform.lossyScale.z) - (0.5f * m_gridWidth * m_cubePrefab.transform.lossyScale.z));
 
                 m_cubes[i][j] = Instantiate(m_cubePrefab, transform.position, transform.rotation) as GameObject;
                 m_cubes[i][j].transform.SetParent(transform);
