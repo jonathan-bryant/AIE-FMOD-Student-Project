@@ -42,7 +42,7 @@
 			if (v.vertex.y < -0.1)
 			{
 				//if (_Amount < 0.2)
-					_Amount *= 30;
+					_Amount *= 5;
 				if (_Amount > -v.vertex.y)
 					v.vertex.y -= _Amount;
 			}

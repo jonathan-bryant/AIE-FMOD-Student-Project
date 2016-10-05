@@ -51,7 +51,7 @@ public class TwoDoorController : ActionObject
     bool m_completed = false;
 
     static AsyncOperation s_async;
-    bool m_loading = false;
+    bool m_loading;
 
     void Start()
     {
@@ -77,6 +77,7 @@ public class TwoDoorController : ActionObject
 
         m_lowerClosedPos = m_lowerDoor.transform.localPosition;
         m_lowerOpenPos = m_lowerClosedPos - (Vector3.up * (m_lowerDoor.transform.localScale.y + 0.2f));
+        m_loading = false;
     }
 
     void FixedUpdate()
@@ -107,7 +108,6 @@ public class TwoDoorController : ActionObject
             Renderer rend = m_lowerDoor.GetComponent<Renderer>();
 			rend.materials[2].SetColor("_EmissionColor", new Color(2f,0.70f,0f));
 			DynamicGI.SetEmissive(rend, new Color(2f,0.70f,0f));
-            m_completeSign.CompleteRoom();
         }
     }
 
@@ -199,7 +199,6 @@ public class TwoDoorController : ActionObject
 
         if (dotToCamera > 0)
         {
-            m_completed = true;
             // Check to see if door is closed
             while (m_lowerDoor.transform.localPosition != m_lowerClosedPos)
             {
@@ -222,6 +221,10 @@ public class TwoDoorController : ActionObject
                     FMODUnity.RuntimeManager.UnloadBank(m_bankToLoad);
                 m_loading = false;
             }
+        }
+        else
+        {
+            m_completed = true;
         }
     }
 

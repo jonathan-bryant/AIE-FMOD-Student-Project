@@ -37,16 +37,18 @@ public class SoundCubeStuff : MonoBehaviour
         // Create grid of cubes using an Array of Array's
         m_cubes = new GameObject[m_gridWidth][];
 
+        // size on one axis = no of cubes * size of cube + space between cubes * (no of cubes - 1);
+        float gridSize = m_gridWidth * m_cubePrefab.transform.localScale.z + (m_cubePrefab.transform.localScale.z * (m_gridWidth - 1));
+
         for (int i = 0; i < m_gridWidth; i++)
         {
             m_cubes[i] = new GameObject[m_gridWidth];
             for (int j = 0; j < m_gridWidth; j++)
             {                
-                Vector3 pos = new Vector3(((flipX ? -1 : 1) * i * transform.lossyScale.x) - (0.5f * m_gridWidth * m_cubePrefab.transform.lossyScale.x), 0, ((flipZ ? -1 : 1) * j * transform.lossyScale.z) - (0.5f * m_gridWidth * m_cubePrefab.transform.lossyScale.z));
+                Vector3 pos = new Vector3(((flipX ? -1 : 1) * i * m_cubePrefab.transform.localScale.x) - (gridSize * 0.5f), 0, ((flipZ ? -1 : 1) * j * m_cubePrefab.transform.localScale.z) - (gridSize * 0.5f));
 
-                m_cubes[i][j] = Instantiate(m_cubePrefab, transform.position, transform.rotation) as GameObject;
+                m_cubes[i][j] = Instantiate(m_cubePrefab, transform.position + pos, transform.rotation) as GameObject;
                 m_cubes[i][j].transform.SetParent(transform);
-                m_cubes[i][j].transform.localPosition = pos;
             }
         }		
     }
