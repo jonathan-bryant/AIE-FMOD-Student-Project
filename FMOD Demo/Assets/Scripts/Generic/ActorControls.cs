@@ -173,21 +173,14 @@ public class ActorControls : MonoBehaviour
             {
                 Vector3 vel = m_velocity;
                 vel.y = 0.0f;
-                float mag = vel.magnitude;
-                if (mag >= 0.45f)
+                float mag = CurrentVelocity.magnitude;
+                if (mag > 0.5f)
                 {
-                    if (m_isRunning)
-                    {
-                        m_footstepElapsed += vel.magnitude * 0.015f;
-                    }
-                    else
-                    {
-                        m_footstepElapsed += vel.magnitude * 0.02f;    //Timing of footsteps tweaked with a magic number
-                    }
-                    if (m_footstepElapsed > 1.0f)
+                    m_footstepElapsed += (m_isRunning ? m_runSpeed * 0.75f : m_walkSpeed) * Time.fixedDeltaTime * 0.25f;
+                    while (m_footstepElapsed > 1.0f)
                     {
                         m_footsteps.PlayFootstep(m_isRunning);
-                        m_footstepElapsed = 0.0f;
+                        m_footstepElapsed -= 1.0f;
                     }
                 }
                 else
