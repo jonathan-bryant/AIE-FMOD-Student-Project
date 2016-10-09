@@ -1,13 +1,4 @@
-﻿/*===============================================================================================
-|   Project:		            FMOD Demo                                                       |
-|   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
-|   Company:		            Firelight Technologies                                          |
-|   Date:		                20/09/2016                                                      |
-|   Scene:                      Thunder Dome                                                    |
-|   Fmod Related Scripting:     No                                                              |
-|   Description:                Controls the rain value and the particle emitter.               |
-|   WeatherController script will access this script.                                           |
-===============================================================================================*/
+﻿
 using UnityEngine;
 using System.Collections;
 

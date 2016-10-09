@@ -14,8 +14,8 @@ using System.Collections;
 public class WeatherController : MonoBehaviour
 {
     public FMODUnity.StudioEventEmitter m_event;
-    public WindController m_windController;
-    public RainController m_rainController;
+    public WindSlider m_windController;
+    public RainSlider m_rainController;
     public SunController m_sunController;
     //---------------------------------Fmod-------------------------------
     //Call this to display it in Unity Inspector.
