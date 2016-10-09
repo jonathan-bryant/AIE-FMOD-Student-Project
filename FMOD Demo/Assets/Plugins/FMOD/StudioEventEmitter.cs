@@ -8,20 +8,23 @@ namespace FMODUnity
     public class StudioEventEmitter : MonoBehaviour
     {
         [EventRef]
-        public String Event;
-        public EmitterGameEvent PlayEvent;
-        public EmitterGameEvent StopEvent;
-        public String CollisionTag;
+        public String Event = "";
+        public EmitterGameEvent PlayEvent = EmitterGameEvent.None;
+        public EmitterGameEvent StopEvent = EmitterGameEvent.None;
+        public String CollisionTag = "";
         public bool AllowFadeout = true;
         public bool TriggerOnce = false;
         public bool Preload = false;
+        public ParamRef[] Params = new ParamRef[0];
+        public bool OverrideAttenuation = false;
+        public float OverrideMinDistance = -1.0f;
+        public float OverrideMaxDistance = -1.0f;
 
-        public ParamRef[] Params;
         
-        private FMOD.Studio.EventDescription eventDescription;
-        private FMOD.Studio.EventInstance instance;
-        private bool hasTriggered;
-        private bool isQuitting;
+        private FMOD.Studio.EventDescription eventDescription = null;
+        private FMOD.Studio.EventInstance instance = null;
+        private bool hasTriggered = false;
+        private bool isQuitting = false;
 
         void Start() 
         {
@@ -161,6 +164,12 @@ namespace FMODUnity
             foreach(var param in Params)
             {
                 instance.setParameterValue(param.Name, param.Value);
+            }
+
+            if (is3D && OverrideAttenuation)
+            {
+                instance.setProperty(FMOD.Studio.EVENT_PROPERTY.MINIMUM_DISTANCE, OverrideMinDistance);
+                instance.setProperty(FMOD.Studio.EVENT_PROPERTY.MAXIMUM_DISTANCE, OverrideMaxDistance);
             }
 
             instance.start();

@@ -19,11 +19,16 @@ namespace FMODUnity
         const string StringBankExtension = "strings.bank";
         const string BankExtension = "bank";
 
+        const int FilePollTimeSeconds = 5;
+        
+        // How many seconds to wait since last file activity to start the import
+        const int CountdownTimerReset = 15 / FilePollTimeSeconds;
+
         static int countdownTimer;
 
         static void ClearCache()
         {
-            countdownTimer = 1;
+            countdownTimer = CountdownTimerReset;
             eventCache.StringsBankWriteTime = DateTime.MinValue;
             eventCache.EditorBanks.Clear();
             eventCache.EditorEvents.Clear();
@@ -62,7 +67,7 @@ namespace FMODUnity
             }
             else
             {
-                FMODPlatform platform = EditorUtils.GetFMODPlatform();
+                FMODPlatform platform = RuntimeUtils.GetEditorFMODPlatform();
                 if (platform == FMODPlatform.None)
                 {
                     platform = FMODPlatform.PlayInEditor;
@@ -109,13 +114,13 @@ namespace FMODUnity
             // Use the string bank timestamp as a marker for the most recent build of any bank because it gets exported every time
             if (File.GetLastWriteTime(stringBankPath) == eventCache.StringsBankWriteTime)
             {
-                countdownTimer = 1;
+                countdownTimer = CountdownTimerReset;
                 return;
             }            
 
             if (EditorUtils.IsFileOpenByStudio(stringBankPath))
             {
-                countdownTimer = 1;
+                countdownTimer = CountdownTimerReset;
                 return;
             }
             
@@ -124,7 +129,7 @@ namespace FMODUnity
             EditorUtils.CheckResult(EditorUtils.System.loadBankFile(stringBankPath, FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out stringBank));
             if (stringBank == null)
             {
-                countdownTimer = 1;
+                countdownTimer = CountdownTimerReset;
                 return;
             }
 
@@ -159,7 +164,9 @@ namespace FMODUnity
 
                 if (!File.Exists(bankPath))
                 {
-                    countdownTimer = 1;
+                    // TODO: this is meant to catch the case where we're in the middle of a build and a bank is being built 
+                    // for the first time. But it also stops someone trying to import an incomplete set of banks without any error message.
+                    countdownTimer = CountdownTimerReset;
                     return;
                 }                
 
@@ -168,7 +175,7 @@ namespace FMODUnity
                 {
                     if (EditorUtils.IsFileOpenByStudio(bankPath))
                     {
-                        countdownTimer = 1;
+                        countdownTimer = CountdownTimerReset;
                         return;
                     }
                     continue;
@@ -178,19 +185,23 @@ namespace FMODUnity
                 {
                     if (EditorUtils.IsFileOpenByStudio(bankPath))
                     {
-                        countdownTimer = 1;
+                        countdownTimer = CountdownTimerReset;
                         return;
                     }
                 }
             }
 
-            // Do one extra loop through the in-use check in case we catch studio exactly in-between updating two files.
+            // Count down the timer in case we catch studio in-between updating two files.
             if (countdownTimer-- > 0)
             {
                 return;
             }
 
             // All files are finished being modified by studio so update the cache
+            
+            // Stop editor preview so no stale data being held
+            EditorUtils.PreviewStop();
+
             // Reload the strings bank
             EditorUtils.CheckResult(EditorUtils.System.loadBankFile(stringBankPath, FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out stringBank));
             if (stringBank == null)
@@ -230,11 +241,15 @@ namespace FMODUnity
             eventCache.EditorBanks.ForEach((x) => x.Exists = false);
             eventCache.StringsBankRef.Exists = true;
 
+			string[] folderContents = Directory.GetFiles(defaultBankFolder);
+
             foreach (string bankFileName in bankFileNames)
             {
-                string bankPath = Path.Combine(defaultBankFolder, bankFileName);
+                // Get the true file path, can't trust the character case we got from the string bank
+				string bankPath = ArrayUtility.Find(folderContents, x => (string.Equals(bankFileName, Path.GetFileName(x), StringComparison.CurrentCultureIgnoreCase)));
                 
-                EditorBankRef bankRef = eventCache.EditorBanks.Find((x) => bankPath == x.Path);
+				FileInfo bankFileInfo = new FileInfo(bankPath);
+                EditorBankRef bankRef = eventCache.EditorBanks.Find((x) => bankFileInfo.FullName == x.Path);
 
                 // New bank we've never seen before
                 if (bankRef == null)
@@ -242,7 +257,7 @@ namespace FMODUnity
                     bankRef = ScriptableObject.CreateInstance<EditorBankRef>();
                     AssetDatabase.AddObjectToAsset(bankRef, eventCache);
                     AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(bankRef));
-                    bankRef.Path = bankPath;
+                    bankRef.Path = bankFileInfo.FullName;
                     bankRef.LastModified = DateTime.MinValue;
                     bankRef.FileSizes = new List<EditorBankRef.NameValuePair>();
                     eventCache.EditorBanks.Add(bankRef);
@@ -251,9 +266,9 @@ namespace FMODUnity
                 bankRef.Exists = true;
                 
                 // Timestamp check - if it doesn't match update events from that bank
-                if (bankRef.LastModified != File.GetLastWriteTime(bankPath))
+                if (bankRef.LastModified != bankFileInfo.LastWriteTime)
                 {
-                    bankRef.LastModified = File.GetLastWriteTime(bankPath);                    
+                    bankRef.LastModified = bankFileInfo.LastWriteTime;                    
                     UpdateCacheBank(bankRef);
                 }
 
@@ -281,7 +296,7 @@ namespace FMODUnity
                     }
                 }
 
-                if (bankFileName == masterBankFileName)
+                if (bankFileInfo.Name == masterBankFileName)
                 {
                     eventCache.MasterBankRef = bankRef;
                 }
@@ -373,6 +388,7 @@ namespace FMODUnity
             }
             else
             {
+                Debug.LogError(String.Format("FMOD Studio: Unable to load {0}: {1}", bankRef.Name, FMOD.Error.String(bankRef.LoadResult)));
                 eventCache.StringsBankWriteTime = DateTime.MinValue;
             }
         }
@@ -385,14 +401,14 @@ namespace FMODUnity
 
         static EventManager()
 	    {
-            countdownTimer = 1;
+            countdownTimer = CountdownTimerReset;
             EditorUserBuildSettings.activeBuildTargetChanged += BuildTargetChanged;
             EditorApplication.update += Update;
         }               
 
         public static void CopyToStreamingAssets()
         {
-            FMODPlatform platform = EditorUtils.GetFMODPlatform();
+            FMODPlatform platform = RuntimeUtils.GetEditorFMODPlatform();
             if (platform == FMODPlatform.None)
             {
                 UnityEngine.Debug.LogWarning(String.Format("FMOD Studio: copy banks for platform {0} : Unsupported platform", EditorUserBuildSettings.activeBuildTarget.ToString()));
@@ -427,7 +443,7 @@ namespace FMODUnity
                 foreach (var bankFileName in currentBankFiles)
                 {
                     string bankName = Path.GetFileNameWithoutExtension(bankFileName);
-                    if (!eventCache.EditorBanks.Exists((x) => (String.Equals(bankName, x.Name, StringComparison.CurrentCultureIgnoreCase))))
+                    if (!eventCache.EditorBanks.Exists((x) => bankName == x.Name))
                     {
                         File.Delete(bankFileName);
                         madeChanges = true;
@@ -448,6 +464,7 @@ namespace FMODUnity
                         sourceInfo.LastWriteTime != targetInfo.LastWriteTime)
                     {
                         File.Copy(sourcePath, targetPath, true);
+                        File.SetLastWriteTime(targetPath, sourceInfo.LastWriteTime);
 
                         madeChanges = true;
                     }
@@ -522,7 +539,7 @@ namespace FMODUnity
                 lastCheckTime = Time.realtimeSinceStartup;
             }
 
-            if (lastCheckTime + 1 < Time.realtimeSinceStartup)
+            if (lastCheckTime + FilePollTimeSeconds < Time.realtimeSinceStartup)
             {
                 UpdateCache();
                 lastCheckTime = Time.realtimeSinceStartup;

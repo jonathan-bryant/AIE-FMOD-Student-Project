@@ -174,6 +174,9 @@ namespace FMODUnity
             #endif
 
             int realChannels = fmodSettings.GetRealChannels(fmodPlatform);
+
+            realChannels = Math.Min(realChannels, 256); // Prior to 1.08.10 we didn't clamp this properly in the settings screen
+
             result = lowlevelSystem.setSoftwareChannels(realChannels);
             CheckInitResult(result, "Set software channels");
             result = lowlevelSystem.setSoftwareFormat(
@@ -314,13 +317,41 @@ namespace FMODUnity
 
         List<AttachedInstance> attachedInstances = new List<AttachedInstance>(128);
 
+        #if UNITY_EDITOR
+        Dictionary<IntPtr, bool> warnedInvalidInstances = new Dictionary<IntPtr, bool>(2048);
+        #endif
+
         bool listenerWarningIssued = false;
         void Update()
         {
             if (studioSystem != null)
             {
                 studioSystem.update();
-                if (!hasListener && !listenerWarningIssued)
+
+                bool foundListener = false;
+                bool hasAllListeners = false;
+                int numListeners = 0;
+                for (int i = FMOD.CONSTANTS.MAX_LISTENERS - 1; i >=0 ; i--)
+                {
+                    if (!foundListener && HasListener[i])
+                    {
+                        numListeners = i + 1;
+                        foundListener = true;
+                        hasAllListeners = true;
+                    }
+
+                    if (!HasListener[i] && foundListener)
+                    {
+                        hasAllListeners = false;
+                    }
+                }
+
+                if (foundListener)
+                {
+                    studioSystem.setNumListeners(numListeners);
+                }
+
+                if (!hasAllListeners && !listenerWarningIssued)
                 {
                     listenerWarningIssued = true;
                     UnityEngine.Debug.LogWarning("FMOD Studio Integration: Please add an 'FMOD Studio Listener' component to your a camera in the scene for correct 3D positioning of sounds");
@@ -341,6 +372,54 @@ namespace FMODUnity
                     }
                     attachedInstances[i].instance.set3DAttributes(RuntimeUtils.To3DAttributes(attachedInstances[i].transform, attachedInstances[i].rigidBody));
                 }
+
+                
+                #if UNITY_EDITOR
+                MuteAllEvents(UnityEditor.EditorUtility.audioMasterMute);
+                #endif
+
+
+                #if UNITY_EDITOR
+                // Catch any 3D events that are being played at the origin
+                foreach(FMOD.Studio.EventDescription desc in cachedDescriptions.Values)
+                {
+                    if (!desc.isValid())
+                    {
+                        continue;
+                    }
+                    bool is3d;
+                    desc.is3D(out is3d);
+                    if (!is3d)
+                    {
+                        continue;
+                    }
+
+                    string path;
+                    desc.getPath(out path);
+
+                    int instanceCount;
+                    desc.getInstanceCount(out instanceCount);
+                    FMOD.Studio.EventInstance[] instances = new FMOD.Studio.EventInstance[instanceCount];
+                    desc.getInstanceList(out instances);
+                    for (int i = 0; i < instanceCount; i++)
+                    {
+                        if (warnedInvalidInstances.ContainsKey(instances[i].getRaw()))
+                        {
+                            continue;
+                        }
+
+                        FMOD.ATTRIBUTES_3D attributes = new FMOD.ATTRIBUTES_3D();
+                        instances[i].get3DAttributes(out attributes);
+                        if (attributes.position.x == 0 &&
+                            attributes.position.y == 0 &&
+                            attributes.position.z == 0)
+                        {
+                            warnedInvalidInstances.Add(instances[i].getRaw(), true);
+                            Debug.LogWarningFormat("FMOD Studio: Instance of Event {0} found playing at the origin. EventInstance.set3DAttributes() should be called on all 3D events", path);
+                        }
+                    }
+                }
+                #endif
             }
         }
 
@@ -714,12 +793,7 @@ namespace FMODUnity
             return eventDesc;
         }
 
-        static bool hasListener;
-        public static bool HasListener
-        {
-            set { hasListener = value; }
-            get { return hasListener;  }
-        }
+        public static bool[] HasListener = new bool[FMOD.CONSTANTS.MAX_LISTENERS];
 
         public static void SetListenerLocation(GameObject gameObject, Rigidbody rigidBody = null)
         {
@@ -729,6 +803,16 @@ namespace FMODUnity
         public static void SetListenerLocation(Transform transform)
         {
             Instance.studioSystem.setListenerAttributes(0, transform.To3DAttributes());
+        }
+
+        public static void SetListenerLocation(int listenerIndex, GameObject gameObject, Rigidbody rigidBody = null)
+        {
+            Instance.studioSystem.setListenerAttributes(listenerIndex, RuntimeUtils.To3DAttributes(gameObject, rigidBody));
+        }
+
+        public static void SetListenerLocation(int listenerIndex, Transform transform)
+        {
+            Instance.studioSystem.setListenerAttributes(listenerIndex, transform.To3DAttributes());
         }
 
         public static FMOD.Studio.Bus GetBus(String path)
@@ -763,7 +847,7 @@ namespace FMODUnity
         public static void MuteAllEvents(bool muted)
         {
             GetBus("bus:/").setMute(muted);
-            }
+        }
 
         public static bool IsInitialized
         {
