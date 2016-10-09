@@ -12,7 +12,7 @@ public class VolumeSlider : ActionObject
     [FMODUnity.EventRef]
     public string m_eventPath;
     FMOD.Studio.EventInstance m_event;
-    Transform m_soundPosition;
+    public Transform m_soundPosition;
 
     void Start()
     {
