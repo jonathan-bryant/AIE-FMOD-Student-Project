@@ -35,10 +35,10 @@ public class CannonController : MonoBehaviour
     {
         m_cannonUpEvent = FMODUnity.RuntimeManager.CreateInstance(m_cannonUpSound);
         m_cannonUpEvent.getParameter("Stop Point", out m_cannonUpStop);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_cannonUpEvent, transform, null);
+        m_cannonUpEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
         m_cannonDownEvent = FMODUnity.RuntimeManager.CreateInstance(m_cannonDownSound);
         m_cannonDownEvent.getParameter("Stop Point", out m_cannonDownStop);
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_cannonDownEvent, transform, null);
+        m_cannonDownEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
 
         m_elapsed = 0.0f;
         m_currentAngle = 30.0f;

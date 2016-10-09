@@ -150,7 +150,7 @@ public class TwoDoorController : ActionObject
         m_doorEvent.start();
         m_reverbAmount.setValue(m_doorReverb);
         m_direction.setValue((m_opening ? 180 : -180));
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_doorEvent, transform, null);
+        m_doorEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
     }
 
     IEnumerator LoadBankThenScene()
