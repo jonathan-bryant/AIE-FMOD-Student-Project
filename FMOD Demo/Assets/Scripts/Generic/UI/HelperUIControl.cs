@@ -69,9 +69,12 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     void LateUpdate()
     {
-        if (Vector3.Distance(transform.position, m_playerRef.transform.position) < m_maxPlayerDistance)
+        if (m_playerRef != null)
         {
-            m_updateFacing = true;
+            if (Vector3.Distance(transform.position, m_playerRef.transform.position) < m_maxPlayerDistance)
+            {
+                m_updateFacing = true;
+            }
         }
     }
 

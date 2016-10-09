@@ -17,11 +17,11 @@ public class CannonBall : MonoBehaviour
     public float m_explosionRadius = 3.0f;
     public float m_explosionForce = 3.0f;
 
-    ParticleSystem m_particle;
+    public GameObject m_explosion;
 
 	void Start ()
     {
-        m_particle = FindObjectOfType<ParticleSystem>();
+        
 	}
 
     void OnCollisionEnter(Collision a_collision)
@@ -38,9 +38,13 @@ public class CannonBall : MonoBehaviour
                 rb.AddExplosionForce(m_explosionForce, explosionPos, m_explosionRadius, 3.0f);
             }
         }
-
-        m_particle.transform.position = transform.position;
-        m_particle.Play();
+        
         Destroy(this.gameObject);
+    }
+
+    void OnDestroy()
+    {
+        m_explosion.SetActive(true);
+        m_explosion.transform.SetParent(null);
     }
 }
