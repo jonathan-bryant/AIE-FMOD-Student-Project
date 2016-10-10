@@ -63,7 +63,7 @@ public class SoundCubeStuff : MonoBehaviour
             for (int col = 0; col < m_gridWidth; col++)
             {
 				int newCol = col;
-				if (col < 14)
+				if (col < m_gridWidth - 1)
 				{
 					 newCol += 1;
 				}
