@@ -264,6 +264,7 @@ public class Menu : MonoBehaviour
             Scene scene = SceneManager.GetSceneAt(i);
             if (!scene.name.Contains("verworld"))
             {
+                FMODUnity.RuntimeManager.UnloadBank(scene.name);
                 SceneManager.UnloadScene(scene.name);
             }
         }
