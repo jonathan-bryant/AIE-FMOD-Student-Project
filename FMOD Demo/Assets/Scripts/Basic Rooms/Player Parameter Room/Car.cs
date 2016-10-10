@@ -44,7 +44,11 @@ public class Car : MonoBehaviour
         }
         else
         {
-            m_rpm = Mathf.Max(0.0f, m_rpm - (Time.deltaTime * 5.0f));
+            m_rpm = Mathf.Max(-1.0f, m_rpm - (Time.deltaTime));
+            if (m_rpm <= 0.0f)
+            {
+                m_sound.Stop();
+            }
         }
         /*===============================================Fmod====================================================
         |   The SetParameter function simply sets the event parameter to the value passed in.                   |
@@ -52,7 +56,7 @@ public class Car : MonoBehaviour
         |   To see what parameters looks like in studio, open the file:                                         |
         |   FMOD\Fmod Demo Sounds\Fmod Demo Sounds.fspro                                                        |
         =======================================================================================================*/
-        //m_sound.SetParameter("RPM", 1000.0f);
+        m_sound.SetParameter("RPM", (m_rpm + 1.0f) * 2000.0f);
     }
 
     public void IgnitionOn()
@@ -67,7 +71,6 @@ public class Car : MonoBehaviour
         m_acceleration = 1.0f;
         m_gearShift.Reset();
         m_pedal.Reset();
-        m_sound.Stop();
     }
     public void UpGear()
     {

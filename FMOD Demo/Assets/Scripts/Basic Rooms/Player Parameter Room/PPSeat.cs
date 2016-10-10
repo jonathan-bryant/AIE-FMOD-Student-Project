@@ -3,10 +3,15 @@ using System.Collections;
 
 public class PPSeat : ActionObject
 {
-    ActorControls m_actor;
-    bool m_isSeated, m_isReady;
+    public Car m_car;
+    public Ignition m_ignition;
+    public Pedal m_pedal;
+    public GearShift m_gearStick;
     public Transform m_entrySeat;
     public Transform m_exitSeat;
+
+    ActorControls m_actor;
+    bool m_isSeated, m_isReady;
 
     void Start()
     {
@@ -33,6 +38,10 @@ public class PPSeat : ActionObject
                         GetComponent<Collider>().enabled = true;
                         m_actor.GetComponent<CharacterController>().enabled = true;
                         m_actor.DisableMovement = false;
+                        m_gearStick.StopGlow();
+                        m_ignition.StopGlow();
+                        m_pedal.StopGlow();
+                        m_car.IgnitionOff();
                         return;
                     }
                 }
@@ -55,5 +64,8 @@ public class PPSeat : ActionObject
         m_actor.GetComponent<CharacterController>().enabled = false;
         GetComponent<Collider>().enabled = false;
         ResetGlow();
+        m_gearStick.StartGlow();
+        m_ignition.StartGlow();
+        m_pedal.StartGlow();
     }
 }

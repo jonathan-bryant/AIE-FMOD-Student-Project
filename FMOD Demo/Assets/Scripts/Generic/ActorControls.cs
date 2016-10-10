@@ -175,7 +175,7 @@ public class ActorControls : MonoBehaviour
             {
                 m_velocity += -transform.forward * (m_isRunning ? m_runSpeed : m_walkSpeed) * Time.fixedDeltaTime;
             }
-            if (Input.GetKey(KeyCode.Space) && posDiff.y == 0.0f) //Jump only when on the ground
+            if (Input.GetKey(KeyCode.Space) && m_cc.isGrounded) //Jump only when on the ground
             {
                 m_velocity += transform.up * m_jumpPower * Time.fixedDeltaTime;
             }
@@ -264,7 +264,7 @@ public class ActorControls : MonoBehaviour
                 {
                     m_actionObject.InQuestion = 2;
                     if (m_actionObject.m_glowOnce)
-                        m_actionObject.StopGlow();
+                        m_actionObject.LastGlow();
                     m_actionObject.ActionPressed(gameObject, m_actionObject.m_actionKeys[i]);
                     break;
                 }
@@ -342,5 +342,12 @@ public class ActorControls : MonoBehaviour
         m_relativity = a_move;
         m_moved = true;
         m_cc.Move(a_move);
+    }
+
+    void OnControllerColliderHit(ControllerColliderHit a_hit)
+    {
+        Debug.Log(a_hit.collider.gameObject.name);
+        if(a_hit.collider.gameObject.name.Contains("Roof"))
+            m_velocity.y = Mathf.Abs(m_velocity.y) * -1.0f;
     }
 }

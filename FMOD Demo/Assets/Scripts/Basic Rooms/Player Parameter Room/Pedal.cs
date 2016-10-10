@@ -18,7 +18,9 @@ public class Pedal : ActionObject
     void Start()
     {
         InitGlow();
-        m_acceleration = 1.0f;
+        StopGlow();
+
+        m_acceleration = 0.0f;
     }
     void Update()
     {

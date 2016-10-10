@@ -156,9 +156,19 @@ public class ActionObject : MonoBehaviour
         m_clickElapsed = 0.0f;
         m_clickGlowElapsed = 0.0f;
     }
-    public void StopGlow()
+    public void LastGlow()
     {
         m_stoppingGlow = true;
+    }
+    public void StartGlow()
+    {
+        m_isGlowing = true;
+        m_stoppingGlow = false;
+    }
+    public void StopGlow()
+    {
+        m_isGlowing = false;
+        ResetGlow();
     }
     //When the key has been pressed that frame
     public virtual void ActionPressed(GameObject a_sender, KeyCode a_key)

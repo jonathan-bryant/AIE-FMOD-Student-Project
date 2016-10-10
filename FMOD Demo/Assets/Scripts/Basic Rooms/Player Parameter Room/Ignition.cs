@@ -18,6 +18,7 @@ public class Ignition : ActionObject
 	void Start ()
     {
         InitGlow();
+        StopGlow();
         m_active = false;
     }
 	void Update ()
