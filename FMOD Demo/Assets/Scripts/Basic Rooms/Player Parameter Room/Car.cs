@@ -52,7 +52,7 @@ public class Car : MonoBehaviour
         |   To see what parameters looks like in studio, open the file:                                         |
         |   FMOD\Fmod Demo Sounds\Fmod Demo Sounds.fspro                                                        |
         =======================================================================================================*/
-        m_sound.SetParameter("RPM", m_rpm * 2500.0f);
+        //m_sound.SetParameter("RPM", 1000.0f);
     }
 
     public void IgnitionOn()
