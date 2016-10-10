@@ -162,10 +162,10 @@ public class MainSound : MonoBehaviour
 	bool PlaySound()
 	{
 		/*===============================================Fmod====================================================
-    	|      					Start the event playing and attach it to this gameobject.        				|
+    	|      					Start the event playing and set the position to this gameobject.        				|
     	=======================================================================================================*/
 		m_eventInstance.start();
-		FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_eventInstance, transform, null);
+        m_eventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
 		return true;
 	}
 
@@ -208,12 +208,10 @@ public class MainSound : MonoBehaviour
 	
 	[AOT.MonoPInvokeCallback(typeof(FMOD.Studio.EVENT_CALLBACK))]
 	static FMOD.RESULT BeatEventCallback(FMOD.Studio.EVENT_CALLBACK_TYPE type, IntPtr instancePtr, IntPtr parameterPtr)
-	{
-		// Recreate the event instance object
+	{		
 		/*===============================================Fmod====================================================
-    |      		Variables that are modified in the callback need to be part of a seperate class.       		|
-    |      		   This class needs to be 'blittable' otherwise it can't be pinned in memory.        		|
-    =======================================================================================================*/
+    	|						      		Recreate the event instance.        								|
+    	=======================================================================================================*/
 		FMOD.Studio.EventInstance instance = new FMOD.Studio.EventInstance(instancePtr);
 
 		// Retrieve the user data
