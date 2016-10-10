@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿/*===============================================================================================
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Cameron Baron                                                   |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                06/09/2016                                                      |
+|   Scene:                      Snapshot Room                                                   |
+|   Fmod Related Scripting:     No                                                              |
+|   Description:                Used to enable an underwater shader effect to the camera.       |
+===============================================================================================*/
+
+using UnityEngine;
 
 
 public class UnderwaterScreenEffects : MonoBehaviour 

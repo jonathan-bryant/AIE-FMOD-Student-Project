@@ -1,9 +1,14 @@
-﻿/*=================================================================
-Project:		AIE FMOD
-Developer:		Cameron baron
-Company:		FMOD
-Date:			30/08/2016
-==================================================================*/
+﻿/*===============================================================================================
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Cameron Baron                                                   |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                30/08/2016                                                      |
+|   Scene:                      Overworld                                                       |
+|   Fmod Related Scripting:     No                                                              |
+|   Description:                Used on the information pillar, plays the idle animation        |
+|   when the player is out of range, then stops all the room names facing the player when       |
+|   in range.                                                                                   |
+===============================================================================================*/
 
 using UnityEngine;
 using UnityEngine.EventSystems;

@@ -1,9 +1,12 @@
-﻿/*=================================================================
-Project:		AIE FMOD
-Developer:		Cameron Baron
-Company:		FMOD
-Date:			24/08/2016
-==================================================================*/
+﻿/*===============================================================================================
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Cameron Baron                                                   |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                24/08/2016                                                      |
+|   Scene:                      Overworld                                                       |
+|   Fmod Related Scripting:     No                                                              |
+|   Description:                Options dropdown in main menu.                                  |
+===============================================================================================*/
 
 using UnityEngine;
 using UnityEngine.UI;

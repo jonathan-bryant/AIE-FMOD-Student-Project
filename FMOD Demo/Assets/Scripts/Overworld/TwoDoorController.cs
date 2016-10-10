@@ -23,7 +23,6 @@ public class TwoDoorController : ActionObject
     public string m_sceneToLoad;        // Name of scene to be loaded/unloaded (needs to be exact).
     public float m_doorHoldTime;        // Amount of time the door will stay open after leaving the trigger area before closing.
     public float m_unloadDelay;         // Time until scene is unloaded once door has fully closed.
-    public RoomCompleted m_completeSign;
 
     //---------------------------------Fmod-------------------------------
     //  Bank reference is the same as and Event, except using BankRef.
