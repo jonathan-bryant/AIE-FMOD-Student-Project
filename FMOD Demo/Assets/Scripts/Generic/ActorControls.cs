@@ -29,8 +29,9 @@ public class ActorControls : MonoBehaviour
     public float m_drag;
     float m_minThreshold = 0.017f;
 
-    public bool m_disabledMovement;
-    public bool m_disabledMouse;
+    bool m_disabledMovement;
+    bool m_disabledMouse;
+    bool m_disabledActions;
     bool m_isRunning;
     public bool IsRunning { get { return m_isRunning; } }
 
@@ -129,6 +130,17 @@ public class ActorControls : MonoBehaviour
             }
         }
     }
+    public bool DisableActions
+    {
+        get
+        {
+            return m_disabledMouse;
+        }
+        set
+        {
+            m_disabledActions = value;
+        }
+    }
     void Move()
     {
         //Homemade physics
@@ -214,6 +226,8 @@ public class ActorControls : MonoBehaviour
     }
     void Action()
     {
+        if (DisableActions)
+            return;
         //Raycast
         RaycastHit ray;
         int layerMask = (1 << 2) | (1 << 11);

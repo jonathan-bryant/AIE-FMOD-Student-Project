@@ -62,6 +62,7 @@ public class Menu : MonoBehaviour
                 m_alreadyDisabled = m_actor.DisableMouse;
                 if (!m_alreadyDisabled)
                     m_actor.DisableMouse = true;
+                m_actor.DisableActions = true;
             }
             else
             {
@@ -169,6 +170,7 @@ public class Menu : MonoBehaviour
     {
         if (!m_alreadyDisabled)
             m_actor.DisableMouse = false;
+        m_actor.DisableActions = false;
         if (m_menuIsOpen)
         {
             m_animator.Play("Pause Close");

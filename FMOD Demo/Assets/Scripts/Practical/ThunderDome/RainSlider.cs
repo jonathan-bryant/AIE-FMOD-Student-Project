@@ -11,26 +11,33 @@
 using UnityEngine;
 using System.Collections;
 
-public class RainController : ActionObject
+public class RainSlider : ActionObject
 {
+    public Vector3 m_startPosition;
+    public Vector3 m_endPosition;
+    float m_slideValue;
+
+    bool m_isActive;
+
+    float m_rainValue;
+    float m_waterValue;
+    public float RainValue { get { return m_rainValue * 4.0f; } }
+    public float WaterValue { get { return m_waterValue; } }
+    public ParticleSystem m_particleSystem;
     public Transform m_pond;
     float m_minPondHeight;
     public float m_maxPondHeight;
-    ActorControls m_actor;
-    public ParticleSystem m_particleSystem;
-
-    bool m_inControl;
-    float m_rainValue;
-    float m_waterValue;
-    public float RainValue { get { return m_rainValue; } }
-    public float WaterValue { get { return m_waterValue; } }
-
     float m_originalRate;
 
     void Start()
     {
+        InitGlow();
+        m_slideValue = 0.0f;
+
+        float diff = (transform.position - m_startPosition).magnitude / (m_endPosition - m_startPosition).magnitude;
+        diff = Mathf.Clamp(diff, 0.0f, 1.0f);
+
         m_minPondHeight = m_pond.position.y;
-        m_actor = Camera.main.GetComponentInParent<ActorControls>();
 
         m_rainValue = 0.0f;
         m_originalRate = m_particleSystem.emission.rate.constantMax;
@@ -41,19 +48,30 @@ public class RainController : ActionObject
         rate.constantMax = Mathf.Lerp(0, m_originalRate, m_rainValue);
         emission.rate = rate;
     }
-
     void Update()
     {
-        if (m_inControl)
+        UpdateGlow();
+        if (Input.GetKeyUp(m_actionKeys[0]))
         {
-            float mouseX = Input.GetAxis("Mouse X");
-            if (mouseX != 0.0f)
+            m_isActive = false;
+        }
+        if (m_isActive)
+        {
+            RaycastHit rh;
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rh, Mathf.Infinity, ~(1 << 10 | 1 << 2)))
             {
-                if (!((mouseX > 0.0f && m_rainValue == 4.0f) || (mouseX < 0.0f && m_rainValue == 0.0f)))
+                if (rh.collider.gameObject.name == "Weather Controller")
                 {
-                    m_rainValue += mouseX;
-                    m_rainValue = Mathf.Clamp(m_rainValue, 0.0f, 4.0f);
-                    transform.Rotate(new Vector3(0.0f, -mouseX * 18.0f, 0.0f));
+                    float diff = 0.0f;
+                    float dot = Vector3.Dot((rh.point - m_startPosition).normalized, (m_endPosition - m_startPosition).normalized);
+                    if (dot > 0)
+                    {
+                        diff = (rh.point - m_startPosition).magnitude / (m_endPosition - m_startPosition).magnitude;
+                    }
+                    transform.position = Vector3.Lerp(m_startPosition, m_endPosition, diff * dot);
+
+                    m_rainValue = diff;
+                    m_rainValue = Mathf.Clamp(m_rainValue, 0.0f, 1.0f);
 
                     var emission = m_particleSystem.emission;
 
@@ -63,23 +81,17 @@ public class RainController : ActionObject
                 }
             }
         }
-        if(m_waterValue != m_rainValue)
+        if (m_waterValue != m_rainValue)
         {
-            m_waterValue = Mathf.MoveTowards(m_waterValue, m_rainValue, Time.deltaTime * 0.25f);
+            m_waterValue = Mathf.MoveTowards(m_waterValue, m_rainValue * 4.0f, Time.deltaTime * 0.25f);
             Vector3 pos = m_pond.position;
             pos.y = Mathf.Lerp(m_minPondHeight, m_maxPondHeight, Mathf.Clamp(m_waterValue - 2.0f, 0.0f, 2.0f) * 0.5f);
             m_pond.position = pos;
         }
     }
 
-    public override void ActionPressed(GameObject sender, KeyCode a_key)
+    public override void ActionPressed(GameObject a_sender, KeyCode a_key)
     {
-        m_actor.m_disabledMouse = true;
-        m_inControl = true;
-    }
-    public override void ActionReleased(GameObject sender, KeyCode a_key)
-    {
-        m_actor.m_disabledMouse = false;
-        m_inControl = false;
+        m_isActive = true;
     }
 }

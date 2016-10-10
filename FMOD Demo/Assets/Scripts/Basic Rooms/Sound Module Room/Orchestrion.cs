@@ -15,7 +15,7 @@ using System.IO;
 public class Orchestrion : MonoBehaviour
 {
     public GameObject m_ball;
-    public string m_sheetPath;
+    public string m_sheetName;
     string[] m_sheetMusic;
     public Transform[] m_keyPositions;
 
@@ -31,7 +31,9 @@ public class Orchestrion : MonoBehaviour
     {
         m_isPlaying = false;
         m_elapsedNote = 0.0f;
-        m_sheetMusic = System.IO.File.ReadAllText(m_sheetPath).Split(' ', '\n', '\r', '\t');
+        TextAsset text = Resources.Load("Sound Module/" + m_sheetName) as TextAsset;
+        string t = text.text;
+        m_sheetMusic = t.Split(' ', '\n', '\r', '\t');
         m_maxIndex = m_sheetMusic.Length;
         m_noteLength = 0.0f;
     }
@@ -40,9 +42,9 @@ public class Orchestrion : MonoBehaviour
         if (!m_isPlaying)
             return;
         m_elapsedNote += Time.fixedDeltaTime;
-        if (m_elapsedNote >= m_noteLength)
+        while (m_elapsedNote >= m_noteLength)
         {
-            m_elapsedNote = 0.0f;
+            m_elapsedNote -= m_noteLength;
 
             string key = m_sheetMusic[m_index];
             while (key == "")
