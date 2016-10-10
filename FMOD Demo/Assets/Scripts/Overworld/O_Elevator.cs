@@ -49,7 +49,7 @@ public class O_Elevator : MonoBehaviour
         m_currentFloor = -1;
         m_selectedFloor = -1;
         m_selectedFloorY = m_startFloorY;
-        m_actor.m_disabledMovement = true;
+        m_actor.DisableMovement = true;
     }
     void Update()
     {
@@ -59,7 +59,7 @@ public class O_Elevator : MonoBehaviour
             {
                 m_selectedFloor = 0;
                 m_isActive = 1;
-                m_actor.m_disabledMovement = false;
+                m_actor.DisableMovement = false;
 
                 StartSoundEvent();
             }
@@ -74,7 +74,7 @@ public class O_Elevator : MonoBehaviour
             if ((playerXZ - elevatorXZ).magnitude < 0.8f && playerPos.y - 0.7f >= transform.position.y - 1.459 && playerPos.y - 0.7f <= transform.position.y + 1.459)
             {
                 CenterActor();
-                m_actor.m_disabledMovement = true;
+                m_actor.DisableMovement = true;
             }
             if (!m_door.IsDoorOpen)
             {
@@ -129,7 +129,7 @@ public class O_Elevator : MonoBehaviour
             }
 
             Vector3 playerPos = m_actor.transform.position;
-            if (m_actor.m_disabledMovement)
+            if (m_actor.DisableMovement)
             {
                 playerPos.y = pos.y - 1.0f + 0.7f;
                 m_actor.transform.position = playerPos;
@@ -138,7 +138,7 @@ public class O_Elevator : MonoBehaviour
         }
         else if (m_isActive == 3)
         {
-            m_actor.m_disabledMovement = false;
+            m_actor.DisableMovement = false;
             if (m_door.IsDoorOpen)
             {
                 m_isActive = 0;
@@ -163,7 +163,7 @@ public class O_Elevator : MonoBehaviour
         Vector3 elevatorXZ = transform.position; elevatorXZ.y = 0.0f;
         if ((playerXZ - elevatorXZ).magnitude < 0.8f && playerPos.y - 0.7f >= transform.position.y - 1.459 && playerPos.y - 0.7f <= transform.position.y + 1.459)
         {
-            m_actor.m_disabledMovement = true;
+            m_actor.DisableMovement = true;
         }
     }
     void CenterActor()

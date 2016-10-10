@@ -61,7 +61,7 @@ public class Cart : ActionObject
         if (!m_playerIsSeated)
         {
             m_manager.Play();
-            m_player.m_disabledMovement = true;
+            m_player.DisableMovement = true;
             m_player.ActivateGun(true);
             m_player.GetComponent<CharacterController>().enabled = false;
             m_playerIsSeated = true;
@@ -69,7 +69,7 @@ public class Cart : ActionObject
         else
         {
             m_manager.Pause();
-            m_player.m_disabledMovement = false;
+            m_player.DisableMovement = false;
             m_player.ActivateGun(false);
             m_player.GetComponent<CharacterController>().enabled = true;
             m_playerIsSeated = false;
