@@ -15,6 +15,7 @@ public class RoofLighting : MonoBehaviour
 {
     // Public Vars
     public Color m_lightColor;
+    public Color m_lightOff;
 
     // Private Vars
     Light m_lightRef;
@@ -28,8 +29,18 @@ public class RoofLighting : MonoBehaviour
 	
 	void Update () 
 	{
-	
+	    if (m_lightRef.color != m_lightOff)
+        {
+            m_lightRef.color = Color.Lerp(m_lightRef.color, m_lightOff, 0.2f);
+            m_materialRef.SetColor("_EmissionColor", m_lightRef.color);
+        }
 	}
+
+    public void TurnOnLight()
+    {
+        m_lightRef.color = m_lightColor;
+        m_materialRef.SetColor("_EmissionColor", m_lightRef.color);
+    }
 
 	#region Private Functions
 
