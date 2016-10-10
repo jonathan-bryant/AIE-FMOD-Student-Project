@@ -188,7 +188,7 @@ public class ActorControls : MonoBehaviour
                 m_cc.Move(m_velocity * Time.fixedDeltaTime);
         }
         Vector3 diff = posDiff - m_relativity;
-        Debug.Log(diff.magnitude);
+
         if (CurrentVelocity.sqrMagnitude > 0.1f || (m_moved && (diff).magnitude > 0.050f))
         {
             m_footstepElapsed += (m_isRunning ? m_runSpeed * 0.75f : m_walkSpeed) * Time.fixedDeltaTime * 0.25f;

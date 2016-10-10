@@ -42,7 +42,7 @@
 			if (v.vertex.y < -0.1)
 			{
 				//if (_Amount < 0.2)
-					_Amount *= 5;
+					_Amount *= _Amount * 10;
 				if (_Amount > -v.vertex.y)
 					v.vertex.y -= _Amount;
 			}
@@ -54,7 +54,7 @@
 			half4 c = tex2D (_MainTex, IN.uv_MainTex);
 
 			if (_Amount < 0.5)
-				o.Albedo = lerp(float3(0.25, 0.25, 0.25), float3(1, 1, 0), _Amount * 2);
+				o.Albedo = lerp(float3(0, 0, 1), float3(1, 1, 0), _Amount * 2);
 			else
 				o.Albedo = lerp(float3(1, 1, 0), float3(1, 1, 1), _Amount);
 			// Metallic and smoothness come from slider variables
