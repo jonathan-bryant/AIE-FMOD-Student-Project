@@ -47,14 +47,14 @@ public class MainSound : MonoBehaviour
     |      		   This class needs to be 'blittable' otherwise it can't be pinned in memory.        		|
     =======================================================================================================*/
 	[StructLayout(LayoutKind.Sequential)]
-	class TimelineInfo
+	public class TimelineInfo
 	{
 		public int currentMusicBar = 0;
 		public FMOD.StringWrapper lastMarker = new FMOD.StringWrapper();
 	}
 
 	FMOD.Studio.EVENT_CALLBACK m_beatCallback;
-	TimelineInfo m_timelineInfo;
+	public TimelineInfo m_timelineInfo;
 	GCHandle m_timelineHandle;
 
 #endregion
@@ -194,11 +194,13 @@ public class MainSound : MonoBehaviour
     	=======================================================================================================*/
 		m_channelGroup.addDSP(FMOD.CHANNELCONTROL_DSP_INDEX.TAIL, m_fftDsp);
 		m_dspAdded = true;
+
+        
 	}
 
 	void OnGUI()
 	{
-		GUILayout.Box(String.Format("Current Bar = {0}, Last Marker = {1}", m_timelineInfo.currentMusicBar, (string)m_timelineInfo.lastMarker));
+        GUILayout.Box(String.Format("Current Bar = {0}, Last Marker = {1}", m_timelineInfo.currentMusicBar, (string)m_timelineInfo.lastMarker));
 	}
 	
 	[AOT.MonoPInvokeCallback(typeof(FMOD.Studio.EVENT_CALLBACK))]
