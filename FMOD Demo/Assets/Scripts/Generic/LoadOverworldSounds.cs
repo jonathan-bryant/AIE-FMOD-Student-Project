@@ -1,9 +1,13 @@
-﻿/*=================================================================
-Project:		AIE FMOD
-Developer:		Cameron Baron
-Company:		FMOD
-Date:			16/08/2016
-==================================================================*/
+﻿/*===============================================================================================
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Cameron Baron                                                   |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                16/08/2016                                                      |
+|   Scene:                      Overworld                                                       |
+|   Fmod Related Scripting:     Yes                                                             |
+|   Description:                Initialize the FMOD System and load the sound bank for the      |
+|   Overworld scene.                                                                            |
+===============================================================================================*/
 
 using UnityEngine;
 

@@ -1,9 +1,12 @@
-﻿/*=================================================================
-Project:		#PROJECTNAME#
-Developer:		#DEVOLPERNAME#
-Company:		#COMPANY#
-Date:			#CREATIONDATE#
-==================================================================*/
+﻿/*===============================================================================================
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Cameron Baron                                                   |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                03/10/2016                                                      |
+|   Scene:                      Sound VFX                                                       |
+|   Fmod Related Scripting:                                                                   |
+|   Description:                                                  |
+===============================================================================================*/
 
 using UnityEngine;
 

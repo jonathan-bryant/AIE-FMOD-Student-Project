@@ -4,7 +4,7 @@
 |   Company:		            Firelight Technologies                                          |
 |   Date:		                20/09/2016                                                      |
 |   Scene:                      Custom Distance Attenuation                                     |
-|   Fmod Related Scripting:     Yes                                                              |
+|   Fmod Related Scripting:     Yes                                                             |
 |   Description:                Angles the cannon to the selected angle then fires at the given |
 |   fire rate.                                                                                  |
 ===============================================================================================*/
@@ -13,6 +13,10 @@ using System.Collections;
 
 public class CannonController : MonoBehaviour
 {
+    /*===============================================Fmod====================================================
+    |   Create an event for the sound of the cannon changing height that starts up and loops until          |
+    |   we set the parameter to tell the event to play the end sound and finish.                            |
+    =======================================================================================================*/
     [FMODUnity.EventRef]    public string m_cannonUpSound;
     FMOD.Studio.EventInstance m_cannonUpEvent;
     FMOD.Studio.ParameterInstance m_cannonUpStop;
@@ -33,6 +37,9 @@ public class CannonController : MonoBehaviour
 
     void Start()
     {
+        /*===============================================Fmod====================================================
+        |   Create the events, set the parameter for exiting the loop and set the 3D attributes.                |
+        =======================================================================================================*/
         m_cannonUpEvent = FMODUnity.RuntimeManager.CreateInstance(m_cannonUpSound);
         m_cannonUpEvent.getParameter("Stop Point", out m_cannonUpStop);
         m_cannonUpEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
@@ -55,6 +62,9 @@ public class CannonController : MonoBehaviour
             {
                 if (m_selectedAngle < m_currentAngle)
                 {
+                    /*===============================================Fmod====================================================
+                    |   Check to see if the event is already playing, if not then start the event from the beginning.       |
+                    =======================================================================================================*/
                     m_cannonUpEvent.getPlaybackState(out m_playState);
                     if (m_playState != FMOD.Studio.PLAYBACK_STATE.PLAYING)
                     {
@@ -73,6 +83,9 @@ public class CannonController : MonoBehaviour
                 }
                 else
                 {
+                    /*===============================================Fmod====================================================
+                    |   Check to see if the event is already playing, if not then start the event from the beginning.       |
+                    =======================================================================================================*/
                     m_cannonDownEvent.getPlaybackState(out m_playState);
                     if (m_playState != FMOD.Studio.PLAYBACK_STATE.PLAYING)
                     {
@@ -92,6 +105,9 @@ public class CannonController : MonoBehaviour
             }
             else
             {
+                /*===============================================Fmod====================================================
+                |               Now we went to exit the event loop and play the end of the sound.                       |
+                =======================================================================================================*/
                 m_cannonDownStop.setValue(1.0f);
                 m_cannonUpStop.setValue(1.0f);
                 m_elapsed = 0.0f;

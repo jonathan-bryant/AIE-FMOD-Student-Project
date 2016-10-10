@@ -23,7 +23,6 @@ public class TwoDoorController : ActionObject
     public string m_sceneToLoad;        // Name of scene to be loaded/unloaded (needs to be exact).
     public float m_doorHoldTime;        // Amount of time the door will stay open after leaving the trigger area before closing.
     public float m_unloadDelay;         // Time until scene is unloaded once door has fully closed.
-    public RoomCompleted m_completeSign;
 
     //---------------------------------Fmod-------------------------------
     //  Bank reference is the same as and Event, except using BankRef.
@@ -52,6 +51,7 @@ public class TwoDoorController : ActionObject
 
     static AsyncOperation s_async;
     bool m_loading;
+    SphereCollider m_collider;
 
     void Start()
     {
@@ -78,10 +78,23 @@ public class TwoDoorController : ActionObject
         m_lowerClosedPos = m_lowerDoor.transform.localPosition;
         m_lowerOpenPos = m_lowerClosedPos - (Vector3.up * (m_lowerDoor.transform.localScale.y + 0.2f));
         m_loading = false;
+
+        m_collider = GetComponent<SphereCollider>();
+        m_collider.center = Vector3.right * 5.0f;
+    }
+
+    void Update()
+    {
+        if (!SceneManager.GetSceneByName(m_sceneToLoad).isLoaded)
+        {
+            m_collider.center = Vector3.right * 5.0f;
+            m_loading = false;
+        }
     }
 
     void FixedUpdate()
     {
+        m_doorEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
         m_upperDistToNewPos = Vector3.Distance(m_upperDoor.transform.localPosition, (m_opening ? m_upperOpenPos : m_upperClosedPos));
         if (m_upperDistToNewPos > 0.1f)
         {
@@ -150,7 +163,6 @@ public class TwoDoorController : ActionObject
         m_doorEvent.start();
         m_reverbAmount.setValue(m_doorReverb);
         m_direction.setValue((m_opening ? 180 : -180));
-        m_doorEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
     }
 
     IEnumerator LoadBankThenScene()
@@ -171,10 +183,12 @@ public class TwoDoorController : ActionObject
                 yield return true;
             }
         }
+
         if (!SceneManager.GetSceneByName(m_sceneToLoad).isLoaded && !m_loading)
         {
             s_async = SceneManager.LoadSceneAsync(m_sceneToLoad, LoadSceneMode.Additive);
             m_loading = true;
+
             while (!s_async.isDone)
             {
                 yield return true;
@@ -221,11 +235,25 @@ public class TwoDoorController : ActionObject
                     FMODUnity.RuntimeManager.UnloadBank(m_bankToLoad);
                 m_loading = false;
             }
+
+            while (m_collider.center.x < 5.0f)
+            {
+                m_collider.center += Vector3.right * Time.deltaTime;
+                yield return false;
+            }
         }
         else
         {
             m_completed = true;
+
+            while (m_collider.center.x > 0.0f)
+            {
+                m_collider.center -= Vector3.right * Time.deltaTime;
+                yield return false;
+            }
         }
+
+        
     }
 
     #endregion

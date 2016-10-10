@@ -1,12 +1,12 @@
-﻿/*=================================================================
-Project:		AIE FMOD
-Developer:		Cameron Baron  
-Company:		FMOD
-Date:			01/08/2016
-Scene:          Sound VFX
-FMOD Related:   No
-Description:    
-==================================================================*/
+﻿/*===============================================================================================
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Cameron Baron                                                   |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                01/08/2016                                                      |
+|   Scene:                      Sound VFX                                                       |
+|   Fmod Related Scripting:     No                                                              |
+|   Description:                Passes the FFT information to the 'dancing cubes' shader.       |
+===============================================================================================*/
 
 using UnityEngine;
 
@@ -14,8 +14,8 @@ public class SoundCubeStuff : MonoBehaviour
 {
     // Public Vars
     public int m_gridWidth = 15;                        // Customisable grid size.
-    public bool flipX;
-    public bool flipZ;
+    public bool flipX;                                  // Used to mirror the grid on the X-axis
+    public bool flipZ;                                  // Used to mirror the grid on the Z-axis
 
     // Private Vars
     [SerializeField]    GameObject m_cubePrefab;        // Prefab to use for visualisation.

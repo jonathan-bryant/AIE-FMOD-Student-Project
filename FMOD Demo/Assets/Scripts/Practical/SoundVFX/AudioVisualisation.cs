@@ -1,15 +1,15 @@
-﻿/*=================================================================
-Project:		AIE FMOD
-Developer:		Cameron Baron
-Company:		FMOD
-Date:			09/08/2016
-Description:	
-This script is to be attached to a plane/quad/object that will 
-show the visualisation texture, all we do in this is set the shader	
-and pass it the texture from the MainSound Script. All the 
-calculations for the data are either done in the MainSound script 
-or one of the shaders.
-==================================================================*/
+﻿/*===============================================================================================
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Cameron Baron                                                   |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                09/08/2016                                                      |
+|   Scene:                      Sound VFX                                                       |
+|   Fmod Related Scripting:     No                                                              |
+|   Description:                This script is to be attached to a plane/quad/object that will  |
+|   show the visualisation texture, all we do in this is set the shader	and pass it the texture | 
+|   from the MainSound Script. All the calculations for the data are either done in the         |
+|   MainSound script or one of the shaders.                                                     |
+===============================================================================================*/
 
 using UnityEngine;
 

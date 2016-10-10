@@ -1,9 +1,12 @@
-﻿/*=================================================================
-Project:		AIE FMOD
-Developer:		Cameron Baron
-Company:		FMOD
-Date:			06/09/2016
-==================================================================*/
+﻿/*===============================================================================================
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Cameron Baron                                                   |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                06/09/2016                                                      |
+|   Scene:                      Overworld                                                       |
+|   Fmod Related Scripting:     Yes                                                             |
+|   Description:                Controls the bus volumes using sliders in the main menu.        |
+===============================================================================================*/
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,25 +15,37 @@ public class PauseMenuOptions : MonoBehaviour
 {
     // Public Vars
     public Slider m_masterSlider, m_effectsSlider, m_dialogueSlider;
+    /*===============================================Fmod====================================================
+    |       Names of the buses we want to control: the will all start with "Bus:/" which refers to the      |
+    |                                             Master Bus.                                               |
+    =======================================================================================================*/
     public string m_masterBusPath = "Bus:/";
     public string m_effectsBusPath = "Bus:/SFX";
     public string m_dialogueBusPath = "Bus:/VO";
 
 	// Private Vars
+    /*===============================================Fmod====================================================
+    |                                  Buses are a FMOD Studio variable.                                    |
+    =======================================================================================================*/
     FMOD.Studio.Bus m_masterBus, m_effectsBus, m_dialogueBus;
     float m_masterLevel, m_effectsLevel, m_dialogueLevel;
 
 
 	void Start () 
 	{
-        // Get reference to Master Bus
-        // Master bus can be a blank string and it will get the 
+        /*===============================================Fmod====================================================
+        |             Set the reference to the Master bus and adjust the slider to match the level.             |
+        |   Adding a listener in Unity will allow us to update the bus value when the sliders value is changed. |
+        =======================================================================================================*/
         m_masterBus = FMODUnity.RuntimeManager.GetBus(m_masterBusPath);
         m_masterBus.getFaderLevel(out m_masterLevel);
         m_masterSlider.value = m_masterLevel;
         m_masterSlider.onValueChanged.AddListener(delegate { OnMasterValueChange(); });
 
-        // Get reference to Effects Bus
+        /*===============================================Fmod====================================================
+        |                       Repeat the process for any other bus you wish to control.                       |
+        |                                   Otherwise disable the slider.                                       |
+        =======================================================================================================*/
         if (m_effectsBusPath != "")
         {
             m_effectsBus = FMODUnity.RuntimeManager.GetBus(m_effectsBusPath);
@@ -41,7 +56,6 @@ public class PauseMenuOptions : MonoBehaviour
         else
             m_effectsSlider.enabled = false;
 
-        // Get reference to Dialogue Bus
         if (m_dialogueBusPath != "")
         {
             m_dialogueBus = FMODUnity.RuntimeManager.GetBus(m_dialogueBusPath);
@@ -55,6 +69,10 @@ public class PauseMenuOptions : MonoBehaviour
 	}
     
 	#region Private Functions
+
+        /*===============================================Fmod====================================================
+        |                    When the slider changes value, set teh bus to the same value.                      |
+        =======================================================================================================*/
 
     void OnMasterValueChange()
     {
