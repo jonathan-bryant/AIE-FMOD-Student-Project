@@ -4,7 +4,7 @@
 |   Company:		            Firelight Technologies                                          |
 |   Date:		                20/09/2016                                                      |
 |   Scene:                      Overworld                                                       |
-|   Fmod Related Scripting:     No                                                              |
+|   Fmod Related Scripting:     Yes                                                             |
 |   Description:                The main dropdown menu.                                         |
 ===============================================================================================*/
 using UnityEngine;
@@ -13,13 +13,14 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    [FMODUnity.EventRef]
-    public string m_portLeave;
+    /*===============================================Fmod====================================================
+    |  		Create event instance variables and description, which is used to get the playback position.    |
+    =======================================================================================================*/
+    [FMODUnity.EventRef]    public string m_portLeave;
     FMOD.Studio.EventInstance m_portLeaveEvent;
     FMOD.Studio.EventDescription m_portLeaveDesc;
 
-    [FMODUnity.EventRef]
-    public string m_portArrive;
+    [FMODUnity.EventRef]    public string m_portArrive;
     FMOD.Studio.EventInstance m_portArriveEvent;
     FMOD.Studio.EventDescription m_portArriveDesc;
 
@@ -31,6 +32,9 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
+        /*===============================================Fmod====================================================
+        |  	    	If the string isn't empty, create the instance and assign the description var.              |
+        =======================================================================================================*/
         if (m_portLeave != "")
         {
             m_portLeaveEvent = FMODUnity.RuntimeManager.CreateInstance(m_portLeave);
@@ -213,22 +217,33 @@ public class Menu : MonoBehaviour
     IEnumerator PortLeave(GameObject a_door)
     {
         // Portal leave
+        /*===============================================Fmod====================================================
+        |  		We don't want to start the teleport arrive sound until the teleport leave sound has finished.   |
+        =======================================================================================================*/
         m_portLeaveEvent.start();
         FMOD.Studio.PLAYBACK_STATE playState;
         m_portLeaveEvent.getPlaybackState(out playState);
+
         int eventLength;
         int currentTimelinePos;
         m_portLeaveDesc.getLength(out eventLength);
+        m_portLeaveEvent.getTimelinePosition(out currentTimelinePos);
+        float percent = (1 / (float)eventLength) * currentTimelinePos;
 
-        while (playState == FMOD.Studio.PLAYBACK_STATE.PLAYING)
+        /*===============================================Fmod====================================================
+        |  		We don't want to start the teleport arrive sound until the teleport leave sound has finished.   |
+        =======================================================================================================*/
+        do
         {
-            // Get the percentage of the event that has been played (possibly used for screen fade out?)
+            /*===============================================Fmod====================================================
+            |  		                    Get the percentage of the event that has played.                            |
+            =======================================================================================================*/
             m_portLeaveEvent.getTimelinePosition(out currentTimelinePos);
-            float percent = (1 / (float)eventLength) * currentTimelinePos;
+            percent = (1 / (float)eventLength) * currentTimelinePos;
 
             m_portLeaveEvent.getPlaybackState(out playState);
             yield return null;
-        }
+        } while (percent < 0.8f);
 
         // move player
         CloseMenu();
@@ -242,7 +257,7 @@ public class Menu : MonoBehaviour
         Camera.main.transform.Rotate(Vector3.right * -10.0f);
 
         yield return new WaitForSeconds(0.2f);
-        // Portal arrive
+
         // unload old scene
         for (int i = 0; i < SceneManager.sceneCount; i++)
         {
@@ -254,7 +269,7 @@ public class Menu : MonoBehaviour
         }
 
         // Fade up
-                
+
         m_portArriveEvent.start();
     }
 }
