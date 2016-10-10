@@ -53,6 +53,8 @@ public class O_Elevator : MonoBehaviour
     }
     void Update()
     {
+        m_eventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
+
         if (m_selectedFloor == -1)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -188,6 +190,5 @@ public class O_Elevator : MonoBehaviour
     {
         m_eventParam.setValue(0.0f);
         m_eventInstance.start();
-        FMODUnity.RuntimeManager.AttachInstanceToGameObject(m_eventInstance, transform, null);
     }
 }

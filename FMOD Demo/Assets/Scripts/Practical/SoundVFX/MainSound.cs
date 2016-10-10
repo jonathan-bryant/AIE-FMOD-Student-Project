@@ -61,7 +61,6 @@ public class MainSound : MonoBehaviour
 
 	bool m_isPlaying = false;
 	bool m_dspAdded = false;
-    Light m_bassLight;
 
 	int WINDOWSIZE = 1024;
 
@@ -101,7 +100,6 @@ public class MainSound : MonoBehaviour
     	=======================================================================================================*/
 		PlaySound();
 		StartCoroutine(AddDspToChannel());
-        m_bassLight = GetComponent<Light>();
 	}
 
 	void OnDestroy()
@@ -151,9 +149,6 @@ public class MainSound : MonoBehaviour
 			m_soundTex.Apply();
             
             float newValue = m_fftArray[1] * 10;
-            if (newValue > m_bassLight.intensity)
-                m_bassLight.intensity = newValue;
-            m_bassLight.intensity -= Time.deltaTime * 2;
         }
 	}
 
