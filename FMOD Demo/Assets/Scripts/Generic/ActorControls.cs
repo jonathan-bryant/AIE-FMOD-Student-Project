@@ -44,6 +44,9 @@ public class ActorControls : MonoBehaviour
     public Text m_pressKeyText; //Ui for showing to the user what keys to press to activate object
 
     Quaternion m_cameraBaseRotation;
+    Vector3 m_lastPosition;
+    bool m_moved;
+    Vector3 m_relativity;
 
     void Start()
     {
@@ -63,8 +66,6 @@ public class ActorControls : MonoBehaviour
     }
     void Update()
     {
-        if(m_cc.enabled)
-            m_cc.Move(Vector3.zero);
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             m_isRunning = true;
@@ -143,6 +144,7 @@ public class ActorControls : MonoBehaviour
     }
     void Move()
     {
+        Vector3 posDiff = transform.position - m_lastPosition;
         //Homemade physics
         m_velocity.y -= 9.8f * Time.fixedDeltaTime; //gravity
         m_velocity.x *= m_drag;
@@ -173,34 +175,31 @@ public class ActorControls : MonoBehaviour
             {
                 m_velocity += -transform.forward * (m_isRunning ? m_runSpeed : m_walkSpeed) * Time.fixedDeltaTime;
             }
-            if (Input.GetKey(KeyCode.Space) && m_cc.isGrounded) //Jump only when on the ground
+            if (Input.GetKey(KeyCode.Space) && posDiff.y == 0.0f) //Jump only when on the ground
             {
                 m_velocity += transform.up * m_jumpPower * Time.fixedDeltaTime;
             }
         }
-        if (m_velocity.sqrMagnitude > 0.0f && m_cc.enabled)
+        m_lastPosition = transform.position;
+
+        if (m_velocity.sqrMagnitude > 0.0f)
         {
-            m_cc.Move(m_velocity * Time.fixedDeltaTime);
-            if (m_cc.isGrounded)
+            if (m_cc.enabled)
+                m_cc.Move(m_velocity * Time.fixedDeltaTime);
+        }
+        Vector3 diff = posDiff - m_relativity;
+        Debug.Log(diff.magnitude);
+        if (CurrentVelocity.sqrMagnitude > 0.1f || (m_moved && (diff).magnitude > 0.050f))
+        {
+            m_footstepElapsed += (m_isRunning ? m_runSpeed * 0.75f : m_walkSpeed) * Time.fixedDeltaTime * 0.25f;
+            while (m_footstepElapsed > 1.0f)
             {
-                Vector3 vel = m_velocity;
-                vel.y = 0.0f;
-                float mag = CurrentVelocity.magnitude;
-                if (mag > 0.5f)
-                {
-                    m_footstepElapsed += (m_isRunning ? m_runSpeed * 0.75f : m_walkSpeed) * Time.fixedDeltaTime * 0.25f;
-                    while (m_footstepElapsed > 1.0f)
-                    {
-                        m_footsteps.PlayFootstep(m_isRunning);
-                        m_footstepElapsed -= 1.0f;
-                    }
-                }
-                else
-                {
-                    m_footstepElapsed = 0.0f;
-                }
+                m_footsteps.PlayFootstep(m_isRunning);
+                m_footstepElapsed -= 1.0f;
             }
         }
+        m_relativity = Vector3.zero;
+        m_moved = false;
     }
     void Look()
     {
@@ -337,5 +336,11 @@ public class ActorControls : MonoBehaviour
         rotation.y = 0.0f;
         rotation.z = 0.0f;
         Camera.main.transform.localEulerAngles = rotation;
+    }
+    public void MoveActor(Vector3 a_move)
+    {
+        m_relativity = a_move;
+        m_moved = true;
+        m_cc.Move(a_move);
     }
 }

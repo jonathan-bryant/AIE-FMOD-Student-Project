@@ -113,7 +113,7 @@ public class TreadmillSpawner : MonoBehaviour
     {
         if (a_col.gameObject.tag == "Player")
         {
-            a_col.gameObject.GetComponent<CharacterController>().Move(transform.forward * m_speed * Time.deltaTime);
+            a_col.gameObject.GetComponent<ActorControls>().MoveActor(transform.forward * m_speed * Time.deltaTime);
         }
     }
 }
