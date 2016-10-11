@@ -30,7 +30,7 @@ public class ActorControls : MonoBehaviour
     float m_minThreshold = 0.017f;
 
     bool m_disabledMovement;
-    bool m_disabledMouse;
+    public bool m_disabledMouse;
     bool m_disabledActions;
     bool m_isRunning;
     public bool IsRunning { get { return m_isRunning; } }
@@ -135,7 +135,7 @@ public class ActorControls : MonoBehaviour
     {
         get
         {
-            return m_disabledMouse;
+            return m_disabledActions;
         }
         set
         {
