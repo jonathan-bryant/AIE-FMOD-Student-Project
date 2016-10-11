@@ -18,6 +18,7 @@ public class Elevator : MonoBehaviour
     |   This line is a way to get an existing eventEmitter and control it from script                       |
     =======================================================================================================*/
     public FMODUnity.StudioEventEmitter m_event;
+    public FMODUnity.StudioEventEmitter m_elevatorMusic;
 
     GameObject m_player;
     public ElevatorDoor m_door;
@@ -53,6 +54,8 @@ public class Elevator : MonoBehaviour
                     =======================================================================================================*/
                     m_event.SetParameter("End", 0);
                     m_event.Play();
+                    m_elevatorMusic.SetParameter("End", 0);
+                    m_elevatorMusic.Play();
                 }
             }
             else
@@ -98,6 +101,7 @@ public class Elevator : MonoBehaviour
                     |   This is how you would go about setting parameters of an external eventEmitter.                      |
                     =======================================================================================================*/
                     m_event.SetParameter("End", 1);
+                    m_elevatorMusic.SetParameter("End", 1);
                 }
             }
         }
