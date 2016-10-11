@@ -18,6 +18,7 @@ public class GearShift : ActionObject
     void Start ()
     {
         InitGlow();
+        StopGlow();
 
         m_gear = 1;
         m_startRotation = transform.eulerAngles;
