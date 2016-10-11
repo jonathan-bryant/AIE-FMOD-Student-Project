@@ -15,7 +15,6 @@ public class RainSlider : ActionObject
 {
     public Vector3 m_startPosition;
     public Vector3 m_endPosition;
-    float m_slideValue;
 
     bool m_isActive;
 
@@ -32,7 +31,6 @@ public class RainSlider : ActionObject
     void Start()
     {
         InitGlow();
-        m_slideValue = 0.0f;
 
         float diff = (transform.position - m_startPosition).magnitude / (m_endPosition - m_startPosition).magnitude;
         diff = Mathf.Clamp(diff, 0.0f, 1.0f);
