@@ -51,7 +51,17 @@ public class MusicNoteEmitter : MonoBehaviour
 
     void ParticleSystemEnable(bool a_enable)
     {
-        m_particleSystem.EnableEmission(a_enable);
+		if (m_particleSystem.isPlaying == true) 
+		{
+			m_particleSystem.EnableEmission (!a_enable);
+		}
+
+		if (a_enable == true) {
+			m_particleSystem.Play ();
+		} else {
+			m_particleSystem.Stop ();
+		}
+
     }
 
     void OnValidate()
