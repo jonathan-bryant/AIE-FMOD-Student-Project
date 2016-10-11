@@ -93,7 +93,7 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
     IEnumerator LoadWaitAndOpen()
     {
         /*===============================================Fmod====================================================
-        |                                   Create instane and start playing.                                   |
+        |                                   Create instance and start playing.                                   |
         =======================================================================================================*/
         m_currentEvent = FMODUnity.RuntimeManager.CreateInstance(m_uiHover);
         m_currentEvent.start();
@@ -166,6 +166,9 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
             {
                 m_uiAnimator.Play(m_uiCloseAnim, 0, 0f);
                 PlayForward();
+                /*===============================================Fmod====================================================
+                |                                      Create one shot instance.                                        |
+                =======================================================================================================*/
                 FMODUnity.RuntimeManager.PlayOneShot(m_uiClose, GetComponent<RectTransform>().position);
                 while (m_uiAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
                 {
@@ -185,8 +188,7 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
                     LoadHelper();
                 break;
             case HELPERSTATE.STOPPED:
-                LoadHelper();
-
+                    LoadHelper();
                 break;
             case HELPERSTATE.OPENING:
                 break;
