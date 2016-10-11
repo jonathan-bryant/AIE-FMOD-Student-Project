@@ -14,54 +14,51 @@ using UnityEngine;
 public class MusicNoteEmitter : MonoBehaviour 
 {
     // Public Vars
+    public FMODUnity.StudioEventEmitter m_event;
     public bool m_runEmitter = true;       // On/off switch
-    public GameObject[] m_notes;
-    public float m_spawnTime;
-    public Vector3 m_direction;
-    public bool m_useForward = true;
-
-    public float m_minSize = 0.5f;
-    public float m_maxSize = 1;
+    public ParticleSystem m_particleSystem;
 
     // Private Vars
     float m_timer;
 
 	void Start() 
 	{
-	    if (m_notes.Length < 1)
+        m_particleSystem = GetComponent<ParticleSystem>();
+
+        if (m_event == null)
         {
-            Debug.Log("No notes to spawn!");
+            // turn on emitter and destroy this script
+            ParticleSystemEnable(true);
             Destroy(this);
         }
-
-        if (m_useForward)
-        {
-            m_direction = transform.forward;
-        }
+        
 	}
 	
-	void Update() 
-	{
-        if (m_runEmitter)
-        {
-            m_timer += Time.deltaTime;
-            if (m_timer >= m_spawnTime)
-            {
-                CreateNewNote(Random.Range(0, 3));
-                m_timer = 0.0f;
-            }
-        }
-	}
-
-    public void CreateNewNote(int index)
+	void Update()
     {
-        GameObject note = Instantiate(m_notes[index], transform.position, Quaternion.identity) as GameObject;
-        note.transform.localScale *= Random.Range(m_minSize, m_maxSize);
-        note.GetComponent<Rigidbody>().AddForce(m_direction * 10);
+        if (m_event != null)
+        {
+            if (m_event.IsPlaying())
+                m_runEmitter = true;
+            else
+                m_runEmitter = false;
+        }
+
+        ParticleSystemEnable(m_runEmitter);
     }
 
     #region Private Functions
 
+    void ParticleSystemEnable(bool a_enable)
+    {
+        m_particleSystem.EnableEmission(a_enable);
+    }
+
+    void OnValidate()
+    {
+        if (m_particleSystem != null)
+            ParticleSystemEnable(m_runEmitter);
+    }
 
     #endregion
 }

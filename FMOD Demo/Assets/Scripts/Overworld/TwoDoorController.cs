@@ -80,14 +80,14 @@ public class TwoDoorController : ActionObject
         m_loading = false;
 
         m_collider = GetComponent<SphereCollider>();
-        m_collider.center = Vector3.right * 5.0f;
+        m_collider.center = Vector3.right * 6.0f;
     }
 
     void Update()
     {
         if (!SceneManager.GetSceneByName(m_sceneToLoad).isLoaded)
         {
-            m_collider.center = Vector3.right * 5.0f;
+            m_collider.center = Vector3.right * 6.0f;
             m_loading = false;
         }
     }
@@ -236,7 +236,7 @@ public class TwoDoorController : ActionObject
                 m_loading = false;
             }
 
-            while (m_collider.center.x < 5.0f)
+            while (m_collider.center.x < 6.0f)
             {
                 m_collider.center += Vector3.right * Time.deltaTime;
                 yield return false;
