@@ -16,11 +16,13 @@ public class Menu : MonoBehaviour
     /*===============================================Fmod====================================================
     |  		Create event instance variables and description, which is used to get the playback position.    |
     =======================================================================================================*/
-    [FMODUnity.EventRef]    public string m_portLeave;
+    [FMODUnity.EventRef]
+    public string m_portLeave;
     FMOD.Studio.EventInstance m_portLeaveEvent;
     FMOD.Studio.EventDescription m_portLeaveDesc;
 
-    [FMODUnity.EventRef]    public string m_portArrive;
+    [FMODUnity.EventRef]
+    public string m_portArrive;
     FMOD.Studio.EventInstance m_portArriveEvent;
     FMOD.Studio.EventDescription m_portArriveDesc;
 

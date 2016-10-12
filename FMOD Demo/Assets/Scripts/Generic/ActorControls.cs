@@ -350,4 +350,12 @@ public class ActorControls : MonoBehaviour
         if(a_hit.collider.gameObject.name.Contains("Roof"))
             m_velocity.y = Mathf.Abs(m_velocity.y) * -1.0f;
     }
+
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if (hasFocus)
+        {
+            DisableMouse = false;
+        }
+    }
 }
