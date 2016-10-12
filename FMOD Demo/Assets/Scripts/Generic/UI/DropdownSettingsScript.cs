@@ -31,10 +31,10 @@ public class DropdownSettingsScript : MonoBehaviour
         for (int i = 0; i < m_resolutions.Length; i++)
         {
             m_resolutionDropdown.options.Add(new Dropdown.OptionData(m_resolutions[i].ToString()));
-            if (Screen.currentResolution.ToString() == m_resolutions[i].ToString())
+            if (Screen.currentResolution.GetHashCode() == m_resolutions[i].GetHashCode())
             {
-                Debug.Log("found current res");
                 m_resolutionDropdown.value = i;
+                m_resolutionDropdown.captionText.text = m_resolutions[i].ToString();
             }
         }
         m_resolutionDropdown.onValueChanged.AddListener(delegate { OnResolutionValueChange(); });
