@@ -189,9 +189,9 @@ public class ActorControls : MonoBehaviour
         }
         Vector3 diff = posDiff - m_relativity;
 
-        if (CurrentVelocity.sqrMagnitude > 0.1f || (m_moved && (diff).magnitude > 0.050f))
+        if (m_cc.isGrounded && (CurrentVelocity.sqrMagnitude > 0.1f || (m_moved && (diff).magnitude > 0.050f)))
         {
-            m_footstepElapsed += (m_isRunning ? m_runSpeed * 0.75f : m_walkSpeed) * Time.fixedDeltaTime * 0.25f;
+            m_footstepElapsed += (m_isRunning ? m_runSpeed * 0.7f : m_walkSpeed) * Time.fixedDeltaTime * 0.3f;
             while (m_footstepElapsed > 1.0f)
             {
                 m_footsteps.PlayFootstep(m_isRunning);
