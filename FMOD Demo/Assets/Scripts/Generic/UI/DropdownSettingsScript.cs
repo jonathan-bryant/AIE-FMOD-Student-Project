@@ -43,24 +43,6 @@ public class DropdownSettingsScript : MonoBehaviour
         m_fullscreenToggle.onValueChanged.AddListener(delegate { OnFullscreenToggleChange(); });
     }
 
-
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-    void OnGUI()
-    {
-        string[] names = QualitySettings.names;
-        GUILayout.BeginVertical();
-        int i = 0;
-        while (i < names.Length)
-        {
-            if (GUILayout.Button(names[i]))
-                QualitySettings.SetQualityLevel(i, true);
-
-            i++;
-        }
-        GUILayout.EndVertical();
-    }
-#endif
-
     void OnQualityValueChange()
     {
         QualitySettings.SetQualityLevel(m_qualityDropdown.value);
