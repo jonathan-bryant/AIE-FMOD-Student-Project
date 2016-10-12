@@ -263,7 +263,9 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11460972, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
+    - {fileID: 11468688, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &298953352
@@ -424,7 +426,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0.70710605, z: 0, w: 0.7071075}
   m_LocalPosition: {x: -7.182, y: 0.068, z: -17.989}
   m_LocalScale: {x: 0.49668112, y: 1, z: 0.72939724}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -89.9999, z: 0}
   m_Children:
   - {fileID: 1968329637}
   m_Father: {fileID: 0}
@@ -1044,7 +1046,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0.70710605, z: 0, w: 0.7071075}
   m_LocalPosition: {x: -0.283, y: 0.135, z: -17.965}
   m_LocalScale: {x: 0.4845075, y: 0.4845075, z: 0.4845075}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -89.9999, z: 0}
   m_Children:
   - {fileID: 1526209582}
   m_Father: {fileID: 0}
@@ -1274,6 +1276,8 @@ MonoBehaviour:
   Emitters:
   - Target: {fileID: 1568361420}
     Params:
+    - Name: Colour
+      Value: 0.7
     - Name: Intensity
       Value: 10
   TriggerEvent: 3
@@ -1369,6 +1373,8 @@ MonoBehaviour:
   Emitters:
   - Target: {fileID: 1568361420}
     Params:
+    - Name: Colour
+      Value: 3.5
     - Name: Intensity
       Value: 50
   TriggerEvent: 3
@@ -1388,7 +1394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: event:/Basic Rooms/Interactive Music/S. Gallery Music
+  Event: event:/Basic Rooms/Interactive Music/Danger Room Music
   PlayEvent: 1
   StopEvent: 2
   CollisionTag: 
@@ -1396,11 +1402,11 @@ MonoBehaviour:
   TriggerOnce: 0
   Preload: 0
   Params:
-  - Name: Intensity
+  - Name: Colour
     Value: 0
   OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1595403982 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 157982, guid: 879a4cd5e3c525042abfa491e694a8dd, type: 2}
@@ -1508,6 +1514,8 @@ MonoBehaviour:
   Emitters:
   - Target: {fileID: 1568361420}
     Params:
+    - Name: Colour
+      Value: 2.5
     - Name: Intensity
       Value: 30
   TriggerEvent: 3
@@ -1536,11 +1544,71 @@ Transform:
   m_LocalRotation: {x: 0, y: -0.70710605, z: 0, w: 0.7071075}
   m_LocalPosition: {x: 4.283, y: 0.046, z: -18.134}
   m_LocalScale: {x: 0.7797122, y: 1, z: 0.47382224}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -89.9999, z: 0}
   m_Children:
   - {fileID: 1440020358}
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!1 &1777830931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1777830934}
+  - 65: {fileID: 1777830933}
+  - 114: {fileID: 1777830932}
+  m_Layer: 0
+  m_Name: Grey Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1777830932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1777830931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Emitters:
+  - Target: {fileID: 1568361420}
+    Params:
+    - Name: Colour
+      Value: 0
+  TriggerEvent: 3
+  CollisionTag: Player
+--- !u!65 &1777830933
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1777830931}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.582432, y: 0.7949857, z: 2.314865}
+  m_Center: {x: 0.10203457, y: -0.102507144, z: -0.49387455}
+--- !u!4 &1777830934
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1777830931}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.07, y: 0.54, z: -11.37}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
 --- !u!1 &1968329636
 GameObject:
   m_ObjectHideFlags: 0
@@ -1632,6 +1700,8 @@ MonoBehaviour:
   Emitters:
   - Target: {fileID: 1568361420}
     Params:
+    - Name: Colour
+      Value: 1.5
     - Name: Intensity
       Value: 30
   TriggerEvent: 3
@@ -1660,8 +1730,8 @@ Transform:
   m_LocalRotation: {x: 0, y: -0.70710605, z: 0, w: 0.7071075}
   m_LocalPosition: {x: -0.275, y: 0.12, z: -18.005}
   m_LocalScale: {x: 0.49156243, y: 0.49156243, z: 0.49156243}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -89.9999, z: 0}
   m_Children:
   - {fileID: 1646227102}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
