@@ -23,7 +23,6 @@ public class TreadmillSpawner : MonoBehaviour
     int m_index;
 
     List<GameObject> m_floors;
-    List<GameObject> m_walls;
 
     public Text m_type;
     public Text m_paramValue;
@@ -34,6 +33,10 @@ public class TreadmillSpawner : MonoBehaviour
     {
         m_actor = Camera.main.transform.parent;
         m_floors = new List<GameObject>();
+        for (int i = 0; i < m_numOfTiles; ++i)
+        {
+            AddTrack(transform.position + transform.forward * (m_floorTextures[0].transform.localScale.z * 2.0f) * i);
+        }
     }
     void Update()
     {
@@ -78,18 +81,13 @@ public class TreadmillSpawner : MonoBehaviour
     }
     void MoveTreadmill()
     {
-        if (m_floors.Count == 0)
+        //Move Tiles
+        for (int i = 0; i < m_floors.Count; ++i)
         {
-            AddTrack(Vector3.zero);
-        }
-        else
-        {
-            for (int i = 0; i < m_floors.Count; ++i)
-            {
-                m_floors[i].transform.position += transform.forward * m_speed * Time.deltaTime;
-            }
+            m_floors[i].transform.position += transform.forward * m_speed * Time.deltaTime;
         }
 
+        //Play particle emitter
         if ((transform.position - m_floors[0].transform.position).magnitude + (m_floors[0].transform.localScale.z * 0.5f) >= 6.0f)
         {
             if (m_floors[0].tag == "Grass")
@@ -97,6 +95,8 @@ public class TreadmillSpawner : MonoBehaviour
                 m_grassParticleEmitter.Play();
             }
         }
+
+        //Spawn new tiles
         float diff = (transform.position - m_floors[m_floors.Count - 1].transform.position).magnitude;
         if (diff >= m_floors[m_floors.Count - 1].transform.localScale.z * 2.0f)
         {
