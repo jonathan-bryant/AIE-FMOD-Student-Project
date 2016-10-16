@@ -247,12 +247,18 @@ public class ActorControls : MonoBehaviour
                 actionObject = newObj.GetComponentInParent<ActionObject>();
                 if (!actionObject)
                 {
+                    if(m_actionObject)
+                        m_actionObject.ActionReleased(gameObject, KeyCode.None);
                     m_actionObject = null;
                     if (m_pressKeyText)
                         m_pressKeyText.gameObject.SetActive(false);
                     return;
                 }
             }
+
+            if (m_actionObject && m_actionObject != actionObject)
+                m_actionObject.ActionReleased(gameObject, KeyCode.None);
+
             m_actionObject = actionObject;
             if (m_actionObject.InQuestion == 0)
                 m_actionObject.InQuestion = 1;
@@ -303,6 +309,7 @@ public class ActorControls : MonoBehaviour
         //If there is no raycast and there is an actionObject, disable it's outline
         if (m_actionObject)
         {
+            m_actionObject.ActionReleased(gameObject, KeyCode.None);
             if (m_actionObject.InQuestion == 1)
                 m_actionObject.InQuestion = 0;
             m_actionObject = null;
