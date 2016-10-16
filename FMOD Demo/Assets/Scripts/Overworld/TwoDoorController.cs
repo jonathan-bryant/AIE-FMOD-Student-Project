@@ -137,6 +137,8 @@ public class TwoDoorController : ActionObject
 
     void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Player"))
+            return;
         float dotToCamera = Vector3.Dot(transform.right, (other.transform.position - transform.position).normalized);
         // If the player enters the trigger from inside the room, automatically open the door.
         if (dotToCamera < 0)
@@ -148,6 +150,8 @@ public class TwoDoorController : ActionObject
 
     void OnTriggerExit(Collider other)
     {
+        if (!other.CompareTag("Player"))
+            return;
         //Wait for door to close then unload
         StartCoroutine(WaitForDoorToOpenThenClose());
     }
