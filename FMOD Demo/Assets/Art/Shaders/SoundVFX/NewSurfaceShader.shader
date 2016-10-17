@@ -42,7 +42,7 @@
 			if (v.vertex.y < -0.1)
 			{
 				//if (_Amount < 0.2)
-					_Amount *= _Amount * 10;
+					_Amount *= _Amount * 15;
 				if (_Amount > -v.vertex.y)
 					v.vertex.y -= _Amount;
 			}
@@ -52,9 +52,11 @@
 		void surf (Input IN, inout SurfaceOutputStandard o) 
 		{
 			half4 c = tex2D (_MainTex, IN.uv_MainTex);
-
-			if (_Amount < 0.5)
-				o.Albedo = lerp(float3(0, 0, 1), float3(1, 1, 0), _Amount * 2);
+			
+			if (_Amount < 0.4)
+				o.Albedo = float3( 0, 0, 1);
+			else if (_Amount < 0.7)
+				o.Albedo = lerp(float3(0, 0.75, 1), float3(1, 1, 0), _Amount);
 			else
 				o.Albedo = lerp(float3(1, 1, 0), float3(1, 1, 1), _Amount);
 			// Metallic and smoothness come from slider variables
