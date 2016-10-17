@@ -81,6 +81,7 @@ public class Target : MonoBehaviour {
 
             if (m_Parent)
                 m_Parent.Hit(this);
+            GetComponentInChildren<ParticleSystem>().Play();
         }
     }
 }
