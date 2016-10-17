@@ -11,12 +11,15 @@ GameObject:
   - 33: {fileID: 3334660}
   - 23: {fileID: 2355002}
   - 135: {fileID: 13587914}
-  m_Layer: 0
+  - 108: {fileID: 10828970}
+  - 114: {fileID: 11481190}
+  - 114: {fileID: 11431866}
+  m_Layer: 9
   m_Name: P Sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 64
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &496738
 Transform:
@@ -24,9 +27,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122700}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.69, y: 6.59, z: -0.26646376}
+  m_LocalRotation: {x: 0, y: 0.9570155, z: 0, w: 0.2900368}
+  m_LocalPosition: {x: -0.74670345, y: 2.810251, z: 1.4360526}
   m_LocalScale: {x: 2.053672, y: 2.053672, z: 2.053672}
+  m_LocalEulerAnglesHint: {x: 0, y: 146.2797, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -40,7 +44,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: dd9c2a3c566bf9a4e9e349c60e52d0ad, type: 2}
+  - {fileID: 2100000, guid: 3a433096c20a74a4fbedbe17576ce9b3, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -63,6 +67,78 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122700}
   m_Mesh: {fileID: 4300000, guid: 01ce40a3f7697d0469a5bc841dbc6d2d, type: 3}
+--- !u!108 &10828970
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122700}
+  m_Enabled: 1
+  serializedVersion: 6
+  m_Type: 2
+  m_Color: {r: 1, g: 0.7655171, b: 0, a: 1}
+  m_Intensity: 3.67
+  m_Range: 10.22
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294966783
+  m_Lightmapping: 4
+  m_BounceIntensity: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11431866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Shooting Gallery/Planet 1
+  PlayEvent: 1
+  StopEvent: 2
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 5.8
+--- !u!114 &11481190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5513aed643e40f546aeefb2a3639b2ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_points: 20
+  m_manager: {fileID: 0}
+  m_target: {fileID: 11428634, guid: e37e62beaa937fe409fee6ec992c7864, type: 2}
+  m_numOfTargets: 10
+  m_distanceFromCenter: 3
+  m_targetSpeed: 0.1
 --- !u!135 &13587914
 SphereCollider:
   m_ObjectHideFlags: 1

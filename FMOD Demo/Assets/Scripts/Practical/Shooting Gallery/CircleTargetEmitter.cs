@@ -37,7 +37,6 @@ public class CircleTargetEmitter : BaseTarget
         }
         Debug.DrawRay(transform.position, transform.forward, Color.red);
     }
-
     void Update()
     {
         if (!m_active)
@@ -57,6 +56,8 @@ public class CircleTargetEmitter : BaseTarget
         if (!m_active)
             return;
         m_manager.AddScore(m_points);
+        if(a_target.gameObject.transform.GetChild(0))
+            a_target.gameObject.transform.GetChild(0).parent = null;
         Destroy(a_target.gameObject);
         m_targets.Remove(a_target);
     }
