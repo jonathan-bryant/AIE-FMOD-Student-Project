@@ -33,7 +33,6 @@ public class Pedal : ActionObject
         if (a_key == m_actionKeys[0])
         {
             m_acceleration = Mathf.Min(m_acceleration + (Time.deltaTime * 4.0f), 4.0f);
-            Debug.Log(m_acceleration);
         }
         else if (a_key == m_actionKeys[1])
         {
@@ -49,7 +48,6 @@ public class Pedal : ActionObject
         if (a_key == m_actionKeys[0])
         {
             m_acceleration = Mathf.Min(m_acceleration + (Time.deltaTime * 4.0f), 4.0f);
-            Debug.Log(m_acceleration);
         }
         else if (a_key == m_actionKeys[1])
         {
