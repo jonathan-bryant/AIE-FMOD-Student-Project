@@ -20,6 +20,7 @@ public class ActorControls : MonoBehaviour
     public float m_jumpPower;
     public float m_selectDistance = 4.0f;   //The max distance the actor can interact with an ActionObject in the scene
     public GameObject m_gun;    //Used in the shooting gallery only
+    public int m_actionPressPerSecond = 4;    //The max number of times per second the action button will register.
 
     CharacterController m_cc;
     Camera m_camera;
@@ -227,6 +228,8 @@ public class ActorControls : MonoBehaviour
     {
         if (DisableActions)
             return;
+
+        StartCoroutine(ActionPressLimit());
         //Raycast
         RaycastHit ray;
         int layerMask = (1 << 2) | (1 << 11);
@@ -363,5 +366,12 @@ public class ActorControls : MonoBehaviour
         {
             DisableMouse = false;
         }
+    }
+
+    IEnumerator ActionPressLimit()
+    {
+        DisableActions = true;
+        yield return new WaitForSeconds(1.0f/(float)m_actionPressPerSecond);
+        DisableActions = false;
     }
 }
