@@ -79,6 +79,7 @@ public class Target : MonoBehaviour {
             //--------------------------------------------------------------------
             m_hitSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject, null));
 
+            transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
             if (m_Parent)
                 m_Parent.Hit(this);
         }
