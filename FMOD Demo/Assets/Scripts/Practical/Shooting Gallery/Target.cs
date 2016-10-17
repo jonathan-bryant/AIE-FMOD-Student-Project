@@ -57,6 +57,7 @@ public class Target : MonoBehaviour {
         //This function is used to set the ParameterInstance value.
         //--------------------------------------------------------------------
         m_hitMaterial.setValue(m_material);
+        m_hitSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject, null));
 
     }
 	
@@ -72,14 +73,8 @@ public class Target : MonoBehaviour {
             //Calling EventInstance.start() will start the event.
             //--------------------------------------------------------------------
             m_hitSound.start();
-            //---------------------------------Fmod-------------------------------
-            //A gameobject needs to be attached to the instance, so the sound can 
-            //follow the gameobject. Everytime the EventInstance.start() function 
-            //is called, the gameobject needs to be reattached.
-            //--------------------------------------------------------------------
-            m_hitSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject, null));
 
-            transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
+            transform.GetChild(0).gameObject.SetActive(true);
             if (m_Parent)
                 m_Parent.Hit(this);
         }

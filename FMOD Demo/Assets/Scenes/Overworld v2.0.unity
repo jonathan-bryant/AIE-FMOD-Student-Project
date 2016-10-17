@@ -66,7 +66,7 @@ LightmapSettings:
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
     m_ReflectionCompression: 2
-  m_LightingDataAsset: {fileID: 112000066, guid: 9852ad6d7650fbd42a2591afec73cf27,
+  m_LightingDataAsset: {fileID: 112000066, guid: 05353b4b4006f064ca036b247bd22bdf,
     type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &4
@@ -443,6 +443,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 0, b: 0, a: 0}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0
   m_upperDoor: {fileID: 1316410883}
   m_lowerDoor: {fileID: 1711553259}
   m_sceneToLoad: 
@@ -687,6 +688,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 1, b: 1, a: 0}
   m_localClickDirection: {x: 0, y: -0.059, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0
   m_pillar: {fileID: 1927747163}
   m_elevator: {fileID: 1498329022}
   m_floor: 1
@@ -750,7 +752,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.70710635, z: 0, w: 0.7071073}
   m_LocalPosition: {x: 0.017, y: 1.191, z: 9.171}
   m_LocalScale: {x: 0.4, y: 2.2, z: 1.75}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 89.9999, z: 0}
   m_Children:
   - {fileID: 1537954055}
   - {fileID: 1225676503}
@@ -780,6 +782,7 @@ MonoBehaviour:
   m_newColor: {r: 1, g: 1, b: 1, a: 1}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0.5
   m_upperDoor: {fileID: 1225676502}
   m_lowerDoor: {fileID: 1537954054}
   m_sceneToLoad: Scatter Room
@@ -1681,6 +1684,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 0, b: 0, a: 0}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0
   m_upperDoor: {fileID: 2133615518}
   m_lowerDoor: {fileID: 2127251272}
   m_sceneToLoad: 
@@ -2049,6 +2053,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 0, b: 0, a: 0}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0
   m_upperDoor: {fileID: 2102280775}
   m_lowerDoor: {fileID: 1013132463}
   m_sceneToLoad: 
@@ -2705,6 +2710,14 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2353060, guid: 250239bf5798253449baa3b4ab781f86, type: 2}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 161764, guid: 250239bf5798253449baa3b4ab781f86, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6588574, guid: 250239bf5798253449baa3b4ab781f86, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 250239bf5798253449baa3b4ab781f86, type: 2}
@@ -2860,6 +2873,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 1, b: 1, a: 0}
   m_localClickDirection: {x: 0, y: 0, z: 0.0536}
   m_glowOnce: 0
+  m_pressPerSecond: 0
   m_elevator: {fileID: 1498329022}
   m_floor: 0
   m_floorY: 1.459
@@ -3594,7 +3608,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.3826858, z: 0, w: -0.9238786}
   m_LocalPosition: {x: -6.486, y: 1.191, z: -6.506}
   m_LocalScale: {x: 0.4, y: 2.2, z: 1.75}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -45.000298, z: 0}
   m_Children:
   - {fileID: 915044148}
   - {fileID: 174028389}
@@ -3624,6 +3638,7 @@ MonoBehaviour:
   m_newColor: {r: 1, g: 1, b: 1, a: 1}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0.5
   m_upperDoor: {fileID: 915044147}
   m_lowerDoor: {fileID: 174028388}
   m_sceneToLoad: Sound Spin Room
@@ -4166,7 +4181,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.38268292, z: 0, w: 0.9238798}
   m_LocalPosition: {x: -6.509, y: 1.203, z: 6.472}
   m_LocalScale: {x: 0.39999992, y: 2.2, z: 1.7499998}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 44.999897, z: 0}
   m_Children:
   - {fileID: 1091987271}
   - {fileID: 1055278982}
@@ -4196,6 +4211,7 @@ MonoBehaviour:
   m_newColor: {r: 1, g: 1, b: 1, a: 1}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0.5
   m_upperDoor: {fileID: 1055278981}
   m_lowerDoor: {fileID: 1091987270}
   m_sceneToLoad: Event Cone Angle-Orientation Room
@@ -4335,7 +4351,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.70710635, z: 0, w: 0.7071073}
   m_LocalPosition: {x: 0.017, y: 1.191, z: 9.171}
   m_LocalScale: {x: 0.4, y: 2.2, z: 1.75}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 89.9999, z: 0}
   m_Children:
   - {fileID: 1016581859}
   - {fileID: 1527734304}
@@ -4365,6 +4381,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 0, b: 0, a: 0}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0.5
   m_upperDoor: {fileID: 1016581858}
   m_lowerDoor: {fileID: 1527734303}
   m_sceneToLoad: SoundVFX
@@ -4584,7 +4601,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.9238791, z: 0, w: 0.3826846}
   m_LocalPosition: {x: 6.478, y: 1.191, z: 6.504}
   m_LocalScale: {x: 0.39999995, y: 2.2, z: 1.75}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 134.9999, z: 0}
   m_Children:
   - {fileID: 740299086}
   - {fileID: 929920274}
@@ -4614,6 +4631,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 0, b: 0, a: 0}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0.5
   m_upperDoor: {fileID: 929920273}
   m_lowerDoor: {fileID: 740299085}
   m_sceneToLoad: Transceiver Room
@@ -5208,7 +5226,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.9238791, z: 0, w: 0.3826846}
   m_LocalPosition: {x: 6.478, y: 1.191, z: 6.504}
   m_LocalScale: {x: 0.39999995, y: 2.2, z: 1.75}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 134.9999, z: 0}
   m_Children:
   - {fileID: 1054075559}
   - {fileID: 34674331}
@@ -5238,6 +5256,7 @@ MonoBehaviour:
   m_newColor: {r: 1, g: 1, b: 1, a: 1}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0.5
   m_upperDoor: {fileID: 1054075558}
   m_lowerDoor: {fileID: 34674330}
   m_sceneToLoad: Custom Distance Attenuation Room
@@ -5314,6 +5333,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 0, b: 0, a: 0}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0.5
   m_upperDoor: {fileID: 555819388}
   m_lowerDoor: {fileID: 1705899017}
   m_sceneToLoad: Volume Control Room
@@ -5360,7 +5380,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.9238803, z: 0, w: -0.38268167}
   m_LocalPosition: {x: 6.481, y: 1.191, z: -6.483}
   m_LocalScale: {x: 0.4, y: 2.2, z: 1.75}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -135.0002, z: 0}
   m_Children:
   - {fileID: 1914007280}
   - {fileID: 1425949221}
@@ -5390,6 +5410,7 @@ MonoBehaviour:
   m_newColor: {r: 1, g: 1, b: 1, a: 1}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0.5
   m_upperDoor: {fileID: 1914007279}
   m_lowerDoor: {fileID: 1425949220}
   m_sceneToLoad: Surfaces Room
@@ -5887,6 +5908,30 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2354274, guid: 784668a93491bf1428484a78b1962b31, type: 2}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307772, guid: 784668a93491bf1428484a78b1962b31, type: 2}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2389784, guid: 784668a93491bf1428484a78b1962b31, type: 2}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337872, guid: 784668a93491bf1428484a78b1962b31, type: 2}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366866, guid: 784668a93491bf1428484a78b1962b31, type: 2}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2396936, guid: 784668a93491bf1428484a78b1962b31, type: 2}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 784668a93491bf1428484a78b1962b31, type: 2}
   m_IsPrefabParent: 0
@@ -5931,6 +5976,7 @@ MonoBehaviour:
   m_newColor: {r: 1, g: 1, b: 1, a: 1}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0.5
   m_upperDoor: {fileID: 389338785}
   m_lowerDoor: {fileID: 1389728388}
   m_sceneToLoad: Player Parameter Room
@@ -7004,7 +7050,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.38268292, z: 0, w: 0.9238798}
   m_LocalPosition: {x: -6.509, y: 1.2030001, z: 6.472}
   m_LocalScale: {x: 0.39999992, y: 2.2, z: 1.7499998}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 44.999897, z: 0}
   m_Children:
   - {fileID: 547556089}
   - {fileID: 1133575707}
@@ -7034,6 +7080,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 0, b: 0, a: 0}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0.5
   m_upperDoor: {fileID: 547556088}
   m_lowerDoor: {fileID: 1133575706}
   m_sceneToLoad: Shooting Gallery
@@ -7684,7 +7731,7 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1064351589}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: 20256549d06908c4e9a443dcee8c91cd, type: 2}
@@ -7720,7 +7767,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0612861, y: 1.0116799, z: 1.0612861}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
   m_Children: []
   m_Father: {fileID: 1446678493}
   m_RootOrder: 0
@@ -8343,6 +8390,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 0, b: 0, a: 0}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0
   m_upperDoor: {fileID: 99632419}
   m_lowerDoor: {fileID: 627392432}
   m_sceneToLoad: 
@@ -10435,7 +10483,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0.21058072, z: 0, w: 0.9775765}
   m_LocalPosition: {x: 0, y: 0, z: 8.248}
   m_LocalScale: {x: 0.01858782, y: 0.018587815, z: 0.018587815}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 24.3128, z: 0}
   m_Children:
   - {fileID: 1000447639}
   m_Father: {fileID: 260883664}
@@ -10739,7 +10787,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0.0000018179414}
   m_LocalPosition: {x: 9.18, y: 1.191, z: 0.008}
   m_LocalScale: {x: 0.4, y: 2.2, z: 1.75}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 179.9998, z: 0}
   m_Children:
   - {fileID: 618953068}
   - {fileID: 1202740174}
@@ -10769,6 +10817,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 0, b: 0, a: 0}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0.5
   m_upperDoor: {fileID: 618953067}
   m_lowerDoor: {fileID: 1202740173}
   m_sceneToLoad: Snapshot Room
@@ -11342,7 +11391,7 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1403526503}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: 0f2f6cec1ba6adc4eb495e12c2648aff, type: 2}
@@ -11864,6 +11913,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 1, b: 1, a: 0}
   m_localClickDirection: {x: 0, y: 0, z: 0.0536}
   m_glowOnce: 0
+  m_pressPerSecond: 0
   m_elevator: {fileID: 1498329022}
   m_floor: 2
   m_floorY: 12.359
@@ -12038,7 +12088,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.70710856, z: 0, w: -0.7071051}
   m_LocalPosition: {x: -0.001, y: 1.191, z: -9.187}
   m_LocalScale: {x: 0.4, y: 2.2, z: 1.75}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90.0003, z: 0}
   m_Children:
   - {fileID: 1321132038}
   - {fileID: 542790072}
@@ -12068,6 +12118,7 @@ MonoBehaviour:
   m_newColor: {r: 1, g: 1, b: 1, a: 1}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0.5
   m_upperDoor: {fileID: 542790071}
   m_lowerDoor: {fileID: 1321132037}
   m_sceneToLoad: Interactive Music Room
@@ -12241,6 +12292,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 0, b: 0, a: 0}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0
   m_upperDoor: {fileID: 1991963135}
   m_lowerDoor: {fileID: 28208417}
   m_sceneToLoad: 
@@ -12412,7 +12464,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.9238791, z: 0, w: 0.3826846}
   m_LocalPosition: {x: 6.478, y: 1.191, z: 6.504}
   m_LocalScale: {x: 0.39999995, y: 2.2, z: 1.75}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 134.9999, z: 0}
   m_Children:
   - {fileID: 406993830}
   - {fileID: 539656172}
@@ -12442,6 +12494,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 0, b: 0, a: 0}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0.5
   m_upperDoor: {fileID: 406993829}
   m_lowerDoor: {fileID: 539656171}
   m_sceneToLoad: Thunder Dome
@@ -12462,6 +12515,11 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!224 &1601387921 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 22416304, guid: ef63cf7b21b591940b8edd71ea948824,
+    type: 2}
+  m_PrefabInternal: {fileID: 1044861212}
 --- !u!1 &1606647250
 GameObject:
   m_ObjectHideFlags: 0
@@ -12891,7 +12949,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.70710635, z: 0, w: 0.7071073}
   m_LocalPosition: {x: 0.017, y: 1.191, z: 9.171}
   m_LocalScale: {x: 0.4, y: 2.2, z: 1.75}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 89.9999, z: 0}
   m_Children:
   - {fileID: 809860436}
   - {fileID: 1212512839}
@@ -12921,6 +12979,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 0, b: 0, a: 0}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0.5
   m_upperDoor: {fileID: 809860435}
   m_lowerDoor: {fileID: 1212512838}
   m_sceneToLoad: Sound Module Room
@@ -12941,6 +13000,82 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1668158695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1668158696}
+  - 33: {fileID: 1668158699}
+  - 64: {fileID: 1668158698}
+  - 23: {fileID: 1668158697}
+  m_Layer: 5
+  m_Name: Plane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1668158696
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1668158695}
+  m_LocalRotation: {x: 0.7195386, y: 0, z: 0, w: -0.69445246}
+  m_LocalPosition: {x: -61, y: -100, z: 1114}
+  m_LocalScale: {x: 84.186874, y: 12.615106, z: 77.20477}
+  m_LocalEulerAnglesHint: {x: -87.9673, y: -1980, z: -1980}
+  m_Children: []
+  m_Father: {fileID: 1601387921}
+  m_RootOrder: 18
+--- !u!23 &1668158697
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1668158695}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!64 &1668158698
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1668158695}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!33 &1668158699
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1668158695}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1669675733
 GameObject:
   m_ObjectHideFlags: 0
@@ -13418,6 +13553,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 1, b: 1, a: 0}
   m_localClickDirection: {x: 0, y: -0.059, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0
   m_pillar: {fileID: 1927747163}
   m_elevator: {fileID: 1498329022}
   m_floor: 2
@@ -13543,6 +13679,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 1, b: 1, a: 0}
   m_localClickDirection: {x: 0, y: 0, z: 0.0536}
   m_glowOnce: 0
+  m_pressPerSecond: 0
   m_elevator: {fileID: 1498329022}
   m_floor: 1
   m_floorY: 6.76
@@ -13872,26 +14009,6 @@ Prefab:
       propertyPath: m_pressKeyText
       value: 
       objectReference: {fileID: 839815660}
-    - target: {fileID: 11475310, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11487804, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11423084, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11453076, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11421214, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
   m_IsPrefabParent: 0
@@ -14504,6 +14621,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 0, b: 0, a: 0}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0
   m_upperDoor: {fileID: 924577742}
   m_lowerDoor: {fileID: 588557786}
   m_sceneToLoad: 
@@ -14765,7 +14883,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0.0000018179414}
   m_LocalPosition: {x: 9.18, y: 1.191, z: 0.008}
   m_LocalScale: {x: 0.4, y: 2.2, z: 1.75}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 179.9998, z: 0}
   m_Children:
   - {fileID: 1077751063}
   - {fileID: 428969414}
@@ -14795,6 +14913,7 @@ MonoBehaviour:
   m_newColor: {r: 1, g: 1, b: 1, a: 1}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0.5
   m_upperDoor: {fileID: 428969413}
   m_lowerDoor: {fileID: 1077751062}
   m_sceneToLoad: Panning Room
@@ -15005,7 +15124,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.38268292, z: 0, w: 0.9238798}
   m_LocalPosition: {x: -6.509, y: 1.2030001, z: 6.472}
   m_LocalScale: {x: 0.39999992, y: 2.2, z: 1.7499998}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 44.999897, z: 0}
   m_Children:
   - {fileID: 756417914}
   - {fileID: 1227670025}
@@ -15035,6 +15154,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 0, b: 0, a: 0}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0.5
   m_upperDoor: {fileID: 1227670024}
   m_lowerDoor: {fileID: 756417913}
   m_sceneToLoad: Programmer Sound Room
@@ -15535,6 +15655,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 0, b: 0, a: 0}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0
   m_upperDoor: {fileID: 1974531199}
   m_lowerDoor: {fileID: 830638754}
   m_sceneToLoad: 
@@ -15719,7 +15840,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: -0.0062340093, z: 0, w: 0.99998057}
   m_LocalPosition: {x: 0, y: 0, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0.7144, z: 0}
   m_Children: []
   m_Father: {fileID: 622130925}
   m_RootOrder: 0
@@ -16019,6 +16140,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 1, b: 1, a: 0}
   m_localClickDirection: {x: 0, y: -0.059, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0
   m_pillar: {fileID: 1927747163}
   m_elevator: {fileID: 1498329022}
   m_floor: 0
@@ -16665,6 +16787,7 @@ MonoBehaviour:
   m_newColor: {r: 0, g: 0, b: 0, a: 0}
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
+  m_pressPerSecond: 0
   m_upperDoor: {fileID: 944299770}
   m_lowerDoor: {fileID: 687206613}
   m_sceneToLoad: 

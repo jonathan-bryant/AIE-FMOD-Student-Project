@@ -11,13 +11,14 @@ GameObject:
   - 198: {fileID: 19862340}
   - 199: {fileID: 19928184}
   - 114: {fileID: 11486492}
+  - 114: {fileID: 11416582}
   m_Layer: 0
   m_Name: Music Note Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &174952
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174952}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: -11.286248, y: 12.994158, z: 1.7319664}
+  m_LocalPosition: {x: -7.54121, y: 12.80033, z: 5.4769754}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_Children:
@@ -97,6 +98,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174952}
   m_Mesh: {fileID: 4300000, guid: d7a5b21778d3dd44b8ffe2f100e249b2, type: 3}
+--- !u!114 &11416582
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fbf4bc8f34cc0d42910a28784c99beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_timer: 2
 --- !u!114 &11428634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,7 +199,7 @@ ParticleSystem:
   randomSeed: 0
   looping: 0
   prewarm: 1
-  playOnAwake: 0
+  playOnAwake: 1
   moveWithTransform: 1
   scalingMode: 1
   InitialModule:
@@ -357,7 +370,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 1
     startSize:
-      scalar: 1
+      scalar: 1.5
       maxCurve:
         serializedVersion: 2
         m_Curve:

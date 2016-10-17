@@ -64,6 +64,7 @@ public class ShootingGalleryManager : MonoBehaviour
         {
             Reset();
             m_mainSpeaker.Play();
+            m_mainSpeaker.SetRound(m_nextRoomStartIndex + 1);
             m_active = 1;
         }
         else
@@ -87,6 +88,7 @@ public class ShootingGalleryManager : MonoBehaviour
     }
     void Reset()
     {
+        m_nextRoomStartIndex = 0;
         m_active = 0;
         //Clear score
         ClearScore();
@@ -152,8 +154,9 @@ public class ShootingGalleryManager : MonoBehaviour
         {
             if (m_currentTrackIndex == m_trackHolder.m_roomStartIndices[m_nextRoomStartIndex])
             {
-                m_nextRoomStartIndex = (++m_nextRoomStartIndex) % m_trackHolder.m_roomStartIndices.Length;
+                Mathf.Min(m_nextRoomStartIndex++, m_trackHolder.m_roomStartIndices.Length - 1);
                 m_mainSpeaker.SetRound(m_nextRoomStartIndex + 1);
+                m_nextRoomStartIndex %= 2;
             }
         }
     }

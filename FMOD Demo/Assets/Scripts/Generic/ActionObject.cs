@@ -59,6 +59,8 @@ public class ActionObject : MonoBehaviour
     public bool m_glowOnce;
     bool m_stoppingGlow;
 
+    public float m_pressPerSecond = 0.0f;
+
     void Start()
     {
         InitGlow();
