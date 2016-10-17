@@ -353,7 +353,6 @@ public class ActorControls : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit a_hit)
     {
-        Debug.Log(a_hit.collider.gameObject.name);
         if(a_hit.collider.gameObject.name.Contains("Roof"))
             m_velocity.y = Mathf.Abs(m_velocity.y) * -1.0f;
     }

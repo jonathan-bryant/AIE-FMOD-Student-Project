@@ -13,11 +13,12 @@ using System.Collections;
 
 public class Panning : ActionObject
 {
+    public GameObject m_tvs;
+    public GameObject m_objects;
+    public ParticleSystem[] m_particles;
     bool m_is3D;
     float m_elapsed;
     bool m_isActive;
-    public GameObject m_tvs;
-    public GameObject m_objects;
     float m_originalFOV, m_originalNear;
 
     void Start()
@@ -32,6 +33,10 @@ public class Panning : ActionObject
         for (int i = 0; i < m_tvs.transform.childCount; ++i)
         {
             m_tvs.transform.GetChild(i).GetChild(0).GetChild(0).gameObject.SetActive(false);
+        }
+        foreach (ParticleSystem ps in m_particles)
+        {
+            ps.EnableEmission(false);
         }
     }
     void Update()
@@ -86,20 +91,26 @@ public class Panning : ActionObject
                 }
 
                 Vector3 pos = m_objects.transform.localPosition;
-                if (!m_is3D)
+                pos.x = !m_is3D ? -20.0f : 0.0f;
+
+                foreach (ParticleSystem ps in m_particles)
                 {
-                    pos.x = -20.0f;
+                    ps.EnableEmission(!m_is3D);
                 }
-                else
-                {
-                    pos.x = 0.0f;
-                }
+
                 m_objects.transform.localPosition = pos;
                 if (m_is3D)
                 {
                     for (int i = 0; i < m_objects.transform.childCount; ++i)
                     {
                         m_objects.transform.GetChild(i).GetComponent<Panning_Robot>().FacePlayer();
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < m_objects.transform.childCount; ++i)
+                    {
+                        m_objects.transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<ParticleSystem>().EnableEmission(false);
                     }
                 }
             }

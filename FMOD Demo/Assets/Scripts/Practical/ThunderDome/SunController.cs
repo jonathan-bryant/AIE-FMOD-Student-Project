@@ -13,7 +13,6 @@ using System.Collections;
 public class SunController : ActionObject
 {
     ActorControls m_actor;
-    float m_skyOpacity;
     Material m_skyMat;
 
     bool m_inControl;
@@ -22,10 +21,9 @@ public class SunController : ActionObject
 
     void Start()
     {
-        m_sunValue = 180.0f;
         m_actor = Camera.main.GetComponentInParent<ActorControls>();
         m_skyMat = GameObject.Find("NightSky").GetComponent<Renderer>().material;
-        m_skyOpacity = m_skyMat.GetFloat("_Opacity");
+        m_sunValue = 180.0f * (1.0f - m_skyMat.GetFloat("_Opacity"));
     }
 
     void Update()
@@ -36,10 +34,8 @@ public class SunController : ActionObject
             if (mouseX != 0.0f)
             {
                 transform.Rotate(new Vector3(0.0f, -mouseX, 0.0f));
-                Debug.Log(mouseX);
-                m_skyOpacity += -mouseX * 0.005f;
-                m_skyOpacity = Mathf.Repeat(m_skyOpacity, 1.0f);
-                m_skyMat.SetFloat("_Opacity", Mathf.Sin(Mathf.PI * m_skyOpacity * 2.0f) * 0.5f + 0.5f);
+                float val = Mathf.Sin(Mathf.PI * (m_sunValue / 360.0f));
+                m_skyMat.SetFloat("_Opacity", 1.0f - val);
 
                 m_sunValue = m_sunValue + mouseX;
                 while (m_sunValue >= 360.0f)

@@ -58,6 +58,8 @@ public class Flag : ActionObject
     }
     public override void ActionReleased(GameObject a_sender, KeyCode a_key)
     {
+        if (a_key == KeyCode.None)
+            return;
         m_isActive = false;
         m_canCollide = true;
         m_rb.useGravity = true;
@@ -71,7 +73,7 @@ public class Flag : ActionObject
 
     void OnCollisionStay(Collision a_col)
     {
-        //When a collisoin happens with the flag and the dialogue box, play the dialogue from the dialogue script.
+        //When a collision happens with the flag and the dialogue box, play the dialogue from the dialogue script.
         if (m_canCollide)
         {
             if (a_col.gameObject.name == "DialogueBox")
