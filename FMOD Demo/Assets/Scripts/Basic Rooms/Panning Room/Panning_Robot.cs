@@ -49,6 +49,7 @@ public class Panning_Robot : MonoBehaviour
                 |   Simply Play the Studio Event Emitter by calling Play.                                               |
                 =======================================================================================================*/
                 m_event.Play();
+                transform.GetChild(0).GetChild(0).gameObject.GetComponent<ParticleSystem>().EnableEmission(true);
             }
         }
 	}
