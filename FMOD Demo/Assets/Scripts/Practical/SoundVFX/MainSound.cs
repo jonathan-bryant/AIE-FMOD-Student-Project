@@ -148,7 +148,7 @@ public class MainSound : MonoBehaviour
 			}
 			m_soundTex.Apply();
             
-            float newValue = m_fftArray[1] * 10;
+            //float newValue = m_fftArray[1] * 10;
         }
 	}
 

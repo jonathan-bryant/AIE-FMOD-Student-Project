@@ -190,8 +190,8 @@ public class TwoDoorController : ActionObject
 
         if (!SceneManager.GetSceneByName(m_sceneToLoad).isLoaded && !m_loading)
         {
-            s_async = SceneManager.LoadSceneAsync(m_sceneToLoad, LoadSceneMode.Additive);
             m_loading = true;
+            s_async = SceneManager.LoadSceneAsync(m_sceneToLoad, LoadSceneMode.Additive);
 
             while (!s_async.isDone)
             {
