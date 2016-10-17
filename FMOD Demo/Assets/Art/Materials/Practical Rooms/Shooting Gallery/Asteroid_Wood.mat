@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Gear
+  m_Name: Asteroid_Wood
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 547901304222b494e9d6d00dd745326f, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -93,6 +93,10 @@ Material:
         second: 0.5
       data:
         first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
           name: _Parallax
         second: 0.02
       data:
@@ -125,8 +129,12 @@ Material:
         second: 0
       data:
         first:
-          name: _Metallic
+          name: _OutlineEnabled
         second: 0
+      data:
+        first:
+          name: _Outline
+        second: 0.0015
     m_Colors:
       data:
         first:
@@ -135,4 +143,8 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 0.625, g: 0.35655424, b: 0.068933815, a: 1}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 0.15294118, g: 0.7176471, b: 0.8666667, a: 1}
