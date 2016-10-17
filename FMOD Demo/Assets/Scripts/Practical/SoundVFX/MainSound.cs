@@ -49,8 +49,8 @@ public class MainSound : MonoBehaviour
 	[StructLayout(LayoutKind.Sequential)]
 	public class TimelineInfo
 	{
-		public int currentMusicBar = 0;
-		public FMOD.StringWrapper lastMarker = new FMOD.StringWrapper();
+		public int beat = 0;
+		public float tempo = 0;
 	}
 
 	FMOD.Studio.EVENT_CALLBACK m_beatCallback;
@@ -93,7 +93,7 @@ public class MainSound : MonoBehaviour
 		// Pass the object through the userdata of the instance.
 		result = m_eventInstance.setUserData(GCHandle.ToIntPtr(m_timelineHandle));
 		// Assign the callback to the studio event.
-		result = m_eventInstance.setCallback(m_beatCallback, FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT | FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER);
+		result = m_eventInstance.setCallback(m_beatCallback, FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT);
 
 		/*===============================================Fmod====================================================
     	|				The dsp has to be added after the sound is playing! Otherwise errors!					|
@@ -200,7 +200,7 @@ public class MainSound : MonoBehaviour
 
 	void OnGUI()
 	{
-        GUILayout.Box(String.Format("Current Bar = {0}, Last Marker = {1}", m_timelineInfo.currentMusicBar, (string)m_timelineInfo.lastMarker));
+        GUILayout.Box(String.Format("Current Beat = {0}, Tempo = {1}", m_timelineInfo.beat, m_timelineInfo.tempo));
 	}
 	
 	[AOT.MonoPInvokeCallback(typeof(FMOD.Studio.EVENT_CALLBACK))]
@@ -217,20 +217,15 @@ public class MainSound : MonoBehaviour
 
 		// Get the object to store beat and marker details
 		GCHandle timelineHandle = GCHandle.FromIntPtr(timelineInfoPtr);
-		TimelineInfo timelineInfo = (TimelineInfo)timelineHandle.Target;
+        TimelineInfo timelineInfo = (TimelineInfo)timelineHandle.Target;
 
 		switch (type)
 		{
 			case FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_BEAT:
 				{
 					var parameter = (FMOD.Studio.TIMELINE_BEAT_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_BEAT_PROPERTIES));
-					timelineInfo.currentMusicBar = parameter.bar;
-				}
-				break;
-			case FMOD.Studio.EVENT_CALLBACK_TYPE.TIMELINE_MARKER:
-				{
-					var parameter = (FMOD.Studio.TIMELINE_MARKER_PROPERTIES)Marshal.PtrToStructure(parameterPtr, typeof(FMOD.Studio.TIMELINE_MARKER_PROPERTIES));
-					timelineInfo.lastMarker = parameter.name;
+					timelineInfo.beat = parameter.beat;
+                    timelineInfo.tempo = parameter.tempo;
 				}
 				break;
 		}

@@ -15,7 +15,7 @@ public class SpotLightController : MonoBehaviour
 
 	// Private Vars
     RoofLighting[] m_lights;
-    int m_lastMusicBar = -1;
+    int m_lastBeat = -1;
 
 	void Start () 
 	{
@@ -29,10 +29,11 @@ public class SpotLightController : MonoBehaviour
 	
 	void Update () 
 	{
-	    if (m_soundRef.m_timelineInfo.currentMusicBar != m_lastMusicBar)
+        int beat = m_soundRef.m_timelineInfo.beat;
+        if (m_soundRef.m_timelineInfo.tempo > 140 && m_lastBeat != beat)
         {
             ActivateRandomLight();
-            m_lastMusicBar = m_soundRef.m_timelineInfo.currentMusicBar;
+            m_lastBeat = beat;
         }
 	}
 
