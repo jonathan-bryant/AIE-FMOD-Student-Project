@@ -229,7 +229,6 @@ public class ActorControls : MonoBehaviour
         if (DisableActions)
             return;
 
-        StartCoroutine(ActionPressLimit());
         //Raycast
         RaycastHit ray;
         int layerMask = (1 << 2) | (1 << 11);
@@ -275,16 +274,19 @@ public class ActorControls : MonoBehaviour
                     if (m_actionObject.m_glowOnce)
                         m_actionObject.LastGlow();
                     m_actionObject.ActionPressed(gameObject, m_actionObject.m_actionKeys[i]);
+                    StartCoroutine(ActionPressLimit());
                     break;
                 }
                 else if (Input.GetKey(m_actionObject.m_actionKeys[i]))
                 {
                     m_actionObject.ActionDown(gameObject, m_actionObject.m_actionKeys[i]);
+                    StartCoroutine(ActionPressLimit());
                     break;
                 }
                 else if (Input.GetKeyUp(m_actionObject.m_actionKeys[i]))
                 {
                     m_actionObject.ActionReleased(gameObject, m_actionObject.m_actionKeys[i]);
+                    StartCoroutine(ActionPressLimit());
                     break;
                 }
             }
