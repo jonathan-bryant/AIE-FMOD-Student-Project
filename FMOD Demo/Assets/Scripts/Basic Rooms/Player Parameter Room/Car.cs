@@ -35,6 +35,7 @@ public class Car : MonoBehaviour
         |   This is simply getting the attached StudioEventEmitter component.                                   |
         =======================================================================================================*/
         m_sound = GetComponent<FMODUnity.StudioEventEmitter>();
+        transform.GetChild(0).GetComponent<ParticleSystem>().EnableEmission(false);
     }
     void Update()
     {
@@ -48,6 +49,7 @@ public class Car : MonoBehaviour
             if (m_rpm <= 0.0f)
             {
                 m_sound.Stop();
+                transform.GetChild(0).GetComponent<ParticleSystem>().EnableEmission(false);
             }
         }
         /*===============================================Fmod====================================================
@@ -63,6 +65,7 @@ public class Car : MonoBehaviour
     {
         m_isActive = true;
         m_sound.Play();
+        transform.GetChild(0).GetComponent<ParticleSystem>().EnableEmission(true);
     }
     public void IgnitionOff()
     {

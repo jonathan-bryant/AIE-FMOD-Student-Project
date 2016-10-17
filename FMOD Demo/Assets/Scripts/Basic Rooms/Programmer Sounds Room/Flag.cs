@@ -19,6 +19,7 @@ public class Flag : ActionObject
     float m_distance;
     Rigidbody m_rb;
     int m_index;
+    public ParticleSystem m_particle;
 
     void Start()
     {
@@ -28,6 +29,7 @@ public class Flag : ActionObject
         m_distance = 0.0f;
         m_canCollide = false;
         m_isActive = false;
+        m_particle.time = 1.0f;
     }
     void Update()
     {
@@ -81,6 +83,8 @@ public class Flag : ActionObject
                 Dialogue dialogue = a_col.gameObject.GetComponent<Dialogue>();
                 if (dialogue)
                 {
+                    m_particle.transform.position = transform.position - new Vector3(0.0f, 0.159426f, 0.0f);
+                    m_particle.Play();
                     dialogue.PlayDialogue(m_sound + m_index.ToString());
                     m_canCollide = false;
                     m_index = (m_index + 1) % 3 + 1;
