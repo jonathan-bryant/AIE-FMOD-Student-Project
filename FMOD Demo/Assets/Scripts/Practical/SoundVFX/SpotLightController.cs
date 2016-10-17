@@ -12,6 +12,7 @@ public class SpotLightController : MonoBehaviour
 {
     // Public Vars
     public MainSound m_soundRef;
+    public GameObject[] m_objects;
 
 	// Private Vars
     RoofLighting[] m_lights;
@@ -35,6 +36,13 @@ public class SpotLightController : MonoBehaviour
             ActivateRandomLight();
             m_lastBeat = beat;
         }
+
+        for (int i = 0; i < m_objects.Length; i++)
+        {
+            Renderer rend = m_objects[i].GetComponent<Renderer>();
+            rend.materials[1].SetFloat("_Emission", m_soundRef.m_fftArray[3] * 5);
+        }
+        
 	}
 
 	public void ActivateRandomLight()
