@@ -18,7 +18,7 @@ public class Car : MonoBehaviour
     /*===============================================Fmod====================================================
     |   This is where the StudioEventEmitter component will be stored                                      |
     =======================================================================================================*/
-    FMODUnity.StudioEventEmitter m_sound;
+    public FMODUnity.StudioEventEmitter[] m_sound;
 
     bool m_isActive;
     float m_acceleration;
@@ -31,11 +31,10 @@ public class Car : MonoBehaviour
         m_isActive = false;
         m_acceleration = 0.0f;
         m_rpm = 0.0f;
-        /*===============================================Fmod====================================================
-        |   This is simply getting the attached StudioEventEmitter component.                                   |
-        =======================================================================================================*/
-        m_sound = GetComponent<FMODUnity.StudioEventEmitter>();
-        transform.GetChild(0).GetComponent<ParticleSystem>().EnableEmission(false);
+        for (int i = 0; i < m_sound.Length; i++)
+        {
+            m_sound[i].GetComponentInChildren<ParticleSystem>().EnableEmission(false);
+        }
     }
     void Update()
     {
@@ -48,8 +47,11 @@ public class Car : MonoBehaviour
             m_rpm = Mathf.Max(-1.0f, m_rpm - (Time.deltaTime));
             if (m_rpm <= 0.0f)
             {
-                m_sound.Stop();
-                transform.GetChild(0).GetComponent<ParticleSystem>().EnableEmission(false);
+                for (int i = 0; i < m_sound.Length; i++)
+                {
+                    m_sound[i].Stop();
+                    m_sound[i].GetComponentInChildren<ParticleSystem>().EnableEmission(false);
+                }
             }
         }
         /*===============================================Fmod====================================================
@@ -58,14 +60,20 @@ public class Car : MonoBehaviour
         |   To see what parameters looks like in studio, open the file:                                         |
         |   FMOD\Fmod Demo Sounds\Fmod Demo Sounds.fspro                                                        |
         =======================================================================================================*/
-        m_sound.SetParameter("RPM", (m_rpm + 1.0f) * 2000.0f);
+        for (int i = 0; i < m_sound.Length; i++)
+        {
+            m_sound[i].SetParameter("RPM", (m_rpm + 1.0f) * 2000.0f);
+        }
     }
 
     public void IgnitionOn()
     {
         m_isActive = true;
-        m_sound.Play();
-        transform.GetChild(0).GetComponent<ParticleSystem>().EnableEmission(true);
+        for (int i = 0; i < m_sound.Length; i++)
+        {
+            m_sound[i].Play();
+            m_sound[i].GetComponentInChildren<ParticleSystem>().EnableEmission(true);
+        }
         m_pedal.StartGlow();
         m_gearShift.StartGlow();
     }
@@ -73,7 +81,7 @@ public class Car : MonoBehaviour
     {
         m_isActive = false;
         m_gear = 1;
-        m_acceleration = 1.0f;
+        m_acceleration = 0.0f;
         m_gearShift.Reset();
         m_pedal.Reset();
         m_pedal.StopGlow();

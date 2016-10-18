@@ -60,7 +60,7 @@ public class Pedal : ActionObject
     }
     public void Reset()
     {
-        m_acceleration = 1.0f;
+        m_acceleration = 0.0f;
         Vector3 rot = transform.eulerAngles;
         rot.x = 20.0f - (m_acceleration / 5.0f) * 30.0f;
         transform.eulerAngles = rot;
