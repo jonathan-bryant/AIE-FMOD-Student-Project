@@ -1,4 +1,4 @@
-﻿Shader "Custom/NewSurfaceShader" 
+﻿Shader "Cameron/VertexHeightShader" 
 {
 	Properties 
 	{
@@ -41,8 +41,7 @@
 		{
 			if (v.vertex.y < -0.1)
 			{
-				//if (_Amount < 0.2)
-					_Amount *= _Amount * 15;
+				_Amount *= _Amount * 15;
 				if (_Amount > -v.vertex.y)
 					v.vertex.y -= _Amount;
 			}
@@ -59,15 +58,8 @@
 				o.Albedo = lerp(float3(0, 0.75, 1), float3(1, 1, 0), _Amount);
 			else
 				o.Albedo = lerp(float3(1, 1, 0), float3(1, 1, 1), _Amount);
-			// Metallic and smoothness come from slider variables
-			//if (IN.color.rgb == float3(1, 1, 1))
-			//{
-			//	o.Emission = float3(0.5, 0.5, 0.5) * _Emission;
-			//}
-			//else
-			{
-				o.Emission = o.Albedo * _Emission;
-			}
+				
+			o.Emission = o.Albedo * _Emission;				
 
 			o.Metallic = _Metallic;
 			o.Smoothness = _Glossiness;
