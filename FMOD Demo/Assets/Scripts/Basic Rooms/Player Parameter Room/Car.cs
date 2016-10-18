@@ -66,6 +66,8 @@ public class Car : MonoBehaviour
         m_isActive = true;
         m_sound.Play();
         transform.GetChild(0).GetComponent<ParticleSystem>().EnableEmission(true);
+        m_pedal.StartGlow();
+        m_gearShift.StartGlow();
     }
     public void IgnitionOff()
     {
@@ -74,6 +76,8 @@ public class Car : MonoBehaviour
         m_acceleration = 1.0f;
         m_gearShift.Reset();
         m_pedal.Reset();
+        m_pedal.StopGlow();
+        m_gearShift.StopGlow();
     }
     public void UpGear()
     {

@@ -5,8 +5,6 @@ public class PPSeat : ActionObject
 {
     public Car m_car;
     public Ignition m_ignition;
-    public Pedal m_pedal;
-    public GearShift m_gearStick;
     public Transform m_entrySeat;
     public Transform m_exitSeat;
 
@@ -38,9 +36,7 @@ public class PPSeat : ActionObject
                         GetComponent<Collider>().enabled = true;
                         m_actor.GetComponent<CharacterController>().enabled = true;
                         m_actor.DisableMovement = false;
-                        m_gearStick.StopGlow();
                         m_ignition.StopGlow();
-                        m_pedal.StopGlow();
                         m_car.IgnitionOff();
                         return;
                     }
@@ -56,16 +52,18 @@ public class PPSeat : ActionObject
 
     public override void ActionPressed(GameObject a_sender, KeyCode a_key)
     {
+        if (m_isSeated)
+        {
+            return;
+        }
         m_isSeated = true;
         m_isReady = false;
         m_actor.transform.position = m_entrySeat.position;
         m_actor.SetRotation(transform.rotation);
         m_actor.DisableMovement = true;
         m_actor.GetComponent<CharacterController>().enabled = false;
-        GetComponent<Collider>().enabled = false;
+        transform.GetChild(0).GetComponent<Collider>().enabled = false;
         ResetGlow();
-        m_gearStick.StartGlow();
         m_ignition.StartGlow();
-        m_pedal.StartGlow();
     }
 }
