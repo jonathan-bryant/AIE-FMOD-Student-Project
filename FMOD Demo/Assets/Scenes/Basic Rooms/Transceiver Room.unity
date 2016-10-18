@@ -496,7 +496,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 132774, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 437070, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -969,7 +969,7 @@ GameObject:
   - 198: {fileID: 309445831}
   - 199: {fileID: 309445830}
   - 114: {fileID: 309445829}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Music Note Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2710,7 +2710,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
   m_Children: []
   m_Father: {fileID: 1877923717}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!23 &473620494
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2962,6 +2962,60 @@ RectTransform:
   m_PrefabParentObject: {fileID: 22444650, guid: 1f600c7f8c304014388c34e2f24e79d6,
     type: 2}
   m_PrefabInternal: {fileID: 550857610}
+--- !u!1 &554823121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 554823122}
+  - 114: {fileID: 554823123}
+  m_Layer: 0
+  m_Name: Door Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &554823122
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 554823121}
+  m_LocalRotation: {x: 0, y: -0.9238791, z: 0, w: 0.3826846}
+  m_LocalPosition: {x: 1.215, y: 0.88899994, z: 3.186}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: -134.9999, z: 0}
+  m_Children:
+  - {fileID: 1773991435}
+  m_Father: {fileID: 1877923717}
+  m_RootOrder: 14
+--- !u!114 &554823123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 554823121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Basic Rooms/Transceiver Room/Door Transceiver
+  PlayEvent: 1
+  StopEvent: 2
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: Enabled
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &593003533
 GameObject:
   m_ObjectHideFlags: 0
@@ -3339,7 +3393,7 @@ Transform:
   - {fileID: 1127220639}
   - {fileID: 1509690117}
   m_Father: {fileID: 1877923717}
-  m_RootOrder: 13
+  m_RootOrder: 9
 --- !u!1 &711026942
 GameObject:
   m_ObjectHideFlags: 0
@@ -3405,7 +3459,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: -135, z: 0}
   m_Children: []
   m_Father: {fileID: 1877923717}
-  m_RootOrder: 14
+  m_RootOrder: 13
 --- !u!1 &715900824
 GameObject:
   m_ObjectHideFlags: 0
@@ -4392,7 +4446,7 @@ Transform:
   - {fileID: 754888996}
   - {fileID: 3936452}
   m_Father: {fileID: 1877923717}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!1 &1073205529
 GameObject:
   m_ObjectHideFlags: 0
@@ -4424,7 +4478,7 @@ Transform:
   - {fileID: 238426317}
   - {fileID: 1768234350}
   m_Father: {fileID: 1877923717}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &1077778252
 GameObject:
   m_ObjectHideFlags: 0
@@ -4660,7 +4714,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1877923717}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!215 &1198776070
 ReflectionProbe:
   m_ObjectHideFlags: 0
@@ -4734,7 +4788,7 @@ GameObject:
   - 33: {fileID: 1278195479}
   - 23: {fileID: 1278195477}
   - 114: {fileID: 1278195476}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Voice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4905,7 +4959,7 @@ Transform:
   - {fileID: 716830901}
   - {fileID: 600749624}
   m_Father: {fileID: 1877923717}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!95 &1331133798
 Animator:
   serializedVersion: 3
@@ -5414,7 +5468,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 1652816810}
   - 65: {fileID: 1652816809}
-  m_Layer: 0
+  - 114: {fileID: 1652816813}
+  - 114: {fileID: 1652816812}
+  - 65: {fileID: 1652816811}
+  m_Layer: 2
   m_Name: Victim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5448,6 +5505,54 @@ Transform:
   - {fileID: 2000522184}
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!65 &1652816811
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1652816808}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.53, y: 5.74, z: 5.82}
+  m_Center: {x: 1.1, y: 1.56, z: 1.27}
+--- !u!114 &1652816812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1652816808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Emitters:
+  - Target: {fileID: 1278195476}
+    Params:
+    - Name: PostTransmitVolume
+      Value: 0
+  TriggerEvent: 4
+  CollisionTag: Player
+--- !u!114 &1652816813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1652816808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Emitters:
+  - Target: {fileID: 1278195476}
+    Params:
+    - Name: PostTransmitVolume
+      Value: 1
+  TriggerEvent: 3
+  CollisionTag: Player
 --- !u!1 &1768234349
 GameObject:
   m_ObjectHideFlags: 0
@@ -5618,6 +5723,7 @@ MonoBehaviour:
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
   m_pressPerSecond: 0
+  m_event: {fileID: 554823123}
   m_sceneName: 
   m_angle: -90
   m_originalAngle: 0
@@ -5628,13 +5734,13 @@ Transform:
   m_PrefabParentObject: {fileID: 435322, guid: 2d321126c5c9acc4592ffe4f4c6334b9, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1773991433}
-  m_LocalRotation: {x: 0, y: 0.92387956, z: 0, w: 0.3826833}
-  m_LocalPosition: {x: 0.608, y: 0.03000021, z: 3.224}
+  m_LocalRotation: {x: 0, y: 0.70710695, z: 0, w: -0.7071067}
+  m_LocalPosition: {x: 0.458, y: -0.8589997, z: 0.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 135, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
   m_Children:
   - {fileID: 1634318179}
-  m_Father: {fileID: 1877923717}
+  m_Father: {fileID: 554823122}
   m_RootOrder: 0
 --- !u!1 &1877923716
 GameObject:
@@ -5662,7 +5768,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1773991435}
   - {fileID: 2008078444}
   - {fileID: 1331133797}
   - {fileID: 473620493}
@@ -5672,11 +5777,12 @@ Transform:
   - {fileID: 1892538488}
   - {fileID: 1053505956}
   - {fileID: 1073205530}
+  - {fileID: 692354642}
   - {fileID: 550857611}
   - {fileID: 224426881}
   - {fileID: 1431465726}
-  - {fileID: 692354642}
   - {fileID: 711026945}
+  - {fileID: 554823122}
   m_Father: {fileID: 0}
   m_RootOrder: 3
 --- !u!1 &1892538487
@@ -5730,7 +5836,7 @@ Transform:
   - {fileID: 2052095644}
   - {fileID: 442182307}
   m_Father: {fileID: 1877923717}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &1908091671
 GameObject:
   m_ObjectHideFlags: 0
@@ -5843,7 +5949,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
   m_Children: []
   m_Father: {fileID: 1877923717}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!65 &1934385170
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5903,7 +6009,7 @@ GameObject:
   - 33: {fileID: 2000522187}
   - 23: {fileID: 2000522186}
   - 95: {fileID: 2000522185}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Robot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6007,7 +6113,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
   m_Children: []
   m_Father: {fileID: 1877923717}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!23 &2008078445
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6152,7 +6258,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 90, y: -494.99988, z: 0}
   m_Children: []
   m_Father: {fileID: 1877923717}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!64 &2082629758
 MeshCollider:
   m_ObjectHideFlags: 0
