@@ -14,14 +14,13 @@ public class SpotLightController : MonoBehaviour
     public MainSound m_soundRef;
     public GameObject[] m_signObjects;
     public GameObject[] m_wallObjects;
+    public RoofLighting[] m_lights;
 
 	// Private Vars
-    RoofLighting[] m_lights;
     int m_lastBeat = -1;
 
 	void Start () 
 	{
-        m_lights = GetComponentsInChildren<RoofLighting>();
         if (m_lights.Length < 1 || m_soundRef == null)
         {
             Debug.Log("Missing the lights or sound!");

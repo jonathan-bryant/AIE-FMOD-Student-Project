@@ -6920,6 +6920,7 @@ GameObject:
   - 4: {fileID: 1559407278}
   - 65: {fileID: 1559407280}
   - 114: {fileID: 1559407279}
+  - 114: {fileID: 1559407281}
   m_Layer: 0
   m_Name: HurtTrigger
   m_TagString: Untagged
@@ -6954,7 +6955,7 @@ MonoBehaviour:
   m_event: snapshot:/Underwater
   m_resetPosition: {fileID: 1205760781}
   m_objectToFace: {fileID: 1646107667}
-  m_resetTimer: 2
+  m_resetTimer: 5
 --- !u!65 &1559407280
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6967,6 +6968,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12.158946, y: -0.10022722, z: 10}
   m_Center: {x: 3.6601434, y: 0.050115187, z: 0}
+--- !u!114 &1559407281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1559407277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Basic Rooms/Heartbeat
+  PlayEvent: 3
+  StopEvent: 4
+  CollisionTag: Player
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: Health
+    Value: 0.56
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &1570673627
 GameObject:
   m_ObjectHideFlags: 0
