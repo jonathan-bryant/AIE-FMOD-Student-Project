@@ -11,13 +11,15 @@
 using UnityEngine;
 using System.Collections;
 using System.IO;
+using System.Collections.Generic;
 
 public class Orchestrion : MonoBehaviour
 {
     public GameObject m_ball;
     public string m_sheetName;
     string[] m_sheetMusic;
-    public Transform[] m_keyPositions;
+    public GameObject m_keyboard;
+    public Transform[] m_dropPositions;
 
     float m_noteLength;
     float m_elapsedNote;
@@ -36,6 +38,29 @@ public class Orchestrion : MonoBehaviour
         m_sheetMusic = t.Split(' ', '\n', '\r', '\t');
         m_maxIndex = m_sheetMusic.Length;
         m_noteLength = 0.0f;
+
+        for (int i = 0; i < m_keyboard.transform.childCount; i++)
+        {
+            FMODUnity.StudioEventEmitter m_event = m_keyboard.transform.GetChild(i).gameObject.GetComponent<FMODUnity.StudioEventEmitter>();
+            if (m_event)
+            {
+                //If you want to get the initial values out of the Studio Event Emitter script you can!
+                //Only the parameters that have been manually set(inside Unity Editor) are added to the Studio Event Emitter Params Array.
+                FMODUnity.ParamRef p = m_event.Params[0];
+
+                //You can also set/reset the initial values by simply passing in ParamRef structures back into the Studio Event Emitter Params Array.
+
+                //Reinitalize the Param array to bigger, so that another initial value can be stored.
+                m_event.Params = new FMODUnity.ParamRef[2];
+
+                //Put the original initial values back into the new array.
+                m_event.Params[0] = p;
+                //Add a new parameter to the Params array
+                m_event.Params[1] = new FMODUnity.ParamRef();
+                m_event.Params[1].Name = "Sound";
+                m_event.Params[1].Value = 0.0f;
+            }
+        }
     }
     void FixedUpdate()
     {
@@ -49,11 +74,11 @@ public class Orchestrion : MonoBehaviour
             string key = m_sheetMusic[m_index];
             while (key == "")
             {
-               m_index = (m_index + 1) % m_maxIndex;
+                m_index = (m_index + 1) % m_maxIndex;
                 key = m_sheetMusic[m_index];
             }
             char letter = key[0];
-            if(letter == 'R')
+            if (letter == 'R')
             {
                 m_noteLength = GetNoteLength(key[1]);
                 m_index = (m_index + 1) % m_maxIndex;
@@ -68,7 +93,7 @@ public class Orchestrion : MonoBehaviour
             int note = GetNote(letter.ToString() + sharp.ToString());
             if (note != -1)
             {
-                if(note >= 9 && note <= 11)
+                if (note >= 9 && note <= 11)
                 {
                     octave--;
                 }
@@ -78,7 +103,7 @@ public class Orchestrion : MonoBehaviour
                     GameObject ball = Instantiate(m_ball);
                     ball.transform.parent = transform;
                     ball.transform.localPosition = Vector3.zero;
-                    Vector3 pos = m_keyPositions[noteIndex].position;
+                    Vector3 pos = m_dropPositions[noteIndex].position;
                     ball.transform.position = pos;
                 }
             }
@@ -156,5 +181,18 @@ public class Orchestrion : MonoBehaviour
     public void Pause()
     {
         m_isPlaying = false;
+    }
+    public void ChangeSound(int a_sound)
+    {
+        for (int i = 0; i < m_keyboard.transform.childCount; i++)
+        {
+            FMODUnity.StudioEventEmitter m_event = m_keyboard.transform.GetChild(i).gameObject.GetComponent<FMODUnity.StudioEventEmitter>();
+            if (m_event)
+            {
+                //You can set the StudioEventEmitter initial values anywhere using the same Params array as before.
+                //Now the initial values will be set, eveytime play is called.
+                m_event.Params[1].Value = a_sound;
+            }
+        }
     }
 }
