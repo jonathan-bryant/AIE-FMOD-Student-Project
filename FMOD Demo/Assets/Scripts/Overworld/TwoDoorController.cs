@@ -127,7 +127,7 @@ public class TwoDoorController : ActionObject
     public override void ActionPressed(GameObject a_sender, KeyCode a_key)
     {
         //Start loading scene
-        if (Vector3.Distance(transform.position, Camera.main.transform.position) < 3)
+        //if (Vector3.Distance(transform.position, Camera.main.transform.position) < 3)
         {
             StartCoroutine(LoadBankThenScene());
         }

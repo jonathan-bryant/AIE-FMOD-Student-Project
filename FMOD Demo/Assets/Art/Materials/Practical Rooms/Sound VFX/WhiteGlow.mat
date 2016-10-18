@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: WhiteGlow
-  m_Shader: {fileID: 4800000, guid: e2de4b314457106409da8e620a90a7ce, type: 3}
+  m_Shader: {fileID: 4800000, guid: 6fb58553704acfe48a06a0975e2217e0, type: 3}
   m_ShaderKeywords: _EMISSION _VERTEXCOLOR
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
@@ -142,6 +142,10 @@ Material:
         first:
           name: _IntensityVC
         second: 1
+      data:
+        first:
+          name: _EmissionAmount
+        second: 0.5
     m_Colors:
       data:
         first:
@@ -150,7 +154,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _SpecColor
@@ -159,3 +163,7 @@ Material:
         first:
           name: _EmissionColorUI
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Emission
+        second: {r: 0, g: 0, b: 0, a: 1}
