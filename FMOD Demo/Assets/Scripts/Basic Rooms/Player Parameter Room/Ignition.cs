@@ -14,12 +14,14 @@ public class Ignition : ActionObject
 {
     public Car m_car;
     bool m_active;
+    FMODUnity.StudioEventEmitter m_buttonEvent;
 
 	void Start ()
     {
         InitGlow();
         StopGlow();
         m_active = false;
+        m_buttonEvent = GetComponent<FMODUnity.StudioEventEmitter>();
     }
 	void Update ()
     {
@@ -38,5 +40,6 @@ public class Ignition : ActionObject
         {
             m_car.IgnitionOff();
         }
+        m_buttonEvent.Play();
     }
 }
