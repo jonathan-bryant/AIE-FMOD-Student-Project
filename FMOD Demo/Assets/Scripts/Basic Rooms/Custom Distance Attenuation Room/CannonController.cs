@@ -25,6 +25,10 @@ public class CannonController : MonoBehaviour
     FMOD.Studio.ParameterInstance m_cannonDownStop;
     FMOD.Studio.PLAYBACK_STATE m_playState;
 
+    [FMODUnity.EventRef]
+    public string m_cannonFireSound;
+    FMOD.Studio.EventInstance m_cannonFireEvent;
+
     public GameObject m_cannonBall;
     public GameObject m_cannon;
     float m_currentAngle;
@@ -46,6 +50,8 @@ public class CannonController : MonoBehaviour
         m_cannonDownEvent = FMODUnity.RuntimeManager.CreateInstance(m_cannonDownSound);
         m_cannonDownEvent.getParameter("Stop Point", out m_cannonDownStop);
         m_cannonDownEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
+        m_cannonFireEvent = FMODUnity.RuntimeManager.CreateInstance(m_cannonFireSound);
+        m_cannonFireEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
 
         m_elapsed = 0.0f;
         m_currentAngle = 30.0f;
@@ -105,6 +111,7 @@ public class CannonController : MonoBehaviour
             }
             else
             {
+                m_cannonFireEvent.start();
                 /*===============================================Fmod====================================================
                 |               Now we went to exit the event loop and play the end of the sound.                       |
                 =======================================================================================================*/

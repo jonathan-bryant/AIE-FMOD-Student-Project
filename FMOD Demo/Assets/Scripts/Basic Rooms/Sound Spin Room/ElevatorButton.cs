@@ -15,9 +15,11 @@ public class ElevatorButton : ActionObject
     public Elevator m_elevator;
     public int m_floor;
     public float m_height;
+    FMODUnity.StudioEventEmitter m_buttonEvent;
 
     void Start()
     {
+        m_buttonEvent = GetComponent<FMODUnity.StudioEventEmitter>();
         InitButton();
         InitGlow();
     }
@@ -26,8 +28,9 @@ public class ElevatorButton : ActionObject
         UpdateGlow();
     }
 
-    public override void ActionDown(GameObject sender, KeyCode a_key)
+    public override void ActionPressed(GameObject sender, KeyCode a_key)
     {
         m_elevator.ChangeFloor(m_floor, m_height);
+        m_buttonEvent.Play();
     }
 }
