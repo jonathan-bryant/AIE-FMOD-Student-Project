@@ -1,23 +1,24 @@
-﻿/*=================================================================
-Project:		#PROJECTNAME#
-Developer:		#DEVOLPERNAME#
-Company:		#COMPANY#
-Date:			#CREATIONDATE#
-==================================================================*/
-
+﻿/*===============================================================================================
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Cameron Baron                                                   |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                10/10/2016                                                      |
+|   Scene:                      Sound VFX                                                       |
+|   Fmod Related Scripting:     No                                                              |
+|   Description:                Controls the roof mounted spotlights.                           |
+===============================================================================================*/
 using UnityEngine;
-
 
 public class SpotLightController : MonoBehaviour 
 {
     // Public Vars
-    public MainSound m_soundRef;
-    public GameObject[] m_signObjects;
-    public GameObject[] m_wallObjects;
-    public RoofLighting[] m_lights;
+    public MainSound m_soundRef;        // Reference to the script containing the music fft data.
+    public GameObject[] m_signObjects;  // Sign to change the emission on.
+    public GameObject[] m_wallObjects;  // Walls to change the emission on.
+    public RoofLighting[] m_lights;     // Room mounted spotlights to turn on/off.
 
 	// Private Vars
-    int m_lastBeat = -1;
+    int m_lastBeat = -1;                // Keep a reference to the last beat bar.
 
 	void Start () 
 	{
@@ -33,17 +34,18 @@ public class SpotLightController : MonoBehaviour
         int beat = m_soundRef.m_timelineInfo.beat;
         if (m_soundRef.m_timelineInfo.tempo > 140 && m_lastBeat != beat)
         {
-            ActivateRandomLight();
+            ActivateRandomLights();
             m_lastBeat = beat;
         }
 
         int index = Random.Range(0, 5);
-
+        // Change the emission of the second material attached to the walls.
         for (int i = 0; i < m_wallObjects.Length; i++)
         {
             Renderer rend = m_wallObjects[i].GetComponent<Renderer>();
             rend.materials[1].SetFloat("_EmissionAmount", m_soundRef.m_fftArray[index] * 5);
         }
+        // Change the emission of the sign material.
         for (int i = 0; i < m_signObjects.Length; i++)
         {
             Renderer rend = m_signObjects[i].GetComponent<Renderer>();
@@ -51,7 +53,10 @@ public class SpotLightController : MonoBehaviour
         }
     }
 
-	public void ActivateRandomLight()
+    /// <summary>
+    /// Turn on two random roof mounted lights.
+    /// </summary>
+	public void ActivateRandomLights()
     {
         int index = Random.Range(0, m_lights.Length);
         m_lights[index].TurnOnLight();

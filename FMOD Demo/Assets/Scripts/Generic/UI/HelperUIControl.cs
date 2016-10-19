@@ -8,7 +8,6 @@
 |   Description:                Prompt UI that is spread throughout the entire Project          |
 |   used to explain some of the features and point you towards the correct documentation.       |
 ===============================================================================================*/
-
 using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
@@ -39,10 +38,10 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
     [FMODUnity.EventRef]    public string m_uiClose;
     FMOD.Studio.EventInstance m_currentEvent;
     
-    bool m_updateFacing = false;        // Bool to check if the player is close enough to actually billboard to.
+    bool m_updateFacing = false;                    // Bool to check if the player is close enough to actually billboard to.
     HELPERSTATE m_currentState = HELPERSTATE.IDLE;
     float m_currentAnimationProgress;
-    GameObject m_playerRef = null;      // Used for getting the players position to billboard the UI.
+    GameObject m_playerRef = null;                  // Used for getting the players position to billboard the UI.
     Animator m_uiAnimator;
 
     void Start()
@@ -64,6 +63,9 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
         m_currentAnimationProgress = AnimationProgress();
     }
 
+    /// <summary>
+    /// Used for billboarding when within a certain distance to the player.
+    /// </summary>
     void LateUpdate()
     {
         if (m_playerRef != null)
@@ -75,6 +77,9 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
         }
     }
 
+    /// <summary>
+    /// Start the load animation, change state to loading and start coroutine to load and open prompt.
+    /// </summary>
     public void LoadHelper()
     {
         StopAllCoroutines();
@@ -90,6 +95,10 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
         StartCoroutine(LoadWaitAndOpen());
     }
 
+    /// <summary>
+    /// Play the event for the current state.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator LoadWaitAndOpen()
     {
         /*===============================================Fmod====================================================
@@ -116,20 +125,26 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
             OpenHelper();
         }
     }
+
+    /// <summary>
+    /// Play the opening animation and event.
+    /// </summary>
     public void OpenHelper()
     {
         /*===============================================Fmod====================================================
-        |                                   Create instane and start playing.                                   |
+        |                                   Create instance and start playing.                                   |
         =======================================================================================================*/
         m_currentEvent = FMODUnity.RuntimeManager.CreateInstance(m_uiOpen);
         m_currentEvent.start();
-
+        
         // Play opening animation
-        FMODUnity.RuntimeManager.PlayOneShot(m_uiOpen);
         m_uiAnimator.Play(m_uiOpenAnim, 0);
         m_currentState = HELPERSTATE.OPENING;
     }
 
+    /// <summary>
+    /// If the prompt is loading or just not opening, stop the animation and strt the coroutine to play the animation in reverse.
+    /// </summary>
     public void StopHelper()
     {
         // If the ui is not opening (allows the ui to open fully after loading)
@@ -146,6 +161,10 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
         }
     }
 
+    /// <summary>
+    /// If the state is stopped, wait for time variable and play the animation backwards to close the prompt.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator WaitAndCloseHelper()
     {
         while (m_currentState == HELPERSTATE.STOPPED)
@@ -175,11 +194,14 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
                     yield return null;
                 }
             }
-
             m_currentState = HELPERSTATE.IDLE;
         }
     }
 
+    /// <summary>
+    /// On mouse enter, if the state is idle or stopped, start playing/stop reversing of animation.
+    /// </summary>
+    /// <param name="eventData"></param>
     public void OnPointerEnter(PointerEventData eventData)
     {
         switch (m_currentState)
@@ -204,26 +226,36 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
         StopHelper();
     }
 
-    // Even though this is the default I wanted to make it explicit.
+    /// <summary>
+    /// Explicitly play the current animation forward.
+    /// </summary>
     void PlayForward()
     {
         m_uiAnimator.SetFloat("Speed", 1);
         m_uiAnimator.speed = 1;
     }
 
-    // To play animations backwards you need to set the speed in the negatives.
+    /// <summary>
+    /// Play the current animation backwards.
+    /// </summary>
     void PlayBackwards()
     {
         m_uiAnimator.SetFloat("Speed", -1);
         m_uiAnimator.speed = 1;
     }
 
+    /// <summary>
+    /// Stop the current animation.
+    /// </summary>
     void StopAnimation()
     {
         m_uiAnimator.speed = 0;
     }
 
-    // Returns the current percentage done of the animation.
+    /// <summary>
+    /// Returns the completed percentage of the current animation.
+    /// </summary>
+    /// <returns></returns>
     float AnimationProgress()
     {
         float totalTime = m_uiAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime;
