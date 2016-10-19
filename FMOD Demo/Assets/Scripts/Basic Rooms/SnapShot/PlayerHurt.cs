@@ -20,7 +20,6 @@ public class PlayerHurt : MonoBehaviour
     [SerializeField]    Transform m_resetPosition;      // Position to reset the player back to.
     [SerializeField]    GameObject m_objectToFace;      // Object to face upon resetting position.
     float m_resetTimer = 4.0f;                          // Time before the play is reset to the catwalk, set to 4 seconds to match animation.
-    float m_resetCounter = 0;
     
 	void Start ()
     {
@@ -67,9 +66,6 @@ public class PlayerHurt : MonoBehaviour
 
         // Wait for timer.
         yield return new WaitForSeconds(m_resetTimer);
-
-        // Reset counter.
-        m_resetCounter = 0;
 
         //---------------------------------Fmod-------------------------------
         //           If the event has been set, stop the event.
