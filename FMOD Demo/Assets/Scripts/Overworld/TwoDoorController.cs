@@ -83,15 +83,6 @@ public class TwoDoorController : ActionObject
         m_collider.center = Vector3.right * 6.0f;
     }
 
-    void Update()
-    {
-        if (!SceneManager.GetSceneByName(m_sceneToLoad).isLoaded)
-        {
-            m_collider.center = Vector3.right * 6.0f;
-            m_loading = false;
-        }
-    }
-
     void FixedUpdate()
     {
         m_doorEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
@@ -128,7 +119,10 @@ public class TwoDoorController : ActionObject
     {
         //Start loading scene
         //if (Vector3.Distance(transform.position, Camera.main.transform.position) < 3)
+        if (!SceneManager.GetSceneByName(m_sceneToLoad).isLoaded)
         {
+            m_collider.center = Vector3.right * 6.0f;
+            m_loading = false;
             StartCoroutine(LoadBankThenScene());
         }
     }
@@ -175,7 +169,7 @@ public class TwoDoorController : ActionObject
         if (m_bankToLoad != "")
         {
             //---------------------------------Fmod-------------------------------
-            //  Start loading the bank in the backgrouond including the audio 
+            //  Start loading the bank in the background including the audio 
             //  sample data.
             //--------------------------------------------------------------------
             FMODUnity.RuntimeManager.LoadBank(m_bankToLoad, true);
