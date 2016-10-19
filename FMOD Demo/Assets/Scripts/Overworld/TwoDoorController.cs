@@ -1,14 +1,13 @@
-﻿/*=================================================================
-Project:		FMOD Unity Plugin Demo
-Developer:		Cameron Baron
-Company:		Firelight Technologies
-Date:			26/09/2016
-Scene:          Overworld
-Fmod Related:   Yes
-Description:    Controls the doors opening and closing as well as 
-                loading and unload scenes and FMOD Studio banks.
-==================================================================*/
-
+﻿/*===============================================================================================
+|   Project:		            FMOD Unity Plugin Demo                                          |
+|   Developer:	                Cameron Baron                                                   |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                26/09/2016                                                      |
+|   Scene:                      Overworld                                                       |
+|   Fmod Related Scripting:     Yes                                                             |
+|   Description:                Controls the doors opening and closing as well as               |
+|                               loading and unload scenes and FMOD Studio banks.                |
+===============================================================================================*/
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
@@ -38,8 +37,8 @@ public class TwoDoorController : ActionObject
 
     // Private Vars
     FMOD.Studio.EventInstance m_doorEvent;
-    FMOD.Studio.ParameterInstance m_reverbAmount;
-    FMOD.Studio.ParameterInstance m_direction;
+    FMOD.Studio.ParameterInstance m_reverbAmount;   // Reverberation parameter can be modified to adjust the amount of reverberation on the door opening/closing sound.
+    FMOD.Studio.ParameterInstance m_direction;      // Direction parameter is used to determine which sound in the event is played, as there are seperate opening and closing sounds with slight differences.
 
     float m_upperDistToNewPos;				        // Distance between upper door and the current target position.
     float m_lowerDistToNewPos;				        // Distance between lower door and the current target position.
@@ -49,12 +48,13 @@ public class TwoDoorController : ActionObject
 
     bool m_completed = false;
 
-    static AsyncOperation s_async;
+    static AsyncOperation s_async;                  // Async operation, used to check when an operation has been completed.
     bool m_loading;
-    SphereCollider m_collider;
+    SphereCollider m_collider;                      // Reference to door trigger.
 
     void Start()
     {
+        // If there is not scene assigned to this door controller, set the emission color to red and remove this script.
         if (m_sceneToLoad == "")
         {
             Renderer rend = m_lowerDoor.GetComponent<Renderer>();
@@ -65,16 +65,23 @@ public class TwoDoorController : ActionObject
 
         if (m_doorSound != "")
         {
+            //---------------------------------Fmod-------------------------------
+            //  Create an instance, get the parameter to control the "Reverb" and
+            //  "Direction".
+            //--------------------------------------------------------------------
             m_doorEvent = FMODUnity.RuntimeManager.CreateInstance(m_doorSound);
             m_doorEvent.getParameter("Reverb", out m_reverbAmount);
             m_doorEvent.getParameter("Direction", out m_direction);
         }
-        
-        Application.backgroundLoadingPriority = ThreadPriority.Low;		// Setting the thread priority to low forces the async operations to use less cpu.
 
+        // Setting the thread priority to low forces the async operations to use less cpu.
+        Application.backgroundLoadingPriority = ThreadPriority.Low;		
+
+        // Find the upper door open and closed positions.
         m_upperClosedPos = m_upperDoor.transform.localPosition;
         m_upperOpenPos = m_upperClosedPos + (Vector3.up * (m_upperDoor.transform.localScale.y + 0.2f));
 
+        // Find the lower door open and closed positions.
         m_lowerClosedPos = m_lowerDoor.transform.localPosition;
         m_lowerOpenPos = m_lowerClosedPos - (Vector3.up * (m_lowerDoor.transform.localScale.y + 0.2f));
         m_loading = false;
@@ -85,7 +92,12 @@ public class TwoDoorController : ActionObject
 
     void FixedUpdate()
     {
+        //---------------------------------Fmod-------------------------------
+        //                      Update event 3d attributes.
+        //--------------------------------------------------------------------
         m_doorEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
+        
+        // Get top door distance to either the open or closed position depending on the m_opening bool.
         m_upperDistToNewPos = Vector3.Distance(m_upperDoor.transform.localPosition, (m_opening ? m_upperOpenPos : m_upperClosedPos));
         if (m_upperDistToNewPos > 0.1f)
         {
@@ -96,6 +108,7 @@ public class TwoDoorController : ActionObject
             m_upperDoor.transform.localPosition = (m_opening ? m_upperOpenPos : m_upperClosedPos);
         }
 
+        // Get lower door distance to either the open or closed position depending on the m_opening bool.
         m_lowerDistToNewPos = Vector3.Distance(m_lowerDoor.transform.localPosition, (m_opening ? m_lowerOpenPos : m_lowerClosedPos));
 
         if (m_lowerDistToNewPos > 0.1f)
@@ -107,6 +120,7 @@ public class TwoDoorController : ActionObject
             m_lowerDoor.transform.localPosition = (m_opening ? m_lowerOpenPos : m_lowerClosedPos);
         }
 
+        // If the room has been 'visited' change the outer door light emission.
         if (m_completed)
         {
             Renderer rend = m_lowerDoor.GetComponent<Renderer>();
@@ -115,10 +129,13 @@ public class TwoDoorController : ActionObject
         }
     }
 
+    /// <summary>
+    /// If the scene has not already been loaded, start the coroutine to load the bank & scene.
+    /// </summary>
+    /// <param name="a_sender"></param>
+    /// <param name="a_key"></param>
     public override void ActionPressed(GameObject a_sender, KeyCode a_key)
     {
-        //Start loading scene
-        //if (Vector3.Distance(transform.position, Camera.main.transform.position) < 3)
         if (!SceneManager.GetSceneByName(m_sceneToLoad).isLoaded)
         {
             m_collider.center = Vector3.right * 6.0f;
@@ -129,6 +146,10 @@ public class TwoDoorController : ActionObject
 
     #region Private Functions
 
+    /// <summary>
+    /// Check if the colliding object is the Player. If the player is exiting the room, open the door automatically.
+    /// </summary>
+    /// <param name="other"></param>
     void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player"))
@@ -142,6 +163,10 @@ public class TwoDoorController : ActionObject
         }
     }
 
+    /// <summary>
+    /// Check if the colliding object is the Player. If it is, then load the scene and open the door.
+    /// </summary>
+    /// <param name="other"></param>
     void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Player"))
@@ -150,8 +175,16 @@ public class TwoDoorController : ActionObject
         StartCoroutine(WaitForDoorToOpenThenClose());
     }
 
+    /// <summary>
+    /// Play the door opening/closing sound and set the parameters.
+    /// </summary>
     void PlayDoorSound()
     {
+        //---------------------------------Fmod-------------------------------
+        //  Check to see if the sound is already playing, if not, then start
+        //  the event and set the direction depending on the direction the
+        //  door is moving.
+        //--------------------------------------------------------------------
         FMOD.Studio.PLAYBACK_STATE playState;
         m_doorEvent.getPlaybackState(out playState);
         if (playState == FMOD.Studio.PLAYBACK_STATE.PLAYING)
@@ -163,6 +196,10 @@ public class TwoDoorController : ActionObject
         m_direction.setValue((m_opening ? 180 : -180));
     }
 
+    /// <summary>
+    /// Load the FMOD Studio Bank, if it is valid, load the scene if it isn't loading already and finally play the door opening sound.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator LoadBankThenScene()
     {
         //~~~~~~~~~~~~~~~ Load the room audio ~~~~~~~~~~~~~~~\\
@@ -197,6 +234,10 @@ public class TwoDoorController : ActionObject
         PlayDoorSound();
     }
 
+    /// <summary>
+    /// Make sure the door opens fully before closing, then unload the scene if it has been loaded and move the collider back into the Overworld.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator WaitForDoorToOpenThenClose()
     {
         while (m_upperDoor.transform.localPosition != m_upperOpenPos)
