@@ -118,7 +118,7 @@ public class ShootingGalleryManager : MonoBehaviour
         //Set forward
         m_cart.transform.forward = m_tracks[m_currentTrackIndex].transform.position - m_cart.transform.position;
         //Zero out currentVelocity
-        m_cart.CurrentVelocity = Vector3.zero;
+        m_cart.CurrentVelocity = 0.0f;
     }
 
     public void AddScore(int a_points)

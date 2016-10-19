@@ -21135,7 +21135,7 @@ MonoBehaviour:
   m_manager: {fileID: 235939067}
   m_seat: {fileID: 2137046108}
   m_topSpeed: 2
-  m_acceleration: 30
+  m_acceleration: 0.02
   m_turningPower: 0.1
   m_nearThreshold: 0.45
 --- !u!1 &1862625931
@@ -24266,8 +24266,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 2130015424}
   - 135: {fileID: 2130015427}
-  - 114: {fileID: 2130015426}
   - 114: {fileID: 1861555845}
+  - 114: {fileID: 2130015425}
   m_Layer: 0
   m_Name: Cart
   m_TagString: Action
@@ -24292,11 +24292,10 @@ Transform:
   - {fileID: 115733629}
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!114 &2130015426
+--- !u!114 &2130015425
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11404776, guid: 5654cf34c1c0d1845b0039e53048171d,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2130015423}
   m_Enabled: 1
@@ -24304,14 +24303,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: event:/Basic Rooms/Surfaces Room/Treadmill Drone
-  PlayEvent: 1
+  Event: event:/Shooting Gallery/Shooter Rail
+  PlayEvent: 0
   StopEvent: 2
   CollisionTag: 
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
-  Params: []
+  Params:
+  - Name: Exit Vehicle
+    Value: 0
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
