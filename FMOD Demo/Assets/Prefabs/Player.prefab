@@ -53,6 +53,8 @@ GameObject:
   - 114: {fileID: 11423084}
   - 114: {fileID: 11453076}
   - 114: {fileID: 11421214}
+  - 95: {fileID: 9518950}
+  - 114: {fileID: 11436112}
   m_Layer: 11
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -354,6 +356,23 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160306}
   m_Enabled: 1
+--- !u!95 &9518950
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160306}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f54936048c165a6489bc3e8ec3743ccb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11402186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -409,7 +428,6 @@ MonoBehaviour:
   m_jumpPower: 250
   m_selectDistance: 3
   m_gun: {fileID: 184524}
-  m_actionPressPerSecond: 4
   m_drag: 0.075
   m_disabledMouse: 0
   m_pressKeyText: {fileID: 0}
@@ -537,6 +555,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11436112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160306}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f19108706fdce9469603d07980eb8ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blendMode: 3
+  intensity: 0.5
+  texture: {fileID: 2800000, guid: 86b00ec6b35e9cb448a079e93efbc832, type: 3}
+  overlayShader: {fileID: 4800000, guid: 8c81db0e527d24acc9bcec04e87781bd, type: 3}
 --- !u!114 &11439190
 MonoBehaviour:
   m_ObjectHideFlags: 1
