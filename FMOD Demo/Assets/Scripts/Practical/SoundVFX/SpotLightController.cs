@@ -53,6 +53,14 @@ public class SpotLightController : MonoBehaviour
 
 	public void ActivateRandomLight()
     {
-        m_lights[Random.Range(0, m_lights.Length)].TurnOnLight();
+        int index = Random.Range(0, m_lights.Length);
+        m_lights[index].TurnOnLight();
+
+        int index2 = Random.Range(0, m_lights.Length);
+        while (index == index2)
+        {
+            index2 = Random.Range(0, m_lights.Length);
+        }
+        m_lights[index2].TurnOnLight();
     }
 }
