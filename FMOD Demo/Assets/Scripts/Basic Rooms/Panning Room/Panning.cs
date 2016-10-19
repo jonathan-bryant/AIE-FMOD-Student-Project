@@ -20,6 +20,7 @@ public class Panning : ActionObject
     float m_elapsed;
     bool m_isActive;
     float m_originalFOV, m_originalNear;
+    FMODUnity.StudioEventEmitter m_buttonEvent;
 
     void Start()
     {
@@ -38,6 +39,7 @@ public class Panning : ActionObject
         {
             ps.EnableEmission(false);
         }
+        m_buttonEvent = GetComponent<FMODUnity.StudioEventEmitter>();
     }
     void Update()
     {
@@ -121,5 +123,6 @@ public class Panning : ActionObject
     {
         m_isActive = true;
         Camera.main.nearClipPlane = 0.02f;
+        m_buttonEvent.Play();
     }
 }
