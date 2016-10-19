@@ -7,7 +7,7 @@ public class PlayerHurt : MonoBehaviour
     FMOD.Studio.EventInstance m_hurtEvent;              
     [SerializeField]    Transform m_resetPosition;      // Position to reset the player back to.
     [SerializeField]    GameObject m_objectToFace;      // Object to face upon resetting position.
-    public float m_resetTimer;
+    float m_resetTimer = 4.0f;
     float m_resetCounter = 0;
     
 	void Start ()
@@ -34,6 +34,7 @@ public class PlayerHurt : MonoBehaviour
     {
         // Lock player controls/position.
         a_player.GetComponent<ActorControls>().DisableMovement = true;
+        Camera.main.GetComponent<Animator>().Play("RedScreen",0, 0.0f);
 
         // Display hurt screen overlay on camera
 
