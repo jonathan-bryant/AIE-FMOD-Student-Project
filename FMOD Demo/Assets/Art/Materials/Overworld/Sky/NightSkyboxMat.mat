@@ -45,13 +45,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _node_9336
-        second:
-          m_Texture: {fileID: 2800000, guid: 1d89fe34026dfba45b2064cdbe5548bf, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _ParallaxMap
         second:
           m_Texture: {fileID: 0}
@@ -90,6 +83,13 @@ Material:
           name: _MetallicGlossMap
         second:
           m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _node_9336
+        second:
+          m_Texture: {fileID: 2800000, guid: 1d89fe34026dfba45b2064cdbe5548bf, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -174,12 +174,12 @@ Material:
         second: 1
       data:
         first:
-          name: _Opacity
-        second: 1
+          name: _Glossiness
+        second: 0.5
       data:
         first:
-          name: _EmissionIntensity
-        second: 2
+          name: _Metallic
+        second: 0
       data:
         first:
           name: _Parallax
@@ -188,10 +188,6 @@ Material:
         first:
           name: _ZWrite
         second: 1
-      data:
-        first:
-          name: _Glossiness
-        second: 0.5
       data:
         first:
           name: _BumpScale
@@ -214,8 +210,12 @@ Material:
         second: 0
       data:
         first:
-          name: _Metallic
+          name: _Opacity
         second: 0
+      data:
+        first:
+          name: _EmissionIntensity
+        second: 2
       data:
         first:
           name: _Rotation
