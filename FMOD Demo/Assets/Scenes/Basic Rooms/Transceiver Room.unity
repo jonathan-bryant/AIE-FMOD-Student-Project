@@ -607,7 +607,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 132774, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 437070, guid: 49b4d166a0222a749a3fb4cd62f330c7, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -3491,7 +3491,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11481524, guid: 11222f11c81c62d49be381d45eef4013, type: 2}
       propertyPath: OverrideMaxDistance
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 11481524, guid: 11222f11c81c62d49be381d45eef4013, type: 2}
       propertyPath: Event
@@ -4201,11 +4201,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 843978962}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ee1fc68028909c439c9b39fabc9210a, type: 3}
+  m_Script: {fileID: 11500000, guid: ebdeb0f697463f24bbb4c497bdb2591c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actionKeys: 
-  m_actionVerbs: []
+  m_actionKeys: 43010000
+  m_actionVerbs:
+  - To Turn On/Off
   m_renderer: {fileID: 1908091673}
   m_materialIndex: 0
   m_idleGlowSpeed: 4
@@ -4218,6 +4219,18 @@ MonoBehaviour:
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
   m_pressPerSecond: 0
+--- !u!135 &843978966
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 843978962}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &861940383
 GameObject:
   m_ObjectHideFlags: 0
@@ -4961,7 +4974,7 @@ ReflectionProbe:
 GameObject:
   m_PrefabParentObject: {fileID: 142776, guid: 11222f11c81c62d49be381d45eef4013, type: 2}
   m_PrefabInternal: {fileID: 627436929}
---- !u!114 &1272742305
+--- !u!114 &1272742301
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -4969,11 +4982,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1272742300}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ee1fc68028909c439c9b39fabc9210a, type: 3}
+  m_Script: {fileID: 11500000, guid: ebdeb0f697463f24bbb4c497bdb2591c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_actionKeys: 
-  m_actionVerbs: []
+  m_actionKeys: 43010000
+  m_actionVerbs:
+  - To Turn On/Off
   m_renderer: {fileID: 20532822}
   m_materialIndex: 0
   m_idleGlowSpeed: 4
@@ -4986,6 +5000,18 @@ MonoBehaviour:
   m_localClickDirection: {x: 0, y: 0, z: 0}
   m_glowOnce: 0
   m_pressPerSecond: 0
+--- !u!135 &1272742304
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1272742300}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1278195475
 GameObject:
   m_ObjectHideFlags: 0
