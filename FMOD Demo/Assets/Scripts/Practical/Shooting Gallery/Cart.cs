@@ -63,7 +63,7 @@ public class Cart : ActionObject
         {
             CalculateHeading();
             Move();
-            if (m_stopping && m_currentVelocity <= 0.1f)
+            if (m_stopping && m_currentVelocity <= 0.01f)
             {
                 Stop();
             }
@@ -72,6 +72,9 @@ public class Cart : ActionObject
 
     public override void ActionPressed(GameObject sender, KeyCode a_key)
     {
+        if (m_stopping)
+            return;
+
         ResetGlow();
         if (!m_playerIsSeated)
         {
@@ -85,15 +88,16 @@ public class Cart : ActionObject
         else
         {
             m_manager.Pause();
+            m_player.ActivateGun(false);
             m_railEvent.SetParameter("Exit Vehicle", 1.0f);
-            //m_railEvent.SetParameter("EXIT VALUE", m_currentVelocity / m_topSpeed);
+            Debug.Log(Mathf.Clamp((m_currentVelocity / m_topSpeed), 0.01f, 0.99f));
+            m_railEvent.SetParameter("Velocity", Mathf.Clamp((m_currentVelocity / m_topSpeed), 0.01f, 0.99f));
             m_stopping = true;
         }
     }
     void Stop()
     {
         m_player.DisableMovement = false;
-        m_player.ActivateGun(false);
         m_player.GetComponent<CharacterController>().enabled = true;
         m_playerIsSeated = false;
         m_stopping = false;
