@@ -24,7 +24,7 @@ public class Elevator : MonoBehaviour
     public ElevatorDoor m_door;
 
     int m_currentFloor, m_selectedFloor;
-    float m_selectedFloorHeight;
+    Vector3 m_selectedFloorPos;
     bool m_isActive;
     bool m_isOpen;
     float m_elapsed;
@@ -64,13 +64,10 @@ public class Elevator : MonoBehaviour
                 {
                     m_currentFloor = m_selectedFloor;
                     //Elevator
-                    Vector3 pos = transform.position;
-                    pos.y = m_selectedFloorHeight;
-                    transform.position = pos;
+                    Vector3 move = m_selectedFloorPos - transform.position;
+                    transform.position = m_selectedFloorPos;
                     //Player
-                    pos = m_player.transform.position;
-                    pos.y = m_selectedFloorHeight + 0.28f;
-                    m_player.transform.position = pos;
+                    m_player.transform.Translate(move);
 
                     m_isActive = false;
                     m_elapsed = 0.0f;
@@ -106,12 +103,12 @@ public class Elevator : MonoBehaviour
             }
         }
 	}
-    public void ChangeFloor(int a_floor, float a_height)
+    public void ChangeFloor(int a_floor, Vector3 a_pos)
     {
         if (!m_door.m_doorsOpen || m_currentFloor == a_floor || m_isActive)
             return;
 
-        m_selectedFloorHeight = a_height;
+        m_selectedFloorPos = a_pos;
         m_isActive = true;
         m_elapsed = 0.0f;
         m_selectedFloor = a_floor;
