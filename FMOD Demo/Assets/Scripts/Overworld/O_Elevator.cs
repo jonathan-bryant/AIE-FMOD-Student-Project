@@ -157,7 +157,7 @@ public class O_Elevator : MonoBehaviour
             }
             else if (pos.y >= m_selectedFloorY - 2.0f)                          //Almost at destination, trigger exit sound
             {
-                /*===============================================Fmod====================================================
+                /*===============================================FMOD====================================================
                 |   This is how to set a parameter of an external eventEmitter.                                         |
                 =======================================================================================================*/
                 m_event.SetParameter("End", 1.0f);
@@ -174,7 +174,7 @@ public class O_Elevator : MonoBehaviour
             }
             else if (pos.y <= m_selectedFloorY + 2.0f)                          //Almost at destination, trigger exit sound
             {
-                /*===============================================Fmod====================================================
+                /*===============================================FMOD====================================================
                 |   This is how to set a parameter of an external eventEmitter.                                         |
                 =======================================================================================================*/
                 m_event.SetParameter("End", 1.0f);

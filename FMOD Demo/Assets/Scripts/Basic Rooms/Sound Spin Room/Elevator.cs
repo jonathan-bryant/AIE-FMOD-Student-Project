@@ -24,10 +24,10 @@ public class Elevator : MonoBehaviour
     public ElevatorDoors m_doors;
 
     GameObject m_player;
-    int m_currentFloor, m_selectedFloor;
-    int m_isActive; //0 off, 1 close, 2 lift, 3 open
     Vector3 m_selectedFloorPosition;
     Vector3 m_originalTransform;
+    int m_currentFloor, m_selectedFloor;
+    int m_isActive; //0 off, 1 close, 2 lift, 3 open
     float m_elapsed;
 
     void Start()
@@ -79,7 +79,7 @@ public class Elevator : MonoBehaviour
     {
         if (m_elapsed >= 1.0f)
         {
-            /*===============================================Fmod====================================================
+            /*===============================================FMOD====================================================
             |   This is how to set a parameter of an external eventEmitter.                                         |
             =======================================================================================================*/
             m_event.SetParameter("End", 0);

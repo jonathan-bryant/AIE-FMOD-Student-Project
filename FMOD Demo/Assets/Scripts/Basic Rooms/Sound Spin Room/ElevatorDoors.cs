@@ -27,12 +27,12 @@ public class ElevatorDoors : MonoBehaviour
         {
             case -1:
                 {
-                    OpeningDoors();
+                    ClosingDoors();
                 }
                 break;
             case 1:
                 {
-                    ClosingDoors();
+                    OpeningDoors();
                 }
                 break;
             default:
