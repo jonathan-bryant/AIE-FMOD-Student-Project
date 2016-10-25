@@ -91,12 +91,7 @@ public class TwoDoorController : ActionObject
     }
 
     void FixedUpdate()
-    {
-        //---------------------------------Fmod-------------------------------
-        //                      Update event 3d attributes.
-        //--------------------------------------------------------------------
-        m_doorEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
-        
+    {        
         // Get top door distance to either the open or closed position depending on the m_opening bool.
         m_upperDistToNewPos = Vector3.Distance(m_upperDoor.transform.localPosition, (m_opening ? m_upperOpenPos : m_upperClosedPos));
         if (m_upperDistToNewPos > 0.1f)
@@ -183,7 +178,7 @@ public class TwoDoorController : ActionObject
         //---------------------------------Fmod-------------------------------
         //  Check to see if the sound is already playing, if not, then start
         //  the event and set the direction depending on the direction the
-        //  door is moving.
+        //  door is moving. Update the 3D attributes.
         //--------------------------------------------------------------------
         FMOD.Studio.PLAYBACK_STATE playState;
         m_doorEvent.getPlaybackState(out playState);
@@ -192,6 +187,7 @@ public class TwoDoorController : ActionObject
             return;
         }
         m_doorEvent.start();
+        m_doorEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
         m_reverbAmount.setValue(m_doorReverb);
         m_direction.setValue((m_opening ? 180 : -180));
     }
