@@ -211,6 +211,7 @@ GameObject:
   - 23: {fileID: 2354000}
   - 64: {fileID: 6498470}
   - 114: {fileID: 11466118}
+  - 114: {fileID: 11443292}
   m_Layer: 0
   m_Name: Elevator
   m_TagString: Untagged
@@ -341,6 +342,22 @@ GameObject:
   - 4: {fileID: 481710}
   m_Layer: 0
   m_Name: transform202
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &150332
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 406876}
+  - 136: {fileID: 13673468}
+  m_Layer: 0
+  m_Name: Bounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -657,6 +674,7 @@ Transform:
   - {fileID: 454910}
   - {fileID: 427864}
   - {fileID: 489648}
+  - {fileID: 406876}
   m_Father: {fileID: 445156}
   m_RootOrder: 0
 --- !u!4 &402508
@@ -686,6 +704,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400294}
   m_RootOrder: 2
+--- !u!4 &406876
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150332}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 400294}
+  m_RootOrder: 8
 --- !u!4 &407740
 Transform:
   m_ObjectHideFlags: 1
@@ -1850,6 +1881,7 @@ MonoBehaviour:
   m_elevator: {fileID: 11466118}
   m_floor: 2
   m_floorY: 12.359
+  m_buttonEvent: event:/Overworld/UI/Button Click 01
 --- !u!114 &11416568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1890,6 +1922,7 @@ MonoBehaviour:
   m_elevator: {fileID: 11466118}
   m_floor: 0
   m_floorY: 1.459
+  m_buttonEvent: event:/Overworld/UI/Button Click 01
 --- !u!114 &11424550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1941,6 +1974,29 @@ MonoBehaviour:
   m_elevator: {fileID: 11466118}
   m_floor: 1
   m_floorY: 6.76
+  m_buttonEvent: event:/Overworld/UI/Button Click 01
+--- !u!114 &11443292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Overworld/Elevator
+  PlayEvent: 0
+  StopEvent: 2
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!114 &11459818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1963,10 +2019,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30053ae9f4a07a48b9ea98f406e3538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_event: event:/Overworld/Elevator
-  m_eventVolume: 0.1
-  m_outerDoorHolder: {fileID: 106884}
-  m_door: {fileID: 11416568}
+  m_event: {fileID: 0}
+  m_elevatorMusic: {fileID: 0}
+  m_outerDoors: {fileID: 0}
+  m_elevatorDoor: {fileID: 0}
   m_speed: 2
   m_startFloorY: 1.459
 --- !u!114 &11469538
@@ -2016,6 +2072,19 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &13673468
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150332}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.75
+  m_Height: 3.5
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:

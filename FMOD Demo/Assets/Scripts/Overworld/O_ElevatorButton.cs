@@ -4,7 +4,7 @@
 |   Company:		            Firelight Technologies                                          |
 |   Date:		                20/09/2016                                                      |
 |   Scene:                      Overworld                                                       |
-|   Fmod Related Scripting:     No                                                              |
+|   Fmod Related Scripting:     Yes                                                             |
 |   Description:                Tells the elevator to change floors.                            |
 ===============================================================================================*/
 using UnityEngine;
@@ -12,11 +12,13 @@ using System.Collections;
 
 public class O_ElevatorButton : ActionObject
 {
+    [FMODUnity.EventRef]
+    public string m_event;
+
     public O_Elevator m_elevator;
     public int m_floor;
     public float m_floorY;
-    [FMODUnity.EventRef]    public string m_buttonEvent;
-
+    
     void Start()
     {
         InitButton();
@@ -29,8 +31,11 @@ public class O_ElevatorButton : ActionObject
 
     public override void ActionPressed(GameObject sender, KeyCode a_key)
     {
-        m_elevator.ChangeFloor(m_floor, m_floorY);
-        FMODUnity.RuntimeManager.PlayOneShot(m_buttonEvent, transform.position);
+        m_elevator.ChangeFloor(m_floor, m_floorY);        
+        /*===============================================FMOD====================================================
+        |   You can play a oneshot sound using the RuntimeManager, it just needs the event name and a position. |
+        =======================================================================================================*/
+        FMODUnity.RuntimeManager.PlayOneShot(m_event, transform.position);
     }
     public override void ActionDown(GameObject sender, KeyCode a_key)
     {

@@ -4,7 +4,7 @@
 |   Company:		            Firelight Technologies                                          |
 |   Date:		                20/09/2016                                                      |
 |   Scene:                      Sound Spin                                                      |
-|   Fmod Related Scripting:     No                                                              |
+|   Fmod Related Scripting:     Yes                                                              |
 |   Description:                This script simply changes the floor the elevator needs to go.  |
 ===============================================================================================*/
 using UnityEngine;
@@ -15,11 +15,11 @@ public class ElevatorButton : ActionObject
     public Elevator m_elevator;
     public int m_floor;
     public Vector3 m_position;
-    FMODUnity.StudioEventEmitter m_buttonEvent;
+    [FMODUnity.EventRef]
+    public string m_event;
 
     void Start()
     {
-        m_buttonEvent = GetComponent<FMODUnity.StudioEventEmitter>();
         InitButton();
         InitGlow();
     }
@@ -31,6 +31,9 @@ public class ElevatorButton : ActionObject
     public override void ActionPressed(GameObject sender, KeyCode a_key)
     {
         m_elevator.ChangeFloor(m_floor, m_position);
-        m_buttonEvent.Play();
+        /*===============================================FMOD====================================================
+        |   You can play a oneshot sound using the RuntimeManager, it just needs the event name and a position. |
+        =======================================================================================================*/
+        FMODUnity.RuntimeManager.PlayOneShot(m_event, transform.position);
     }
 }

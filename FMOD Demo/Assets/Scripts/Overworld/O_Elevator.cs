@@ -5,146 +5,66 @@
 |   Date:		                20/09/2016                                                      |
 |   Scene:                      Overworld                                                       |
 |   Fmod Related Scripting:     Yes                                                             |
-|   Description:                Controls the elevator.                                          |
+|   Description:                Controls the overworld elevator.                                |
 ===============================================================================================*/
 using UnityEngine;
 using System.Collections;
 
 public class O_Elevator : MonoBehaviour
 {
-    //---------------------------------Fmod-------------------------------
-    [FMODUnity.EventRef]    public string m_event = "event:/Elevator";
-    FMOD.Studio.EventInstance m_eventInstance;
-    string m_eventParamString = "End";
-    FMOD.Studio.ParameterInstance m_eventParam;
-    public float m_eventVolume = 0.1f;
-    //--------------------------------------------------------------------
+    /*===============================================FMOD====================================================
+    |   Get an existing StudioEventEmitter to control it from a script                                      |
+    =======================================================================================================*/
+    public FMODUnity.StudioEventEmitter m_event;
 
-    public GameObject m_outerDoorHolder;
-    public O_ElevatorDoor m_door;
+    public GameObject m_outerDoors;
+    public O_ElevatorDoor m_elevatorDoor;
     public float m_speed;
+    public float m_startFloorY;
 
     ActorControls m_actor;
     int m_isActive; //0 off, 1 close, 2 lift, 3 open
     int m_currentFloor;
     int m_selectedFloor;
     float m_selectedFloorY;
-    int m_direction;
-
     float m_elapsed;
-    public float m_startFloorY;
+    bool m_playerInElevator;
 
     void Start()
     {
-        //---------------------------------Fmod-------------------------------
-        //  Create an instance, get the parameter to control the "outro" and
-        //  adjust the volume.
-        //--------------------------------------------------------------------
-        m_eventInstance = FMODUnity.RuntimeManager.CreateInstance(m_event);
-        m_eventInstance.getParameter(m_eventParamString, out m_eventParam);
-        m_eventInstance.setVolume(m_eventVolume);
-
         m_actor = Camera.main.transform.parent.gameObject.GetComponent<ActorControls>();
-        m_isActive = 0;
+        m_isActive = -1;
         m_currentFloor = -1;
         m_selectedFloor = -1;
         m_selectedFloorY = m_startFloorY;
-        m_actor.DisableMovement = true;
+        m_playerInElevator = false;
     }
     void Update()
     {
-        m_eventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
-
-        if (m_selectedFloor == -1)
+        switch (m_isActive)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                m_selectedFloor = 0;
-                m_isActive = 1;
-                m_actor.DisableMovement = false;
-
-                StartSoundEvent();
-            }
-        }
-
-        if (m_isActive == 1)
-        {
-            Vector3 playerPos = m_actor.transform.position;
-            //Unity's Cylinder Collider
-            Vector3 playerXZ = playerPos; playerXZ.y = 0.0f;
-            Vector3 elevatorXZ = transform.position; elevatorXZ.y = 0.0f;
-            if ((playerXZ - elevatorXZ).magnitude < 0.8f && playerPos.y - 0.7f >= transform.position.y - 1.459 && playerPos.y - 0.7f <= transform.position.y + 1.459)
-            {
-                CenterActor();
-                m_actor.DisableMovement = true;
-            }
-            if (!m_door.IsDoorOpen)
-            {
-                StartSoundEvent();
-                m_isActive = 2;
-                if (m_selectedFloor < m_currentFloor)
-                    m_direction = -1;
-                else
-                    m_direction = 1;
-            }
-        }
-        else if (m_isActive == 2)
-        {
-            CenterActor();
-            transform.Translate(0.0f, m_direction * m_speed * Time.deltaTime, 0.0f);
-            Vector3 pos = transform.position;
-            bool finished = false;
-            if (m_direction == -1)
-            {
-                if (pos.y <= m_selectedFloorY)
+            case -1:                    //Tutorial stage
                 {
-                    pos.y = m_selectedFloorY;
-                    transform.position = pos;
-                    finished = true;
+                    InTutorial();
                 }
-                else if (pos.y <= m_selectedFloorY + 2.0f)
+                break;
+            case 1:                     //Close
                 {
-                    m_eventParam.setValue(1.0f);
+                    ClosingDoors();
                 }
-            }
-            else
-            {
-                if (pos.y >= m_selectedFloorY)
+                break;
+            case 2:                     //Lift
                 {
-                    pos.y = m_selectedFloorY;
-                    transform.position = pos;
-                    finished = true;
+                    Lifting();
                 }
-                else if (pos.y >= m_selectedFloorY - 2.0f)
+                break;
+            case 3:                     //Open
                 {
-                    m_eventParam.setValue(1.0f);
+                    OpeningDoors();
                 }
-            }
-            if (finished)
-            {
-                m_currentFloor = m_selectedFloor;
-                m_isActive = 3;
-                m_door.OpenDoor();
-                if (m_currentFloor >= 0)
-                    m_outerDoorHolder.transform.GetChild(m_currentFloor).GetComponent<O_ElevatorDoor>().OpenDoor();
-
-            }
-
-            Vector3 playerPos = m_actor.transform.position;
-            if (m_actor.DisableMovement)
-            {
-                playerPos.y = pos.y - 1.0f + 0.7f;
-                m_actor.transform.position = playerPos;
-            }
-
-        }
-        else if (m_isActive == 3)
-        {
-            m_actor.DisableMovement = false;
-            if (m_door.IsDoorOpen)
-            {
-                m_isActive = 0;
-            }
+                break;
+            default:
+                break;
         }
     }
 
@@ -153,42 +73,132 @@ public class O_Elevator : MonoBehaviour
         if (m_isActive != 0 || m_currentFloor == a_floor)
             return;
 
-        m_isActive = 1;
+        m_isActive = 1;                                                                                     //Closing Doors
         m_selectedFloor = a_floor;
         m_selectedFloorY = a_floorY;
-        m_door.CloseDoor();
-        if(m_currentFloor >= 0)
-            m_outerDoorHolder.transform.GetChild(m_currentFloor).GetComponent<O_ElevatorDoor>().CloseDoor();
-
-        Vector3 playerPos = m_actor.transform.position;
-        Vector3 playerXZ = playerPos; playerXZ.y = 0.0f;
-        Vector3 elevatorXZ = transform.position; elevatorXZ.y = 0.0f;
-        if ((playerXZ - elevatorXZ).magnitude < 0.8f && playerPos.y - 0.7f >= transform.position.y - 1.459 && playerPos.y - 0.7f <= transform.position.y + 1.459)
-        {
-            m_actor.DisableMovement = true;
-        }
+        m_elevatorDoor.CloseDoor();
+        if (m_currentFloor >= 0)                                                                            //If not in tutorial stage
+            m_outerDoors.transform.GetChild(m_currentFloor).GetComponent<O_ElevatorDoor>().CloseDoor();     //Shut outer door on this floor
     }
+
     void CenterActor()
     {
-        Vector3 playerPos = m_actor.transform.position;
-        Vector3 playerXZ = playerPos; playerXZ.y = 0.0f;
-        Vector3 elevatorXZ = transform.position; elevatorXZ.y = 0.0f;
-        if ((playerXZ - elevatorXZ).magnitude < 0.8f && playerPos.y - 0.7f >= transform.position.y - 1.459 && playerPos.y - 0.7f <= transform.position.y + 1.459)
+        Vector3 playerPos = m_actor.transform.position;                                                     //Player Position
+        Vector3 elevatorMiddleDirection = transform.position - playerPos;
+        elevatorMiddleDirection.y = 0;                                                                      //Don't take 0 into account
+        if (elevatorMiddleDirection.magnitude > 1.0f)                                                       //If the direction is greater than 1.0f normalize
+            elevatorMiddleDirection.Normalize();
+        if (elevatorMiddleDirection.magnitude != 0.0f)
+            m_actor.GetComponent<CharacterController>().Move(elevatorMiddleDirection * 0.05f);
+    }
+    void InTutorial()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Vector3 elevatorMiddleDirection = transform.position - m_actor.transform.position;
-            elevatorMiddleDirection.y = 0;
-            if (elevatorMiddleDirection.magnitude > 1.0f)
-            {
-                elevatorMiddleDirection.Normalize();
-            }
-            if (elevatorMiddleDirection.magnitude != 0.0f)
-                m_actor.GetComponent<CharacterController>().Move(elevatorMiddleDirection * 0.05f);
+            m_selectedFloor = 0;
+            m_isActive = 2;
+            m_actor.DisableMovement = true;
+            m_event.Play();
+            m_event.SetParameter("End", 0.0f);
         }
     }
-
-    void StartSoundEvent()
+    void ClosingDoors()
     {
-        m_eventParam.setValue(0.0f);
-        m_eventInstance.start();
+        if (!m_elevatorDoor.IsDoorOpen)
+        {
+            m_isActive = 2;
+            m_event.Play();
+            m_event.SetParameter("End", 0.0f);
+        }
+    }
+    void OnTriggerEnter(Collider a_col)
+    {
+        if (m_isActive == 0)
+            return;
+        if (a_col.gameObject.tag == "Player")
+        {
+            CenterActor();
+            m_actor.DisableMovement = true;
+
+        }
+    }
+    void OnTriggerStay(Collider a_col)
+    {
+        if (m_isActive == 0)
+            return;
+        if (a_col.gameObject.tag == "Player")
+        {
+            CenterActor();
+            m_actor.DisableMovement = true;
+            if (m_isActive == 2)    //If elevator is lifting move player with it
+            {
+                m_playerInElevator = true;
+            }
+        }
+    }
+    void OpeningDoors()
+    {
+        if (m_elevatorDoor.IsDoorOpen)
+        {
+            m_isActive = 0;
+            m_actor.DisableMovement = false;
+            m_playerInElevator = false;
+        }
+    }
+    void Lifting()
+    {
+        Vector3 pos = transform.position;
+        bool finished = false;
+
+        if (m_selectedFloor > m_currentFloor)                                   //UP
+        {
+            transform.Translate(0.0f, m_speed * Time.deltaTime, 0.0f);          //Move Elevator
+            if (pos.y >= m_selectedFloorY)                                      //Arrived at destination
+            {
+                pos.y = m_selectedFloorY;
+                transform.position = pos;
+                finished = true;
+            }
+            else if (pos.y >= m_selectedFloorY - 2.0f)                          //Almost at destination, trigger exit sound
+            {
+                /*===============================================FMOD====================================================
+                |   This is how to set a parameter of an external eventEmitter.                                         |
+                =======================================================================================================*/
+                m_event.SetParameter("End", 1.0f);
+            }
+        }
+        else //DOWN
+        {
+            transform.Translate(0.0f, -m_speed * Time.deltaTime, 0.0f);         //Move Elevator
+            if (pos.y <= m_selectedFloorY)                                      //Arrived at destination
+            {
+                pos.y = m_selectedFloorY;
+                transform.position = pos;
+                finished = true;
+            }
+            else if (pos.y <= m_selectedFloorY + 2.0f)                          //Almost at destination, trigger exit sound
+            {
+                /*===============================================FMOD====================================================
+                |   This is how to set a parameter of an external eventEmitter.                                         |
+                =======================================================================================================*/
+                m_event.SetParameter("End", 1.0f);
+            }
+        }
+
+        if (finished)
+        {
+            m_currentFloor = m_selectedFloor;
+            m_isActive = 3;
+            m_elevatorDoor.OpenDoor();
+            if (m_currentFloor >= 0)
+                m_outerDoors.transform.GetChild(m_currentFloor).GetComponent<O_ElevatorDoor>().OpenDoor();
+        }
+
+        if (m_playerInElevator)
+        {
+            Vector3 playerPos = m_actor.transform.position;
+            playerPos.y = transform.position.y - 1.0f + 0.7f;
+            m_actor.transform.position = playerPos;
+        }
     }
 }
