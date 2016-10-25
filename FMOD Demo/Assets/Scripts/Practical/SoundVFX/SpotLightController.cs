@@ -37,6 +37,13 @@ public class SpotLightController : MonoBehaviour
             ActivateRandomLights();
             m_lastBeat = beat;
         }
+        else if (m_soundRef.m_timelineInfo.tempo < 140)
+        {
+            for (int i = 0; i < m_lights.Length; i++)
+            {
+                m_lights[i].m_partyMode = false;
+            }
+        }
 
         int index = Random.Range(0, 5);
         // Change the emission of the second material attached to the walls.
@@ -60,6 +67,7 @@ public class SpotLightController : MonoBehaviour
     {
         int index = Random.Range(0, m_lights.Length);
         m_lights[index].TurnOnLight();
+        m_lights[index].m_partyMode = true;
 
         int index2 = Random.Range(0, m_lights.Length);
         while (index == index2)
@@ -67,5 +75,6 @@ public class SpotLightController : MonoBehaviour
             index2 = Random.Range(0, m_lights.Length);
         }
         m_lights[index2].TurnOnLight();
+        m_lights[index2].m_partyMode = true;
     }
 }

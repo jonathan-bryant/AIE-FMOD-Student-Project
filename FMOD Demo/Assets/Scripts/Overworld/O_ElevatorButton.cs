@@ -15,6 +15,7 @@ public class O_ElevatorButton : ActionObject
     public O_Elevator m_elevator;
     public int m_floor;
     public float m_floorY;
+    [FMODUnity.EventRef]    public string m_buttonEvent;
 
     void Start()
     {
@@ -29,6 +30,7 @@ public class O_ElevatorButton : ActionObject
     public override void ActionPressed(GameObject sender, KeyCode a_key)
     {
         m_elevator.ChangeFloor(m_floor, m_floorY);
+        FMODUnity.RuntimeManager.PlayOneShot(m_buttonEvent, transform.position);
     }
     public override void ActionDown(GameObject sender, KeyCode a_key)
     {
