@@ -23,41 +23,20 @@ public class ElevatorDoors : MonoBehaviour
     }
     void Update()
     {
-        if (m_isActive == 1)
+        switch (m_isActive)
         {
-            //open
-            Vector3 leftDoorPos = m_leftDoor.transform.localPosition;
-            Vector3 rightDoorPos = m_rightDoor.transform.localPosition;
-
-            leftDoorPos.z -= Time.deltaTime;
-            rightDoorPos.z += Time.deltaTime;
-            if (leftDoorPos.z < -1.4f)
-            {
-                leftDoorPos.z = -1.4f;
-                rightDoorPos.z = 1.4f;
-                m_doorsOpen = true;
-                m_isActive = 0;
-            }
-            m_leftDoor.transform.localPosition = leftDoorPos;
-            m_rightDoor.transform.localPosition = rightDoorPos;
-        }
-        else if (m_isActive == -1)
-        {
-            //close
-            Vector3 leftDoorPos = m_leftDoor.transform.localPosition;
-            Vector3 rightDoorPos = m_rightDoor.transform.localPosition;
-
-            leftDoorPos.z += Time.deltaTime;
-            rightDoorPos.z -= Time.deltaTime;
-            if (leftDoorPos.z > -0.5f)
-            {
-                leftDoorPos.z = -0.5f;
-                rightDoorPos.z = 0.5f;
-                m_doorsOpen = false;
-                m_isActive = 0;
-            }
-            m_leftDoor.transform.localPosition = leftDoorPos;
-            m_rightDoor.transform.localPosition = rightDoorPos;
+            case -1:
+                {
+                    OpeningDoors();
+                }
+                break;
+            case 1:
+                {
+                    ClosingDoors();
+                }
+                break;
+            default:
+                break;
         }
     }
 
@@ -72,5 +51,40 @@ public class ElevatorDoors : MonoBehaviour
         if (!m_doorsOpen)
             return;
         m_isActive = -1;
+    }
+
+    void OpeningDoors()
+    {
+        Vector3 leftDoorPos = m_leftDoor.transform.localPosition;
+        Vector3 rightDoorPos = m_rightDoor.transform.localPosition;
+
+        leftDoorPos.z -= Time.deltaTime;
+        rightDoorPos.z += Time.deltaTime;
+        if (leftDoorPos.z < -1.4f)
+        {
+            leftDoorPos.z = -1.4f;
+            rightDoorPos.z = 1.4f;
+            m_doorsOpen = true;
+            m_isActive = 0;
+        }
+        m_leftDoor.transform.localPosition = leftDoorPos;
+        m_rightDoor.transform.localPosition = rightDoorPos;
+    }
+    void ClosingDoors()
+    {
+        Vector3 leftDoorPos = m_leftDoor.transform.localPosition;
+        Vector3 rightDoorPos = m_rightDoor.transform.localPosition;
+
+        leftDoorPos.z += Time.deltaTime;
+        rightDoorPos.z -= Time.deltaTime;
+        if (leftDoorPos.z > -0.5f)
+        {
+            leftDoorPos.z = -0.5f;
+            rightDoorPos.z = 0.5f;
+            m_doorsOpen = false;
+            m_isActive = 0;
+        }
+        m_leftDoor.transform.localPosition = leftDoorPos;
+        m_rightDoor.transform.localPosition = rightDoorPos;
     }
 }
