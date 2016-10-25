@@ -90,7 +90,6 @@ public class Cart : ActionObject
             m_manager.Pause();
             m_player.ActivateGun(false);
             m_railEvent.SetParameter("Exit Vehicle", 1.0f);
-            Debug.Log(Mathf.Clamp((m_currentVelocity / m_topSpeed), 0.01f, 0.99f));
             m_railEvent.SetParameter("Velocity", Mathf.Clamp((m_currentVelocity / m_topSpeed), 0.01f, 0.99f));
             m_stopping = true;
         }
