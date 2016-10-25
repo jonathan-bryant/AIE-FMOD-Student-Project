@@ -5,113 +5,127 @@
 |   Date:		                20/09/2016                                                      |
 |   Scene:                      Sound Spin                                                      |
 |   Fmod Related Scripting:     Yes                                                             |
-|   Description:                Sound Spinning is when a sound has a start, then a loop, than an|
-|   end sound. So the sound will play the intro into a looping segment, then when it's told to  |
-|   exit, it will play the exit segment. e.g. elevator, machine gun.                            |
+|   Description:                Sound Spinning is a sound has a start, a loop and an end sound. |
+|   E.g. An elevator starts to lift(the spin up) until it reaches a maximum velocity which is   |
+|   where the sound will loop. The tigger is then applied which will exit the loop, into the    |
+|   spin down segment of the event.                                                             |
 ===============================================================================================*/
 using UnityEngine;
 using System.Collections;
 
 public class Elevator : MonoBehaviour
 {
-    /*===============================================Fmod====================================================
-    |   This line is a way to get an existing eventEmitter and control it from script                       |
+    /*===============================================FMOD====================================================
+    |   Get an existing StudioEventEmitter to control it from a script                                      |
     =======================================================================================================*/
     public FMODUnity.StudioEventEmitter m_event;
     public FMODUnity.StudioEventEmitter m_elevatorMusic;
 
+    public ElevatorDoors m_doors;
+
     GameObject m_player;
-    public ElevatorDoor m_door;
-
     int m_currentFloor, m_selectedFloor;
-    Vector3 m_selectedFloorPos;
-    bool m_isActive;
-    bool m_isOpen;
+    int m_isActive;
+    Vector3 m_selectedFloorPosition;
+    Vector3 m_originalTransform;
     float m_elapsed;
-    float m_originalZ;
 
-	void Start () {
+    void Start()
+    {
         m_currentFloor = 0;
         m_selectedFloor = 0;
-        m_isActive = false;
+        m_isActive = 0;
         m_elapsed = 0.0f;
-        m_isOpen = true;
         m_player = Camera.main.transform.parent.gameObject;
-        m_originalZ = transform.position.z;
-	}
-	void Update () {
+        m_originalTransform = transform.position;
+    }
+    void Update()
+    {
         m_elapsed += Time.deltaTime;
-	    if(m_isActive)
+        switch (m_isActive)
         {
-            if(m_isOpen)
-            {
-                if(m_elapsed >= 1.0f)
+            case 1:
                 {
-                    m_isOpen = false;
-                    m_elapsed = 0.0f;
-                    /*===============================================Fmod====================================================
-                    |   This is how you would go about setting parameters of an external eventEmitter.                      |
-                    =======================================================================================================*/
-                    m_event.SetParameter("End", 0);
-                    m_event.Play();
-                    m_elevatorMusic.SetParameter("End", 0);
-                    m_elevatorMusic.Play();
+                    ClosingDoors();
                 }
-            }
-            else
-            {
-                if(m_elapsed >= 2.0f + (Mathf.Abs(m_currentFloor - m_selectedFloor)))
+                break;
+            case 2:
                 {
-                    m_currentFloor = m_selectedFloor;
-                    //Elevator
-                    Vector3 move = m_selectedFloorPos - transform.position;
-                    transform.position = m_selectedFloorPos;
-                    //Player
-                    m_player.transform.Translate(move);
+                    Lifting();
+                }
+                break;
+            case 3:
+                {
+                    OpeningDoors();
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    public void ChangeFloor(int a_floor, Vector3 a_position)
+    {
+        if (m_currentFloor == a_floor || m_isActive > 0)
+            return;
 
-                    m_isActive = false;
-                    m_elapsed = 0.0f;
-                }
-                else
-                {
-                    Vector3 pos = transform.position;
-                    pos.z = Mathf.Sin(Time.time * 10.0f) * 0.05f + m_originalZ;
-                    transform.position = pos;
-                }
-            }
+        m_selectedFloorPosition = a_position;
+        m_isActive = 1;
+        m_elapsed = 0.0f;
+        m_selectedFloor = a_floor;
+        m_doors.CloseDoors();
+    }
+
+    void ClosingDoors()
+    {
+        if (m_elapsed >= 1.0f)
+        {
+            /*===============================================Fmod====================================================
+            |   This is how you would go about setting parameters of an external eventEmitter.                      |
+            =======================================================================================================*/
+            m_event.SetParameter("End", 0);
+            m_event.Play();
+            m_elevatorMusic.SetParameter("End", 0);
+            m_elevatorMusic.Play();
+
+            m_isActive++;
+            m_elapsed = 0.0f;
+        }
+    }
+    void OpeningDoors()
+    {
+        if (m_elapsed >= 2.0f)
+        {
+            m_doors.OpenDoors();
+            m_isActive = 0;
         }
         else
         {
-            if (!m_isOpen)
-            {
-                if (m_elapsed >= 2.0f)
-                {
-                    m_door.OpenDoors();
-                    m_isOpen = true;
-                }
-                else
-                {
-                    Vector3 pos = transform.position;
-                    pos.z = Mathf.Sin(Time.time * 10.0f) * 0.05f + m_originalZ;
-                    transform.position = pos;
-                    /*===============================================Fmod====================================================
-                    |   This is how you would go about setting parameters of an external eventEmitter.                      |
-                    =======================================================================================================*/
-                    m_event.SetParameter("End", 1);
-                    m_elevatorMusic.SetParameter("End", 1);
-                }
-            }
+            transform.position = m_originalTransform + (transform.forward * Mathf.Sin(m_elapsed * 10.0f) * 0.05f);
+            /*===============================================FMOD====================================================
+            |   The best way to exit a sound spin, is to simply add a parameter to the event.                       |
+            =======================================================================================================*/
+            m_event.SetParameter("End", 1);
+            m_elevatorMusic.SetParameter("End", 1);
         }
-	}
-    public void ChangeFloor(int a_floor, Vector3 a_pos)
+    }
+    void Lifting()
     {
-        if (!m_door.m_doorsOpen || m_currentFloor == a_floor || m_isActive)
-            return;
+        if (m_elapsed >= 2.0f * (Mathf.Abs(m_currentFloor - m_selectedFloor)))
+        {
+            m_currentFloor = m_selectedFloor;
+            Vector3 move = m_selectedFloorPosition - transform.position;
+            //Move Elevator
+            transform.position = m_selectedFloorPosition;
+            m_originalTransform += move;
+            //Move Player
+            m_player.transform.Translate(move);
 
-        m_selectedFloorPos = a_pos;
-        m_isActive = true;
-        m_elapsed = 0.0f;
-        m_selectedFloor = a_floor;
-        m_door.CloseDoors();
+            m_isActive++;
+            m_elapsed = 0.0f;
+        }
+        else
+        {
+            transform.position = m_originalTransform + (transform.forward * Mathf.Sin(m_elapsed * 10.0f) * 0.05f);
+        }
     }
 }
