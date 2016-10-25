@@ -16,6 +16,7 @@ public class RoofLighting : MonoBehaviour
     // Public Vars
     public Color m_lightColor;
     public Color m_lightOff;
+    public bool m_partyMode = false;
 
     // Private Vars
     Light m_lightRef;
@@ -25,11 +26,16 @@ public class RoofLighting : MonoBehaviour
 	{
         m_materialRef = GetComponentInChildren<Renderer>().sharedMaterials[1];
         m_lightRef = GetComponent<Light>();
-	}
+
+        if (!m_partyMode)
+        {
+            TurnOnLight();
+        }
+    }
 	
-	void Update () 
-	{
-	    if (m_lightRef.color != m_lightOff)
+	void Update ()
+    {      
+	    if (m_lightRef.color != m_lightOff && m_partyMode)
         {
             m_lightRef.color = Color.Lerp(m_lightRef.color, m_lightOff, 0.2f);
             m_materialRef.SetColor("_EmissionColor", m_lightRef.color);
