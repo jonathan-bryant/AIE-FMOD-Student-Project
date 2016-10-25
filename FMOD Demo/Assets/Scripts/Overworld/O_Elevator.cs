@@ -97,7 +97,9 @@ public class O_Elevator : MonoBehaviour
         {
             m_selectedFloor = 0;
             m_isActive = 2;
-            m_actor.DisableMovement = false;
+            m_actor.DisableMovement = true;
+            m_event.Play();
+            m_event.SetParameter("End", 0.0f);
         }
     }
     void ClosingDoors()
@@ -105,6 +107,8 @@ public class O_Elevator : MonoBehaviour
         if (!m_elevatorDoor.IsDoorOpen)
         {
             m_isActive = 2;
+            m_event.Play();
+            m_event.SetParameter("End", 0.0f);
         }
     }
     void OnTriggerEnter(Collider a_col)
