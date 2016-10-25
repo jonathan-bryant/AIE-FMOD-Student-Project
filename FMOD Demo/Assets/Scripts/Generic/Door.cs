@@ -3,12 +3,11 @@
 |   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
 |   Company:		            Firelight Technologies                                          |
 |   Date:		                20/09/2016                                                      |
-|   Scene:                      All                                                             |
+|   Scene:                      Transceiver                                                     |
 |   Fmod Related Scripting:     Yes                                                             |
 |   Description:                When the door is open, the transceiver is enabled.              |
 ===============================================================================================*/
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Door : ActionObject
 {

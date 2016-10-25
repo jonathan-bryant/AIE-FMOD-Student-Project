@@ -1,15 +1,22 @@
-﻿using UnityEngine;
+﻿/*===============================================================================================
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                20/09/2016                                                      |
+|   Scene:                      Surfaces and Event Cone Angle                                   |
+|   Fmod Related Scripting:     No                                                              |
+|   Description:                Calls Move on the Actor when it enters the trigger              |
+===============================================================================================*/
+using UnityEngine;
 using System.Collections;
 
-public class MovePlayer : MonoBehaviour {
-
+public class MovePlayer : MonoBehaviour
+{
     public float m_speed;
-	// Use this for initialization
+
 	void Start () {
 	
 	}
-	
-	// Update is called once per frame
 	void Update () {
 
     }

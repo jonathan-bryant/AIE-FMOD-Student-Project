@@ -3,7 +3,7 @@
 |   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
 |   Company:		            Firelight Technologies                                          |
 |   Date:		                20/09/2016                                                      |
-|   Scene:                      All                                                             |
+|   Scene:                      Custom Distance Attenuation                                     |
 |   Fmod Related Scripting:     No                                                              |
 |   Description:                Flickers lights.                                                |
 ===============================================================================================*/
