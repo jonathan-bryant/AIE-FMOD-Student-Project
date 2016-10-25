@@ -5,6 +5,8 @@ public class ScrollingUV : MonoBehaviour
     public int m_materialIndex = 0;
     public float scrollSpeed = 0;
     public bool m_randSpeed = false;
+    public float m_randMin = 1;
+    public float m_randMax = 2;
 	float m_elapsed = 0.0f;
     Renderer rend;
 
@@ -13,7 +15,7 @@ public class ScrollingUV : MonoBehaviour
     {
         rend = GetComponent<Renderer>();
         if (m_randSpeed)
-            scrollSpeed = Random.Range(1.0f, 2.2f);
+            scrollSpeed = Random.Range(m_randMin, m_randMax);
 	}
 	
 	// Update is called once per frame
