@@ -20,4 +20,31 @@ Key points to keep in mind:
 
 - All the sounds in the project are using FMOD Studio and the FMOD Unity Integration.
 
+- We have tried to use the default FMOD scripts that come with the Integration as much as possible just to show how easy it is use.
+
+- But in every custom script containing FMOD, you will see this comment structure before the lines that refer to FMOD:
+
+                /*===============================================Fmod====================================================
+                |                     So using - find "FMOD" should take you to all the important bits.                 |
+                =======================================================================================================*/
+
 - Feel free to use any and everything from this project in your own games!
+
+
+
+CREDITS:
+Programmers:
+    Matthew Zalenko
+    Cameron Baron
+
+Designer:
+    Jonathan Bryant
+
+Artist:
+    Jake Dunlop
+
+Sound Engineers:
+    Bradley Woodhead
+    Oliver Richardson
+
+This project was created in place of our Final Assessment at the Academy of Interactive Entertainment Melbourne, for Firelight Studios. 
