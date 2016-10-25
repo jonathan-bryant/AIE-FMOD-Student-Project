@@ -10,7 +10,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class ElevatorDoor : MonoBehaviour
+public class ElevatorDoors : MonoBehaviour
 {
     public GameObject m_leftDoor, m_rightDoor;
     int m_isActive;
