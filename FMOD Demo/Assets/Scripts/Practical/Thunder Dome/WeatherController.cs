@@ -13,7 +13,6 @@ using System.Collections;
 
 public class WeatherController : MonoBehaviour
 {
-    public FMODUnity.StudioEventEmitter m_event;
     public WindSlider m_windController;
     public RainSlider m_rainController;
     public SunController m_sunController;
@@ -56,8 +55,8 @@ public class WeatherController : MonoBehaviour
         =======================================================================================================*/
         m_ambience.getParameter("Wind", out m_windParam);
         m_ambience.getParameter("Rain", out m_rainParam);
-        m_ambience.getParameter("Time", out m_sunParam);
         m_ambience.getParameter("Water", out m_waterParam);
+        m_ambience.getParameter("Time", out m_sunParam);
     }
 
     void Update()
