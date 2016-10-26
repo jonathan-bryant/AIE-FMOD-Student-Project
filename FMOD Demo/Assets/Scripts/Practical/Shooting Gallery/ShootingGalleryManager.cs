@@ -16,23 +16,20 @@ using UnityEngine.UI;
 public class ShootingGalleryManager : MonoBehaviour
 {
     public Cart m_cart;
-
     public int m_winScore;
-    int m_currentScore;
-
-    public Track m_trackHolder;
-    List<Transform> m_tracks;
-    int m_currentTrackIndex;
-    int m_nextRoomStartIndex;
-
     public SG_MainSpeaker m_mainSpeaker;
     public BaseTarget[] m_targets;
     public Text[] m_scores;
+    public Track m_trackHolder;
 
+    int m_currentScore;
+    List<Transform> m_tracks;
+    int m_currentTrackIndex;
+    int m_nextRoomStartIndex;
     int m_active;
+    public bool IsActive { get { return m_active > 0; } }
     bool m_isPaused;
     public bool IsPaused { get { return m_isPaused; } }
-    public bool IsActive { get { return m_active > 0; } }
 
     void Start()
     {
@@ -120,7 +117,6 @@ public class ShootingGalleryManager : MonoBehaviour
         //Zero out currentVelocity
         m_cart.CurrentVelocity = 0.0f;
     }
-
     public void AddScore(int a_points)
     {
         m_currentScore += a_points;
@@ -160,7 +156,6 @@ public class ShootingGalleryManager : MonoBehaviour
             }
         }
     }
-
     public Transform GetCurrentTrack()
     {
         return m_tracks[m_currentTrackIndex];

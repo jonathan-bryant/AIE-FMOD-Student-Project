@@ -1,60 +1,52 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.SceneManagement;
+﻿/*===============================================================================================
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                20/09/2016                                                      |
+|   Scene:                      Transceiver                                                     |
+|   Fmod Related Scripting:     Yes                                                             |
+|   Description:                When the door is open, the transceiver is enabled.              |
+===============================================================================================*/
+using UnityEngine;
 
 public class Door : ActionObject
 {
+    /*===============================================Fmod====================================================
+    |   The Transceiver.                                                                                    |
+    =======================================================================================================*/
     public FMODUnity.StudioEventEmitter m_event;
-    public string m_sceneName;
     public float m_angle;
     public float m_originalAngle;
     public float m_duration;
+
     float m_elapsed;
     bool m_doorOpen;
-    public bool DoorOpen { get { return m_doorOpen; } }
-    bool m_openingDoor, m_closingDoor;
+    int m_isActive; //0 no, 1 opening, 2 closing
 
     void Start()
     {
         InitGlow();
-        m_openingDoor = false;
-        m_closingDoor = false;
         m_elapsed = 0.0f;
         m_originalAngle = transform.eulerAngles.y;
+        m_isActive = 0;
     }
-
     void Update()
     {
         UpdateGlow();
-        if (m_openingDoor)
+        switch (m_isActive)
         {
-            m_elapsed += Time.deltaTime;
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, m_originalAngle + (m_angle * (m_elapsed / m_duration)), transform.eulerAngles.z);
-            if (m_elapsed >= m_duration)
-            {
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, m_originalAngle + m_angle, transform.eulerAngles.z);
-                m_openingDoor = false;
-                m_doorOpen = true;
-                m_elapsed = m_duration;
-                if (m_sceneName != null && m_sceneName != "")
+            case 1:
                 {
-                    SceneManager.LoadScene(m_sceneName);
+                    OpeningDoor();
                 }
-                m_event.SetParameter("Enabled", (m_elapsed / m_duration));
-            }
-        }
-        else if (m_closingDoor)
-        {
-            m_elapsed += Time.deltaTime;
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, (m_originalAngle + m_angle) - (m_angle * (m_elapsed / m_duration)), transform.eulerAngles.z);
-            if (m_elapsed >= m_duration)
-            {
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, m_originalAngle, transform.eulerAngles.z);
-                m_closingDoor = false;
-                m_doorOpen = false;
-                m_elapsed = m_duration;
-            }
-            m_event.SetParameter("Enabled", 1.0f - (m_elapsed / m_duration));
+                break;
+            case 2:
+                {
+                    ClosingDoor();
+                }
+                break;
+            default:
+                break;
         }
     }
 
@@ -63,14 +55,44 @@ public class Door : ActionObject
         if (!m_doorOpen)
         {
             m_elapsed = 0.0f;
-            m_openingDoor = true;
-            m_closingDoor = false;
+            m_isActive = 1;
         }
         else
         {
             m_elapsed = 0.0f;
-            m_openingDoor = false;
-            m_closingDoor = true;
+            m_isActive = 2;
         }
+    }
+    void OpeningDoor()
+    {
+        m_elapsed += Time.deltaTime;
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, m_originalAngle + (m_angle * (m_elapsed / m_duration)), transform.eulerAngles.z);
+        if (m_elapsed >= m_duration)            //Door is open
+        {
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, m_originalAngle + m_angle, transform.eulerAngles.z);
+            m_isActive = 0;
+            m_doorOpen = true;
+            m_elapsed = m_duration;
+            /*===============================================Fmod====================================================
+            |   Turning on the transceiver event through parameters.                                                |
+            =======================================================================================================*/
+            m_event.SetParameter("Enabled", (m_elapsed / m_duration));   //set enabled from 0 > 1
+        }
+    }
+    void ClosingDoor()
+    {
+        m_elapsed += Time.deltaTime;
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, (m_originalAngle + m_angle) - (m_angle * (m_elapsed / m_duration)), transform.eulerAngles.z);
+        if (m_elapsed >= m_duration)            //Door is closed
+        {
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, m_originalAngle, transform.eulerAngles.z);
+            m_isActive = 0;
+            m_doorOpen = false;
+            m_elapsed = m_duration;
+        }
+        /*===============================================Fmod====================================================
+        |   Turning off the transceiver event through parameters.                                               |
+        =======================================================================================================*/
+        m_event.SetParameter("Enabled", 1.0f - (m_elapsed / m_duration));   //set enabled from 1 > 0
     }
 }

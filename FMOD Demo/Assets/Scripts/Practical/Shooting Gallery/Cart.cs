@@ -4,7 +4,7 @@
 |   Company:		            Firelight Technologies                                          |
 |   Date:		                20/09/2016                                                      |
 |   Scene:                      Shooting Gallery                                                |
-|   Fmod Related Scripting:     No                                                              |
+|   Fmod Related Scripting:     Yes                                                              |
 |   Description:                The Cart class controls the movement of itself, disabling the   |
 |   player, and moving the player with the cart                                                 |
 ===============================================================================================*/
@@ -16,13 +16,12 @@ public class Cart : ActionObject
 {
     public ShootingGalleryManager m_manager;
     public Transform m_seat;
-    ActorControls m_player;
-
     public float m_topSpeed = 2.0f;
-    public float m_acceleration = 10.0f;
+    public float m_acceleration = 0.005f;
     public float m_turningPower = 0.1f;
-    public float m_nearThreshold = 0.5f;
+    public float m_nearThreshold = 0.45f;
 
+    ActorControls m_player;
     float m_currentVelocity;
     public float CurrentVelocity
     {
@@ -31,10 +30,12 @@ public class Cart : ActionObject
             m_currentVelocity = value;
         }
     }
-
     bool m_playerIsSeated;
     bool m_stopping;
 
+    /*===============================================FMOD====================================================
+    |   Where the rail Studio Event Emitter will be stored, so it can be changed in script.                 |
+    =======================================================================================================*/
     FMODUnity.StudioEventEmitter m_railEvent;
 
     void Start()
@@ -42,6 +43,9 @@ public class Cart : ActionObject
         InitGlow();
         m_playerIsSeated = false;
         m_player = Camera.main.GetComponentInParent<ActorControls>();
+        /*===============================================FMOD====================================================
+        |   Getting an existing Studio Event Emitter attached to this GameObject.                               |
+        =======================================================================================================*/
         m_railEvent = GetComponent<FMODUnity.StudioEventEmitter>();
         m_stopping = false;
     }
@@ -89,6 +93,9 @@ public class Cart : ActionObject
         {
             m_manager.Pause();
             m_player.ActivateGun(false);
+            /*===============================================FMOD====================================================
+            |   Setting the Rail Events parameters.                                                                 |
+            =======================================================================================================*/
             m_railEvent.SetParameter("Exit Vehicle", 1.0f);
             m_railEvent.SetParameter("Velocity", Mathf.Clamp((m_currentVelocity / m_topSpeed), 0.01f, 0.99f));
             m_stopping = true;
@@ -101,21 +108,17 @@ public class Cart : ActionObject
         m_playerIsSeated = false;
         m_stopping = false;
     }
-
     void CalculateHeading()
     {
-        //if the current target track has been reached within the threshold then increment current Track index or set it back to 0 if the current index is the last track in array.
-        if ((m_manager.GetCurrentTrack().position - transform.position).magnitude <= m_nearThreshold)
+        if ((m_manager.GetCurrentTrack().position - transform.position).magnitude <= m_nearThreshold)       //if the current target track has been reached within the threshold then increment current Track index or set it back to 0 if the current index is the last track in array.
         {
-            //Tell manager to increment Track
-            m_manager.IncremetTrack();
+            m_manager.IncremetTrack();      //Tell manager to increment Track
         }
 
-        //Turn towards next track
-        Vector3 newForward = transform.forward + (m_manager.GetCurrentTrack().position - transform.position) * m_turningPower;
+        
+        Vector3 newForward = transform.forward + (m_manager.GetCurrentTrack().position - transform.position) * m_turningPower;  //Turn towards next track
         newForward.Normalize();
-        //Set the carts forward to the new forward
-        transform.forward = newForward;
+        transform.forward = newForward;     //Set the carts forward to the new forward
     }
     void Move()
     {

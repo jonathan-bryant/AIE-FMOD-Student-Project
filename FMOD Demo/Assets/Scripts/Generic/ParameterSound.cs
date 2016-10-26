@@ -60,6 +60,10 @@ public class ParameterSound : MonoBehaviour
     //Stops the event and takes in a STOP_MODE as a parameter, which controls the way the sound event stops
     public void StopEvent(FMOD.Studio.STOP_MODE a_stopMode)
     {
+        /*===============================================Fmod====================================================
+        |   This function stops the event. It takes in a parameter of type FMOD.Studio.STOP_MODE. Used for      |
+        |   stopping events gradually rather than instantly.                                                    |
+        =======================================================================================================*/
         m_event.stop(a_stopMode);
     }
     //Sets a parameter of the event, takes in the parameter to set and the value to set it at

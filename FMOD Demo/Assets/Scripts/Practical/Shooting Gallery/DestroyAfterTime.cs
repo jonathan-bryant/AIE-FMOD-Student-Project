@@ -5,7 +5,7 @@
 |   Date:		                20/09/2016                                                      |
 |   Scene:                      All                                                             |
 |   Fmod Related Scripting:     No                                                              |
-|   Description:                A simple timer script that destroy the gameObject after it has  |
+|   Description:                A simple timer script that destroys the gameObject after it has |
 |   expired.                                                                                    |
 ===============================================================================================*/
 using UnityEngine;
@@ -16,14 +16,14 @@ public class DestroyAfterTime : MonoBehaviour
     public float m_timer;
     float m_elapsed;
 
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    void Start()
+    {
+
+    }
+    void Update()
+    {
         m_elapsed += Time.deltaTime;
         if (m_elapsed >= m_timer)
             Destroy(gameObject);
-	}
+    }
 }

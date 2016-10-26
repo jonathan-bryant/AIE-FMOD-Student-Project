@@ -10,69 +10,67 @@
 using UnityEngine;
 using System.Collections;
 
-public class SG_MainSpeaker : MonoBehaviour {
-
-    //---------------------------------Fmod-------------------------------
-    //Call this to display it in Unity Inspector.
-    //--------------------------------------------------------------------
+public class SG_MainSpeaker : MonoBehaviour
+{
+    /*===============================================FMOD====================================================
+    |   Call this to display the string in Unity Inspector with the FMOD Finder.                            |
+    =======================================================================================================*/
     [FMODUnity.EventRef]
-    //---------------------------------Fmod-------------------------------
-    //Name of Event. Used in conjunction with EventInstance.
-    //--------------------------------------------------------------------
+    /*===============================================FMOD====================================================
+    |   Name of Event. Used in conjunction with EventInstance.                                              |
+    =======================================================================================================*/
     public string m_musicPath;
-    //---------------------------------Fmod-------------------------------
-    //EventInstance. Used to play or stop the sound, etc.
-    //--------------------------------------------------------------------
+    /*===============================================FMOD====================================================
+    |   EventInstance. Used to play or stop the sound, etc.                                                 |
+    =======================================================================================================*/
     FMOD.Studio.EventInstance m_music;
-    //---------------------------------Fmod-------------------------------
-    //ParameterInstance. Used to reference a parameter stored in 
-    //EventInstance. Example use case: changing 
-    //from wood to carpet floor.
-    //--------------------------------------------------------------------
+    /*===============================================FMOD====================================================
+    |   ParameterInstance. Used to reference a parameter stored in EventInstance. Example use case: changing|
+    |   from wood to carpet floor.                                                                          |
+    =======================================================================================================*/
     FMOD.Studio.ParameterInstance m_resultParam;
     FMOD.Studio.ParameterInstance m_activeParam;
     FMOD.Studio.ParameterInstance m_roundsParam;
 
-    void Start () {
-        //---------------------------------Fmod-------------------------------
-        //Calling this function will create an EventInstance. The return value
-        //is the created instance.
-        //--------------------------------------------------------------------
+    void Start()
+    {
+        /*===============================================FMOD====================================================
+        |   Calling this function will create an EventInstance. The return value is the created instance.       |
+        =======================================================================================================*/
         m_music = FMODUnity.RuntimeManager.CreateInstance(m_musicPath);
-
-        //---------------------------------Fmod-------------------------------
-        //Calling this function will return a reference to a parameter inside
-        //EventInstance and store it in ParameterInstance.
-        //--------------------------------------------------------------------
+        /*===============================================FMOD====================================================
+        |   Calling this function will return a reference to a parameter inside EventInstance and store it in   |
+        |   ParameterInstance.                                                                                  |
+        =======================================================================================================*/
         m_music.getParameter("Result", out m_resultParam);
         m_music.getParameter("Round", out m_roundsParam);
     }
-	
-	void Update () {
+    void Update()
+    {
 
     }
 
-    //---------------------------------Fmod-------------------------------
-    //When these functions are called. It will change the parameter inside
-    //EventInstance to the passed in value, changing the behaviour of the 
-    //sound
-    //--------------------------------------------------------------------
     public void SetGameResult(int a_value)
     {
+        /*===============================================FMOD====================================================
+        |   When these functions are called. It will change the parameter inside EventInstance to the passed in |
+        |   value, changing the behaviour of the sound.                                                         |
+        =======================================================================================================*/
         m_resultParam.setValue(a_value);
     }
     public void Play()
     {
-        //---------------------------------Fmod-------------------------------
-        //Calling this function will start the EventInstance.
-        //--------------------------------------------------------------------
+        /*===============================================FMOD====================================================
+        |   Calling this function will start the EventInstance.                                                 |                                                                                 |
+        =======================================================================================================*/
         m_music.start();
     }
     public void Stop()
     {
-        //---------------------------------Fmod-------------------------------
-        //Calling this function will stop the EventInstance.
-        //--------------------------------------------------------------------
+        /*===============================================Fmod====================================================
+        |   This function stops the event. It takes in a parameter of type FMOD.Studio.STOP_MODE. Used for      |
+        |   stopping events gradually rather than instantly.                                                    |
+        =======================================================================================================*/
         m_music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
     public void Pause(bool a_value)

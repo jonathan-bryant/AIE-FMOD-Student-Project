@@ -10,21 +10,21 @@
 using UnityEngine;
 using System.Collections;
 
-public class BaseTarget : MonoBehaviour {
-
+public class BaseTarget : MonoBehaviour
+{
     public int m_points;
     public ShootingGalleryManager m_manager;
     protected bool m_active;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    void Start()
+    {
 
     }
+    void Update()
+    {
+
+    }
+
     public virtual void Hit(Target a_target)
     {
 
