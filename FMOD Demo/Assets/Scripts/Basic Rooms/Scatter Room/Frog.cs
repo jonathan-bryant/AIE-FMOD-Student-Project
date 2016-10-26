@@ -1,4 +1,13 @@
-﻿using UnityEngine;
+﻿/*===============================================================================================
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                20/09/2016                                                      |
+|   Scene:                      Scatter                                                         |
+|   Fmod Related Scripting:     No                                                              |
+|   Description:                Make the frogs jump.                                            |
+===============================================================================================*/
+using UnityEngine;
 using System.Collections;
 
 public class Frog : MonoBehaviour

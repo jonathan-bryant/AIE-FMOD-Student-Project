@@ -4,7 +4,7 @@
 |   Company:		            Firelight Technologies                                          |
 |   Date:		                20/09/2016                                                      |
 |   Scene:                      Player Parameter                                                |
-|   Fmod Related Scripting:     No                                                              |
+|   Fmod Related Scripting:     Yes                                                             |
 |   Description:                Tells the car to turn the ignition on or off.                   |
 ===============================================================================================*/
 using UnityEngine;
@@ -14,6 +14,10 @@ public class Ignition : ActionObject
 {
     public Car m_car;
     bool m_active;
+
+    /*===============================================Fmod====================================================
+    |   The button click sound will be stored here.                                                         |
+    =======================================================================================================*/
     FMODUnity.StudioEventEmitter m_buttonEvent;
 
 	void Start ()
@@ -40,6 +44,9 @@ public class Ignition : ActionObject
         {
             m_car.IgnitionOff();
         }
+        /*===============================================Fmod====================================================
+        |   Play the click sound.                                                                               |
+        =======================================================================================================*/
         m_buttonEvent.Play();
     }
 }

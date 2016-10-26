@@ -20,6 +20,9 @@ public class Panning : ActionObject
     float m_elapsed;
     bool m_isActive;
     float m_originalFOV, m_originalNear;
+    /*===============================================Fmod====================================================
+    |   Store the Button Sound.                                                                             |
+    =======================================================================================================*/
     FMODUnity.StudioEventEmitter m_buttonEvent;
 
     void Start()
@@ -55,6 +58,10 @@ public class Panning : ActionObject
             {
                 Camera.main.fieldOfView -= 900.0f * Time.deltaTime;
             }
+
+            /*===============================================Fmod====================================================
+            |   Iterate through all the robots and change their panning from 2D to 3D.                              |
+            =======================================================================================================*/
             for (int i = 0; i < m_objects.transform.childCount; ++i)
             {
                 /*===============================================Fmod====================================================

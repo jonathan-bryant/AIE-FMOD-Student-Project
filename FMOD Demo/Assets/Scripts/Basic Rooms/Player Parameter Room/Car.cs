@@ -12,13 +12,12 @@ using System.Collections;
 
 public class Car : MonoBehaviour
 {
-    public Pedal m_pedal;
-    public GearShift m_gearShift;
-
     /*===============================================Fmod====================================================
-    |   This is where the StudioEventEmitter component will be stored                                      |
+    |   This is where the StudioEventEmitter components will be stored.                                     |
     =======================================================================================================*/
     public FMODUnity.StudioEventEmitter[] m_sound;
+    public Pedal m_pedal;
+    public GearShift m_gearShift;
 
     bool m_isActive;
     float m_acceleration;
@@ -55,10 +54,10 @@ public class Car : MonoBehaviour
             }
         }
         /*===============================================Fmod====================================================
-        |   The SetParameter function simply sets the event parameter to the value passed in.                   |
-        |   The first param is the name of the parameter, the second is the value.                              |
-        |   To see what parameters looks like in studio, open the file:                                         |
-        |   FMOD\Fmod Demo Sounds\Fmod Demo Sounds.fspro                                                        |
+        |   This will set the rpm value of all the events playing, so that that car sound changed from pressing |
+        |   the accelerator. The easiest way to do this sort of set up is to use "Transceivers". Transceivers   |
+        |   allow the ability to send one event to other events that are listening. That way only one parameter |
+        |   has to be set and not 4.                                                                            |
         =======================================================================================================*/
         for (int i = 0; i < m_sound.Length; i++)
         {

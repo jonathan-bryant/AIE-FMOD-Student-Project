@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿/*===============================================================================================
+|   Project:		            FMOD Demo                                                       |
+|   Developer:	                Matthew Zelenko - http://www.mzelenko.com                       |
+|   Company:		            Firelight Technologies                                          |
+|   Date:		                20/09/2016                                                      |
+|   Scene:                      Scatter                                                         |
+|   Fmod Related Scripting:     No                                                              |
+|   Description:                Spawn birds with random properties that circle around like a    |
+|   mobile.                                                                                     |
+===============================================================================================*/
+using UnityEngine;
 using System.Collections;
 
 public class KeyRotate : MonoBehaviour
