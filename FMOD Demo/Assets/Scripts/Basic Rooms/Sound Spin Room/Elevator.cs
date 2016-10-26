@@ -80,11 +80,21 @@ public class Elevator : MonoBehaviour
         if (m_elapsed >= 1.0f)
         {
             /*===============================================FMOD====================================================
-            |   This is how to set a parameter of an external eventEmitter.                                         |
+            |   Set the elevators end parameter to 0.                                                               |
             =======================================================================================================*/
             m_event.SetParameter("End", 0);
+            /*===============================================FMOD====================================================
+            |   Play the elevator sound. This will play the spin Up and then fall into the mid-sections loop.       |
+            =======================================================================================================*/
             m_event.Play();
+            /*===============================================FMOD====================================================
+            |   Set the elevators music end parameter to 0.                                                         |
+            =======================================================================================================*/
             m_elevatorMusic.SetParameter("End", 0);
+            /*===============================================FMOD====================================================
+            |   Play the elevator music. This will play the spin Up and then fall into the mid-sections loop, like  |
+            |   the elevator sound above.                                                                           |
+            =======================================================================================================*/
             m_elevatorMusic.Play();
 
             m_isActive++;
@@ -102,7 +112,8 @@ public class Elevator : MonoBehaviour
         {
             transform.position = m_originalTransform + (transform.forward * Mathf.Sin(m_elapsed * 10.0f) * 0.05f);
             /*===============================================FMOD====================================================
-            |   The best way to exit a sound spin, is to simply add a parameter to the event.                       |
+            |   The best way to exit a sound spin, is to simply add a parameter to the event. The elevator has      |
+            |   finished so set end to 1 meaning exit the mid-section loop and fall to the exit sound.              |
             =======================================================================================================*/
             m_event.SetParameter("End", 1);
             m_elevatorMusic.SetParameter("End", 1);

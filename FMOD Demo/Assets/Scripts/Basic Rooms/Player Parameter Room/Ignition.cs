@@ -25,6 +25,9 @@ public class Ignition : ActionObject
         InitGlow();
         StopGlow();
         m_active = false;
+        /*===============================================Fmod====================================================
+        |   Get the attached button Emitter.                                                                    |
+        =======================================================================================================*/
         m_buttonEvent = GetComponent<FMODUnity.StudioEventEmitter>();
     }
 	void Update ()

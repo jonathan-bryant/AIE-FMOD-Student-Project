@@ -6,7 +6,8 @@
 |   Scene:                      Sound Module                                                    |
 |   Fmod Related Scripting:     No                                                              |
 |   Description:                Reads in the text file and stores the notes. Loops the music    |
-|   score in the update, unless Stopped.                                                        |
+|   score in the update and spawns the balls, unless Stopped. The Fmod Event Emitter attached to|
+|   the keys play the the note on collision.                                                    |
 ===============================================================================================*/
 using UnityEngine;
 using System.Collections;
@@ -44,18 +45,27 @@ public class Orchestrion : MonoBehaviour
             FMODUnity.StudioEventEmitter m_event = m_keyboard.transform.GetChild(i).gameObject.GetComponent<FMODUnity.StudioEventEmitter>();
             if (m_event)
             {
-                //If you want to get the initial values out of the Studio Event Emitter script you can!
-                //Only the parameters that have been manually set(inside Unity Editor) are added to the Studio Event Emitter Params Array.
+                /*===============================================Fmod====================================================
+                |   If you want to get the initial values out of the Studio Event Emitter script you can. Only the      |
+                |   parameters that have been manually enabled(inside Unity Editor) are added to the Studio Event       |
+                |   Emitter Params Array.                                                                               |
+                =======================================================================================================*/
                 FMODUnity.ParamRef p = m_event.Params[0];
-
-                //You can also set/reset the initial values by simply passing in ParamRef structures back into the Studio Event Emitter Params Array.
-
-                //Reinitalize the Param array to bigger, so that another initial value can be stored.
+                
+                /*===============================================Fmod====================================================
+                |   You can set/reset the initial values by simply passing in ParamRef structures back into the Studio  |
+                |   Event Emitter Params Array.                                                                         |   
+                |   Reinitalize the Param array to bigger, so that another initial value can be stored.                 |
+                =======================================================================================================*/
                 m_event.Params = new FMODUnity.ParamRef[2];
-
-                //Put the original initial values back into the new array.
+                
+                /*===============================================Fmod====================================================
+                |   Put the original initial param into the new array.                                                  |
+                =======================================================================================================*/
                 m_event.Params[0] = p;
-                //Add a new parameter to the Params array
+                /*===============================================Fmod====================================================
+                |   Add a new parameter to the Params array                                                             |
+                =======================================================================================================*/
                 m_event.Params[1] = new FMODUnity.ParamRef();
                 m_event.Params[1].Name = "Sound";
                 m_event.Params[1].Value = 0.0f;
@@ -186,11 +196,19 @@ public class Orchestrion : MonoBehaviour
     {
         for (int i = 0; i < m_keyboard.transform.childCount; i++)
         {
+            /*===============================================Fmod====================================================
+            |   Go through all the keys and change their sound parameter to the passed in int.                      |
+            |   1. piano                                                                                            |
+            |   2. guitar                                                                                           |
+            |   2. synthesizer                                                                                      |
+            =======================================================================================================*/
             FMODUnity.StudioEventEmitter m_event = m_keyboard.transform.GetChild(i).gameObject.GetComponent<FMODUnity.StudioEventEmitter>();
             if (m_event)
             {
-                //You can set the StudioEventEmitter initial values anywhere using the same Params array as before.
-                //Now the initial values will be set, eveytime play is called.
+                /*===============================================Fmod====================================================
+                |   You can set the StudioEventEmitter initial values using the same Params array as before. Now the    |
+                |   initial values will be set, eveytime play is called.                                                |
+                =======================================================================================================*/
                 m_event.Params[1].Value = a_sound;
             }
         }

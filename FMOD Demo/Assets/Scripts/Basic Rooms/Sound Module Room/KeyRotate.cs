@@ -5,8 +5,7 @@
 |   Date:		                20/09/2016                                                      |
 |   Scene:                      Scatter                                                         |
 |   Fmod Related Scripting:     No                                                              |
-|   Description:                Spawn birds with random properties that circle around like a    |
-|   mobile.                                                                                     |
+|   Description:                Rotate the keys when object enters trigger.                     |
 ===============================================================================================*/
 using UnityEngine;
 using System.Collections;
