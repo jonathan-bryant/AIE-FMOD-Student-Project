@@ -96,7 +96,7 @@ public class TwoDoorController : ActionObject
         m_upperDistToNewPos = Vector3.Distance(m_upperDoor.transform.localPosition, (m_opening ? m_upperOpenPos : m_upperClosedPos));
         if (m_upperDistToNewPos > 0.1f)
         {
-            m_upperDoor.transform.localPosition += Vector3.up * Time.deltaTime * (m_opening ? 1 : -1);
+            m_upperDoor.transform.localPosition += Vector3.up * Time.fixedDeltaTime * (m_opening ? 1 : -1);
         }
         else
         {
@@ -108,7 +108,7 @@ public class TwoDoorController : ActionObject
 
         if (m_lowerDistToNewPos > 0.1f)
         {
-            m_lowerDoor.transform.localPosition -= Vector3.up * Time.deltaTime * (m_opening ? 1 : -1);
+            m_lowerDoor.transform.localPosition -= Vector3.up * Time.fixedDeltaTime * (m_opening ? 1 : -1);
         }
         else
         {
@@ -273,7 +273,7 @@ public class TwoDoorController : ActionObject
 
             while (m_collider.center.x < 6.0f)
             {
-                m_collider.center += Vector3.right * Time.deltaTime;
+                m_collider.center += Vector3.right * Time.fixedDeltaTime;
                 yield return false;
             }
         }
@@ -283,7 +283,7 @@ public class TwoDoorController : ActionObject
 
             while (m_collider.center.x > 0.0f)
             {
-                m_collider.center -= Vector3.right * Time.deltaTime;
+                m_collider.center -= Vector3.right * Time.fixedDeltaTime;
                 yield return false;
             }
         }
