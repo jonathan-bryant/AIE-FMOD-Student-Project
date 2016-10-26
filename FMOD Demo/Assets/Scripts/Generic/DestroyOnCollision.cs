@@ -23,12 +23,9 @@ public class DestroyOnCollision : MonoBehaviour
     }
     void OnCollisionEnter(Collision a_col)
     {
-        Debug.Log(1 << a_col.gameObject.layer);
-        Debug.Log(m_layerMask);
         if (m_layerMask == 0 || (m_layerMask & (1 << a_col.gameObject.layer)) != m_layerMask)
         {
             Destroy(gameObject);
-            Debug.Log(a_col.gameObject.name);
         }
     }
 }
