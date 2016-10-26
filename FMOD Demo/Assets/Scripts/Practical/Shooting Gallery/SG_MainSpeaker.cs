@@ -67,8 +67,9 @@ public class SG_MainSpeaker : MonoBehaviour
     }
     public void Stop()
     {
-        /*===============================================FMOD====================================================
-        |   Calling this function will stop the EventInstance.                                                  |                                                                               |
+        /*===============================================Fmod====================================================
+        |   This function stops the event. It takes in a parameter of type FMOD.Studio.STOP_MODE. Used for      |
+        |   stopping events gradually rather than instantly.                                                    |
         =======================================================================================================*/
         m_music.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }

@@ -12,9 +12,11 @@ using System.Collections;
 
 public class O_ElevatorButton : ActionObject
 {
+    /*===============================================FMOD====================================================
+    |   Call this to display it in Unity Inspector.                                                         |
+    =======================================================================================================*/
     [FMODUnity.EventRef]
     public string m_event;
-
     public O_Elevator m_elevator;
     public int m_floor;
     public float m_floorY;

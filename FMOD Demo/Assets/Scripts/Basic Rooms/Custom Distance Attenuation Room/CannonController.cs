@@ -14,43 +14,70 @@ using System.Collections;
 public class CannonController : MonoBehaviour
 {
     /*===============================================Fmod====================================================
-    |   Create an event for the sound of the cannon changing height that starts up and loops until          |
-    |   we set the parameter to tell the event to play the end sound and finish.                            |
+    |   Store the cannon movement sound inside a string.                                                    |
     =======================================================================================================*/
     [FMODUnity.EventRef]
     public string m_cannonSoundPath;
+    /*===============================================Fmod====================================================
+    |   Store the cannonEvent that is created in Start().                                                   |
+    =======================================================================================================*/
     FMOD.Studio.EventInstance m_cannonEvent;
+    /*===============================================Fmod====================================================
+    |   Store the parameters from the event.                                                                |
+    =======================================================================================================*/
     FMOD.Studio.ParameterInstance m_cannonStopParameter;
     FMOD.Studio.ParameterInstance m_cannonDirectionParameter;
+    /*===============================================Fmod====================================================
+    |   This is where the playstate of the event will be stored.                                            |
+    =======================================================================================================*/
     FMOD.Studio.PLAYBACK_STATE m_playState;
-
+    /*===============================================Fmod====================================================
+    |   Store the cannon Fire sound inside a string.                                                        |
+    =======================================================================================================*/
     [FMODUnity.EventRef]
+    /*===============================================Fmod====================================================
+    |   Store the cannonFireEvent that is created in Start().                                               |
+    =======================================================================================================*/
     public string m_cannonFireSound;
     FMOD.Studio.EventInstance m_cannonFireEvent;
 
     public GameObject m_cannonBall;
     public GameObject m_cannon;
+    public float m_fireDelay = 0.5f;
+
     float m_currentAngle;
     float m_power;
     float m_selectedAngle;
     bool m_isActive;
-    
-    public float m_fireDelay = 0.5f;
     float m_elapsedFireDelay;
     float m_cannonChangeSpeed = 10.0f;
 
     void Start()
     {
         /*===============================================Fmod====================================================
-        |   Create the events, set the parameter for exiting the loop and set the 3D attributes.                |
+        |  Create the event using the path stored.                                                              |
         =======================================================================================================*/
         m_cannonEvent = FMODUnity.RuntimeManager.CreateInstance(m_cannonSoundPath);
+
+        /*===============================================Fmod====================================================
+        |  Grab the parameters and store them in the ParameterInstances.                                        |
+        =======================================================================================================*/
         m_cannonEvent.getParameter("Stop Point", out m_cannonStopParameter);
         m_cannonEvent.getParameter("Direction", out m_cannonDirectionParameter);
+        /*===============================================Fmod====================================================
+        |  Set the 3D attributes. Or in other terms, tell which transform the event should follow.              |
+        =======================================================================================================*/
         m_cannonEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
+
+        /*===============================================Fmod====================================================
+        |  Create the event using the path stored.                                                              |
+        =======================================================================================================*/
         m_cannonFireEvent = FMODUnity.RuntimeManager.CreateInstance(m_cannonFireSound);
+        /*===============================================Fmod====================================================
+        |  Set the 3D attributes. Or in other terms, tell which transform the event should follow.              |
+        =======================================================================================================*/
         m_cannonFireEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform.position));
-        
+
         m_currentAngle = 30.0f;
         m_selectedAngle = 30.0f;
         m_power = 10.0f;
@@ -70,7 +97,13 @@ public class CannonController : MonoBehaviour
                     m_cannonEvent.getPlaybackState(out m_playState);
                     if (m_playState != FMOD.Studio.PLAYBACK_STATE.PLAYING)
                     {
+                        /*===============================================Fmod====================================================
+                        |   The parameter that tells the event that the cannon is moving.                                       |
+                        =======================================================================================================*/
                         m_cannonStopParameter.setValue(0.0f);
+                        /*===============================================Fmod====================================================
+                        |   Starts the sound, or resumes.                                                                       |
+                        =======================================================================================================*/
                         m_cannonEvent.start();
                     }
 
@@ -91,7 +124,13 @@ public class CannonController : MonoBehaviour
                     m_cannonEvent.getPlaybackState(out m_playState);
                     if (m_playState != FMOD.Studio.PLAYBACK_STATE.PLAYING)
                     {
+                        /*===============================================Fmod====================================================
+                        |   The parameter that tells the event that the cannon is moving.                                       |
+                        =======================================================================================================*/
                         m_cannonStopParameter.setValue(0.0f);
+                        /*===============================================Fmod====================================================
+                        |   Starts the sound of a moving cannon.                                                                |
+                        =======================================================================================================*/
                         m_cannonEvent.start();
                     }
 
@@ -107,15 +146,19 @@ public class CannonController : MonoBehaviour
             }
             else
             {
+                /*===============================================Fmod====================================================
+                |   The parameter that tells the event that the cannon is no longer moving, reached it's destination.   |
+                |   This will play that loading sound at the end of the event.                                          |
+                =======================================================================================================*/
                 m_cannonStopParameter.setValue(1.0f);
                 m_elapsedFireDelay += Time.fixedDeltaTime;
                 if (m_elapsedFireDelay >= m_fireDelay)
                 {
                     m_elapsedFireDelay = 0.0f;
-                    m_cannonFireEvent.start();
                     /*===============================================Fmod====================================================
-                    |               Now we went to exit the event loop and play the end of the sound.                       |
+                    |   Starts the fire sound.                                                                              |
                     =======================================================================================================*/
+                    m_cannonFireEvent.start();
                     m_isActive = false;
                     GameObject ball = Instantiate(m_cannonBall, m_cannon.transform.GetChild(0).position - (m_cannon.transform.GetChild(0).up), Quaternion.identity) as GameObject;
                     ball.transform.SetParent(transform);
@@ -152,11 +195,17 @@ public class CannonController : MonoBehaviour
         }
         if (m_selectedAngle > m_currentAngle)
         {
-            m_cannonStopParameter.setValue(1.0f);
+            /*===============================================Fmod====================================================
+            |   The Direction of the cannon. For a differnt sound.                                                  |
+            =======================================================================================================*/
+            m_cannonDirectionParameter.setValue(1.0f);
         }
         else
         {
-            m_cannonStopParameter.setValue(-1.0f);
+            /*===============================================Fmod====================================================
+            |   The Direction of the cannon. For a differnt sound.                                                  |
+            =======================================================================================================*/
+            m_cannonDirectionParameter.setValue(-1.0f);
         }
     }
 }

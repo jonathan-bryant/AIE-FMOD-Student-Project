@@ -14,16 +14,13 @@ public class WindSlider : ActionObject
 {
     public Vector3 m_startPosition;
     public Vector3 m_endPosition;
+    public ParticleSystem m_particleSystem;
+    public Vector3 m_maxRainPosition;
 
     bool m_isActive;
-
-
-    public ParticleSystem m_particleSystem;
     Vector3 m_minRainPosition;
-    public Vector3 m_maxRainPosition;
     float m_windValue;
     public float WindValue { get { return m_windValue * 100.0f; } }
-
     float m_orignialX;
 
     void Start()
@@ -63,7 +60,7 @@ public class WindSlider : ActionObject
                         diff = (rh.point - m_startPosition).magnitude / (m_endPosition - m_startPosition).magnitude;
                     }
                     transform.position = Vector3.Lerp(m_startPosition, m_endPosition, diff * dot);
-                    
+
                     m_windValue = diff;
                     m_windValue = Mathf.Clamp(m_windValue, 0.0f, 1.0f);
 
