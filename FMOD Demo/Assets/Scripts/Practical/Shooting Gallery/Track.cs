@@ -15,12 +15,12 @@ public class Track : MonoBehaviour
     public int m_startingIndex = 0;
     public int[] m_roomStartIndices;
 
-    void Start () {
+    void Start()
+    {
         m_startingIndex = m_startingIndex % transform.childCount;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    }
+    void Update()
+    {
+
+    }
 }

@@ -4,8 +4,8 @@
 |   Company:		            Firelight Technologies                                          |
 |   Date:		                20/09/2016                                                      |
 |   Scene:                      Shooting Gallery                                                |
-|   Fmod Related Scripting:     Yes                                                             |
-|   Description:                A target that, when shot, spring back up.                       |
+|   Fmod Related Scripting:     No                                                              |
+|   Description:                A target that, when shot, springs back up.                      |
 ===============================================================================================*/
 using UnityEngine;
 using System.Collections;
@@ -14,8 +14,9 @@ public class SpringBack : BaseTarget
 {
     public float m_aliveTimer = 3.0f;
     public float m_deadTimer = 5.0f;
-    float m_elapsed;
     public bool m_dead;
+
+    float m_elapsed;
     bool m_originalDead;
     bool m_preparing;
     Quaternion m_originalRotation;
@@ -31,7 +32,6 @@ public class SpringBack : BaseTarget
             transform.rotation *= Quaternion.AngleAxis(-90.0f, new Vector3(0.0f, 0.0f, 1.0f));
         }
     }
-
     void Update()
     {
         if (!m_active)
@@ -88,6 +88,7 @@ public class SpringBack : BaseTarget
             }
         }
     }
+
     public override void Hit(Target Target)
     {
         if (!m_active || m_dead || m_preparing)
