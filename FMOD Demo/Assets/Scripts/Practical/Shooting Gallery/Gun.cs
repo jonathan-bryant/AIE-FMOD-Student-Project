@@ -47,6 +47,7 @@ public class Gun : MonoBehaviour
 
             GameObject obj = Instantiate(m_bullet) as GameObject;
             obj.transform.position = m_gunHole.position;
+            obj.transform.forward = transform.forward;
             obj.GetComponent<Rigidbody>().AddForce(transform.forward * m_power);
             m_elapsed = 0.0f;
         }
