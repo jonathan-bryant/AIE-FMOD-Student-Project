@@ -91,7 +91,7 @@ public class TwoDoorController : ActionObject
     }
 
     void FixedUpdate()
-    {        
+    {
         // Get top door distance to either the open or closed position depending on the m_opening bool.
         m_upperDistToNewPos = Vector3.Distance(m_upperDoor.transform.localPosition, (m_opening ? m_upperOpenPos : m_upperClosedPos));
         if (m_upperDistToNewPos > 0.1f)
@@ -215,7 +215,7 @@ public class TwoDoorController : ActionObject
             }
         }
 
-        if (!SceneManager.GetSceneByName(m_sceneToLoad).isLoaded && !m_loading)
+        if (!m_loading)
         {
             m_loading = true;
             s_async = SceneManager.LoadSceneAsync(m_sceneToLoad, LoadSceneMode.Additive);
@@ -242,9 +242,9 @@ public class TwoDoorController : ActionObject
         }
         yield return new WaitForSeconds(m_doorHoldTime);
         m_opening = false;
+        PlayDoorSound();
 
         float dotToCamera = Vector3.Dot(transform.right, (Camera.main.transform.position - transform.position).normalized);
-        PlayDoorSound();
 
         if (dotToCamera > 0)
         {
