@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 // Shader created with Shader Forge v1.28 
 // Shader Forge (c) Neat Corporation / Joachim Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
@@ -111,7 +113,7 @@ Shader "Shader Forge/WaterEffect" {
                     o.ambientOrLightmapUV.zw = v.texcoord2.xy * unity_DynamicLightmapST.xy + unity_DynamicLightmapST.zw;
                 #endif
                 o.normalDir = UnityObjectToWorldNormal(v.normal);
-                o.tangentDir = normalize( mul( _Object2World, float4( v.tangent.xyz, 0.0 ) ).xyz );
+                o.tangentDir = normalize( mul( unity_ObjectToWorld, float4( v.tangent.xyz, 0.0 ) ).xyz );
                 o.bitangentDir = normalize(cross(o.normalDir, o.tangentDir) * v.tangent.w);
                 float4 node_5016 = _Time + _TimeEditor;
                 float node_9980_ang = node_5016.g;
@@ -133,7 +135,7 @@ Shader "Shader Forge/WaterEffect" {
                 float4 node_5100 = tex2Dlod(_Height2,float4(TRANSFORM_TEX(node_9193, _Height2),0.0,0));
                 float3 node_1240 = (node_2180.rgb*node_5100.rgb);
                 v.vertex.xyz += (v.normal*(sin((_Frequency*node_1240))*__scale));
-                o.posWorld = mul(_Object2World, v.vertex);
+                o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 float3 lightColor = _LightColor0.rgb;
                 o.pos = mul(UNITY_MATRIX_MVP, v.vertex );
                 UNITY_TRANSFER_FOG(o,o.pos);
@@ -340,7 +342,7 @@ Shader "Shader Forge/WaterEffect" {
                 o.uv1 = v.texcoord1;
                 o.uv2 = v.texcoord2;
                 o.normalDir = UnityObjectToWorldNormal(v.normal);
-                o.tangentDir = normalize( mul( _Object2World, float4( v.tangent.xyz, 0.0 ) ).xyz );
+                o.tangentDir = normalize( mul( unity_ObjectToWorld, float4( v.tangent.xyz, 0.0 ) ).xyz );
                 o.bitangentDir = normalize(cross(o.normalDir, o.tangentDir) * v.tangent.w);
                 float4 node_9253 = _Time + _TimeEditor;
                 float node_9980_ang = node_9253.g;
@@ -362,7 +364,7 @@ Shader "Shader Forge/WaterEffect" {
                 float4 node_5100 = tex2Dlod(_Height2,float4(TRANSFORM_TEX(node_9193, _Height2),0.0,0));
                 float3 node_1240 = (node_2180.rgb*node_5100.rgb);
                 v.vertex.xyz += (v.normal*(sin((_Frequency*node_1240))*__scale));
-                o.posWorld = mul(_Object2World, v.vertex);
+                o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 float3 lightColor = _LightColor0.rgb;
                 o.pos = mul(UNITY_MATRIX_MVP, v.vertex );
                 UNITY_TRANSFER_FOG(o,o.pos);
@@ -529,7 +531,7 @@ Shader "Shader Forge/WaterEffect" {
                 float4 node_5100 = tex2Dlod(_Height2,float4(TRANSFORM_TEX(node_9193, _Height2),0.0,0));
                 float3 node_1240 = (node_2180.rgb*node_5100.rgb);
                 v.vertex.xyz += (v.normal*(sin((_Frequency*node_1240))*__scale));
-                o.posWorld = mul(_Object2World, v.vertex);
+                o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 o.pos = mul(UNITY_MATRIX_MVP, v.vertex );
                 TRANSFER_SHADOW_CASTER(o)
                 return o;
@@ -625,7 +627,7 @@ Shader "Shader Forge/WaterEffect" {
                 float4 node_5100 = tex2Dlod(_Height2,float4(TRANSFORM_TEX(node_9193, _Height2),0.0,0));
                 float3 node_1240 = (node_2180.rgb*node_5100.rgb);
                 v.vertex.xyz += (v.normal*(sin((_Frequency*node_1240))*__scale));
-                o.posWorld = mul(_Object2World, v.vertex);
+                o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 o.pos = UnityMetaVertexPosition(v.vertex, v.texcoord1.xy, v.texcoord2.xy, unity_LightmapST, unity_DynamicLightmapST );
                 return o;
             }

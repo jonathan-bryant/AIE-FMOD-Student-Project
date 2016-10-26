@@ -10,68 +10,65 @@
 using UnityEngine;
 using System.Collections;
 
-public class Target : MonoBehaviour {
+public class Target : MonoBehaviour
+{
     public float m_minRadius;
     public float m_maxRadius;
     public BaseTarget m_Parent;
-
-    //---------------------------------Fmod-------------------------------
-    //Call this to display it in Unity Inspector.
-    //--------------------------------------------------------------------
+    /*===============================================FMOD====================================================
+    |   Name of Event. Used in conjunction with EventInstance.                                              |
+    =======================================================================================================*/
     [FMODUnity.EventRef]
-    //---------------------------------Fmod-------------------------------
-    //Name of Event. Used in conjunction with EventInstance.
-    //--------------------------------------------------------------------
+    /*===============================================FMOD====================================================
+    |   Name of Event. Used in conjunction with EventInstance.                                              |
+    =======================================================================================================*/
     public string m_hitSoundPath;
-    //---------------------------------Fmod-------------------------------
-    //EventInstance. Used to play or stop the sound, etc.
-    //--------------------------------------------------------------------
+    /*===============================================FMOD====================================================
+    |   EventInstance. Used to play or stop the sound, etc.                                                 |
+    =======================================================================================================*/
     FMOD.Studio.EventInstance m_hitSound;
-    //---------------------------------Fmod-------------------------------
-    //ParameterInstance. Used to reference a parameter stored in 
-    //EventInstance. Example use case: changing 
-    //from wood to carpet floor.
-    //--------------------------------------------------------------------
+    /*===============================================FMOD====================================================
+    |   ParameterInstance. Used to reference a parameter stored in EventInstance. Example use case: changing|
+    |   from wood to carpet floor.                                                                          |
+    =======================================================================================================*/
     FMOD.Studio.ParameterInstance m_hitMaterial;
-    //---------------------------------Fmod-------------------------------
-    //This int will be used on start to change the parameter value of the 
-    //hit.
-    //--------------------------------------------------------------------
+    /*===============================================FMOD====================================================
+    |   This int will be used on start to change the parameter value of the hit.                            |
+    =======================================================================================================*/
     [UnityEngine.Range(0, 2)]
     public int m_material;
 
-    void Start () {
+    void Start()
+    {
         float rngSize = Random.Range(m_minRadius, m_maxRadius);
         transform.localScale = new Vector3(rngSize, rngSize, rngSize);
-        //---------------------------------Fmod-------------------------------
-        //Calling this function will create an EventInstance. The return value
-        //is the created instance.
-        //--------------------------------------------------------------------
+        /*===============================================FMOD====================================================
+        |   Calling this function will create an EventInstance. The return value is the created instance.       |
+        =======================================================================================================*/
         m_hitSound = FMODUnity.RuntimeManager.CreateInstance(m_hitSoundPath);
-        //---------------------------------Fmod-------------------------------
-        //Calling this function will return a reference to a parameter inside
-        //EventInstance and store it in ParameterInstance.
-        //--------------------------------------------------------------------
+        /*===============================================FMOD====================================================
+        |   Calling this function will return a reference to a parameter inside EventInstance and store it in   |
+        |   ParameterInstance.                                                                                  |
+        =======================================================================================================*/
         m_hitSound.getParameter("Material", out m_hitMaterial);
-        //---------------------------------Fmod-------------------------------
-        //This function is used to set the ParameterInstance value.
-        //--------------------------------------------------------------------
+        /*===============================================FMOD====================================================
+        |   This function is used to set the ParameterInstance value.                                           |
+        =======================================================================================================*/
         m_hitMaterial.setValue(m_material);
         m_hitSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject, null));
 
     }
-	
-	void Update () {
+    void Update()
+    {
         Debug.DrawRay(transform.position, transform.forward, Color.red);
     }
-
     void OnCollisionEnter(Collision a_col)
     {
         if (a_col.gameObject.name.Contains("Bullet"))
         {
-            //---------------------------------Fmod-------------------------------
-            //Calling EventInstance.start() will start the event.
-            //--------------------------------------------------------------------
+            /*===============================================FMOD====================================================
+            |  Calling EventInstance.start() will start the event.                                                  |
+            =======================================================================================================*/
             m_hitSound.start();
 
             transform.GetChild(0).gameObject.SetActive(true);

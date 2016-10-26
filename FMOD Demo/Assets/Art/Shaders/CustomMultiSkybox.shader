@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 // This is a combination of the Unity Procedural Skybox and Skybox-cubed shaders
 Shader "Cameron/CustomMultiSkybox" 
 {
@@ -207,7 +209,7 @@ Shader "Cameron/CustomMultiSkybox"
 		{
 			v2f OUT;
 			float3 rotated = RotateAroundYInDegrees(v.vertex, _Rotation);
-			OUT.pos = mul(UNITY_MATRIX_VP, mul(_Object2World, v.vertex));
+			OUT.pos = mul(UNITY_MATRIX_VP, mul(unity_ObjectToWorld, v.vertex));
 			
 			OUT.texcoord = v.vertex.xyz;
 			
@@ -228,7 +230,7 @@ Shader "Cameron/CustomMultiSkybox"
 			#if UNITY_VERSION >= 540
 			float3 eyeRay = normalize(mul((float3x3)unity_ObjectToWorld, v.vertex.xyz));
 			#else
-			float3 eyeRay = normalize(mul((float3x3)_Object2World, v.vertex.xyz));
+			float3 eyeRay = normalize(mul((float3x3)unity_ObjectToWorld, v.vertex.xyz));
 			#endif
 
 
@@ -394,7 +396,7 @@ Shader "Cameron/CustomMultiSkybox"
 			#if UNITY_VERSION >= 540
 				half3 ray = normalize(mul((float3x3)unity_ObjectToWorld, IN.vertex));
 			#else
-				half3 ray = normalize(mul((float3x3)_Object2World, IN.vertex));	
+				half3 ray = normalize(mul((float3x3)unity_ObjectToWorld, IN.vertex));	
 			#endif			
 			half y = ray.y / SKY_GROUND_THRESHOLD;
 		#elif SKYBOX_SUNDISK == SKYBOX_SUNDISK_SIMPLE

@@ -25,10 +25,9 @@ public class SunController : ActionObject
         m_skyMat = GameObject.Find("NightSky").GetComponent<Renderer>().material;
         m_sunValue = 180.0f * (1.0f - m_skyMat.GetFloat("_Opacity"));
     }
-
     void Update()
     {
-        if(m_inControl)
+        if (m_inControl)
         {
             float mouseX = Input.GetAxis("Mouse X") * 4.0f;
             if (mouseX != 0.0f)
@@ -42,7 +41,7 @@ public class SunController : ActionObject
                 {
                     m_sunValue -= 360.0f;
                 }
-                while(m_sunValue < 0.0f)
+                while (m_sunValue < 0.0f)
                 {
                     m_sunValue += 360.0f;
                 }

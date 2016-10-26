@@ -14,21 +14,19 @@ using System.Collections.Generic;
 public class LinearTargetEmitter : BaseTarget
 {
     public Target m_target;
-    List<Target> m_targets;
-
     public float m_respawnRate;
-    float m_elapsed;
-    
     public float m_targetSpeed;
     public float m_maxTargetDistance;
 
-	void Start ()
+    List<Target> m_targets;
+    float m_elapsed;
+
+    void Start()
     {
         m_targets = new List<Target>();
         Debug.DrawRay(transform.position, transform.forward, Color.red);
-	}
-	
-	void Update ()
+    }
+    void Update()
     {
         if (!m_active)
             return;
@@ -46,14 +44,14 @@ public class LinearTargetEmitter : BaseTarget
             obj.m_Parent = this;
             m_targets.Add(obj);
         }
-	}
+    }
 
     void MoveTargets()
     {
-        for(int i = 0; i < m_targets.Count; ++i)
+        for (int i = 0; i < m_targets.Count; ++i)
         {
             m_targets[i].transform.position += transform.forward * m_targetSpeed * Time.deltaTime;
-            if((transform.position - m_targets[i].transform.position).magnitude > m_maxTargetDistance)
+            if ((transform.position - m_targets[i].transform.position).magnitude > m_maxTargetDistance)
             {
                 Destroy(m_targets[i].gameObject);
                 m_targets.RemoveAt(i);
