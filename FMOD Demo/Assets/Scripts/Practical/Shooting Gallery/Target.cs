@@ -55,7 +55,6 @@ public class Target : MonoBehaviour
         |   This function is used to set the ParameterInstance value.                                           |
         =======================================================================================================*/
         m_hitMaterial.setValue(m_material);
-        m_hitSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject, null));
 
     }
     void Update()
@@ -64,12 +63,17 @@ public class Target : MonoBehaviour
     }
     void OnCollisionEnter(Collision a_col)
     {
-        if (a_col.gameObject.name.Contains("Bullet"))
+        if (a_col.gameObject.name.Contains("Laser"))
         {
             /*===============================================FMOD====================================================
             |  Calling EventInstance.start() will start the event.                                                  |
             =======================================================================================================*/
             m_hitSound.start();
+
+            /*===============================================FMOD====================================================
+            |  Calling EventInstance.start() will start the event.                                                  |
+            =======================================================================================================*/
+            m_hitSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject, null));
 
             transform.GetChild(0).gameObject.SetActive(true);
             if (m_Parent)

@@ -10,7 +10,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Panning_Robot : MonoBehaviour
+public class PanningRobot : MonoBehaviour
 {
     int m_isActive;
     float m_elapsed;

@@ -112,7 +112,7 @@ public class Panning : ActionObject
                 {
                     for (int i = 0; i < m_objects.transform.childCount; ++i)
                     {
-                        m_objects.transform.GetChild(i).GetComponent<Panning_Robot>().FacePlayer();
+                        m_objects.transform.GetChild(i).GetComponent<PanningRobot>().FacePlayer();
                     }
                 }
                 else
