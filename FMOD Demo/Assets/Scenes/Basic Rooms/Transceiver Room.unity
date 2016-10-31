@@ -3280,6 +3280,7 @@ GameObject:
   - 23: {fileID: 544108385}
   - 95: {fileID: 544108384}
   - 114: {fileID: 544108387}
+  - 114: {fileID: 544108388}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -3372,6 +3373,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_materialIndex: 1
+  scrollSpeed: -2
+  m_randSpeed: 0
+  m_randMin: 1
+  m_randMax: 2
+--- !u!114 &544108388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 544108382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8337dabbd25ef74489fc8cc330e7607b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_materialIndex: 2
   scrollSpeed: -2
   m_randSpeed: 0
   m_randMin: 1
@@ -3528,7 +3545,7 @@ Transform:
   m_Children:
   - {fileID: 1773991435}
   m_Father: {fileID: 1877923717}
-  m_RootOrder: 14
+  m_RootOrder: 13
 --- !u!114 &554823123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4009,7 +4026,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: -135, z: 0}
   m_Children: []
   m_Father: {fileID: 1877923717}
-  m_RootOrder: 13
+  m_RootOrder: 12
 --- !u!1 &715900824
 GameObject:
   m_ObjectHideFlags: 0
@@ -4724,7 +4741,7 @@ Transform:
   m_Children:
   - {fileID: 544108383}
   m_Father: {fileID: 1877923717}
-  m_RootOrder: 15
+  m_RootOrder: 14
 --- !u!1 &933778481
 GameObject:
   m_ObjectHideFlags: 0
@@ -5666,10 +5683,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1410166326}
   m_Mesh: {fileID: 4300000, guid: a63b1181e25673b469390a418c628dd9, type: 3}
---- !u!4 &1431465726 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 493092, guid: 7bc9decc89871344fa3655b533ccdede, type: 2}
-  m_PrefabInternal: {fileID: 1548330448}
 --- !u!1 &1452632872
 GameObject:
   m_ObjectHideFlags: 0
@@ -5883,48 +5896,6 @@ Light:
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1001 &1548330448
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1877923717}
-    m_Modifications:
-    - target: {fileID: 493092, guid: 7bc9decc89871344fa3655b533ccdede, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 4.241
-      objectReference: {fileID: 0}
-    - target: {fileID: 493092, guid: 7bc9decc89871344fa3655b533ccdede, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 2.8459997
-      objectReference: {fileID: 0}
-    - target: {fileID: 493092, guid: 7bc9decc89871344fa3655b533ccdede, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 2.702
-      objectReference: {fileID: 0}
-    - target: {fileID: 493092, guid: 7bc9decc89871344fa3655b533ccdede, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 493092, guid: 7bc9decc89871344fa3655b533ccdede, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 493092, guid: 7bc9decc89871344fa3655b533ccdede, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 493092, guid: 7bc9decc89871344fa3655b533ccdede, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: 493092, guid: 7bc9decc89871344fa3655b533ccdede, type: 2}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 7bc9decc89871344fa3655b533ccdede, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1574362402
 GameObject:
   m_ObjectHideFlags: 0
@@ -6399,7 +6370,6 @@ Transform:
   - {fileID: 692354642}
   - {fileID: 550857611}
   - {fileID: 224426881}
-  - {fileID: 1431465726}
   - {fileID: 711026945}
   - {fileID: 554823122}
   - {fileID: 898893819}
@@ -6637,6 +6607,7 @@ GameObject:
   - 23: {fileID: 2000522186}
   - 95: {fileID: 2000522185}
   - 114: {fileID: 2000522188}
+  - 114: {fileID: 2000522189}
   m_Layer: 2
   m_Name: Robot
   m_TagString: Untagged
@@ -6730,6 +6701,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_materialIndex: 1
+  scrollSpeed: -2
+  m_randSpeed: 0
+  m_randMin: 1
+  m_randMax: 2
+--- !u!114 &2000522189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2000522183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8337dabbd25ef74489fc8cc330e7607b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_materialIndex: 2
   scrollSpeed: -2
   m_randSpeed: 0
   m_randMin: 1
