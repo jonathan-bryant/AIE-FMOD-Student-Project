@@ -20,7 +20,7 @@ public enum HELPERSTATE
     IDLE
 };
 
-public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class HelperUIControl : ActionObject
 {
     [Range(0, 10.0f)]    public float m_timeUntilClosed = 2.0f;     // Time from once the player looks away, until the prompt will begin to close.
     [Range(0, 30.0f)]    public float m_maxPlayerDistance = 10.0f;  // Maximum distance the player can be from the prompt and still interact with it.
@@ -46,14 +46,23 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     void Start()
     {
-        GetComponent<Canvas>().worldCamera = Camera.main;
+        //GetComponent<Canvas>().worldCamera = Camera.main;
         m_playerRef = GameObject.FindGameObjectWithTag("Player");
-        m_uiAnimator = GetComponentInChildren<Animator>();
+        m_uiAnimator = GetComponent<Animator>();
         StopAnimation();
     }
 
     void FixedUpdate()
     {
+        if (InQuestion == 1)
+        {
+            ChangeState();
+        }
+        else if (InQuestion == 0)
+        {
+            StopHelper();
+        }
+
         if (m_billboard && m_updateFacing)
         {
             transform.LookAt(m_playerRef.transform.position, Vector3.up);    // Lerp the facing direction to make smooth.
@@ -188,7 +197,7 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
                 /*===============================================Fmod====================================================
                 |                                      Create one shot instance.                                        |
                 =======================================================================================================*/
-                FMODUnity.RuntimeManager.PlayOneShot(m_uiClose, GetComponent<RectTransform>().position);
+                FMODUnity.RuntimeManager.PlayOneShot(m_uiClose, GetComponent<Transform>().position);
                 while (m_uiAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
                 {
                     yield return null;
@@ -196,34 +205,6 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
             }
             m_currentState = HELPERSTATE.IDLE;
         }
-    }
-
-    /// <summary>
-    /// On mouse enter, if the state is idle or stopped, start playing/stop reversing of animation.
-    /// </summary>
-    /// <param name="eventData"></param>
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        switch (m_currentState)
-        {
-            case HELPERSTATE.IDLE:
-                    LoadHelper();
-                break;
-            case HELPERSTATE.STOPPED:
-                    LoadHelper();
-                break;
-            case HELPERSTATE.OPENING:
-                break;
-            case HELPERSTATE.LOADING:
-                break;
-            default:
-                break;
-        }
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        StopHelper();
     }
 
     /// <summary>
@@ -267,5 +248,24 @@ public class HelperUIControl : MonoBehaviour, IPointerEnterHandler, IPointerExit
         }
 
         return Mathf.Abs( fractionalTime );
+    }
+
+    public void ChangeState()
+    {
+        switch (m_currentState)
+        {
+            case HELPERSTATE.IDLE:
+                LoadHelper();
+                break;
+            case HELPERSTATE.STOPPED:
+                LoadHelper();
+                break;
+            case HELPERSTATE.OPENING:
+                break;
+            case HELPERSTATE.LOADING:
+                break;
+            default:
+                break;
+        }
     }
 }
