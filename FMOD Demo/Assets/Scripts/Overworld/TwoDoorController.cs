@@ -70,6 +70,7 @@ public class TwoDoorController : ActionObject
             //  "Direction".
             //--------------------------------------------------------------------
             m_doorEvent = FMODUnity.RuntimeManager.CreateInstance(m_doorSound);
+            m_doorEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform, null));
             m_doorEvent.getParameter("Reverb", out m_reverbAmount);
             m_doorEvent.getParameter("Direction", out m_direction);
         }
