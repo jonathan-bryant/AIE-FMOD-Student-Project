@@ -40,7 +40,7 @@ public class Flag : ActionObject
             RaycastHit rh;
             int layerMask = 1 << LayerMask.NameToLayer("PlayerIgnore");
             layerMask = ~layerMask;
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rh, m_distance, layerMask))
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rh, m_distance, layerMask) && rh.collider.gameObject.name != "Programmer Sounds Door Container")
             {
                 transform.position = Camera.main.transform.position + (Camera.main.transform.forward * rh.distance);
             }
