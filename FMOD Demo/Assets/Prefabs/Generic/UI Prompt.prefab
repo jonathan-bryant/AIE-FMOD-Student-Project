@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 468320}
   - 95: {fileID: 9507538}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Prompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ GameObject:
   - 224: {fileID: 22473544}
   - 222: {fileID: 22279648}
   - 114: {fileID: 11452272}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Header
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - 114: {fileID: 11479948}
   - 114: {fileID: 11463526}
   - 114: {fileID: 11418456}
-  m_Layer: 5
+  m_Layer: 16
   m_Name: UI Prompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,8 @@ GameObject:
   - 224: {fileID: 22447914}
   - 222: {fileID: 22203584}
   - 114: {fileID: 11492200}
-  m_Layer: 0
+  - 65: {fileID: 65000013842526656}
+  m_Layer: 16
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +80,7 @@ GameObject:
   - 224: {fileID: 22487822}
   - 222: {fileID: 22221622}
   - 114: {fileID: 11431114}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Loader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +97,7 @@ GameObject:
   - 224: {fileID: 22462240}
   - 222: {fileID: 22231846}
   - 114: {fileID: 11412428}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +114,8 @@ GameObject:
   - 224: {fileID: 22461814}
   - 222: {fileID: 22213228}
   - 114: {fileID: 11468560}
-  m_Layer: 0
+  - 135: {fileID: 135000012193383014}
+  m_Layer: 16
   m_Name: Logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,6 +202,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c1cede76d81e34db502bd1fdfab383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_actionKeys: 
+  m_actionVerbs: []
+  m_renderer: {fileID: 0}
+  m_materialIndex: 0
+  m_idleGlowSpeed: 4
+  m_idleGlowStrength: 0.5
+  m_hoverGlowSpeed: 8
+  m_hoverGlowStrength: 0.5
+  m_clickGlowSpeed: 0.5
+  m_clickGlowStrength: 1
+  m_newColor: {r: 0, g: 0, b: 0, a: 0}
+  m_localClickDirection: {x: 0, y: 0, z: 0}
+  m_glowOnce: 0
+  m_pressPerSecond: 0
   m_timeUntilClosed: 0
   m_maxPlayerDistance: 10
   m_billboard: 0
@@ -525,3 +541,27 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 142696}
   m_IsPrefabParent: 1
+--- !u!65 &65000013842526656
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151474}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 657.6046, y: 387.9193, z: 1}
+  m_Center: {x: -0.26860237, y: -332.73627, z: -0.0001890138}
+--- !u!135 &135000012193383014
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187260}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 48.21
+  m_Center: {x: 0, y: 0, z: 0}

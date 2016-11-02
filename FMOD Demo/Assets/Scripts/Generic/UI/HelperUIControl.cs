@@ -46,14 +46,15 @@ public class HelperUIControl : ActionObject
 
     void Start()
     {
-        //GetComponent<Canvas>().worldCamera = Camera.main;
+        GetComponent<Canvas>().worldCamera = Camera.main;
         m_playerRef = GameObject.FindGameObjectWithTag("Player");
-        m_uiAnimator = GetComponent<Animator>();
+        m_uiAnimator = GetComponentInChildren<Animator>();
         StopAnimation();
     }
 
     void FixedUpdate()
     {
+        // Had to change to an action object because Unity decided to make a locked cursor not interact with UI
         if (InQuestion == 1)
         {
             ChangeState();
@@ -164,8 +165,11 @@ public class HelperUIControl : ActionObject
             /*===============================================Fmod====================================================
             |                                      Stop the current instance.                                       |
             =======================================================================================================*/
-            m_currentEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            m_currentState = HELPERSTATE.STOPPED;
+            if (m_currentEvent != null)
+            {
+                m_currentEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                m_currentState = HELPERSTATE.STOPPED;
+            }
             StartCoroutine(WaitAndCloseHelper());
         }
     }
