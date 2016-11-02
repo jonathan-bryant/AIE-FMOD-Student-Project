@@ -171,6 +171,11 @@ public class TwoDoorController : ActionObject
         StartCoroutine(WaitForDoorToOpenThenClose());
     }
 
+    void OnTriggerStay(Collider other)
+    {
+        StopCoroutine(WaitForDoorToOpenThenClose());
+    }
+
     /// <summary>
     /// Play the door opening/closing sound and set the parameters.
     /// </summary>
