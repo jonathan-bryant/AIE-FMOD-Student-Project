@@ -46,6 +46,7 @@ public class Target : MonoBehaviour
         |   Calling this function will create an EventInstance. The return value is the created instance.       |
         =======================================================================================================*/
         m_hitSound = FMODUnity.RuntimeManager.CreateInstance(m_hitSoundPath);
+        m_hitSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject, null));
         /*===============================================FMOD====================================================
         |   Calling this function will return a reference to a parameter inside EventInstance and store it in   |
         |   ParameterInstance.                                                                                  |
@@ -71,7 +72,7 @@ public class Target : MonoBehaviour
             m_hitSound.start();
 
             /*===============================================FMOD====================================================
-            |  Calling EventInstance.start() will start the event.                                                  |
+            |  Set this to attach the sound to the gameObject.                                                      |
             =======================================================================================================*/
             m_hitSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject, null));
 
