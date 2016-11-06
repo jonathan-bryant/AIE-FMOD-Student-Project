@@ -4,11 +4,13 @@ This project will teach you many of the basic, as well as a few more advanced, t
  
 Everything you need to know about setting up your project with the FMOD Unity Integration can be found at 
 http://www.fmod.org/documentation/#content/generated/engine_new_unity/getting_started.html.
-There is a lot of documentation there to hopfully help any issue that may arrise, otherwise the Q&A forums 
+There is a lot of documentation to hopfully help any issue that may arrise, otherwise the Q&A forums 
 (http://www.fmod.org/questions/categories/unity) are a great place to find answers.
 
 
 Key points to keep in mind:
+
+***Using headphones will enhance the experience and give you a better understanding of what is happening***
 
 - Press ESC for the Main Menu, and ESC again to close it.
 
@@ -47,4 +49,4 @@ Sound Engineers:
     Bradley Woodhead
     Oliver Richardson
 
-This project was created in place of our Final Assessment at the Academy of Interactive Entertainment Melbourne, for Firelight Studios. 
+This project was created in place of our Final Assessment at the Academy of Interactive Entertainment Melbourne, for Firelight Technologies.
