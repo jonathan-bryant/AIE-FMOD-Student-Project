@@ -21,7 +21,7 @@ public class RainSlider : ActionObject
     float m_rainValue;
     float m_waterValue;
     public float RainValue { get { return m_rainValue * 4.0f; } }
-    public float WaterValue { get { return m_waterValue; } }
+    public float WaterValue { get { return Mathf.Min(m_rainValue * 4.0f, m_waterValue); } }
     public ParticleSystem m_particleSystem;
     public Transform m_pond;
     float m_minPondHeight;
