@@ -36,7 +36,7 @@ public class SunController : ActionObject
                 transform.Rotate(new Vector3(0.0f, -mouseX, 0.0f));
                 float val = Mathf.Sin(Mathf.PI * (m_sunValue / 360.0f));
                 m_skyMat.SetFloat("_Opacity", 1.0f - val);
-                m_sunLight.intensity = val * 2;
+                m_sunLight.intensity = val;
 
                 m_sunValue = m_sunValue + mouseX;
                 while (m_sunValue >= 360.0f)
