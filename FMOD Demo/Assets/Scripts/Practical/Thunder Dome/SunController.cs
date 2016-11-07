@@ -47,7 +47,6 @@ public class SunController : ActionObject
                 }
             }
         }
-        Debug.Log(m_sunValue);
     }
 
     public override void ActionPressed(GameObject sender, KeyCode a_key)
