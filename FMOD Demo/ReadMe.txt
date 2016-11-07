@@ -1,6 +1,7 @@
 Welcome to this FMOD Tutorial Project.
 
-This project will teach you many of the basic, as well as a few more advanced, tools and techniques of implementing FMOD Studio sounds into a Unity project.
+This project will teach you many of the basic, as well as a few more advanced, tools and techniques for implementing FMOD Studio 
+sounds into your Unity project.
  
 Everything you need to know about setting up your project with the FMOD Unity Integration can be found at 
 http://www.fmod.org/documentation/#content/generated/engine_new_unity/getting_started.html.
