@@ -23,6 +23,7 @@ public class Flag : ActionObject
 
     void Start()
     {
+        DontDestroyOnLoad(this);        // Now they won't be destroyed, you can take them all around the world.
         m_index = 1;
         InitGlow();
         m_rb = GetComponent<Rigidbody>();
