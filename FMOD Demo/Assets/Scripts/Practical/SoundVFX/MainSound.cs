@@ -232,5 +232,9 @@ public class MainSound : MonoBehaviour
 		return FMOD.RESULT.OK;
 	}
 
-	#endregion
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawIcon(gameObject.transform.position, "FMODEmitter.tiff", true);
+    }
+    #endregion
 }

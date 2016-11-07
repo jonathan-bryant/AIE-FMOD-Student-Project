@@ -22,9 +22,9 @@ Key points to keep in mind:
 
 - All the sounds in the project are using FMOD Studio and the FMOD Unity Integration.
 
-- We have tried to use the default FMOD scripts that come with the Integration as much as possible just to show how easy it is use.
+- We have tried to use the default FMOD scripts that come with the Integration as much as possible just to show how easy it is to use.
 
-- But in every custom script containing FMOD, you will see this comment structure before the lines that refer to FMOD:
+- In every custom script containing FMOD, you will see this comment structure before the lines that refer to FMOD:
 
                 /*===============================================Fmod====================================================
                 |                     So using - find "FMOD" should take you to all the important bits.                 |

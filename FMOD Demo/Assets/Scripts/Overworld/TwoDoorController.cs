@@ -297,5 +297,10 @@ public class TwoDoorController : ActionObject
         
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawIcon(gameObject.transform.position, "FMODEmitter.tiff", true);
+    }
+
     #endregion
 }

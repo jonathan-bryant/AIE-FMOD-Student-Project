@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_AmbientIntensity: 0
   m_AmbientMode: 0
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 9644538919d88984e93f322a489df5c1, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -50,8 +50,8 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 1
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 4
     m_Resolution: 2
@@ -1151,7 +1151,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22444650, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 22444650, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -1202,7 +1202,7 @@ Prefab:
       value: "Snapshots in FMOD Studio allow switching between various effects instantaneously.
         Snapshots are used the same as an event, which is set up in FMOD Studio, but
         instead of playing a sound they apply effects to sounds. eg. applying underwater
-        sounds as the player enter the \"water (trigger) volume\". Changing volume
+        sounds as the player enters the \"water (trigger) volume\". Changing volume
         levels for multiple buses at once.\r\n"
       objectReference: {fileID: 0}
     - target: {fileID: 11412428, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
@@ -1333,7 +1333,7 @@ Transform:
   - {fileID: 1139271435}
   - {fileID: 1646107668}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &290532749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1830,70 +1830,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 405213876}
   m_Mesh: {fileID: 4300000, guid: a18aafe82b86f8d48a54befe4861b2a0, type: 3}
---- !u!1 &410302043
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 410302044}
-  - 65: {fileID: 410302046}
-  - 114: {fileID: 410302045}
-  m_Layer: 0
-  m_Name: UnderwaterTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &410302044
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 410302043}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.85, y: 8.68, z: -2.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
---- !u!114 &410302045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 410302043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: snapshot:/Underwater
-  PlayEvent: 3
-  StopEvent: 4
-  CollisionTag: Player
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 0
-  OverrideMaxDistance: 0
---- !u!65 &410302046
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 410302043}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 13.967509, y: 28.11311, z: 29.62642}
-  m_Center: {x: 0.28004456, y: -13.556555, z: -0.47483444}
 --- !u!1 &423017157
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,7 +2017,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22444650, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 22444650, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -3082,7 +3018,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &668717661
 GameObject:
   m_ObjectHideFlags: 0
@@ -3648,7 +3584,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ShadowRadius: 0
@@ -8361,7 +8297,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22444650, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 22444650, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -8410,8 +8346,8 @@ Prefab:
     - target: {fileID: 11412428, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_Text
       value: Another example of Snapshots can be seen below, when a player takes critical
-        damage or and explosion goes off near the player, they might have reduced
-        hearing until their injuries are removed.
+        damageor explosion goes off near the player, they might have reduced hearing
+        until their injuries are removed.
       objectReference: {fileID: 0}
     - target: {fileID: 11412428, guid: 1f600c7f8c304014388c34e2f24e79d6, type: 2}
       propertyPath: m_FontData.m_FontSize
@@ -8456,13 +8392,13 @@ Transform:
   m_PrefabParentObject: {fileID: 480980, guid: 5876e066310040d4e8f0d349c940ffcc, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1894460537}
-  m_LocalRotation: {x: 0.015813002, y: 0.7069297, z: -0.015813017, w: 0.70693034}
+  m_LocalRotation: {x: 0.015813, y: 0.7069296, z: -0.015813015, w: 0.7069303}
   m_LocalPosition: {x: 0.13, y: 4.96, z: -3.96}
   m_LocalScale: {x: 7.6523747, y: 3.319607, z: 1.7363913}
   m_LocalEulerAnglesHint: {x: 2.5370002, y: 90.00001, z: 0}
   m_Children: []
   m_Father: {fileID: 1067472145}
-  m_RootOrder: 103
+  m_RootOrder: 102
 --- !u!65 &1894460539
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8846,7 +8782,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
   m_ShadowRadius: 0
@@ -9427,7 +9363,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.10174307
+  m_Radius: 0.101
   m_Center: {x: -0.000000014901167, y: 0, z: 0.000000018626459}
 --- !u!114 &2101627267
 MonoBehaviour:
@@ -9441,6 +9377,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Emitters:
+  - Target: {fileID: 2101627269}
+    Params:
+    - Name: Dry/Wet
+      Value: 1
   - Target: {fileID: 2101627265}
     Params:
     - Name: Dry/Wet
@@ -9459,12 +9399,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Emitters:
+  - Target: {fileID: 2101627269}
+    Params:
+    - Name: Dry/Wet
+      Value: 0
   - Target: {fileID: 2101627265}
     Params:
     - Name: Dry/Wet
       Value: 0
   TriggerEvent: 4
   CollisionTag: Player
+--- !u!114 &2101627269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2101627261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: snapshot:/Underwater
+  PlayEvent: 3
+  StopEvent: 4
+  CollisionTag: Player
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &2106122122
 GameObject:
   m_ObjectHideFlags: 0
