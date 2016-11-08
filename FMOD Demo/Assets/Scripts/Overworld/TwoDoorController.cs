@@ -252,7 +252,7 @@ public class TwoDoorController : ActionObject
 
         float dotToCamera = Vector3.Dot(transform.right, (Camera.main.transform.position - transform.position).normalized);
 
-        if (dotToCamera > 0)
+        if (dotToCamera > 0 && !m_opening)
         {
             // Check to see if door is closed
             while (m_lowerDoor.transform.localPosition != m_lowerClosedPos)
