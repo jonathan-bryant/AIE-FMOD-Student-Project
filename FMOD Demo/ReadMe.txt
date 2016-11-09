@@ -13,6 +13,8 @@ Key points to keep in mind:
 
 ***Using headphones will enhance the experience and give you a better understanding of what is happening***
 
+- After downloading the project, open the Overworld Scene and hit play!
+
 - Press ESC for the Main Menu, and ESC again to close it.
 
 - Options (Graphics Settings/Volume Controls) are available in the Main Menu.
@@ -27,9 +29,9 @@ Key points to keep in mind:
 
 - In every custom script containing FMOD, you will see this comment structure before the lines that refer to FMOD:
 
-                /*===============================================Fmod====================================================
-                |                     So using - find "FMOD" should take you to all the important bits.                 |
-                =======================================================================================================*/
+  /*===============================================Fmod====================================================
+  |                     So using - find "FMOD" should take you to all the important bits.                 |
+  =======================================================================================================*/
 
 - Feel free to use any and everything from this project in your own games!
 
