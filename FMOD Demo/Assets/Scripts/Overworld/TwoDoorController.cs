@@ -168,7 +168,11 @@ public class TwoDoorController : ActionObject
         if (!other.CompareTag("Player"))
             return;
         //Wait for door to close then unload
-        StartCoroutine(WaitForDoorToOpenThenClose());
+        float dotToCamera = Vector3.Dot(transform.right, (Camera.main.transform.position - transform.position).normalized);
+        if (dotToCamera > 0)
+        {
+            StartCoroutine(WaitForDoorToOpenThenClose());
+        }
     }
 
     void OnTriggerStay(Collider other)
@@ -250,9 +254,8 @@ public class TwoDoorController : ActionObject
         m_opening = false;
         PlayDoorSound();
 
-        float dotToCamera = Vector3.Dot(transform.right, (Camera.main.transform.position - transform.position).normalized);
 
-        if (dotToCamera > 0 && !m_opening)
+        //if (dotToCamera > 0 && !m_opening)
         {
             // Check to see if door is closed
             while (m_lowerDoor.transform.localPosition != m_lowerClosedPos)
@@ -283,16 +286,7 @@ public class TwoDoorController : ActionObject
                 yield return false;
             }
         }
-        else
-        {
-            m_completed = true;
-
-            while (m_collider.center.x > 0.0f)
-            {
-                m_collider.center -= Vector3.right * Time.fixedDeltaTime;
-                yield return false;
-            }
-        }
+        
 
         
     }
