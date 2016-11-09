@@ -3,7 +3,7 @@ using System.Collections;
 
 public class LightRotator : MonoBehaviour
 {
-    public float speed = 1.0f;
+    public float speed = 0.05f;
 
     Quaternion initialRotation;
     Quaternion targetRotation;
@@ -23,7 +23,7 @@ public class LightRotator : MonoBehaviour
         }
 
         // Lerp rotation towards target rotation
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.1f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speed);
 	}
 
     Quaternion GetNewRotation()
