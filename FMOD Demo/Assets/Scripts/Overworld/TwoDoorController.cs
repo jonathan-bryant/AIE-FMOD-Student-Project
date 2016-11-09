@@ -51,6 +51,7 @@ public class TwoDoorController : ActionObject
     static AsyncOperation s_async;                  // Async operation, used to check when an operation has been completed.
     bool m_loading;
     SphereCollider m_collider;                      // Reference to door trigger.
+	Coroutine m_lastCoroutine = null;
 
     void Start()
     {
@@ -169,15 +170,20 @@ public class TwoDoorController : ActionObject
             return;
         //Wait for door to close then unload
         float dotToCamera = Vector3.Dot(transform.right, (Camera.main.transform.position - transform.position).normalized);
-        if (dotToCamera > 0)
-        {
-            StartCoroutine(WaitForDoorToOpenThenClose());
-        }
+		if (dotToCamera > 0) 
+		{
+			m_lastCoroutine = StartCoroutine (WaitForDoorToOpenThenClose ());
+		} 
+		else 
+		{
+			m_completed = true;
+		}
     }
 
     void OnTriggerStay(Collider other)
     {
-        StopCoroutine(WaitForDoorToOpenThenClose());
+		if (m_lastCoroutine != null && m_opening)
+			StopCoroutine(m_lastCoroutine);
     }
 
     /// <summary>
@@ -236,6 +242,7 @@ public class TwoDoorController : ActionObject
             }
         }
 
+		yield return new WaitForSeconds (0.2f);
         m_opening = true;
         PlayDoorSound();
     }
