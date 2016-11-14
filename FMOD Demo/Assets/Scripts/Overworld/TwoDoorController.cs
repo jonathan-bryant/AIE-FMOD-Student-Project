@@ -132,6 +132,11 @@ public class TwoDoorController : ActionObject
 			rend.materials[2].SetColor("_EmissionColor", new Color(2f,0.70f,0f));
 			DynamicGI.SetEmissive(rend, new Color(2f,0.70f,0f));
         }
+
+        if (!SceneManager.GetSceneByName(m_sceneToLoad).isLoaded)
+        {
+            m_opening = false;
+        }
     }
 
     /// <summary>
