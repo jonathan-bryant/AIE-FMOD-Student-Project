@@ -22,18 +22,27 @@ public class TwoDoorController : ActionObject
     public string m_sceneToLoad;        // Name of scene to be loaded/unloaded (needs to be exact).
     public float m_doorHoldTime;        // Amount of time the door will stay open after leaving the trigger area before closing.
     public float m_unloadDelay;         // Time until scene is unloaded once door has fully closed.
-
-    //---------------------------------Fmod-------------------------------
-    //  Bank reference is the same as and Event, except using BankRef.
-    //  Another difference between Events and Banks is loading and 
-    //  unloading is done using the string and not a class or instance.
-    //--------------------------------------------------------------------
+    
+    /*===============================================Fmod====================================================
+    |                   Bank reference is the same as and Event, except using BankRef.                      |
+    |                   Another difference between Events and Banks is loading and                          |
+    |                   unloading is done using the string and not a class or instance.                     |
+    =======================================================================================================*/
     [FMODUnity.BankRef]
     public string m_bankToLoad;
 
+    /*===============================================Fmod====================================================
+    |                              Event doors play when opening and closing.                               |
+    =======================================================================================================*/
     [FMODUnity.EventRef]
     public string m_doorSound;
     [Range(0, 4)]    public float m_doorReverb = 0.4f;
+
+    /*===============================================Fmod====================================================
+    |       Reference to a single instance of the door closing snapshot that will affect all the rooms.     |
+    =======================================================================================================*/
+    public FMODUnity.StudioEventEmitter m_doorCloseSnapshot;
+    FMODUnity.ParamRef m_snapshotIntensity;
 
     // Private Vars
     FMOD.Studio.EventInstance m_doorEvent;
@@ -66,10 +75,9 @@ public class TwoDoorController : ActionObject
 
         if (m_doorSound != "")
         {
-            //---------------------------------Fmod-------------------------------
-            //  Create an instance, get the parameter to control the "Reverb" and
-            //  "Direction".
-            //--------------------------------------------------------------------
+            /*===============================================Fmod====================================================
+            |             Create an instance, get the parameter to control the "Reverb" and "Direction".            |
+            =======================================================================================================*/
             m_doorEvent = FMODUnity.RuntimeManager.CreateInstance(m_doorSound);
             m_doorEvent.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform, null));
             m_doorEvent.getParameter("Reverb", out m_reverbAmount);
@@ -144,23 +152,6 @@ public class TwoDoorController : ActionObject
     #region Private Functions
 
     /// <summary>
-    /// Check if the colliding object is the Player. If the player is exiting the room, open the door automatically.
-    /// </summary>
-    /// <param name="other"></param>
-    void OnTriggerEnter(Collider other)
-    {
-        if (!other.CompareTag("Player"))
-            return;
-        float dotToCamera = Vector3.Dot(transform.right, (other.transform.position - transform.position).normalized);
-        // If the player enters the trigger from inside the room, automatically open the door.
-        if (dotToCamera < 0)
-        {
-            m_opening = true;
-            PlayDoorSound();
-        }
-    }
-
-    /// <summary>
     /// Check if the colliding object is the Player. If it is, then load the scene and open the door.
     /// </summary>
     /// <param name="other"></param>
@@ -191,11 +182,11 @@ public class TwoDoorController : ActionObject
     /// </summary>
     void PlayDoorSound()
     {
-        //---------------------------------Fmod-------------------------------
-        //  Check to see if the sound is already playing, if not, then start
-        //  the event and set the direction depending on the direction the
-        //  door is moving. Update the 3D attributes.
-        //--------------------------------------------------------------------
+        /*===============================================Fmod====================================================
+        |                   Check to see if the sound is already playing, if not, then start                    |
+        |                    the event and set the direction depending on the direction the                     |
+        |                             door is moving. Update the 3D attributes.                                 |
+        =======================================================================================================*/
         FMOD.Studio.PLAYBACK_STATE playState;
         m_doorEvent.getPlaybackState(out playState);
         if (playState == FMOD.Studio.PLAYBACK_STATE.PLAYING)
@@ -217,14 +208,14 @@ public class TwoDoorController : ActionObject
         //~~~~~~~~~~~~~~~ Load the room audio ~~~~~~~~~~~~~~~\\
         if (m_bankToLoad != "")
         {
-            //---------------------------------Fmod-------------------------------
-            //  Start loading the bank in the background including the audio 
-            //  sample data.
-            //--------------------------------------------------------------------
+            /*===============================================Fmod====================================================
+            |              Start loading the bank in the background including the audio sample data.                |
+            =======================================================================================================*/
             FMODUnity.RuntimeManager.LoadBank(m_bankToLoad, true);
-            //---------------------------------Fmod-------------------------------
-            //  Keep yielding the coroutine until the bank has loaded.
-            //--------------------------------------------------------------------
+
+            /*===============================================Fmod====================================================
+            |                         Keep yielding the coroutine until the bank has loaded.                        |
+            =======================================================================================================*/
             while (FMODUnity.RuntimeManager.AnyBankLoading())
             {
                 yield return true;
@@ -241,8 +232,7 @@ public class TwoDoorController : ActionObject
                 yield return true;
             }
         }
-
-		yield return new WaitForSeconds (0.2f);
+        
         m_opening = true;
         PlayDoorSound();
     }
@@ -261,41 +251,32 @@ public class TwoDoorController : ActionObject
         m_opening = false;
         PlayDoorSound();
 
-
-        //if (dotToCamera > 0 && !m_opening)
+        // Check to see if door is closed
+        while (m_lowerDoor.transform.localPosition != m_lowerClosedPos)
         {
-            // Check to see if door is closed
-            while (m_lowerDoor.transform.localPosition != m_lowerClosedPos)
-            {
-                yield return false;
-            }
-            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-            //Add lowpass filter effect here, while door closes//
-            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+            yield return false;
+        }
 
-            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-            //Add timer before unloading bank and add lowpass effect to imitate occlusion through closed door//
-            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-            yield return new WaitForSeconds(m_unloadDelay);
-
-            if (SceneManager.GetSceneByName(m_sceneToLoad).isLoaded)
-            {
-                yield return new WaitForEndOfFrame();
-                SceneManager.UnloadScene(m_sceneToLoad);
-                if (m_bankToLoad != "")
-                    FMODUnity.RuntimeManager.UnloadBank(m_bankToLoad);
-                m_loading = false;
-            }
-
-            while (m_collider.center.x < 6.0f)
-            {
-                m_collider.center += Vector3.right * Time.fixedDeltaTime;
-                yield return false;
-            }
+        /*===============================================Fmod====================================================
+        |                              Add effect here for when then door closes.                               |
+        =======================================================================================================*/
+        m_doorCloseSnapshot.Play();
+        
+        /*===============================================Fmod====================================================
+        |                            Add timer before unloading scene and audio bank.                           |
+        =======================================================================================================*/
+        yield return new WaitForSeconds(m_unloadDelay);
+        
+        if (SceneManager.GetSceneByName(m_sceneToLoad).isLoaded)
+        {
+            yield return new WaitForEndOfFrame();
+            SceneManager.UnloadScene(m_sceneToLoad);
+            if (m_bankToLoad != "")
+                FMODUnity.RuntimeManager.UnloadBank(m_bankToLoad);
+            m_loading = false;
         }
         
-
-        
+        m_doorCloseSnapshot.Stop();
     }
 
     void OnDrawGizmos()
