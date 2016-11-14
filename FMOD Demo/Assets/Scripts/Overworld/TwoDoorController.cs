@@ -145,7 +145,21 @@ public class TwoDoorController : ActionObject
         {
             m_collider.center = Vector3.right * 6.0f;
             m_loading = false;
+            for (int i = 0; i < SceneManager.sceneCount; i++)
+            {
+                if (SceneManager.GetSceneAt(i).name != "Overworld v2.0")
+                {
+                    SceneManager.UnloadScene(SceneManager.GetSceneAt(i));
+                    m_doorCloseSnapshot.Stop();
+                }
+            }
             StartCoroutine(LoadBankThenScene());
+        }
+        else
+        {
+            m_doorCloseSnapshot.Stop();
+            m_opening = true;
+            PlayDoorSound();
         }
     }
 
@@ -205,6 +219,7 @@ public class TwoDoorController : ActionObject
     /// <returns></returns>
     IEnumerator LoadBankThenScene()
     {
+        m_doorCloseSnapshot.Stop();
         //~~~~~~~~~~~~~~~ Load the room audio ~~~~~~~~~~~~~~~\\
         if (m_bankToLoad != "")
         {
@@ -261,27 +276,20 @@ public class TwoDoorController : ActionObject
         |                              Add effect here for when then door closes.                               |
         =======================================================================================================*/
         m_doorCloseSnapshot.Play();
-        
-        /*===============================================Fmod====================================================
-        |                            Add timer before unloading scene and audio bank.                           |
-        =======================================================================================================*/
-        yield return new WaitForSeconds(m_unloadDelay);
-        
-        if (SceneManager.GetSceneByName(m_sceneToLoad).isLoaded)
-        {
-            yield return new WaitForEndOfFrame();
-            SceneManager.UnloadScene(m_sceneToLoad);
-            if (m_bankToLoad != "")
-                FMODUnity.RuntimeManager.UnloadBank(m_bankToLoad);
-            m_loading = false;
-        }
-        
-        m_doorCloseSnapshot.Stop();
     }
 
     void OnDrawGizmos()
     {
         Gizmos.DrawIcon(gameObject.transform.position, "FMODEmitter.tiff", true);
+    }
+
+    /// <summary>
+    /// Unload the FMOD Audio Bank.
+    /// </summary>
+    void UnloadBank()
+    {
+        if (m_bankToLoad != "")
+            FMODUnity.RuntimeManager.UnloadBank(m_bankToLoad);
     }
 
     #endregion

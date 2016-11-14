@@ -257,20 +257,7 @@ public class Menu : MonoBehaviour
         m_actor.transform.localEulerAngles = new Vector3(0.0f, m_actor.transform.localEulerAngles.y, 0.0f);
         Camera.main.transform.localEulerAngles = Vector3.zero;
         Camera.main.transform.Rotate(Vector3.right * -10.0f);
-
-        yield return new WaitForSeconds(0.2f);
-
-        // unload old scene
-        for (int i = 0; i < SceneManager.sceneCount; i++)
-        {
-            Scene scene = SceneManager.GetSceneAt(i);
-            if (!scene.name.Contains("verworld"))
-            {
-                FMODUnity.RuntimeManager.UnloadBank(scene.name);
-                SceneManager.UnloadScene(scene.name);
-            }
-        }
-
+        
         // Fade up
 
         m_portArriveEvent.start();
